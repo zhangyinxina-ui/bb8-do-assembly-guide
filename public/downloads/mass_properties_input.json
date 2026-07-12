@@ -1,0 +1,361 @@
+{
+  "config": {
+    "status": "DESIGN_ASSUMPTIONS_REPLACE_WITH_MEASURED_MASSES",
+    "body_radius_m": 0.254,
+    "target_accel_mps2": 0.7,
+    "target_speed_mps": 1.0,
+    "minimum_nominal_com_offset_m": 0.05,
+    "minimum_worst_case_com_offset_m": 0.02,
+    "legacy_unverified_com_offset_m": 0.11,
+    "additional_ballast_position_z_m": -0.22,
+    "drive_wheel_radius_m": 0.048,
+    "motor_count": 2,
+    "motor_continuous_torque_nm": 0.6,
+    "required_design_safety_factor": 2.0,
+    "drive_efficiency": 0.72,
+    "rolling_resistance_coefficient": 0.03,
+    "shell_rotating_mass_kg": 1.2
+  },
+  "components": [
+    {
+      "component": "rotating shell and exterior panels",
+      "object_name": "BB-8 body shell - 508 mm",
+      "mass_min_kg": 0.9,
+      "mass_nominal_kg": 1.2,
+      "mass_max_kg": 1.6,
+      "position_m": [
+        0,
+        0,
+        0
+      ],
+      "dimensions_m": [
+        0.508,
+        0.508,
+        0.508
+      ],
+      "shape": "thin_sphere",
+      "source": "community full-size shell mass assumption",
+      "physical_test_status": "NOT_RUN"
+    },
+    {
+      "component": "complete head including follower hardware",
+      "object_name": "Head dome - 295 mm",
+      "mass_min_kg": 0.55,
+      "mass_nominal_kg": 0.65,
+      "mass_max_kg": 0.8,
+      "position_m": [
+        0,
+        0,
+        0.32
+      ],
+      "dimensions_m": [
+        0.295,
+        0.295,
+        0.197
+      ],
+      "shape": "box",
+      "source": "stage-physics head mass assumption",
+      "physical_test_status": "NOT_RUN"
+    },
+    {
+      "component": "4S battery pack",
+      "object_name": "Internal 4S battery ballast",
+      "mass_min_kg": 1.0,
+      "mass_nominal_kg": 1.2,
+      "mass_max_kg": 1.5,
+      "position_m": [
+        0,
+        0.005,
+        -0.078
+      ],
+      "dimensions_m": [
+        0.12,
+        0.074,
+        0.056
+      ],
+      "shape": "box",
+      "source": "candidate battery envelope; pack not purchased",
+      "physical_test_status": "NOT_RUN"
+    },
+    {
+      "component": "left geared motor",
+      "object_name": "Internal geared motor L",
+      "mass_min_kg": 0.36,
+      "mass_nominal_kg": 0.609,
+      "mass_max_kg": 0.609,
+      "position_m": [
+        -0.0724,
+        0,
+        -0.135
+      ],
+      "dimensions_m": [
+        0.1252,
+        0.045,
+        0.045
+      ],
+      "shape": "box",
+      "source": "vendor conflict: drawing 360 g / product page 609 g",
+      "physical_test_status": "NOT_RUN"
+    },
+    {
+      "component": "right geared motor",
+      "object_name": "Internal geared motor R",
+      "mass_min_kg": 0.36,
+      "mass_nominal_kg": 0.609,
+      "mass_max_kg": 0.609,
+      "position_m": [
+        0.0724,
+        0,
+        -0.135
+      ],
+      "dimensions_m": [
+        0.1252,
+        0.045,
+        0.045
+      ],
+      "shape": "box",
+      "source": "vendor conflict: drawing 360 g / product page 609 g",
+      "physical_test_status": "NOT_RUN"
+    },
+    {
+      "component": "left drive wheel",
+      "object_name": "Internal drive wheel L",
+      "mass_min_kg": 0.12,
+      "mass_nominal_kg": 0.18,
+      "mass_max_kg": 0.25,
+      "position_m": [
+        -0.155,
+        0,
+        -0.135
+      ],
+      "dimensions_m": [
+        0.026,
+        0.096,
+        0.096
+      ],
+      "shape": "box",
+      "source": "96 mm wheel mass assumption",
+      "physical_test_status": "NOT_RUN"
+    },
+    {
+      "component": "right drive wheel",
+      "object_name": "Internal drive wheel R",
+      "mass_min_kg": 0.12,
+      "mass_nominal_kg": 0.18,
+      "mass_max_kg": 0.25,
+      "position_m": [
+        0.155,
+        0,
+        -0.135
+      ],
+      "dimensions_m": [
+        0.026,
+        0.096,
+        0.096
+      ],
+      "shape": "box",
+      "source": "96 mm wheel mass assumption",
+      "physical_test_status": "NOT_RUN"
+    },
+    {
+      "component": "left hub shaft and fasteners",
+      "object_name": "Internal 8 mm key hub L",
+      "mass_min_kg": 0.08,
+      "mass_nominal_kg": 0.11,
+      "mass_max_kg": 0.15,
+      "position_m": [
+        -0.148,
+        0,
+        -0.135
+      ],
+      "dimensions_m": [
+        0.04,
+        0.026,
+        0.026
+      ],
+      "shape": "box",
+      "source": "hub/shaft/fastener grouped assumption",
+      "physical_test_status": "NOT_RUN"
+    },
+    {
+      "component": "right hub shaft and fasteners",
+      "object_name": "Internal 8 mm key hub R",
+      "mass_min_kg": 0.08,
+      "mass_nominal_kg": 0.11,
+      "mass_max_kg": 0.15,
+      "position_m": [
+        0.148,
+        0,
+        -0.135
+      ],
+      "dimensions_m": [
+        0.04,
+        0.026,
+        0.026
+      ],
+      "shape": "box",
+      "source": "hub/shaft/fastener grouped assumption",
+      "physical_test_status": "NOT_RUN"
+    },
+    {
+      "component": "chassis rails mounts and crossmember",
+      "object_name": "Internal aluminium chassis",
+      "mass_min_kg": 0.4,
+      "mass_nominal_kg": 0.55,
+      "mass_max_kg": 0.75,
+      "position_m": [
+        0,
+        0,
+        -0.12
+      ],
+      "dimensions_m": [
+        0.38,
+        0.12,
+        0.052
+      ],
+      "shape": "box",
+      "source": "6061 geometry plus grouped mounting hardware",
+      "physical_test_status": "NOT_RUN"
+    },
+    {
+      "component": "electronics tray controller and current boards",
+      "object_name": "Internal electronics tray",
+      "mass_min_kg": 0.2,
+      "mass_nominal_kg": 0.32,
+      "mass_max_kg": 0.5,
+      "position_m": [
+        0,
+        0.01,
+        -0.098
+      ],
+      "dimensions_m": [
+        0.104,
+        0.08,
+        0.024
+      ],
+      "shape": "box",
+      "source": "PCB and tray grouped assumption",
+      "physical_test_status": "NOT_RUN"
+    },
+    {
+      "component": "fuse contactor and main connector",
+      "object_name": "Internal fuse and contactor",
+      "mass_min_kg": 0.1,
+      "mass_nominal_kg": 0.15,
+      "mass_max_kg": 0.22,
+      "position_m": [
+        0.105,
+        0.02,
+        -0.095
+      ],
+      "dimensions_m": [
+        0.044,
+        0.028,
+        0.024
+      ],
+      "shape": "box",
+      "source": "power switching grouped assumption",
+      "physical_test_status": "NOT_RUN"
+    },
+    {
+      "component": "mast braces and lower carrier",
+      "object_name": "Internal magnetic mast",
+      "mass_min_kg": 0.3,
+      "mass_nominal_kg": 0.45,
+      "mass_max_kg": 0.65,
+      "position_m": [
+        0,
+        0,
+        0.075
+      ],
+      "dimensions_m": [
+        0.18,
+        0.12,
+        0.34
+      ],
+      "shape": "box",
+      "source": "mast and brace grouped assumption",
+      "physical_test_status": "NOT_RUN"
+    },
+    {
+      "component": "six chassis-side magnets",
+      "object_name": "Internal chassis magnet 1",
+      "mass_min_kg": 0.075,
+      "mass_nominal_kg": 0.085,
+      "mass_max_kg": 0.11,
+      "position_m": [
+        0,
+        0,
+        0.247
+      ],
+      "dimensions_m": [
+        0.09,
+        0.09,
+        0.006
+      ],
+      "shape": "box",
+      "source": "NdFeB density envelope for six 20x6 mm magnets",
+      "physical_test_status": "NOT_RUN"
+    },
+    {
+      "component": "stabiliser rollers and arms",
+      "object_name": "Internal stabiliser roller L F",
+      "mass_min_kg": 0.18,
+      "mass_nominal_kg": 0.26,
+      "mass_max_kg": 0.38,
+      "position_m": [
+        0,
+        0,
+        0.1
+      ],
+      "dimensions_m": [
+        0.22,
+        0.18,
+        0.22
+      ],
+      "shape": "box",
+      "source": "four rollers and arms grouped assumption",
+      "physical_test_status": "NOT_RUN"
+    },
+    {
+      "component": "straps wiring latches and omitted small hardware",
+      "object_name": "Internal battery strap front",
+      "mass_min_kg": 0.2,
+      "mass_nominal_kg": 0.3,
+      "mass_max_kg": 0.45,
+      "position_m": [
+        0,
+        0,
+        -0.03
+      ],
+      "dimensions_m": [
+        0.4,
+        0.4,
+        0.03
+      ],
+      "shape": "box",
+      "source": "explicit residual-mass allowance",
+      "physical_test_status": "NOT_RUN"
+    },
+    {
+      "component": "sealed low ballast cassette",
+      "object_name": "Internal sealed low ballast cassette",
+      "mass_min_kg": 1.35,
+      "mass_nominal_kg": 1.5,
+      "mass_max_kg": 1.65,
+      "position_m": [
+        0,
+        0,
+        -0.205
+      ],
+      "dimensions_m": [
+        0.12,
+        0.07,
+        0.024
+      ],
+      "shape": "box",
+      "source": "steel volume and sealed-cassette allowance",
+      "physical_test_status": "NOT_RUN"
+    }
+  ]
+}

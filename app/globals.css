@@ -54,6 +54,11 @@ a {
   font-size: 13px;
   font-weight: 700;
 }
+.language-link {
+  border: 1px solid currentColor;
+  padding: 6px 9px;
+  line-height: 1;
+}
 .hero {
   min-height: calc(100vh - 76px);
   padding: 10vh 6vw 6vh;

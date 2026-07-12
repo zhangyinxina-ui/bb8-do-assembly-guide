@@ -148,6 +148,7 @@ export default function Home() {
           <a href="#do">D-O</a>
           <a href="#build">装配</a>
           <a href="#sources">来源</a>
+          <a className="language-link" href={asset("/en/")} aria-label="Switch to English">EN</a>
         </div>
       </nav>
       <section className="hero" id="top">
@@ -257,11 +258,12 @@ export default function Home() {
             </h3>
             <p>
               Blender
-              文件内已有110个带稳定标记的内部对象。驱动轮和四只稳定球实际到达254 mm内壳；
+              文件内已有118个制造对象和2个工程质心标记。驱动轮和四只稳定球实际到达254 mm内壳；
               IG42E-24K按125.2 mm总长、PCD 35 mm安装孔和310 mm轮距布置，两台电机不再互相穿透。
               赤道维护接口包含494 mm密封圈、8个锁扣，并明确建模12段动力/编码器线束和4个可断开连接器。
               磁性头部采用6+6磁体包络、8 mm总气隙和3只24 mm头底滚轮，装机拉力验收线为40 N。
               电子托盘另有双INA226、双2 mΩ四线分流器、6个M2.5支柱和独立ALERT→EN门的实体包络；真实带电试验仍为NOT_RUN。
+              阶段14新增120 × 70 × 24 mm、名义1.50 kg的密封低位钢配重盒，并用17组质量账本替代未经证明的110 mm质心假设。
             </p>
             <div className="doc-actions">
               <a className="button" href={asset("/downloads/BB8_BOM.md")} download>
@@ -290,6 +292,12 @@ export default function Home() {
               </a>
               <a className="button" href={asset("/downloads/BB8_stage13_power_hardware.md")} download>
                 下载阶段 13 保护硬件建模
+              </a>
+              <a className="button" href={asset("/downloads/BB8_阶段14_质量质心与惯量验证.md")} download>
+                下载阶段 14 质量/质心验证
+              </a>
+              <a className="button" href={asset("/downloads/BB8_stage14_mass_cg_inertia_validation.md")} download>
+                Download Stage 14 English report
               </a>
               <a className="button" href={asset("/model/BB8_three_view_dimension_sheet.png")} download>
                 下载最新三视图尺寸图
@@ -357,15 +365,15 @@ export default function Home() {
         <div className="section-head">
           <span>04 / PHYSICS GATE</span>
           <h2>先算清楚，<br />再让它落地跑。</h2>
-          <p>阶段 1 解析模型已覆盖球壳转动惯量、滚阻、双轮扭矩、轮壳附着、摆体回复力矩和磁头冲击保持。当前 PASS 只针对可追溯假设参数，不替代实物台架。</p>
+          <p>阶段14已用17组质量账本、刚体惯量和全部最小/最大质量角点替代未经证明的110 mm质心假设。当前 PASS 只针对可追溯假设参数，不替代实物称重与台架。</p>
         </div>
         <div className="control-grid">
-          <article><span>01</span><h3>0.286 N·m / 电机</h3><p>6 kg、1 m/s² 设计点，含球壳转动惯量与滚阻；0.6 N·m 连续额定仅有 2.10× 理论裕量。</p></article>
-          <article><span>02</span><h3>13.08× 附着裕量</h3><p>按 μ=0.7、每轮 80 N 预紧计算；必须用实际壳材和拉力计重新测量。</p></article>
+          <article><span>01</span><h3>8.463 kg 名义质量</h3><p>17组输入范围为6.375–10.628 kg；所有分组在实物称重前均保持NOT_RUN。</p></article>
+          <article><span>02</span><h3>质心下置 56.2 mm</h3><p>名义z=-56.2 mm；穷举最不利质量角点后仍为z=-27.7 mm。</p></article>
           <article><span>03</span><h3>2.51× 磁保持裕量</h3><p>0.65 kg 头部、2.5g 垂向冲击需要 15.9 N；设计假设保持力 40 N。</p></article>
-          <article><span>04</span><h3>低电量必须降额</h3><p>阶段 2 计算显示峰值 21 A 在低电量会降至 12.55 V；控制核心已加入 13.2–14.3 V 连续功率限制。</p></article>
-          <article><span>05</span><h3>转弯合载荷 2.31×</h3><p>1 m/s、0.6 rad/s 转弯并叠加横向与垂向冲击，40 N 磁保持的解析裕量为 2.31×。</p></article>
-          <article><span>06</span><h3>结构与热</h3><p>桅杆静态屈服裕量 18.52×；设计点电机集总稳态温度估算 38.9 °C，仍需实物模态和热试验。</p></article>
+          <article><span>04</span><h3>0.703 m/s²上限</h3><p>0.6 N·m连续扭矩按2×余量计算，控制目标降额冻结为0.70 m/s²。</p></article>
+          <article><span>05</span><h3>1.51 s俯仰周期</h3><p>名义Iyy=0.2703 kg·m²，10°回复力矩0.81 N·m。</p></article>
+          <article><span>06</span><h3>110 mm已取消</h3><p>若强求原假设还需低位增加约4.14 kg，会继续压缩加速度裕量。</p></article>
         </div>
         <div className="firmware-downloads">
           <a href={asset("/downloads/BB8_physics_validation.md")} download>下载物理验证报告</a>
@@ -373,6 +381,10 @@ export default function Home() {
           <a href={asset("/downloads/physics_sweep.csv")} download>下载 0–2 m/s² 扫描</a>
           <a href={asset("/downloads/BB8_multibody_validation.md")} download>下载阶段 2 多体验证</a>
           <a href={asset("/downloads/turning_multibody_sweep.csv")} download>下载转弯多体扫描</a>
+          <a href={asset("/downloads/BB8_阶段14_质量质心与惯量验证.md")} download>下载阶段14质量报告</a>
+          <a href={asset("/downloads/mass_properties_input.json")} download>下载17组质量输入</a>
+          <a href={asset("/downloads/mass_properties_results.json")} download>下载质心惯量结果</a>
+          <a href={asset("/downloads/mass_properties_scenarios.csv")} download>下载质量角点CSV</a>
         </div>
       </section>
 

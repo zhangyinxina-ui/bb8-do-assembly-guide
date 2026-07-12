@@ -35,7 +35,8 @@ head_prefixes = ("Head ", "Main photoreceptor", "Photoreceptor", "Holographic", 
 stl("BB8_body_visual_reference_mm.stl", lambda o: o.name.startswith(body_prefixes))
 stl("BB8_head_visual_reference_mm.stl",
     lambda o: o.name.startswith(head_prefixes) and not bool(o.get("bb8_internal")))
-stl("BB8_internal_mechanism_mm.stl", lambda o: bool(o.get("bb8_internal")))
+stl("BB8_internal_mechanism_mm.stl",
+    lambda o: bool(o.get("bb8_internal")) and not bool(o.get("engineering_annotation")))
 
 # GLB keeps hierarchy, materials and animation. Exclude render-only floor/lights/cameras.
 select_names(lambda o: o.name.startswith(body_prefixes + head_prefixes + ("Internal", "RIG ")), include_empties=True)

@@ -1,6 +1,6 @@
 # BB-8 & D-O 1:1 Assembly Guide
 
-[在线装配网站](https://zhangyinxina-ui.github.io/bb8-do-assembly-guide/) · [权利与再分发边界](NOTICE.md)
+[中文在线装配网站](https://zhangyinxina-ui.github.io/bb8-do-assembly-guide/) · [English build guide](https://zhangyinxina-ui.github.io/bb8-do-assembly-guide/en/) · [权利与再分发边界](NOTICE.md)
 
 一个面向个人制作者的公开工程记录：包含《星球大战：原力觉醒》BB-8 的 1:1 屏幕参考 Blender 模型、三视图、内部运动机构、运动学/动力学验证、控制器草案，以及 D-O 合法公开资源和采购门控路线。
 
@@ -11,7 +11,8 @@
 - BB-8 身体球：Ø508 mm。
 - 头部最大直径：Ø295 mm。
 - 无天线总高：670 mm，对齐 StarWars.com 公开的 0.67 m。
-- Blender 主工程后台重开审计：314 个对象，其中 110 个内部机构对象。
+- Blender 主工程后台重开审计：324 个对象，其中 118 个制造对象和 2 个工程质心标记。
+- 阶段14质量账本：名义8.463 kg、名义质心z=-56.2 mm、最不利角点z=-27.7 mm；0.6 N·m连续扭矩按2×余量时目标加速度降额为0.70 m/s²。17组质量仍需实物称重。
 - 双轮差速内车、310 mm 轮距、6+6 磁体随动头和 40 N 装机拉脱力验收合同。
 - 编码器轮速 PI + IMU 偏航闭环仿真：直线 RMS 误差 0.00772 m/s、转角 91.20°，传感器过期同周期撤销 PWM。
 - ESP32-S3 已编译双正交编码器与 MPU6050 适配；CPR默认为0、静止标定未完成时保持拒动。
@@ -27,7 +28,7 @@
 | `blender/` | 参数化生成器、主工程、阶段检查点、审计和导出脚本 |
 | `engineering/` | 物理输入、计算结果、D-O 清单和采购门控 |
 | `firmware/` | BB-8 C++ 控制核心与 ESP32-S3 适配草案 |
-| `docs/` | 从阶段 1 到阶段 13 的设计、验证和续接记录 |
+| `docs/` | 从阶段 1 到阶段 14 的设计、验证和续接记录 |
 | `app/` | Vinext/Next 开发网站 |
 | `github-pages-src/` | GitHub Pages 纯静态 React 入口 |
 | `public/` | 网站公开的图像、GLB、STL、CSV 和说明文件 |
@@ -64,6 +65,7 @@ python3 tools/verify_multibody.py
 python3 tools/verify_differential_turn.py
 python3 tools/verify_motor_selection.py
 python3 tools/verify_magnetic_coupling.py
+python3 tools/verify_mass_properties.py
 python3 tools/audit_do_resources.py
 sh tools/run_closed_loop_sim.sh
 ```
@@ -75,6 +77,8 @@ sh tools/run_closed_loop_sim.sh
 阶段 12 的双 INA226、ALERT→EN 硬件合同、显式限值和故障回放见 [电流保护与堵转回放](docs/BB8_阶段12_电流保护与堵转回放.md)、[机器可读电流合同](engineering/power_safety_contract.json) 和 [5 ms回放记录](engineering/power_safety_replay.csv)。
 
 阶段 13 把这条保护链落实到110件内部总成，见 [电流保护硬件建模与重开审计](docs/BB8_阶段13_电流保护硬件建模.md) 和 [110件装配尺寸清单](engineering/internal_assembly_manifest.csv)。
+
+阶段 14 增加可拆卸密封低位配重盒，并以17组质量账本、全部最小/最大角点和刚体惯量替代旧110 mm假设，见 [中文验证报告](docs/BB8_阶段14_质量质心与惯量验证.md)、[English validation report](docs/BB8_stage14_mass_cg_inertia_validation.md) 和 [118件制造清单](engineering/internal_assembly_manifest.csv)。
 
 ## D-O 公开资源边界
 

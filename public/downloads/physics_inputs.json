@@ -1,12 +1,12 @@
 {
-  "status": "design-assumption set; replace with measured hardware values before fabrication approval",
+  "status": "stage-14 mass-ledger assumptions; replace all 17 mass groups with measured hardware values before fabrication approval",
   "body_radius_m": 0.254,
   "drive_wheel_radius_m": 0.048,
-  "total_mass_kg": 6.0,
+  "total_mass_kg": 8.463,
   "shell_rotating_mass_kg": 1.2,
   "head_mass_kg": 0.65,
   "target_speed_mps": 1.0,
-  "target_accel_mps2": 1.0,
+  "target_accel_mps2": 0.7,
   "rolling_resistance_coefficient": 0.03,
   "drive_efficiency": 0.72,
   "wheel_shell_friction_coefficient": 0.7,
@@ -16,7 +16,7 @@
   "motor_peak_torque_nm": 1.2,
   "magnetic_retention_n": 40.0,
   "vertical_shock_g": 2.5,
-  "com_offset_below_center_m": 0.11,
+  "com_offset_below_center_m": 0.056208791208791214,
   "required_design_safety_factor": 2.0
   ,"design_yaw_rate_radps": 0.6
   ,"head_lateral_shock_g": 1.0

@@ -20,6 +20,9 @@ async function files(directory) {
 const index = await readFile(path.join(output, "index.html"), "utf8");
 assert.match(index, new RegExp(`${base}assets/`));
 assert.match(index, /REP·LAB \| BB-8 &(?:amp;)? D-O 1:1/);
+const englishIndex = await readFile(path.join(output, "en", "index.html"), "utf8");
+assert.match(englishIndex, new RegExp(`${base}assets/`));
+assert.match(englishIndex, /BB-8 &(?:amp;)? D-O 1:1 Build Guide/);
 
 const allFiles = await files(output);
 assert.equal(allFiles.some((file) => file.endsWith(".blend")), false);
@@ -35,6 +38,11 @@ for (const required of [
   "downloads/sensor_adapter_contract.json",
   "downloads/BB8_stage12_power_safety.md",
   "downloads/BB8_stage13_power_hardware.md",
+  "downloads/BB8_阶段14_质量质心与惯量验证.md",
+  "downloads/BB8_stage14_mass_cg_inertia_validation.md",
+  "downloads/mass_properties_input.json",
+  "downloads/mass_properties_results.json",
+  "downloads/mass_properties_scenarios.csv",
   "downloads/power_safety_contract.json",
   "downloads/power_safety_replay.csv",
   ".nojekyll",

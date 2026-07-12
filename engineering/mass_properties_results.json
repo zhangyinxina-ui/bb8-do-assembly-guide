@@ -1,0 +1,80 @@
+{
+  "status": "PASS_WITH_MASS_AND_ACCELERATION_DERATING",
+  "nominal": {
+    "total_mass_kg": 8.463,
+    "com_m": [
+      0.001861042183622829,
+      0.0014415691835046676,
+      -0.056208791208791214
+    ],
+    "inertia_com_kg_m2": [
+      0.23862315358856204,
+      0.2703338020582086,
+      0.10854868751490253
+    ]
+  },
+  "minimum_mass": {
+    "total_mass_kg": 6.375,
+    "com_m": [
+      0.0016470588235294118,
+      0.001411764705882353,
+      -0.05553333333333333
+    ],
+    "inertia_com_kg_m2": [
+      0.19112095578431368,
+      0.21275804714901964,
+      0.07942638793333334
+    ]
+  },
+  "maximum_mass": {
+    "total_mass_kg": 10.628,
+    "com_m": [
+      0.002173503951825367,
+      0.0015901392547986448,
+      -0.04997741814076025
+    ],
+    "inertia_com_kg_m2": [
+      0.30026924956028106,
+      0.3407503610457333,
+      0.1432507197786401
+    ]
+  },
+  "lowest_com": {
+    "total_mass_kg": 8.843,
+    "com_m": [
+      0.002612235666628972,
+      0.0019111161370575596,
+      -0.07447189867691958
+    ],
+    "inertia_com_kg_m2": [
+      0.2045937692374383,
+      0.2442785038629221,
+      0.10007606890005127
+    ]
+  },
+  "highest_com": {
+    "total_mass_kg": 7.91,
+    "com_m": [
+      0.001327433628318584,
+      0.0011378002528445008,
+      -0.027702907711757267
+    ],
+    "inertia_com_kg_m2": [
+      0.2743082082975137,
+      0.2967378567133586,
+      0.1159246346779604
+    ]
+  },
+  "nominal_com_offset_below_center_m": 0.056208791208791214,
+  "worst_case_com_offset_below_center_m": 0.027702907711757267,
+  "restoring_torque_10deg_nm": 0.8100642985173206,
+  "pitch_natural_period_s": 1.5125349321654749,
+  "target_equilibrium_lean_deg": 4.08285564964686,
+  "max_accel_for_2x_continuous_torque_mps2": 0.7028165423189033,
+  "additional_ballast_for_legacy_110mm_kg": 4.138499999999999,
+  "checks": {
+    "nominal_com_offset": true,
+    "worst_case_com_offset": true,
+    "continuous_torque_derated_acceleration": true
+  }
+}

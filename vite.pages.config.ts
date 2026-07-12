@@ -15,5 +15,11 @@ export default defineConfig({
   build: {
     outDir: fileURLToPath(new URL("./pages-dist", import.meta.url)),
     emptyOutDir: true,
+    rollupOptions: {
+      input: {
+        main: fileURLToPath(new URL("./github-pages-src/index.html", import.meta.url)),
+        en: fileURLToPath(new URL("./github-pages-src/en/index.html", import.meta.url)),
+      },
+    },
   },
 });

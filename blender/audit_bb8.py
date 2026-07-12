@@ -1,5 +1,6 @@
 import bpy
 import hashlib
+import json
 from pathlib import Path
 from mathutils import Vector
 
@@ -25,15 +26,18 @@ required_internal = {
     "Internal INA226 current monitor L", "Internal INA226 current monitor R",
     "Internal 2mOhm Kelvin shunt L", "Internal 2mOhm Kelvin shunt R",
     "Internal ALERT to driver EN hardware gate", "Internal hardware driver enable line",
+    "Internal sealed low ballast cassette", "Internal ballast central hanger",
+    "Internal ballast retention strap F", "Internal ballast retention strap R",
+    "Engineering nominal COM marker", "Engineering legacy 110mm COM marker",
 }
 missing = required_internal - {o.name for o in internals}
 if missing:
     errors.append(f"missing internal objects: {sorted(missing)}")
-if len(internals) < 110:
-    errors.append(f"stage-13 internal assembly requires at least 110 objects, got {len(internals)}")
+if len(internals) < 120:
+    errors.append(f"stage-14 internal assembly requires at least 120 objects, got {len(internals)}")
 
-if scene.get("engineering_stage") != 13:
-    errors.append(f"engineering_stage expected 13, got {scene.get('engineering_stage')}")
+if scene.get("engineering_stage") != 14:
+    errors.append(f"engineering_stage expected 14, got {scene.get('engineering_stage')}")
 if scene.get("drive_track_mm") != 310:
     errors.append(f"drive_track_mm expected 310, got {scene.get('drive_track_mm')}")
 
@@ -244,6 +248,50 @@ if scene.get("power_safety_physical_test_status") != "NOT_RUN":
 if scene.get("power_safety_model_object_count") != 22:
     errors.append(f"power-safety model object count expected 22, got {scene.get('power_safety_model_object_count')}")
 
+# Stage 14 replaces the old unverified 110 mm COM assumption with a mass ledger,
+# exhaustive min/max corner evaluation and a removable sealed low ballast pack.
+stage14_objects = [o for o in internals if o.get("mass_properties_geometry_stage") == 14]
+annotations = [o for o in stage14_objects if o.get("engineering_annotation") is True]
+if len(stage14_objects) != 10:
+    errors.append(f"stage-14 mass geometry expected 10 objects, got {len(stage14_objects)}")
+if len(annotations) != 2:
+    errors.append(f"stage-14 mass geometry expected 2 engineering annotations, got {len(annotations)}")
+if scene.get("mass_model_object_count") != 10:
+    errors.append(f"mass model object count expected 10, got {scene.get('mass_model_object_count')}")
+if scene.get("mass_model_status") != "PASS_WITH_MASS_AND_ACCELERATION_DERATING":
+    errors.append(f"mass model status is not PASS, got {scene.get('mass_model_status')}")
+if scene.get("mass_physical_test_status") != "NOT_RUN":
+    errors.append("mass physical test status must remain NOT_RUN")
+
+cassette = bpy.data.objects.get("Internal sealed low ballast cassette")
+if cassette is not None:
+    actual_mm = tuple(round(v * 1000, 1) for v in cassette.dimensions)
+    if actual_mm != (120.0, 70.0, 24.0):
+        errors.append(f"ballast cassette dimensions expected 120x70x24 mm, got {actual_mm}")
+    if abs(float(cassette.get("mass_nominal_kg", 0)) - 1.50) > 1e-9:
+        errors.append("ballast cassette nominal mass expected 1.50 kg")
+    if cassette.get("physical_test_status") != "NOT_RUN":
+        errors.append("ballast cassette must remain NOT_RUN before weighing")
+if len([o for o in stage14_objects if o.name.startswith("Internal ballast M5 captive bolt")]) != 4:
+    errors.append("stage-14 ballast cassette requires four captive M5 bolts")
+if len([o for o in stage14_objects if o.name.startswith("Internal ballast retention strap")]) != 2:
+    errors.append("stage-14 ballast cassette requires two retention straps")
+
+root = Path(bpy.data.filepath).parents[2]
+mass_results_path = root / "engineering" / "mass_properties_results.json"
+if not mass_results_path.exists():
+    errors.append(f"missing stage-14 mass results: {mass_results_path}")
+else:
+    mass_results = json.loads(mass_results_path.read_text(encoding="utf-8"))
+    nominal = mass_results["nominal"]
+    if abs(float(scene.get("mass_total_nominal_kg", 0)) - nominal["total_mass_kg"]) > 1e-9:
+        errors.append("scene nominal mass differs from the verified stage-14 results")
+    if abs(float(scene.get("mass_com_worst_z_m", 0)) - mass_results["highest_com"]["com_m"][2]) > 1e-9:
+        errors.append("scene worst-case COM differs from the verified stage-14 results")
+    marker = bpy.data.objects.get("Engineering nominal COM marker")
+    if marker is not None and (marker.location - Vector(nominal["com_m"])).length > 1e-6:
+        errors.append("nominal COM marker differs from the verified stage-14 result")
+
 # Stage 7 opposed magnet arrays and head follower rollers.
 lower_magnets = [o for o in internals if o.name.startswith("Internal chassis magnet")]
 upper_magnets = [o for o in internals if o.name.startswith("Head internal follower magnet")]
@@ -290,7 +338,6 @@ for obj in internals:
     if abs(shell_reach_mm - 254.0) > 1.0:
         errors.append(f"{obj.name} shell contact {shell_reach_mm:.2f} mm, expected 254 mm")
 
-root = Path(bpy.data.filepath).parents[2]
 for name in ("front.png", "side.png", "back.png", "mechanism.png",
              "internal_front.png", "internal_side.png", "internal_top.png"):
     path = root / "blender" / "output" / name
@@ -318,6 +365,6 @@ elif sheet_path.exists():
 if errors:
     print("FAIL", " | ".join(errors))
     raise SystemExit(1)
-print(f"PASS reopenable_blend engineering_stage={scene['engineering_stage']} objects={len(bpy.data.objects)} internal={len(internals)} "
+print(f"PASS reopenable_blend engineering_stage={scene['engineering_stage']} objects={len(bpy.data.objects)} internal={len(internals)} fabrication={len(internals) - len(annotations)} "
       f"panels=6 triangles=8 rings=3/2/1 body={scene['body_diameter_mm']}mm "
       f"head={scene['head_diameter_mm']}mm height={scene['untopped_height_mm']}mm")

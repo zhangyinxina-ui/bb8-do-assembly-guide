@@ -8,6 +8,7 @@ SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 if SCRIPT_DIR not in sys.path:
     sys.path.insert(0, SCRIPT_DIR)
 from power_safety_geometry import add_power_safety_hardware
+from stage14_mass_geometry import add_stage14_mass_geometry, write_mass_input
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, "blender", "output")
@@ -690,6 +691,8 @@ fuse = move_internal(cube("Internal fuse and contactor", (.022,.014,.012), (0.10
 # Stage 13: physical installation envelopes for the dual INA226 current chain,
 # 2 mOhm four-wire shunts and MCU-independent ALERT-to-driver-EN gate.
 add_power_safety_hardware(internal, move_internal)
+stage14_created, stage14_mass_input, stage14_mass_results = add_stage14_mass_geometry(move_internal)
+write_mass_input(os.path.join(ROOT, "engineering", "mass_properties_input.json"), stage14_mass_input)
 
 # Stage 6 serviceability: a removable equator joint and explicit harness routes.
 # The gasket/latches are clearance envelopes, not supplier-specific final parts.
@@ -832,7 +835,7 @@ scene["head_diameter_mm"] = 295
 scene["untopped_height_mm"] = 670
 scene["head_outline_height_mm"] = 197
 scene["head_overlap_into_ball_silhouette_mm"] = 35
-scene["engineering_stage"] = 13
+scene["engineering_stage"] = 14
 scene["exterior_topology_stage"] = "V3.1-oriented six curved P-panels and eight T-panels"
 scene["body_panel_half_angle_deg"] = 35.0
 scene["body_ring_distribution"] = "R1 x3, R2 x2, R3 x1"
@@ -844,6 +847,7 @@ scene["magnetic_follower"] = "6+6 magnet envelopes, 8 mm face gap, 3-point 24 mm
 scene["power_safety_hardware"] = "dual INA226 + dual 2 mOhm Kelvin shunts + ALERT wire-OR to independent driver EN gate"
 scene["power_safety_physical_test_status"] = "NOT_RUN"
 scene["power_safety_model_object_count"] = 22
+scene["mass_model_object_count"] = len(stage14_created)
 scene.unit_settings.system = 'METRIC'
 scene.unit_settings.length_unit = 'MILLIMETERS'
 scene.render.engine = 'BLENDER_EEVEE'

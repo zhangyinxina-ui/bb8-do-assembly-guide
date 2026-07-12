@@ -1,7 +1,7 @@
 {
   "required": {
     "wheel_diameter_mm": 96,
-    "continuous_torque_each_nm": 0.286,
+    "continuous_torque_each_nm": 0.299,
     "minimum_continuous_safety_factor": 2.0,
     "target_ground_speed_mps": 1.0,
     "battery": "4S, 13.2-16.8 V loaded/full range"

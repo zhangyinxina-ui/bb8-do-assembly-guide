@@ -5,13 +5,13 @@ import test from "node:test";
 const developmentPreviewMeta =
   /<meta(?=[^>]*\bname=["']codex-preview["'])(?=[^>]*\bcontent=["']development["'])[^>]*>/i;
 
-async function render() {
+async function render(pathname = "/") {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
   workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
   const { default: worker } = await import(workerUrl.href);
 
   return worker.fetch(
-    new Request("http://localhost/", {
+    new Request(`http://localhost${pathname}`, {
       headers: { accept: "text/html" },
     }),
     {
@@ -39,7 +39,7 @@ test("server-renders the BB-8 and D-O build guide", async () => {
   assert.doesNotMatch(html, /href=["']\/model\/BB8_1to1_screen_referenced\.blend/);
   assert.match(html, /BB8_internal_three_view\.png/);
   assert.match(html, /internal_assembly_manifest\.csv/);
-  assert.match(html, /110个带稳定标记的内部对象/);
+  assert.match(html, /118个制造对象和2个工程质心标记/);
   assert.match(html, /BB8_motor_selection\.md/);
   assert.match(html, /IG42E-24K/);
   assert.match(html, /PCD 35 mm/);
@@ -70,11 +70,12 @@ test("server-renders the BB-8 and D-O build guide", async () => {
   assert.match(html, /BB8_ESP32_S3_firmware\.zip/);
   assert.match(html, /双正交编码器、MPU6050 和双 INA226 适配均已通过 ESP32-S3 编译/);
   assert.match(html, /BB8_physics_validation\.md/);
-  assert.match(html, /0\.286 N·m/);
+  assert.match(html, /8\.463 kg 名义质量/);
+  assert.match(html, /质心下置 56\.2 mm/);
   assert.match(html, /2\.51× 磁保持裕量/);
   assert.match(html, /BB8_multibody_validation\.md/);
-  assert.match(html, /12\.55 V/);
-  assert.match(html, /转弯合载荷 2\.31×/);
+  assert.match(html, /0\.703 m\/s²上限/);
+  assert.match(html, /110 mm已取消/);
   assert.match(html, /differential_turn\.csv/);
   assert.match(html, /11 类故障锁存/);
   assert.match(html, /BB8_closed_loop_simulation\.md/);
@@ -91,6 +92,9 @@ test("server-renders the BB-8 and D-O build guide", async () => {
   assert.match(html, /电流限值不猜测/);
   assert.match(html, /2 mΩ Kelvin分流/);
   assert.match(html, /BB8_stage13_power_hardware\.md/);
+  assert.match(html, /BB8_阶段14_质量质心与惯量验证\.md/);
+  assert.match(html, /BB8_stage14_mass_cg_inertia_validation\.md/);
+  assert.match(html, /mass_properties_results\.json/);
   assert.match(html, /真实带电试验仍为NOT_RUN/);
   assert.match(html, /24 个可验收步骤/);
   assert.match(html, /冻结 1:1 尺寸基准/);
@@ -104,6 +108,24 @@ test("server-renders the BB-8 and D-O build guide", async () => {
   assert.match(html, /打开大图/);
   assert.match(html, /670/);
   assert.match(html, /标记本步骤完成/);
+});
+
+test("server-renders the complete English build guide", async () => {
+  const response = await render("/en");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /Turn the screen droid/);
+  assert.match(html, /118 fabrication objects plus two engineering CoM markers/);
+  assert.match(html, /8\.463 kg nominal/);
+  assert.match(html, /56\.2 mm nominal CoM/);
+  assert.match(html, /0\.703 m\/s² ceiling/);
+  assert.match(html, /All live hardware tests remain NOT_RUN/);
+  assert.match(html, /24 acceptance-gated steps/);
+  assert.match(html, /Freeze the 1:1 dimensional baseline/);
+  assert.match(html, /personal non-commercial/);
+  assert.match(html, /zero complete mechanical CAD\/STL files/);
+  assert.match(html, /BB8_stage14_mass_cg_inertia_validation\.md/);
+  assert.match(html, /Switch to Chinese/);
 });
 
 test("removes starter preview metadata and content", async () => {
