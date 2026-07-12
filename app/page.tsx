@@ -266,6 +266,7 @@ export default function Home() {
               阶段14新增120 × 70 × 24 mm、名义1.50 kg的密封低位钢配重盒，并用17组质量账本替代未经证明的110 mm质心假设。
               阶段15再加入左右电机驱动器、散热器、主保险丝、常开接触器、双通道常闭急停、安全继电器、维护断电和系留急停插口；30个新对象全部随内车运动，器件型号与电流额定仍保持未冻结。
               阶段16不伪造新的几何完成度，而是把19项真机调试门、真实文件哈希和测量限值接到同一工程证据链；当前为0/19通过。
+              阶段17用厂商官方资料筛选MDD20A、30 A MIDI保险丝、SW60接触器和P28A 4S2P电池候选：15/15额定检查通过，但独立去能、再生、堵转、BMS和电池包仍未冻结，不能采购放行。
             </p>
             <div className="doc-actions">
               <a className="button" href={asset("/downloads/BB8_BOM.md")} download>
@@ -313,6 +314,12 @@ export default function Home() {
               <a className="button" href={asset("/downloads/BB8_stage16_physical_commissioning_evidence_gate.md")} download>
                 Download Stage 16 English report
               </a>
+              <a className="button" href={asset("/downloads/BB8_阶段17_驱动电源器件选型门.md")} download>
+                下载阶段 17 电源器件选型门
+              </a>
+              <a className="button" href={asset("/downloads/BB8_stage17_drive_power_component_selection_gate.md")} download>
+                Download Stage 17 English report
+              </a>
               <a className="button" href={asset("/model/BB8_three_view_dimension_sheet.png")} download>
                 下载最新三视图尺寸图
               </a>
@@ -349,7 +356,7 @@ export default function Home() {
         <div className="section-head">
           <span>03 / MOTION CONTROLLER</span>
           <h2>不只会动，<br />还必须会停。</h2>
-          <p>控制核心、双正交编码器、MPU6050 和双 INA226 适配均已通过 ESP32-S3 编译：轮速/偏航闭环、电流新鲜度、过流与堵转保护已接入同一控制循环。阶段15把主保险丝—常开接触器—双通道急停—左右驱动EN落实为实体结构合同；阶段16把每200 ms真机遥测固定为可解析字段，并要求测量文件和SHA-256才能形成PASS。</p>
+          <p>控制核心、双正交编码器、MPU6050 和双 INA226 适配均已通过 ESP32-S3 编译。阶段16把每200 ms真机遥测固定为可解析字段；阶段17确认MDD20A额定裕量足够，但其PWM低是制动而非隔离，必须另做双通道硬件门并由主接触器真正撤销驱动母线。</p>
         </div>
         <div className="control-grid">
           <article><span>01</span><h3>200 Hz 闭环速度</h3><p>左右编码器轮速进入 PI，IMU 偏航率修正差动目标；直线巡航 RMS 误差 0.00772 m/s。</p></article>
@@ -359,6 +366,7 @@ export default function Home() {
           <article><span>05</span><h3>传感器默认拒动</h3><p>编码器 CPR 默认为0且每次上电必须显式配置；MPU6050 完成400个静止样本前，驱动EN保持关闭。</p></article>
           <article><span>06</span><h3>硬件急停去能</h3><p>双通道常闭回路驱动安全继电器与常开接触器；首次试验必须接有线系留急停，无线不能单独作为安全链。</p></article>
           <article><span>07</span><h3>真机证据不允许空PASS</h3><p>19项记录必须同时有实测数值、真实相对路径和匹配SHA-256；合成数据默认被审计器拒绝。</p></article>
+          <article><span>08</span><h3>15 / 15额定筛选通过，仍HOLD</h3><p>MDD20A、MIDI、SW60和P28A的目录裕量通过；独立去能、再生、堵转、I²t和4S BMS未冻结。</p></article>
         </div>
         <div className="firmware-downloads">
           <a href={asset("/downloads/BB8_controller_core.zip")} download>下载 C++ 控制核心</a>
@@ -378,6 +386,11 @@ export default function Home() {
           <a href={asset("/downloads/commissioning_results.json")} download>下载当前验收状态</a>
           <a href={asset("/downloads/parse_bb8_telemetry.py")} download>下载真机遥测解析器</a>
           <a href={asset("/downloads/verify_commissioning_evidence.py")} download>下载证据审计器</a>
+          <a href={asset("/downloads/BB8_阶段17_驱动电源器件选型门.md")} download>下载阶段17中文报告</a>
+          <a href={asset("/downloads/BB8_stage17_drive_power_component_selection_gate.md")} download>下载阶段17英文报告</a>
+          <a href={asset("/downloads/power_component_candidates.json")} download>下载器件候选矩阵</a>
+          <a href={asset("/downloads/power_component_selection_results.json")} download>下载选型HOLD结果</a>
+          <a href={asset("/downloads/verify_power_component_selection.py")} download>下载选型验证器</a>
         </div>
       </section>
 
@@ -385,7 +398,7 @@ export default function Home() {
         <div className="section-head">
           <span>04 / PHYSICS GATE</span>
           <h2>先算清楚，<br />再让它落地跑。</h2>
-          <p>阶段14以17组质量账本替代110 mm旧假设；阶段15继续把斜坡重力、球壳转动惯量、轮壳附着、差速转弯、合成倾角和磁头冲击放入同一个可重跑包络。阶段16将这些解析门转换为19项真机测量合同；当前 PASS 只针对可追溯假设参数，物理状态仍是HOLD。</p>
+          <p>阶段14以17组质量账本替代110 mm旧假设；阶段15加入动态稳定性；阶段16将解析门转换为19项真机测量合同。阶段17再把电源目录额定与实测冻结分开：目录检查通过不等于器件采购、封壳热或整机运行通过。</p>
         </div>
         <div className="control-grid">
           <article><span>01</span><h3>8.463 kg 名义质量</h3><p>17组输入范围为6.375–10.628 kg；所有分组在实物称重前均保持NOT_RUN。</p></article>
@@ -413,6 +426,9 @@ export default function Home() {
           <a href={asset("/downloads/stability_envelope_sweep.csv")} download>下载坡度/加速度扫描</a>
           <a href={asset("/downloads/BB8_阶段16_真机调试证据门.md")} download>下载阶段16中文报告</a>
           <a href={asset("/downloads/BB8_stage16_physical_commissioning_evidence_gate.md")} download>下载阶段16英文报告</a>
+          <a href={asset("/downloads/BB8_阶段17_驱动电源器件选型门.md")} download>下载阶段17中文报告</a>
+          <a href={asset("/downloads/BB8_stage17_drive_power_component_selection_gate.md")} download>下载阶段17英文报告</a>
+          <a href={asset("/downloads/power_component_selection_results.json")} download>下载阶段17结果</a>
         </div>
       </section>
 

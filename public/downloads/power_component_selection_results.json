@@ -1,0 +1,60 @@
+{
+  "stage": 17,
+  "overall": "HOLD_COMPONENT_FREEZE_MEASUREMENTS_REQUIRED",
+  "analytical_candidate_checks_pass": true,
+  "evidence_boundary": "official data-sheet screening only; no purchase, pack fabrication, powered bench test or physical commissioning has occurred",
+  "checks": {
+    "driver_channel_count": true,
+    "driver_voltage_range": true,
+    "driver_continuous_current": true,
+    "driver_peak_current": true,
+    "driver_logic_3v3": true,
+    "fuse_voltage": true,
+    "fuse_above_analytical_peak": true,
+    "contactor_voltage": true,
+    "contactor_continuous_current": true,
+    "contactor_breaking_current": true,
+    "contactor_auxiliary_feedback": true,
+    "contactor_suppression_can_meet_contract": true,
+    "pack_series_and_voltage": true,
+    "pack_discharge_current": true,
+    "pack_charge_current": true
+  },
+  "margins": {
+    "driver_continuous_over_motor_rated_x": 3.6363636363636362,
+    "driver_peak_over_analytical_peak_each_x": 5.714285714285714,
+    "driver_voltage_over_bus_max_x": 1.7857142857142856,
+    "fuse_rating_over_analytical_peak_x": 1.4285714285714286,
+    "fuse_voltage_over_bus_max_x": 1.9047619047619047,
+    "contactor_thermal_over_analytical_peak_x": 3.8095238095238093,
+    "contactor_breaking_over_analytical_peak_x": 5.714285714285714,
+    "pack_discharge_over_analytical_peak_x": 3.3333333333333335,
+    "pack_estimated_dc_resistance_ohm": 0.04
+  },
+  "unresolved_freeze_gates": [
+    "bms_candidate_not_selected",
+    "compact_4s_bms_frozen",
+    "contactor_drop_out_measured_under_load",
+    "driver_has_no_independent_enable_input",
+    "driver_regen_path_verified",
+    "driver_regenerative_energy_handling_not_frozen",
+    "exact_contactor_order_code_frozen",
+    "external_driver_enable_gate_designed_and_tested",
+    "fuse_i2t_and_harness_thermal_verified",
+    "motor_stall_current_measured",
+    "motor_stall_current_not_published_or_measured",
+    "physical_commissioning_passed",
+    "professional_pack_design_released",
+    "sealed_shell_driver_thermal_test_passed"
+  ],
+  "selected_or_provisional": {
+    "motor": "Cytron IG42E-24K",
+    "driver": "Cytron MDD20A",
+    "fuse": "Littelfuse 498 Series MIDI bolt-down 30A provisional",
+    "contactor": "Albright SW60 SPST-NO with auxiliary contact",
+    "cell_pack": "4S2P, professionally assembled and protected",
+    "bms": null
+  },
+  "physical_test_status": "NOT_RUN",
+  "purchase_authorisation": "NOT_GRANTED_BY_THIS_ANALYSIS"
+}

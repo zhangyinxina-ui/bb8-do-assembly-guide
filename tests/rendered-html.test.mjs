@@ -111,6 +111,11 @@ test("server-renders the BB-8 and D-O build guide", async () => {
   assert.match(html, /parse_bb8_telemetry\.py/);
   assert.match(html, /verify_commissioning_evidence\.py/);
   assert.match(html, /24 个装配步骤 \+ 19 个真机门/);
+  assert.match(html, /15 \/ 15额定筛选通过，仍HOLD/);
+  assert.match(html, /BB8_阶段17_驱动电源器件选型门\.md/);
+  assert.match(html, /power_component_candidates\.json/);
+  assert.match(html, /power_component_selection_results\.json/);
+  assert.match(html, /PWM低是制动而非隔离/);
   assert.match(html, /冻结 1:1 尺寸基准/);
   assert.match(html, /BB8_stage8_exterior_topology\.md/);
   assert.match(html, /BB8_stage9_head_calibration\.md/);
@@ -135,7 +140,7 @@ test("server-renders the complete English build guide", async () => {
   assert.match(html, /2\.07× torque margin/);
   assert.match(html, /4\.22° resultant lean/);
   assert.match(html, /No unpowered slope hold/);
-  assert.match(html, /current score is 0\/19/i);
+  assert.match(html, /Currently 0 \/ 19/);
   assert.match(html, /Nineteen physical gates/);
   assert.match(html, /HOLD_PHYSICAL_TESTS_NOT_RUN/);
   assert.match(html, /BB8_stage16_physical_commissioning_evidence_gate\.md/);
@@ -143,6 +148,10 @@ test("server-renders the complete English build guide", async () => {
   assert.match(html, /Telemetry parser/);
   assert.match(html, /Evidence verifier/);
   assert.match(html, /24 assembly steps plus 19 physical gates/);
+  assert.match(html, /15 \/ 15 ratings pass, still HOLD/);
+  assert.match(html, /BB8_stage17_drive_power_component_selection_gate\.md/);
+  assert.match(html, /Selection HOLD result/);
+  assert.match(html, /PWM-low means brake rather than isolation/);
   assert.match(html, /Freeze the 1:1 dimensional baseline/);
   assert.match(html, /personal non-commercial/);
   assert.match(html, /zero complete mechanical CAD\/STL files/);
