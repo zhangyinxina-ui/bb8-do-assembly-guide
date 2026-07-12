@@ -29,6 +29,12 @@ Fault Controller::checkFault(const Sensors& sensors) const {
       return Fault::MotionSensorDisagreement;
     }
   }
+  if (config_.require_current_feedback) {
+    if (sensors.hardware_current_trip) return Fault::HardwareCurrentTrip;
+    if (!sensors.current_protection_ready) return Fault::CurrentSensorStale;
+    if (sensors.current_over_limit) return Fault::OverCurrent;
+    if (sensors.motor_stalled) return Fault::MotorStall;
+  }
   if (sensors.battery_v < config_.minimum_battery_v) return Fault::UnderVoltage;
   if (sensors.motor_temp_c > config_.maximum_motor_temp_c) return Fault::OverTemperature;
   if (std::abs(sensors.chassis_tilt_deg) > config_.maximum_tilt_deg) return Fault::ExcessiveTilt;
@@ -130,11 +136,20 @@ const char* faultName(Fault fault) {
     case Fault::RemoteLost: return "remote_lost";
     case Fault::MotionSensorStale: return "motion_sensor_stale";
     case Fault::MotionSensorDisagreement: return "motion_sensor_disagreement";
+    case Fault::CurrentSensorStale: return "current_sensor_stale";
+    case Fault::HardwareCurrentTrip: return "hardware_current_trip";
+    case Fault::OverCurrent: return "over_current";
+    case Fault::MotorStall: return "motor_stall";
     case Fault::UnderVoltage: return "under_voltage";
     case Fault::OverTemperature: return "over_temperature";
     case Fault::ExcessiveTilt: return "excessive_tilt";
   }
   return "unknown";
+}
+
+bool commandIsZeroForReset(const Command& command, float epsilon) {
+  return epsilon >= 0.0F && std::abs(command.linear_mps) <= epsilon &&
+         std::abs(command.yaw_radps) <= epsilon;
 }
 
 }  // namespace bb8

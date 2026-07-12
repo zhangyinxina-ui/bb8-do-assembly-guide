@@ -1,0 +1,48 @@
+{
+  "stage": 12,
+  "physical_test_status": "NOT_RUN",
+  "control_rate_hz": 200,
+  "monitor": {
+    "device": "INA226",
+    "quantity": 2,
+    "placement": "one high-side supply branch per motor driver channel",
+    "i2c_addresses": [64, 65],
+    "shunt_ohm": 0.002,
+    "shunt_connection": "kelvin_4_wire_required",
+    "current_lsb_a": 0.001,
+    "calibration_register_hex": "0x0A00",
+    "configuration_register_hex": "0x4127",
+    "current_freshness_timeout_ms": 20,
+    "configuration_readback_period_ms": 200
+  },
+  "alert": {
+    "gpio": 14,
+    "active_level": "LOW",
+    "ina226_mode": "shunt_over_voltage_latched",
+    "hardware_alert_direction": "positive_battery_to_driver_current_only",
+    "regenerative_current_requires_independent_driver_and_bms_protection": true,
+    "mask_enable_register_hex": "0x8001",
+    "required_external_path": "wire_or_open_drain_alerts_to_gpio_and_independent_driver_enable_gate",
+    "software_gpio_is_not_sufficient_for_hardware_cutoff": true
+  },
+  "runtime_configuration": {
+    "command": "I <instantaneous_trip_A> <stall_current_A> <stall_timeout_ms>",
+    "persistent": false,
+    "instantaneous_trip_a_valid_range": [1.0, 30.0],
+    "stall_current_a_minimum": 0.5,
+    "stall_timeout_ms_valid_range": [100, 3000],
+    "limits_must_come_from_measured_motor_driver_wiring_and_fuse_data": true
+  },
+  "stall_detection": {
+    "minimum_target_speed_mps": 0.1,
+    "maximum_measured_speed_mps": 0.025,
+    "requires_current_above_configured_stall_threshold": true
+  },
+  "faults_added": [
+    "current_sensor_stale",
+    "hardware_current_trip",
+    "over_current",
+    "motor_stall"
+  ],
+  "total_latched_faults": 11
+}

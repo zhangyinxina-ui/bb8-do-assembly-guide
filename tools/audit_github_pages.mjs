@@ -33,6 +33,9 @@ for (const required of [
   "downloads/bb8_firmware_compile.json",
   "downloads/BB8_stage11_sensor_adapter.md",
   "downloads/sensor_adapter_contract.json",
+  "downloads/BB8_stage12_power_safety.md",
+  "downloads/power_safety_contract.json",
+  "downloads/power_safety_replay.csv",
   ".nojekyll",
 ]) {
   assert.equal((await stat(path.join(output, required))).isFile(), true, required);

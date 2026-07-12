@@ -10,6 +10,10 @@ enum class Fault : std::uint8_t {
   RemoteLost,
   MotionSensorStale,
   MotionSensorDisagreement,
+  CurrentSensorStale,
+  HardwareCurrentTrip,
+  OverCurrent,
+  MotorStall,
   UnderVoltage,
   OverTemperature,
   ExcessiveTilt,
@@ -31,6 +35,12 @@ struct Sensors {
   float left_wheel_mps{0.0F};
   float right_wheel_mps{0.0F};
   float yaw_rate_radps{0.0F};
+  bool current_protection_ready{false};
+  bool hardware_current_trip{true};
+  bool current_over_limit{false};
+  bool motor_stalled{false};
+  float left_motor_current_a{0.0F};
+  float right_motor_current_a{0.0F};
 };
 
 struct Output {
@@ -57,6 +67,7 @@ struct Config {
   float maximum_motor_temp_c{75.0F};
   float maximum_tilt_deg{30.0F};
   bool require_motion_feedback{false};
+  bool require_current_feedback{false};
   float wheel_speed_kp{0.35F};
   float wheel_speed_ki_per_s{0.80F};
   float yaw_rate_kp_m_per_rad{0.08F};
@@ -85,5 +96,6 @@ class Controller {
 };
 
 const char* faultName(Fault fault);
+bool commandIsZeroForReset(const Command& command, float epsilon = 0.001F);
 
 }  // namespace bb8

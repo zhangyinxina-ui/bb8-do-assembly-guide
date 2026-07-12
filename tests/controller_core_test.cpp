@@ -9,10 +9,16 @@ using namespace bb8;
 static Sensors safeSensors() {
   return {.remote_ok = true, .emergency_stop = false, .battery_v = 16.0F,
           .motor_temp_c = 30.0F, .chassis_tilt_deg = 0.0F,
-          .imu_fresh = true, .encoders_fresh = true};
+          .imu_fresh = true, .encoders_fresh = true,
+          .current_protection_ready = true, .hardware_current_trip = false};
 }
 
 int main() {
+  assert(commandIsZeroForReset({}));
+  assert(commandIsZeroForReset({.linear_mps = 0.001F, .yaw_radps = -0.001F}));
+  assert(!commandIsZeroForReset({.linear_mps = 0.01F}));
+  assert(!commandIsZeroForReset({.yaw_radps = -0.01F}));
+
   Controller controller;
   auto sensors = safeSensors();
 
@@ -91,6 +97,27 @@ int main() {
   assert(out.enabled && out.left_target_mps > 0.0F && out.right_target_mps > 0.0F);
   assert(out.left_normalized > out.left_target_mps / closed_loop_config.max_wheel_speed_mps);
 
-  std::cout << "PASS controller_core: closed-loop wheel/IMU feedback, derating, saturation, and 7 fail-safe paths\n";
+  // Ground power mode refuses stale/unconfigured sensing and independently
+  // latches hardware alert, measured over-current, and sustained stall faults.
+  Config power_config;
+  power_config.require_current_feedback = true;
+  Controller power_controller(power_config);
+  sensors = safeSensors();
+  sensors.current_protection_ready = false;
+  assert(power_controller.update(0.005F, {}, sensors).fault == Fault::CurrentSensorStale);
+  sensors.current_protection_ready = true;
+  assert(power_controller.resetFault(sensors));
+  sensors.hardware_current_trip = true;
+  assert(power_controller.update(0.005F, {}, sensors).fault == Fault::HardwareCurrentTrip);
+  sensors.hardware_current_trip = false;
+  assert(power_controller.resetFault(sensors));
+  sensors.current_over_limit = true;
+  assert(power_controller.update(0.005F, {}, sensors).fault == Fault::OverCurrent);
+  sensors.current_over_limit = false;
+  assert(power_controller.resetFault(sensors));
+  sensors.motor_stalled = true;
+  assert(power_controller.update(0.005F, {}, sensors).fault == Fault::MotorStall);
+
+  std::cout << "PASS controller_core: closed-loop feedback, derating, saturation, and 11 fail-safe paths\n";
   return 0;
 }

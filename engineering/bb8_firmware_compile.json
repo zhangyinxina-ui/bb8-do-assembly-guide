@@ -1,15 +1,15 @@
 {
   "status": "PASS_COMPILE_ONLY",
-  "stage": 11,
+  "stage": 12,
   "target": "esp32:esp32:esp32s3",
   "arduino_esp32_core": "3.3.10",
-  "program_bytes": 367791,
+  "program_bytes": 369971,
   "program_capacity_bytes": 1310720,
   "program_percent": 28,
-  "global_bytes": 24636,
+  "global_bytes": 24676,
   "global_capacity_bytes": 327680,
   "global_percent": 7,
   "motion_feedback_required": true,
-  "hardware_adapter_state": "compiled_mpu6050_and_quadrature_adapter_not_hardware_tested",
-  "verified_at": "2026-07-12T19:18:00+08:00"
+  "hardware_adapter_state": "compiled_mpu6050_quadrature_and_dual_ina226_adapter_not_hardware_tested",
+  "verified_at": "2026-07-12T19:30:00+08:00"
 }

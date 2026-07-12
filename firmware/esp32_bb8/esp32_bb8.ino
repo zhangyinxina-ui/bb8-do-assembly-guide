@@ -3,6 +3,7 @@
 #include <cmath>
 
 #include "controller_core.h"
+#include "power_safety.h"
 #include "sensor_math.h"
 
 using bb8::Command;
@@ -22,6 +23,7 @@ constexpr uint8_t kLeftEncoderA = 10;
 constexpr uint8_t kLeftEncoderB = 11;
 constexpr uint8_t kRightEncoderA = 12;
 constexpr uint8_t kRightEncoderB = 13;
+constexpr uint8_t kCurrentAlert = 14;  // Two INA226 ALERT pins wire-OR, active low.
 constexpr uint8_t kImuSda = 17;
 constexpr uint8_t kImuScl = 18;
 constexpr uint8_t kBatteryAdc = 1;
@@ -36,12 +38,18 @@ constexpr uint32_t kPwmMax = (1U << kPwmBits) - 1U;
 constexpr uint32_t kControlPeriodUs = 5000;  // 200 Hz.
 constexpr uint32_t kRemoteTimeoutMs = 100;
 constexpr uint32_t kImuTimeoutMs = 30;
+constexpr uint32_t kCurrentTimeoutMs = 20;
 constexpr uint32_t kEncoderResponseTimeoutUs = 750000;
 constexpr uint16_t kImuCalibrationSamples = 400;  // Two stationary seconds at 200 Hz.
 constexpr float kBatteryDividerRatio = 5.55556F;  // 82k high / 18k low.
 constexpr float kWheelDiameterM = 0.096F;
 constexpr float kEncoderDemandThresholdMps = 0.05F;
 constexpr float kSpeedFilterAlpha = 0.20F;
+constexpr uint8_t kLeftIna226Address = 0x40;
+constexpr uint8_t kRightIna226Address = 0x41;
+constexpr float kIna226CurrentLsbA = 0.001F;
+constexpr float kIna226ShuntOhm = 0.002F;
+constexpr uint16_t kIna226Calibration = 0x0A00;  // 1 mA LSB, 2 mOhm shunt.
 
 struct EncoderState {
   uint8_t pin_a;
@@ -66,6 +74,7 @@ struct ImuRaw {
 Config groundSafeConfig() {
   Config config;
   config.require_motion_feedback = true;
+  config.require_current_feedback = true;
   return config;
 }
 
@@ -73,6 +82,7 @@ Controller controller(groundSafeConfig());
 Command command;
 Sensors latest_sensors;
 Output latest_output;
+bb8::PowerSafetyMonitor power_monitor;
 EncoderState left_encoder{pins::kLeftEncoderA, pins::kLeftEncoderB};
 EncoderState right_encoder{pins::kRightEncoderA, pins::kRightEncoderB};
 portMUX_TYPE encoder_mux = portMUX_INITIALIZER_UNLOCKED;
@@ -92,6 +102,10 @@ uint16_t imu_calibration_count = 0;
 float gyro_z_bias_accumulator = 0.0F;
 float gyro_z_bias_raw = 0.0F;
 bool imu_calibrated = false;
+bool ina226_ready = false;
+bool ina226_configuration_ok = false;
+uint32_t last_current_ms = 0;
+uint32_t last_ina_verify_ms = 0;
 
 uint32_t last_command_ms = 0;
 uint32_t last_control_us = 0;
@@ -144,6 +158,95 @@ bool readMpuRegister(uint8_t address, uint8_t reg, uint8_t& value) {
   }
   value = static_cast<uint8_t>(Wire.read());
   return true;
+}
+
+bool writeInaRegister(uint8_t address, uint8_t reg, uint16_t value) {
+  Wire.beginTransmission(address);
+  Wire.write(reg);
+  Wire.write(static_cast<uint8_t>(value >> 8U));
+  Wire.write(static_cast<uint8_t>(value & 0xFFU));
+  return Wire.endTransmission(true) == 0;
+}
+
+bool readInaRegister(uint8_t address, uint8_t reg, uint16_t& value) {
+  Wire.beginTransmission(address);
+  Wire.write(reg);
+  if (Wire.endTransmission(false) != 0) return false;
+  if (Wire.requestFrom(static_cast<uint16_t>(address), static_cast<uint8_t>(2), true) != 2) {
+    return false;
+  }
+  value = (static_cast<uint16_t>(Wire.read()) << 8U) |
+          static_cast<uint16_t>(Wire.read());
+  return true;
+}
+
+bool setupIna226(uint8_t address) {
+  uint16_t manufacturer = 0;
+  uint16_t die = 0;
+  if (!readInaRegister(address, 0xFE, manufacturer) || manufacturer != 0x5449 ||
+      !readInaRegister(address, 0xFF, die) || (die & 0xFFF0U) != 0x2260U) {
+    return false;
+  }
+  return writeInaRegister(address, 0x00, 0x4127) &&
+         writeInaRegister(address, 0x05, kIna226Calibration) &&
+         writeInaRegister(address, 0x06, 0x0000);  // Alert disabled until explicit limits.
+}
+
+bool configureInaAlerts(float instantaneous_trip_a) {
+  const float threshold_v = instantaneous_trip_a * kIna226ShuntOhm;
+  const uint16_t threshold_counts = static_cast<uint16_t>(
+      constrain(std::lround(threshold_v / 0.0000025F), 1L, 32767L));
+  const bool limits_written =
+      writeInaRegister(kLeftIna226Address, 0x07, threshold_counts) &&
+      writeInaRegister(kRightIna226Address, 0x07, threshold_counts);
+  const bool masks_written = limits_written &&
+      writeInaRegister(kLeftIna226Address, 0x06, 0x8001) &&
+      writeInaRegister(kRightIna226Address, 0x06, 0x8001);
+  if (!masks_written) {
+    writeInaRegister(kLeftIna226Address, 0x06, 0x0000);
+    writeInaRegister(kRightIna226Address, 0x06, 0x0000);
+  }
+  return masks_written;
+}
+
+void clearInaAlertLatches() {
+  uint16_t ignored = 0;
+  readInaRegister(kLeftIna226Address, 0x06, ignored);
+  readInaRegister(kRightIna226Address, 0x06, ignored);
+}
+
+bool verifyInaConfiguration() {
+  uint16_t left_config = 0;
+  uint16_t right_config = 0;
+  uint16_t left_calibration = 0;
+  uint16_t right_calibration = 0;
+  return readInaRegister(kLeftIna226Address, 0x00, left_config) &&
+         readInaRegister(kRightIna226Address, 0x00, right_config) &&
+         readInaRegister(kLeftIna226Address, 0x05, left_calibration) &&
+         readInaRegister(kRightIna226Address, 0x05, right_calibration) &&
+         left_config == 0x4127 && right_config == 0x4127 &&
+         left_calibration == kIna226Calibration &&
+         right_calibration == kIna226Calibration;
+}
+
+bool readInaCurrent(uint8_t address, float& current_a) {
+  uint16_t raw = 0;
+  if (!readInaRegister(address, 0x04, raw)) return false;
+  current_a = static_cast<int16_t>(raw) * kIna226CurrentLsbA;
+  return true;
+}
+
+bool updateCurrentSensors(float& left_current_a, float& right_current_a) {
+  const uint32_t now_ms = millis();
+  if (now_ms - last_ina_verify_ms >= 200) {
+    last_ina_verify_ms = now_ms;
+    ina226_configuration_ok = ina226_ready && verifyInaConfiguration();
+  }
+  const bool read_ok = ina226_configuration_ok &&
+      readInaCurrent(kLeftIna226Address, left_current_a) &&
+      readInaCurrent(kRightIna226Address, right_current_a);
+  if (read_ok) last_current_ms = now_ms;
+  return read_ok && now_ms - last_current_ms <= kCurrentTimeoutMs;
 }
 
 bool setupMpu6050() {
@@ -252,6 +355,7 @@ void applyOutput(const Output& output) {
 
 // Bench protocol over USB serial:
 //   E <counts_per_wheel_rev> <left_sign> <right_sign>  (mandatory after boot)
+//   I <instant_trip_A> <stall_A> <stall_ms>             (mandatory after measurement)
 //   V <linear_mps> <yaw_radps>                         (send at >=10 Hz)
 //   R                                                  (reset only when all sensors are safe)
 // Unknown CPR stays at zero and forces encoders_fresh=false, keeping EN disabled.
@@ -278,8 +382,33 @@ void readBenchCommand() {
       encoder_counts_per_wheel_revolution = 0.0F;
       Serial.println("ENCODER_CONFIG_REJECTED");
     }
+  } else if (type == 'I') {
+    const float instantaneous_trip_a = Serial.parseFloat();
+    const float stall_current_a = Serial.parseFloat();
+    const float stall_timeout_ms = Serial.parseFloat();
+    const bool monitor_ok = power_monitor.configure(
+        instantaneous_trip_a,
+        stall_current_a,
+        stall_timeout_ms * 0.001F);
+    const bool hardware_ok = monitor_ok && ina226_ready &&
+                             configureInaAlerts(instantaneous_trip_a);
+    if (hardware_ok) {
+      Serial.printf("CURRENT_CONFIG_OK instant=%.2fA stall=%.2fA timeout=%.0fms\n",
+                    instantaneous_trip_a, stall_current_a, stall_timeout_ms);
+    } else {
+      power_monitor.clearConfiguration();
+      writeInaRegister(kLeftIna226Address, 0x06, 0x0000);
+      writeInaRegister(kRightIna226Address, 0x06, 0x0000);
+      Serial.println("CURRENT_CONFIG_REJECTED");
+    }
   } else if (type == 'R') {
-    Serial.println(controller.resetFault(latest_sensors) ? "RESET_OK" : "RESET_REJECTED");
+    if (!bb8::commandIsZeroForReset(command)) {
+      Serial.println("RESET_REJECTED_NONZERO_COMMAND");
+    } else {
+      clearInaAlertLatches();
+      latest_sensors.hardware_current_trip = digitalRead(pins::kCurrentAlert) == LOW;
+      Serial.println(controller.resetFault(latest_sensors) ? "RESET_OK" : "RESET_REJECTED");
+    }
   }
   while (Serial.available() && Serial.read() != '\n') {}
 }
@@ -290,17 +419,21 @@ void setup() {
   pinMode(pins::kLeftDir, OUTPUT);
   pinMode(pins::kRightDir, OUTPUT);
   pinMode(pins::kEmergencyStop, INPUT_PULLUP);
+  pinMode(pins::kCurrentAlert, INPUT_PULLUP);
   stopHardware();
   analogReadResolution(12);
   Serial.begin(115200);
   setupEncoder(left_encoder);
   setupEncoder(right_encoder);
   const bool imu_found = setupMpu6050();
+  ina226_ready = setupIna226(kLeftIna226Address) && setupIna226(kRightIna226Address);
+  ina226_configuration_ok = ina226_ready && verifyInaConfiguration();
   pwm_ready = ledcAttach(pins::kLeftPwm, kPwmHz, kPwmBits) &&
               ledcAttach(pins::kRightPwm, kPwmHz, kPwmBits);
   stopHardware();
-  Serial.printf("BB8_SAFE_BOOT pwm=%d imu=%d encoder_cpr=UNCONFIGURED\n", pwm_ready, imu_found);
-  Serial.println("Keep sphere open and wheels lifted; keep still for IMU calibration, then send E, V 0 0, R.");
+  Serial.printf("BB8_SAFE_BOOT pwm=%d imu=%d ina226=%d encoder_cpr=UNCONFIGURED current_limit=UNCONFIGURED\n",
+                pwm_ready, imu_found, ina226_ready);
+  Serial.println("Keep sphere open and wheels lifted; keep still, then send E, measured I limits, V 0 0, R.");
 }
 
 void loop() {
@@ -356,6 +489,27 @@ void loop() {
   sensors.left_wheel_mps = left_speed_filtered_mps;
   sensors.right_wheel_mps = right_speed_filtered_mps;
   updateImu(sensors);
+  float left_current_a = 0.0F;
+  float right_current_a = 0.0F;
+  const bool current_fresh = updateCurrentSensors(left_current_a, right_current_a);
+  const bb8::PowerProtectionStatus power_status = power_monitor.update(
+      dt_s,
+      {
+          .sensors_fresh = current_fresh,
+          .hardware_trip = digitalRead(pins::kCurrentAlert) == LOW,
+          .left_current_a = left_current_a,
+          .right_current_a = right_current_a,
+          .left_target_mps = expected_left_mps,
+          .right_target_mps = expected_right_mps,
+          .left_measured_mps = left_speed_filtered_mps,
+          .right_measured_mps = right_speed_filtered_mps,
+      });
+  sensors.current_protection_ready = power_status.configured && power_status.sensors_fresh;
+  sensors.hardware_current_trip = power_status.hardware_trip;
+  sensors.current_over_limit = power_status.over_current;
+  sensors.motor_stalled = power_status.stalled;
+  sensors.left_motor_current_a = left_current_a;
+  sensors.right_motor_current_a = right_current_a;
   latest_sensors = sensors;
 
   latest_output = controller.update(dt_s, command, sensors);
@@ -365,7 +519,7 @@ void loop() {
     last_report_ms = millis();
     Serial.printf(
         "enabled=%d fault=%s batt=%.2f temp=%.1f imu=%d enc=%d tilt=%.1f yaw=%.3f "
-        "vL=%.3f vR=%.3f pwmL=%.3f pwmR=%.3f\n",
+        "vL=%.3f vR=%.3f iL=%.3f iR=%.3f power=%d pwmL=%.3f pwmR=%.3f\n",
         latest_output.enabled,
         bb8::faultName(latest_output.fault),
         sensors.battery_v,
@@ -376,6 +530,9 @@ void loop() {
         sensors.yaw_rate_radps,
         sensors.left_wheel_mps,
         sensors.right_wheel_mps,
+        sensors.left_motor_current_a,
+        sensors.right_motor_current_a,
+        sensors.current_protection_ready,
         latest_output.left_normalized,
         latest_output.right_normalized);
   }
