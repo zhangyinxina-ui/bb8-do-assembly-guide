@@ -258,12 +258,13 @@ export default function Home() {
             </h3>
             <p>
               Blender
-              文件内已有118个制造对象和2个工程质心标记。驱动轮和四只稳定球实际到达254 mm内壳；
+              文件内已有147个制造对象和3个非制造工程标记。驱动轮和四只稳定球实际到达254 mm内壳；
               IG42E-24K按125.2 mm总长、PCD 35 mm安装孔和310 mm轮距布置，两台电机不再互相穿透。
               赤道维护接口包含494 mm密封圈、8个锁扣，并明确建模12段动力/编码器线束和4个可断开连接器。
               磁性头部采用6+6磁体包络、8 mm总气隙和3只24 mm头底滚轮，装机拉力验收线为40 N。
               电子托盘另有双INA226、双2 mΩ四线分流器、6个M2.5支柱和独立ALERT→EN门的实体包络；真实带电试验仍为NOT_RUN。
               阶段14新增120 × 70 × 24 mm、名义1.50 kg的密封低位钢配重盒，并用17组质量账本替代未经证明的110 mm质心假设。
+              阶段15再加入左右电机驱动器、散热器、主保险丝、常开接触器、双通道常闭急停、安全继电器、维护断电和系留急停插口；30个新对象全部随内车运动，器件型号与电流额定仍保持未冻结。
             </p>
             <div className="doc-actions">
               <a className="button" href={asset("/downloads/BB8_BOM.md")} download>
@@ -298,6 +299,12 @@ export default function Home() {
               </a>
               <a className="button" href={asset("/downloads/BB8_stage14_mass_cg_inertia_validation.md")} download>
                 Download Stage 14 English report
+              </a>
+              <a className="button" href={asset("/downloads/BB8_阶段15_驱动电源与动态稳定性.md")} download>
+                下载阶段 15 驱动电源与稳定性
+              </a>
+              <a className="button" href={asset("/downloads/BB8_stage15_drive_power_dynamic_stability.md")} download>
+                Download Stage 15 English report
               </a>
               <a className="button" href={asset("/model/BB8_three_view_dimension_sheet.png")} download>
                 下载最新三视图尺寸图
@@ -335,7 +342,7 @@ export default function Home() {
         <div className="section-head">
           <span>03 / MOTION CONTROLLER</span>
           <h2>不只会动，<br />还必须会停。</h2>
-          <p>控制核心、双正交编码器、MPU6050 和双 INA226 适配均已通过 ESP32-S3 编译：轮速/偏航闭环、电流新鲜度、过流与堵转保护已接入同一控制循环。实体接线、限值标定和带电台架仍是落地门槛。</p>
+          <p>控制核心、双正交编码器、MPU6050 和双 INA226 适配均已通过 ESP32-S3 编译：轮速/偏航闭环、电流新鲜度、过流与堵转保护已接入同一控制循环。阶段15把主保险丝—常开接触器—双通道急停—左右驱动EN落实为实体结构合同；器件选型、实体接线、限值标定和带电台架仍是落地门槛。</p>
         </div>
         <div className="control-grid">
           <article><span>01</span><h3>200 Hz 闭环速度</h3><p>左右编码器轮速进入 PI，IMU 偏航率修正差动目标；直线巡航 RMS 误差 0.00772 m/s。</p></article>
@@ -343,7 +350,7 @@ export default function Home() {
           <article><span>03</span><h3>91.20° 动态转弯</h3><p>含电机惯性、滚阻、编码器量化和电池压降的闭环场景完成 91.20° 转弯。</p></article>
           <article><span>04</span><h3>行驶中失效停车</h3><p>0.20 m/s 重新起步后注入 IMU 过期，PWM 同周期归零，0.8 s 后速度 0.00224 m/s。</p></article>
           <article><span>05</span><h3>传感器默认拒动</h3><p>编码器 CPR 默认为0且每次上电必须显式配置；MPU6050 完成400个静止样本前，驱动EN保持关闭。</p></article>
-          <article><span>06</span><h3>电流限值不猜测</h3><p>双 INA226 使用2 mΩ Kelvin分流；瞬时值、堵转值和持续时间必须每次上电依实测显式输入。</p></article>
+          <article><span>06</span><h3>硬件急停去能</h3><p>双通道常闭回路驱动安全继电器与常开接触器；首次试验必须接有线系留急停，无线不能单独作为安全链。</p></article>
         </div>
         <div className="firmware-downloads">
           <a href={asset("/downloads/BB8_controller_core.zip")} download>下载 C++ 控制核心</a>
@@ -365,15 +372,15 @@ export default function Home() {
         <div className="section-head">
           <span>04 / PHYSICS GATE</span>
           <h2>先算清楚，<br />再让它落地跑。</h2>
-          <p>阶段14已用17组质量账本、刚体惯量和全部最小/最大质量角点替代未经证明的110 mm质心假设。当前 PASS 只针对可追溯假设参数，不替代实物称重与台架。</p>
+          <p>阶段14以17组质量账本替代110 mm旧假设；阶段15继续把斜坡重力、球壳转动惯量、轮壳附着、差速转弯、合成倾角和磁头冲击放入同一个可重跑包络。当前 PASS 只针对可追溯假设参数，不替代实物称重与台架。</p>
         </div>
         <div className="control-grid">
           <article><span>01</span><h3>8.463 kg 名义质量</h3><p>17组输入范围为6.375–10.628 kg；所有分组在实物称重前均保持NOT_RUN。</p></article>
           <article><span>02</span><h3>质心下置 56.2 mm</h3><p>名义z=-56.2 mm；穷举最不利质量角点后仍为z=-27.7 mm。</p></article>
-          <article><span>03</span><h3>2.51× 磁保持裕量</h3><p>0.65 kg 头部、2.5g 垂向冲击需要 15.9 N；设计假设保持力 40 N。</p></article>
-          <article><span>04</span><h3>0.703 m/s²上限</h3><p>0.6 N·m连续扭矩按2×余量计算，控制目标降额冻结为0.70 m/s²。</p></article>
-          <article><span>05</span><h3>1.51 s俯仰周期</h3><p>名义Iyy=0.2703 kg·m²，10°回复力矩0.81 N·m。</p></article>
-          <article><span>06</span><h3>110 mm已取消</h3><p>若强求原假设还需低位增加约4.14 kg，会继续压缩加速度裕量。</p></article>
+          <article><span>03</span><h3>3°动态坡道点</h3><p>0.20 m/s²加速、0.30 m/s、0.80 m转弯半径时，每台需求0.289 N·m。</p></article>
+          <article><span>04</span><h3>2.07× 连续扭矩裕量</h3><p>3°设计点刚超过2×门槛；0加速度的解析坡度上限约4.50°，不是实物认证。</p></article>
+          <article><span>05</span><h3>4.22°合成倾角</h3><p>同时包含上坡、纵向加速与转弯侧向加速度，低于12°设计合同。</p></article>
+          <article><span>06</span><h3>断电坡道不驻车</h3><p>当前没有机械驻车制动，断电后不能在坡道保持位置，必须用平地、支架或止轮措施。</p></article>
         </div>
         <div className="firmware-downloads">
           <a href={asset("/downloads/BB8_physics_validation.md")} download>下载物理验证报告</a>
@@ -385,6 +392,10 @@ export default function Home() {
           <a href={asset("/downloads/mass_properties_input.json")} download>下载17组质量输入</a>
           <a href={asset("/downloads/mass_properties_results.json")} download>下载质心惯量结果</a>
           <a href={asset("/downloads/mass_properties_scenarios.csv")} download>下载质量角点CSV</a>
+          <a href={asset("/downloads/BB8_阶段15_驱动电源与动态稳定性.md")} download>下载阶段15中文报告</a>
+          <a href={asset("/downloads/stability_envelope_input.json")} download>下载稳定性输入</a>
+          <a href={asset("/downloads/stability_envelope_results.json")} download>下载稳定性结果</a>
+          <a href={asset("/downloads/stability_envelope_sweep.csv")} download>下载坡度/加速度扫描</a>
         </div>
       </section>
 

@@ -12,5 +12,6 @@
 - `BB8_stage13_power_safety_hardware_v2.blend`：板件已正确继承内车俯仰；线束对象原点仍在世界零点，已由v3取代。
 - `BB8_stage13_power_safety_hardware_v3.blend`：110个内部对象的最终阶段13检查点；双INA226、双2 mΩ Kelvin分流器、6个M2.5支柱、ALERT→EN硬件门和11条保护线均通过重开审计，SHA-256 为 `244acfb60c706770e6bd03c08c76cb9eb8e049152bcd78e71a8b00bc60fa28e7`。
 - `BB8_stage14_mass_cg_ballast.blend`：阶段14质量/质心检查点；新增密封1.50 kg低位配重盒及固定结构、17组质量元数据和2个质心标记。后台重开审计为324个总对象、120个内部对象（118制造+2标记），SHA-256 为 `cadd81c99ee3cea6933704de68c6c07e6935c053d063afd77061d3fb11fc1a87`。
+- `BB8_stage15_drive_power_estop.blend`：阶段15驱动电源与硬件急停检查点；新增左右通用驱动器、双散热器、8个M3支柱、主保险丝、常开接触器、双通道常闭急停、安全继电器、维护断电、系留急停插口和12条显式电源/安全线。后台重开审计为354个总对象、150个内部对象（147制造+3工程标记），SHA-256 为 `a53d02ab2ffabf14fb747033de267d623f8a41cfb5c5e5d7c5c019c6768f9435`。
 
 主工程始终位于 `blender/output/BB8_1to1_screen_referenced.blend`。检查点只追加、不覆盖，便于继续设计和对比回退。

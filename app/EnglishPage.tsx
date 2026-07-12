@@ -123,12 +123,13 @@ export default function EnglishPage() {
         </div>
         <div className="mechanism">
           <img src={asset("/model/BB8_internal_three_view.png")} alt="BB-8 internal mechanism front side and top views" />
-          <div><span className="kicker">BUILDABLE CORE / STAGE 14</span><h3>Editable parts,<br />not a concept image.</h3>
-            <p>The Blender master now contains 118 fabrication objects plus two engineering CoM markers. Wheels and four stabilisers reach the 254 mm inner shell; IG42E-24K envelopes use 125.2 mm length, 35 mm PCD mounts and 310 mm track. The equator includes a 494 mm gasket, eight latches, twelve explicit harness segments and four disconnects. Stage 14 adds a removable 120 × 70 × 24 mm sealed 1.50 kg ballast cassette. All live hardware tests remain NOT_RUN.</p>
+          <div><span className="kicker">BUILDABLE CORE / STAGE 15</span><h3>Editable parts,<br />not a concept image.</h3>
+            <p>The Blender master now contains 147 fabrication objects plus three non-fabrication engineering markers. Wheels and four stabilisers reach the 254 mm inner shell; IG42E-24K envelopes use 125.2 mm length, 35 mm PCD mounts and 310 mm track. Stage 14 adds the removable 1.50 kg sealed ballast cassette. Stage 15 adds explicit left/right motor-driver envelopes, heatsinks, main fuse, normally-open contactor, dual-channel normally-closed E-stop, safety relay, service disconnect and tether jack. Product ratings remain unfrozen and all live hardware tests remain NOT_RUN.</p>
             <div className="doc-actions">
               <a className="button" href={asset("/downloads/BB8_BOM.md")} download>BB-8 BOM</a>
-              <a className="button" href={asset("/downloads/internal_assembly_manifest.csv")} download>118-part manifest</a>
+              <a className="button" href={asset("/downloads/internal_assembly_manifest.csv")} download>147-part manifest</a>
               <a className="button" href={asset("/downloads/BB8_stage14_mass_cg_inertia_validation.md")} download>Stage 14 mass report</a>
+              <a className="button" href={asset("/downloads/BB8_stage15_drive_power_dynamic_stability.md")} download>Stage 15 drive/stability report</a>
               <a className="button" href={asset("/downloads/mass_properties_input.json")} download>Mass assumptions</a>
               <a className="button" href={asset("/downloads/mass_properties_results.json")} download>Verified results</a>
               <a className="button" href={asset("/model/BB8_three_view_dimension_sheet.png")} download>Dimension sheet</a>
@@ -145,29 +146,29 @@ export default function EnglishPage() {
       </section>
 
       <section className="section firmware-section" id="control">
-        <div className="section-head"><span>03 / MOTION CONTROLLER</span><h2>It must move—<br />and it must stop.</h2><p>The C++ core and ESP32-S3 adapter compile with quadrature encoders, MPU6050 and dual INA226 current sensing. Speed/yaw loops and 11 latched fault classes share the same 200 Hz control cycle. Wiring, thresholds and powered bench tests remain NOT_RUN.</p></div>
+        <div className="section-head"><span>03 / MOTION CONTROLLER</span><h2>It must move—<br />and it must stop.</h2><p>The C++ core and ESP32-S3 adapter compile with quadrature encoders, MPU6050 and dual INA226 current sensing. Stage 15 turns the fuse, normally-open contactor, dual-channel E-stop and both driver-enable branches into an explicit physical contract. Product selection, wiring, thresholds and powered bench tests remain NOT_RUN.</p></div>
         <div className="control-grid">
           <article><span>01</span><h3>200 Hz closed loop</h3><p>Wheel-speed PI plus IMU yaw-rate correction; straight-run RMS error is 0.00772 m/s.</p></article>
           <article><span>02</span><h3>11 latched faults</h3><p>Stale sensors, hardware ALERT, overcurrent and persistent stall all remove PWM and EN in the same frame.</p></article>
           <article><span>03</span><h3>91.20° dynamic turn</h3><p>The closed-loop scenario includes inertia, rolling resistance, encoder quantisation and battery sag.</p></article>
           <article><span>04</span><h3>Failure while moving</h3><p>After a 0.20 m/s restart, injected stale IMU data zeros PWM immediately; speed is 0.00224 m/s after 0.8 s.</p></article>
           <article><span>05</span><h3>Fail-closed sensors</h3><p>Encoder CPR defaults to zero; EN stays off until 400 stationary MPU6050 samples complete.</p></article>
-          <article><span>06</span><h3>No guessed current limits</h3><p>Dual INA226 uses 2 mΩ Kelvin shunts. Trip values and stall duration must be entered from measurement at every power-up.</p></article>
+          <article><span>06</span><h3>Hard de-energising E-stop</h3><p>Two normally-closed channels drive the safety relay and normally-open contactor. First tests require a wired tether; wireless alone is not accepted.</p></article>
         </div>
         <div className="firmware-downloads"><a href={asset("/downloads/BB8_controller_core.zip")} download>C++ control core</a><a href={asset("/downloads/BB8_ESP32_S3_firmware.zip")} download>ESP32-S3 draft</a><a href={asset("/downloads/BB8_closed_loop_simulation.md")} download>Closed-loop evidence</a><a href={asset("/downloads/BB8_stage12_power_safety.md")} download>Power-safety report</a><a href={asset("/downloads/BB8_stage13_power_hardware.md")} download>Protection hardware model</a></div>
       </section>
 
       <section className="section firmware-section" id="physics">
-        <div className="section-head"><span>04 / MASS, COM & PHYSICS GATE</span><h2>Calculate first.<br />Then test on the floor.</h2><p>Stage 14 replaces the unverified 110 mm CoM claim with a 17-group mass ledger, rigid-body inertia, exhaustive min/max mass corners and torque-limited acceleration. PASS applies only to traceable assumptions, never to physical hardware.</p></div>
+        <div className="section-head"><span>04 / MASS, COM & PHYSICS GATE</span><h2>Calculate first.<br />Then test on the floor.</h2><p>Stage 14 replaces the unverified 110 mm CoM claim with a 17-group mass ledger. Stage 15 adds grade gravity, shell inertia, wheel/shell traction, differential turning, resultant lean and head shock to one rerunnable envelope. PASS applies only to traceable assumptions, never to physical hardware.</p></div>
         <div className="control-grid">
           <article><span>01</span><h3>8.463 kg nominal</h3><p>Assumption range is 6.375–10.628 kg. Every mass group remains NOT_RUN until weighed.</p></article>
           <article><span>02</span><h3>56.2 mm nominal CoM</h3><p>Nominal z=-56.2 mm; the worst enumerated corner still gives z=-27.7 mm.</p></article>
-          <article><span>03</span><h3>0.703 m/s² ceiling</h3><p>With 0.6 N·m continuous torque and a 2× design margin, the controller target is derated to 0.70 m/s².</p></article>
-          <article><span>04</span><h3>1.51 s pitch period</h3><p>Nominal Iyy is 0.2703 kg·m² and restoring torque at 10° is 0.81 N·m.</p></article>
-          <article><span>05</span><h3>2.51× head retention</h3><p>A 0.65 kg head at 2.5g needs 15.9 N; the design assumption is 40 N and still needs a force-gauge test.</p></article>
-          <article><span>06</span><h3>110 mm is superseded</h3><p>It would require about 4.14 kg more low ballast and reduce drive headroom, so it is no longer presented as proven.</p></article>
+          <article><span>03</span><h3>3° dynamic grade point</h3><p>At 0.20 m/s², 0.30 m/s and a 0.80 m turn radius, each motor needs 0.289 N·m.</p></article>
+          <article><span>04</span><h3>2.07× torque margin</h3><p>The 3° point just clears the 2× gate. The zero-acceleration analytical grade ceiling is about 4.50°, not a physical rating.</p></article>
+          <article><span>05</span><h3>4.22° resultant lean</h3><p>Grade, longitudinal acceleration and turn acceleration combine below the 12° design contract.</p></article>
+          <article><span>06</span><h3>No unpowered slope hold</h3><p>There is no mechanical parking brake, so the sphere cannot hold position on a grade after power removal.</p></article>
         </div>
-        <div className="firmware-downloads"><a href={asset("/downloads/BB8_stage14_mass_cg_inertia_validation.md")} download>English Stage 14 report</a><a href={asset("/downloads/BB8_阶段14_质量质心与惯量验证.md")} download>Chinese Stage 14 report</a><a href={asset("/downloads/mass_properties_scenarios.csv")} download>Mass scenarios CSV</a><a href={asset("/downloads/BB8_physics_validation.md")} download>Physics report</a><a href={asset("/downloads/physics_inputs.json")} download>Physics inputs</a></div>
+        <div className="firmware-downloads"><a href={asset("/downloads/BB8_stage14_mass_cg_inertia_validation.md")} download>English Stage 14 report</a><a href={asset("/downloads/BB8_stage15_drive_power_dynamic_stability.md")} download>English Stage 15 report</a><a href={asset("/downloads/BB8_阶段15_驱动电源与动态稳定性.md")} download>Chinese Stage 15 report</a><a href={asset("/downloads/stability_envelope_input.json")} download>Stability inputs</a><a href={asset("/downloads/stability_envelope_results.json")} download>Stability results</a><a href={asset("/downloads/stability_envelope_sweep.csv")} download>Grade/acceleration sweep</a><a href={asset("/downloads/mass_properties_scenarios.csv")} download>Mass scenarios CSV</a></div>
       </section>
 
       <section className="section do-section" id="do">

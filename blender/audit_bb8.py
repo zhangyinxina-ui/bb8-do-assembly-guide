@@ -29,15 +29,19 @@ required_internal = {
     "Internal sealed low ballast cassette", "Internal ballast central hanger",
     "Internal ballast retention strap F", "Internal ballast retention strap R",
     "Engineering nominal COM marker", "Engineering legacy 110mm COM marker",
+    "Internal motor driver L", "Internal motor driver R",
+    "Internal main fuse holder", "Internal main contactor",
+    "Internal dual-channel E-stop receiver", "Internal E-stop safety relay",
+    "Internal externally reachable service disconnect", "Internal tether E-stop NC jack",
 }
 missing = required_internal - {o.name for o in internals}
 if missing:
     errors.append(f"missing internal objects: {sorted(missing)}")
-if len(internals) < 120:
-    errors.append(f"stage-14 internal assembly requires at least 120 objects, got {len(internals)}")
+if len(internals) < 150:
+    errors.append(f"stage-15 internal assembly requires at least 150 objects, got {len(internals)}")
 
-if scene.get("engineering_stage") != 14:
-    errors.append(f"engineering_stage expected 14, got {scene.get('engineering_stage')}")
+if scene.get("engineering_stage") != 15:
+    errors.append(f"engineering_stage expected 15, got {scene.get('engineering_stage')}")
 if scene.get("drive_track_mm") != 310:
     errors.append(f"drive_track_mm expected 310, got {scene.get('drive_track_mm')}")
 
@@ -251,11 +255,11 @@ if scene.get("power_safety_model_object_count") != 22:
 # Stage 14 replaces the old unverified 110 mm COM assumption with a mass ledger,
 # exhaustive min/max corner evaluation and a removable sealed low ballast pack.
 stage14_objects = [o for o in internals if o.get("mass_properties_geometry_stage") == 14]
-annotations = [o for o in stage14_objects if o.get("engineering_annotation") is True]
+stage14_annotations = [o for o in stage14_objects if o.get("engineering_annotation") is True]
 if len(stage14_objects) != 10:
     errors.append(f"stage-14 mass geometry expected 10 objects, got {len(stage14_objects)}")
-if len(annotations) != 2:
-    errors.append(f"stage-14 mass geometry expected 2 engineering annotations, got {len(annotations)}")
+if len(stage14_annotations) != 2:
+    errors.append(f"stage-14 mass geometry expected 2 engineering annotations, got {len(stage14_annotations)}")
 if scene.get("mass_model_object_count") != 10:
     errors.append(f"mass model object count expected 10, got {scene.get('mass_model_object_count')}")
 if scene.get("mass_model_status") != "PASS_WITH_MASS_AND_ACCELERATION_DERATING":
@@ -291,6 +295,75 @@ else:
     marker = bpy.data.objects.get("Engineering nominal COM marker")
     if marker is not None and (marker.location - Vector(nominal["com_m"])).length > 1e-6:
         errors.append("nominal COM marker differs from the verified stage-14 result")
+
+# Stage 15 closes the previously diagram-only drive path with two physical
+# driver envelopes and a de-energise-to-safe fuse/contactor/E-stop chain. The
+# selected products and all physical ratings deliberately remain unfrozen.
+stage15_objects = [o for o in internals if o.get("drive_power_geometry_stage") == 15]
+if len(stage15_objects) != 30:
+    errors.append(f"stage-15 drive-power geometry expected 30 objects, got {len(stage15_objects)}")
+if scene.get("drive_power_model_object_count") != 30:
+    errors.append(f"stage-15 scene object count expected 30, got {scene.get('drive_power_model_object_count')}")
+if scene.get("drive_power_candidate_status") != "NOT_FROZEN":
+    errors.append("drive-power candidate status must remain NOT_FROZEN")
+if scene.get("drive_power_physical_test_status") != "NOT_RUN":
+    errors.append("drive-power physical test status must remain NOT_RUN")
+
+drivers = [o for o in stage15_objects if o.get("motor_driver_envelope_mm")]
+if len(drivers) != 2 or {o.name[-1] for o in drivers} != {"L", "R"}:
+    errors.append(f"stage-15 requires explicit L/R driver envelopes, got {[o.name for o in drivers]}")
+for driver in drivers:
+    if driver.get("candidate_status") != "NOT_FROZEN":
+        errors.append(f"{driver.name} incorrectly freezes an unmeasured candidate")
+    if driver.get("enable_contract") is None or driver.get("regenerative_energy_path_required") is not True:
+        errors.append(f"{driver.name} lacks enable/regeneration acceptance contracts")
+    if driver.get("physical_test_status") != "NOT_RUN":
+        errors.append(f"{driver.name} must remain NOT_RUN")
+
+heatsinks = [o for o in stage15_objects if o.name.startswith("Internal motor driver heatsink")]
+driver_standoffs = [o for o in stage15_objects if o.name.startswith("Internal motor driver M3 standoff")]
+if len(heatsinks) != 2 or len(driver_standoffs) != 8:
+    errors.append(f"stage-15 driver mounting expected 2 heatsinks and 8 standoffs, got {len(heatsinks)} and {len(driver_standoffs)}")
+
+fuse_holder = bpy.data.objects.get("Internal main fuse holder")
+contactor = bpy.data.objects.get("Internal main contactor")
+estop_receiver = bpy.data.objects.get("Internal dual-channel E-stop receiver")
+estop_relay = bpy.data.objects.get("Internal E-stop safety relay")
+tether_jack = bpy.data.objects.get("Internal tether E-stop NC jack")
+if not all((fuse_holder, contactor, estop_receiver, estop_relay, tether_jack)):
+    errors.append("stage-15 fuse/contactor/dual-channel E-stop hardware is incomplete")
+else:
+    if contactor.get("normally_open") is not True:
+        errors.append("main contactor must be normally open/de-energise-to-safe")
+    if estop_receiver.get("wireless_alone_not_accepted") is not True:
+        errors.append("E-stop receiver must reject wireless-only first-test operation")
+    if estop_relay.get("manual_reset_required") is not True or estop_relay.get("contactor_feedback_required") is not True:
+        errors.append("E-stop safety relay lacks manual-reset/contactor-feedback contracts")
+
+power_path_types = [o.get("drive_power_wire") for o in stage15_objects if o.get("drive_power_wire")]
+expected_power_paths = {
+    "battery positive to service disconnect", "service disconnect to fuse", "fuse to contactor",
+    "contactor to driver L", "contactor to driver R", "driver output L", "driver output R",
+}
+if set(power_path_types) != expected_power_paths or len(power_path_types) != len(expected_power_paths):
+    errors.append(f"stage-15 high-current path mismatch: {sorted(power_path_types)}")
+safety_path_types = [o.get("drive_safety_wire") for o in stage15_objects if o.get("drive_safety_wire")]
+expected_safety_paths = {"estop_channel_A", "estop_channel_B", "contactor_feedback", "driver_enable_L", "driver_enable_R"}
+if set(safety_path_types) != expected_safety_paths or len(safety_path_types) != len(expected_safety_paths):
+    errors.append(f"stage-15 safety path mismatch: {sorted(safety_path_types)}")
+estop_channels = [o for o in stage15_objects if str(o.get("drive_safety_wire", "")).startswith("estop_channel")]
+if len(estop_channels) != 2 or any(o.get("normally_closed") is not True for o in estop_channels):
+    errors.append("stage-15 E-stop requires two explicit normally-closed channels")
+if any(float(o.get("minimum_bend_radius_mm", 0)) <= 0 for o in stage15_objects
+       if o.get("drive_power_wire") or o.get("drive_safety_wire")):
+    errors.append("one or more stage-15 wires lack a positive bend-radius contract")
+
+chassis_rig = bpy.data.objects.get("RIG 20 - Gravity stabilised chassis")
+if chassis_rig is None or any(o.parent != chassis_rig for o in stage15_objects):
+    errors.append("all stage-15 drive-power objects must inherit the chassis rig")
+legacy_power_block = bpy.data.objects.get("Internal fuse and contactor")
+if legacy_power_block is None or legacy_power_block.get("mass_accounting_only") is not True:
+    errors.append("stage-14 grouped fuse/contactor mass representative was not preserved")
 
 # Stage 7 opposed magnet arrays and head follower rollers.
 lower_magnets = [o for o in internals if o.name.startswith("Internal chassis magnet")]
@@ -361,6 +434,10 @@ elif sheet_path.exists():
     public_hash = hashlib.sha256(public_sheet_path.read_bytes()).digest()
     if source_hash != public_hash:
         errors.append("website dimension sheet differs from the Blender output")
+
+annotations = [o for o in internals if o.get("engineering_annotation") is True]
+if len(annotations) != 3:
+    errors.append(f"stage-15 expects 3 non-fabrication engineering annotations, got {len(annotations)}")
 
 if errors:
     print("FAIL", " | ".join(errors))

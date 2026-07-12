@@ -9,6 +9,7 @@ if SCRIPT_DIR not in sys.path:
     sys.path.insert(0, SCRIPT_DIR)
 from power_safety_geometry import add_power_safety_hardware
 from stage14_mass_geometry import add_stage14_mass_geometry, write_mass_input
+from stage15_drive_power_geometry import add_stage15_drive_power_hardware
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, "blender", "output")
@@ -693,6 +694,7 @@ fuse = move_internal(cube("Internal fuse and contactor", (.022,.014,.012), (0.10
 add_power_safety_hardware(internal, move_internal)
 stage14_created, stage14_mass_input, stage14_mass_results = add_stage14_mass_geometry(move_internal)
 write_mass_input(os.path.join(ROOT, "engineering", "mass_properties_input.json"), stage14_mass_input)
+stage15_created = add_stage15_drive_power_hardware(move_internal)
 
 # Stage 6 serviceability: a removable equator joint and explicit harness routes.
 # The gasket/latches are clearance envelopes, not supplier-specific final parts.
@@ -835,7 +837,7 @@ scene["head_diameter_mm"] = 295
 scene["untopped_height_mm"] = 670
 scene["head_outline_height_mm"] = 197
 scene["head_overlap_into_ball_silhouette_mm"] = 35
-scene["engineering_stage"] = 14
+scene["engineering_stage"] = 15
 scene["exterior_topology_stage"] = "V3.1-oriented six curved P-panels and eight T-panels"
 scene["body_panel_half_angle_deg"] = 35.0
 scene["body_ring_distribution"] = "R1 x3, R2 x2, R3 x1"
@@ -848,6 +850,10 @@ scene["power_safety_hardware"] = "dual INA226 + dual 2 mOhm Kelvin shunts + ALER
 scene["power_safety_physical_test_status"] = "NOT_RUN"
 scene["power_safety_model_object_count"] = 22
 scene["mass_model_object_count"] = len(stage14_created)
+scene["drive_power_hardware"] = "dual generic driver envelopes + fuse + NO contactor + dual-channel NC E-stop + tether jack"
+scene["drive_power_model_object_count"] = len(stage15_created)
+scene["drive_power_candidate_status"] = "NOT_FROZEN"
+scene["drive_power_physical_test_status"] = "NOT_RUN"
 scene.unit_settings.system = 'METRIC'
 scene.unit_settings.length_unit = 'MILLIMETERS'
 scene.render.engine = 'BLENDER_EEVEE'
