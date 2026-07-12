@@ -257,10 +257,11 @@ export default function Home() {
             </h3>
             <p>
               Blender
-              文件内已有88个带稳定标记的内部对象。驱动轮和四只稳定球实际到达254 mm内壳；
+              文件内已有110个带稳定标记的内部对象。驱动轮和四只稳定球实际到达254 mm内壳；
               IG42E-24K按125.2 mm总长、PCD 35 mm安装孔和310 mm轮距布置，两台电机不再互相穿透。
               赤道维护接口包含494 mm密封圈、8个锁扣，并明确建模12段动力/编码器线束和4个可断开连接器。
               磁性头部采用6+6磁体包络、8 mm总气隙和3只24 mm头底滚轮，装机拉力验收线为40 N。
+              电子托盘另有双INA226、双2 mΩ四线分流器、6个M2.5支柱和独立ALERT→EN门的实体包络；真实带电试验仍为NOT_RUN。
             </p>
             <div className="doc-actions">
               <a className="button" href={asset("/downloads/BB8_BOM.md")} download>
@@ -286,6 +287,9 @@ export default function Home() {
               </a>
               <a className="button" href={asset("/downloads/BB8_stage9_head_calibration.md")} download>
                 下载 670 mm 头部校准记录
+              </a>
+              <a className="button" href={asset("/downloads/BB8_stage13_power_hardware.md")} download>
+                下载阶段 13 保护硬件建模
               </a>
               <a className="button" href={asset("/model/BB8_three_view_dimension_sheet.png")} download>
                 下载最新三视图尺寸图

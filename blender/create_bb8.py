@@ -1,7 +1,13 @@
 import bpy
 import math
 import os
+import sys
 from mathutils import Matrix, Vector
+
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+if SCRIPT_DIR not in sys.path:
+    sys.path.insert(0, SCRIPT_DIR)
+from power_safety_geometry import add_power_safety_hardware
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, "blender", "output")
@@ -681,6 +687,10 @@ electronics = move_internal(cube("Internal electronics tray", (.052,.040,.006), 
 electronics["envelope_mm"] = "104 x 80 x 12"
 fuse = move_internal(cube("Internal fuse and contactor", (.022,.014,.012), (0.105,.020,-.095), ORANGE, .003))
 
+# Stage 13: physical installation envelopes for the dual INA226 current chain,
+# 2 mOhm four-wire shunts and MCU-independent ALERT-to-driver-EN gate.
+add_power_safety_hardware(internal, move_internal)
+
 # Stage 6 serviceability: a removable equator joint and explicit harness routes.
 # The gasket/latches are clearance envelopes, not supplier-specific final parts.
 gasket = torus("Internal equator gasket envelope", .247, .0025, (0,0,0), (0,0,0), DARK)
@@ -822,7 +832,7 @@ scene["head_diameter_mm"] = 295
 scene["untopped_height_mm"] = 670
 scene["head_outline_height_mm"] = 197
 scene["head_overlap_into_ball_silhouette_mm"] = 35
-scene["engineering_stage"] = 8
+scene["engineering_stage"] = 13
 scene["exterior_topology_stage"] = "V3.1-oriented six curved P-panels and eight T-panels"
 scene["body_panel_half_angle_deg"] = 35.0
 scene["body_ring_distribution"] = "R1 x3, R2 x2, R3 x1"
@@ -831,6 +841,9 @@ scene["motor_mount_source"] = "Sha Yang Ye IG-42C: 4 x M4 x 6 deep, PCD 35 mm"
 scene["motor_envelope_source"] = "Cytron IG42E-24K: 45 x 45 x 125.2 mm"
 scene["service_joint"] = "494 mm equator gasket envelope with 8 captive-latch envelopes"
 scene["magnetic_follower"] = "6+6 magnet envelopes, 8 mm face gap, 3-point 24 mm head rollers"
+scene["power_safety_hardware"] = "dual INA226 + dual 2 mOhm Kelvin shunts + ALERT wire-OR to independent driver EN gate"
+scene["power_safety_physical_test_status"] = "NOT_RUN"
+scene["power_safety_model_object_count"] = 22
 scene.unit_settings.system = 'METRIC'
 scene.unit_settings.length_unit = 'MILLIMETERS'
 scene.render.engine = 'BLENDER_EEVEE'

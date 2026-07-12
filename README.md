@@ -11,11 +11,11 @@
 - BB-8 身体球：Ø508 mm。
 - 头部最大直径：Ø295 mm。
 - 无天线总高：670 mm，对齐 StarWars.com 公开的 0.67 m。
-- Blender 主工程后台重开审计：292 个对象，其中 88 个内部机构对象。
+- Blender 主工程后台重开审计：314 个对象，其中 110 个内部机构对象。
 - 双轮差速内车、310 mm 轮距、6+6 磁体随动头和 40 N 装机拉脱力验收合同。
 - 编码器轮速 PI + IMU 偏航闭环仿真：直线 RMS 误差 0.00772 m/s、转角 91.20°，传感器过期同周期撤销 PWM。
 - ESP32-S3 已编译双正交编码器与 MPU6050 适配；CPR默认为0、静止标定未完成时保持拒动。
-- 双 INA226电流适配、开漏ALERT、显式限值、过流/堵转回放与11类锁存故障已编译验证。
+- 双 INA226 电流适配、开漏 ALERT、显式限值、过流/堵转回放与11类锁存故障已编译验证；对应板卡、Kelvin分流和独立EN门已进入内部模型，实体测试仍为 `NOT_RUN`。
 - 24 步可验收装配指南，进度只保存在访问者自己的浏览器。
 
 这些拆分尺寸和外观细节来自公开画面、社区摄影测量和制作者资料，不是 Lucasfilm 官方 CAD，也不应宣称逐毫米复制电影道具。
@@ -27,7 +27,7 @@
 | `blender/` | 参数化生成器、主工程、阶段检查点、审计和导出脚本 |
 | `engineering/` | 物理输入、计算结果、D-O 清单和采购门控 |
 | `firmware/` | BB-8 C++ 控制核心与 ESP32-S3 适配草案 |
-| `docs/` | 从阶段 1 到阶段 12 的设计、验证和续接记录 |
+| `docs/` | 从阶段 1 到阶段 13 的设计、验证和续接记录 |
 | `app/` | Vinext/Next 开发网站 |
 | `github-pages-src/` | GitHub Pages 纯静态 React 入口 |
 | `public/` | 网站公开的图像、GLB、STL、CSV 和说明文件 |
@@ -73,6 +73,8 @@ sh tools/run_closed_loop_sim.sh
 阶段 11 的传感器代码、默认拒动策略和上电标定顺序见 [ESP32 编码器与 MPU6050 适配](docs/BB8_阶段11_ESP32传感器适配.md) 与 [机器可读接口合同](engineering/sensor_adapter_contract.json)。
 
 阶段 12 的双 INA226、ALERT→EN 硬件合同、显式限值和故障回放见 [电流保护与堵转回放](docs/BB8_阶段12_电流保护与堵转回放.md)、[机器可读电流合同](engineering/power_safety_contract.json) 和 [5 ms回放记录](engineering/power_safety_replay.csv)。
+
+阶段 13 把这条保护链落实到110件内部总成，见 [电流保护硬件建模与重开审计](docs/BB8_阶段13_电流保护硬件建模.md) 和 [110件装配尺寸清单](engineering/internal_assembly_manifest.csv)。
 
 ## D-O 公开资源边界
 

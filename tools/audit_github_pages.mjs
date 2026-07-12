@@ -34,6 +34,7 @@ for (const required of [
   "downloads/BB8_stage11_sensor_adapter.md",
   "downloads/sensor_adapter_contract.json",
   "downloads/BB8_stage12_power_safety.md",
+  "downloads/BB8_stage13_power_hardware.md",
   "downloads/power_safety_contract.json",
   "downloads/power_safety_replay.csv",
   ".nojekyll",

@@ -39,7 +39,7 @@ test("server-renders the BB-8 and D-O build guide", async () => {
   assert.doesNotMatch(html, /href=["']\/model\/BB8_1to1_screen_referenced\.blend/);
   assert.match(html, /BB8_internal_three_view\.png/);
   assert.match(html, /internal_assembly_manifest\.csv/);
-  assert.match(html, /88个带稳定标记的内部对象/);
+  assert.match(html, /110个带稳定标记的内部对象/);
   assert.match(html, /BB8_motor_selection\.md/);
   assert.match(html, /IG42E-24K/);
   assert.match(html, /PCD 35 mm/);
@@ -90,6 +90,8 @@ test("server-renders the BB-8 and D-O build guide", async () => {
   assert.match(html, /power_safety_replay\.csv/);
   assert.match(html, /电流限值不猜测/);
   assert.match(html, /2 mΩ Kelvin分流/);
+  assert.match(html, /BB8_stage13_power_hardware\.md/);
+  assert.match(html, /真实带电试验仍为NOT_RUN/);
   assert.match(html, /24 个可验收步骤/);
   assert.match(html, /冻结 1:1 尺寸基准/);
   assert.match(html, /BB8_stage8_exterior_topology\.md/);

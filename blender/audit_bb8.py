@@ -22,15 +22,18 @@ required_internal = {
     "Internal magnet array riser", "Head internal magnetic carrier",
     "Head underside roller 1", "Head underside roller 2", "Head underside roller 3",
     "Internal magnetic mast", "Internal top magnet carrier", "Internal IMU controller",
+    "Internal INA226 current monitor L", "Internal INA226 current monitor R",
+    "Internal 2mOhm Kelvin shunt L", "Internal 2mOhm Kelvin shunt R",
+    "Internal ALERT to driver EN hardware gate", "Internal hardware driver enable line",
 }
 missing = required_internal - {o.name for o in internals}
 if missing:
     errors.append(f"missing internal objects: {sorted(missing)}")
-if len(internals) < 88:
-    errors.append(f"stage-7 internal assembly requires at least 88 objects, got {len(internals)}")
+if len(internals) < 110:
+    errors.append(f"stage-13 internal assembly requires at least 110 objects, got {len(internals)}")
 
-if scene.get("engineering_stage") != 8:
-    errors.append(f"engineering_stage expected 8, got {scene.get('engineering_stage')}")
+if scene.get("engineering_stage") != 13:
+    errors.append(f"engineering_stage expected 13, got {scene.get('engineering_stage')}")
 if scene.get("drive_track_mm") != 310:
     errors.append(f"drive_track_mm expected 310, got {scene.get('drive_track_mm')}")
 
@@ -159,6 +162,87 @@ for cable in harnesses:
 for connector in connectors:
     if connector.get("disconnect_before_service") is not True:
         errors.append(f"{connector.name} lacks disconnect-before-service contract")
+
+# Stage 13 power-safety installation gate. These are physical envelopes and
+# wiring contracts; the test-status gate deliberately remains NOT_RUN until a
+# real shunt, driver, motor and thermal bench are measured.
+current_monitors = [o for o in internals if o.get("current_monitor") == "INA226"]
+if len(current_monitors) != 2:
+    errors.append(f"power safety requires 2 INA226 monitor envelopes, got {len(current_monitors)}")
+elif {int(o.get("i2c_address", -1)) for o in current_monitors} != {0x40, 0x41}:
+    errors.append("INA226 address contract must be exactly 0x40 and 0x41")
+for monitor in current_monitors:
+    if abs(float(monitor.get("shunt_ohm", 0)) - 0.002) > 1e-9:
+        errors.append(f"{monitor.name} shunt contract is not 2 mOhm")
+    if monitor.get("kelvin_connection_required") is not True:
+        errors.append(f"{monitor.name} lacks four-wire Kelvin requirement")
+    if monitor.get("physical_test_status") != "NOT_RUN":
+        errors.append(f"{monitor.name} must remain NOT_RUN before hardware validation")
+
+shunts = [o for o in internals if o.get("kelvin_4_wire") is True]
+if len(shunts) != 2:
+    errors.append(f"power safety requires 2 explicit Kelvin shunts, got {len(shunts)}")
+for shunt in shunts:
+    if abs(float(shunt.get("shunt_ohm", 0)) - 0.002) > 1e-9:
+        errors.append(f"{shunt.name} resistance is not 2 mOhm")
+    if shunt.get("pulse_rating_requires_validation") is not True:
+        errors.append(f"{shunt.name} lacks pulse-rating validation gate")
+
+gate = bpy.data.objects.get("Internal ALERT to driver EN hardware gate")
+if gate is not None:
+    if gate.get("alert_to_driver_enable_hardware_gate") is not True:
+        errors.append("ALERT gate lacks hardware gate contract")
+    if gate.get("mcu_independent_disable_required") is not True:
+        errors.append("ALERT gate is not explicitly independent from MCU execution")
+    if gate.get("physical_test_status") != "NOT_RUN":
+        errors.append("ALERT gate must remain NOT_RUN before hardware validation")
+
+wire_counts = {}
+power_safety_wires = [o for o in internals if o.get("power_safety_wire")]
+for wire in power_safety_wires:
+    wire_type = wire.get("power_safety_wire")
+    wire_counts[wire_type] = wire_counts.get(wire_type, 0) + 1
+expected_wire_counts = {
+    "high_side_input": 2,
+    "motor_branch_output": 2,
+    "kelvin_sense": 4,
+    "alert_wire_or": 2,
+    "driver_enable": 1,
+}
+if wire_counts != expected_wire_counts:
+    errors.append(f"power-safety wiring expected {expected_wire_counts}, got {wire_counts}")
+for wire in power_safety_wires:
+    if float(wire.get("minimum_bend_radius_mm", 0)) <= 0:
+        errors.append(f"{wire.name} lacks a positive bend-radius contract")
+
+standoffs = [o for o in internals if "M2.5 standoff" in o.name]
+if len(standoffs) != 6:
+    errors.append(f"power-safety electronics requires 6 removable standoffs, got {len(standoffs)}")
+
+tray = bpy.data.objects.get("Internal electronics tray")
+mounted_boards = current_monitors + ([gate] if gate is not None else [])
+if tray is not None:
+    tray_center = tray.matrix_world.translation
+    tray_min_x = tray_center.x - tray.dimensions.x / 2
+    tray_max_x = tray_center.x + tray.dimensions.x / 2
+    tray_min_y = tray_center.y - tray.dimensions.y / 2
+    tray_max_y = tray_center.y + tray.dimensions.y / 2
+    for board in mounted_boards:
+        board_center = board.matrix_world.translation
+        if (board_center.x - board.dimensions.x / 2 < tray_min_x or
+                board_center.x + board.dimensions.x / 2 > tray_max_x or
+                board_center.y - board.dimensions.y / 2 < tray_min_y or
+                board_center.y + board.dimensions.y / 2 > tray_max_y):
+            errors.append(f"{board.name} exceeds electronics-tray footprint")
+        local_gap_mm = ((board.location.z - board.dimensions.z / 2) -
+                        (tray.location.z + tray.dimensions.z / 2)) * 1000
+        if abs(local_gap_mm - 3.0) > 0.2:
+            errors.append(f"{board.name} chassis-local standoff gap is not 3 mm")
+
+if scene.get("power_safety_physical_test_status") != "NOT_RUN":
+    errors.append("scene power-safety physical status must remain NOT_RUN")
+if scene.get("power_safety_model_object_count") != 22:
+    errors.append(f"power-safety model object count expected 22, got {scene.get('power_safety_model_object_count')}")
 
 # Stage 7 opposed magnet arrays and head follower rollers.
 lower_magnets = [o for o in internals if o.name.startswith("Internal chassis magnet")]

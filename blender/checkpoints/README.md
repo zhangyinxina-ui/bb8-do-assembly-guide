@@ -8,5 +8,8 @@
 - `BB8_stage06_serviceable_shell_harness.blend`：70个内部对象；加入494 mm赤道密封圈、8个锁扣、12段动力/编码器线束和4个维护连接器，并验证轮子避让与弯曲半径合同。
 - `BB8_stage07_magnetic_head_follower.blend`：88个内部对象；加入6+6磁体阵列、8 mm磁隙和3只24 mm头底滚轮，冻结40 N装机拉力验收线。
 - `BB8_stage08_unsaved_gui_20260712_183729.blend`：阶段 9.2 结束时 Blender GUI 中带星号的旧内存态；在打开阶段 9.3 新主工程前无损另存，SHA-256 为 `feae71f106221d76f751a086764a18efb1d146b19a03292d65c5384a449a375f`。
+- `BB8_stage13_power_safety_hardware.blend`：阶段13首次落盘；板件在帧1冻结世界坐标，已由v2取代，仅作为失败修正证据保留。
+- `BB8_stage13_power_safety_hardware_v2.blend`：板件已正确继承内车俯仰；线束对象原点仍在世界零点，已由v3取代。
+- `BB8_stage13_power_safety_hardware_v3.blend`：110个内部对象的最终阶段13检查点；双INA226、双2 mΩ Kelvin分流器、6个M2.5支柱、ALERT→EN硬件门和11条保护线均通过重开审计，SHA-256 为 `244acfb60c706770e6bd03c08c76cb9eb8e049152bcd78e71a8b00bc60fa28e7`。
 
 主工程始终位于 `blender/output/BB8_1to1_screen_referenced.blend`。检查点只追加、不覆盖，便于继续设计和对比回退。
