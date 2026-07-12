@@ -323,13 +323,14 @@ export default function Home() {
         <div className="section-head">
           <span>03 / MOTION CONTROLLER</span>
           <h2>不只会动，<br />还必须会停。</h2>
-          <p>控制核心与 ESP32-S3 适配草案均已编译：编码器轮速 PI、IMU 偏航修正、加速斜坡、输出饱和与七条锁存安全联锁。闭环软件仿真通过；真实传感器适配与带电台架仍是落地门槛。</p>
+          <p>控制核心、双正交编码器和 MPU6050 适配均已通过 ESP32-S3 编译：编码器轮速 PI、IMU 偏航修正与七条锁存安全联锁已接入同一控制循环。实体接线、参数标定和带电台架仍是落地门槛。</p>
         </div>
         <div className="control-grid">
           <article><span>01</span><h3>200 Hz 闭环速度</h3><p>左右编码器轮速进入 PI，IMU 偏航率修正差动目标；直线巡航 RMS 误差 0.00772 m/s。</p></article>
           <article><span>02</span><h3>7 类故障锁存</h3><p>新增传感器过期与 IMU/编码器不一致；任一安全故障在当前控制周期撤销左右 PWM。</p></article>
           <article><span>03</span><h3>91.20° 动态转弯</h3><p>含电机惯性、滚阻、编码器量化和电池压降的闭环场景完成 91.20° 转弯。</p></article>
           <article><span>04</span><h3>行驶中失效停车</h3><p>0.20 m/s 重新起步后注入 IMU 过期，PWM 同周期归零，0.8 s 后速度 0.00224 m/s。</p></article>
+          <article><span>05</span><h3>传感器默认拒动</h3><p>编码器 CPR 默认为0且每次上电必须显式配置；MPU6050 完成400个静止样本前，驱动EN保持关闭。</p></article>
         </div>
         <div className="firmware-downloads">
           <a href={asset("/downloads/BB8_controller_core.zip")} download>下载 C++ 控制核心</a>
@@ -339,6 +340,8 @@ export default function Home() {
           <a href={asset("/downloads/BB8_closed_loop_simulation.md")} download>下载阶段 10 闭环验证</a>
           <a href={asset("/downloads/closed_loop_telemetry.csv")} download>下载 200 Hz 闭环遥测</a>
           <a href={asset("/downloads/bb8_firmware_compile.json")} download>下载 ESP32 编译证据</a>
+          <a href={asset("/downloads/BB8_stage11_sensor_adapter.md")} download>下载阶段 11 传感器适配</a>
+          <a href={asset("/downloads/sensor_adapter_contract.json")} download>下载传感器接口合同</a>
         </div>
       </section>
 

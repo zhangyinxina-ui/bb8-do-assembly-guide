@@ -1,0 +1,38 @@
+{
+  "stage": 11,
+  "control_rate_hz": 200,
+  "wheel_diameter_mm": 96,
+  "drive_track_mm": 310,
+  "encoder": {
+    "left_a_gpio": 10,
+    "left_b_gpio": 11,
+    "right_a_gpio": 12,
+    "right_b_gpio": 13,
+    "decode": "quadrature_x4_gpio_change_interrupt",
+    "counts_per_wheel_revolution_default": 0,
+    "configuration_command": "E <counts_per_wheel_rev> <left_sign> <right_sign>",
+    "minimum_accepted_counts_per_wheel_revolution": 100,
+    "motion_demand_threshold_mps": 0.05,
+    "response_timeout_ms": 750,
+    "speed_filter_alpha": 0.2
+  },
+  "imu": {
+    "device": "MPU6050",
+    "sda_gpio": 17,
+    "scl_gpio": 18,
+    "i2c_hz": 400000,
+    "addresses": [104, 105],
+    "accelerometer_range_g": 4,
+    "gyroscope_range_dps": 500,
+    "dlpf_hz_nominal": 42,
+    "stationary_calibration_samples": 400,
+    "freshness_timeout_ms": 30,
+    "mounting_contract": "sensor_z_axis_parallel_to_chassis_vertical_when_upright"
+  },
+  "safety": {
+    "encoder_cpr_must_be_explicitly_configured_each_boot": true,
+    "imu_calibration_required_each_boot": true,
+    "remote_timeout_ms": 100,
+    "physical_test_status": "NOT_RUN"
+  }
+}

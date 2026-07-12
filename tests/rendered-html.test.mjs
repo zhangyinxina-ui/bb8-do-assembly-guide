@@ -68,7 +68,7 @@ test("server-renders the BB-8 and D-O build guide", async () => {
   assert.match(html, /1\.595929/);
   assert.match(html, /BB8_controller_core\.zip/);
   assert.match(html, /BB8_ESP32_S3_firmware\.zip/);
-  assert.match(html, /ESP32-S3 适配草案均已编译/);
+  assert.match(html, /双正交编码器和 MPU6050 适配均已通过 ESP32-S3 编译/);
   assert.match(html, /BB8_physics_validation\.md/);
   assert.match(html, /0\.286 N·m/);
   assert.match(html, /2\.51× 磁保持裕量/);
@@ -82,6 +82,9 @@ test("server-renders the BB-8 and D-O build guide", async () => {
   assert.match(html, /bb8_firmware_compile\.json/);
   assert.match(html, /0\.00772 m\/s/);
   assert.match(html, /91\.20° 动态转弯/);
+  assert.match(html, /BB8_stage11_sensor_adapter\.md/);
+  assert.match(html, /sensor_adapter_contract\.json/);
+  assert.match(html, /编码器 CPR 默认为0/);
   assert.match(html, /24 个可验收步骤/);
   assert.match(html, /冻结 1:1 尺寸基准/);
   assert.match(html, /BB8_stage8_exterior_topology\.md/);
