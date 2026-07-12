@@ -1,0 +1,7 @@
+BB8_SAFE_BOOT pwm=1 imu=1 ina226=1 encoder_cpr=UNCONFIGURED current_limit=UNCONFIGURED
+IMU_READY address=0x68 gyro_z_bias_raw=2.50
+t_ms=1000 enabled=0 fault=none cmdV=0.000 cmdW=0.000 batt=16.20 temp=24.5 estop=1 remote=1 imu=1 enc=1 tilt=0.2 yaw=0.001 vL=0.000 vR=0.000 iL=0.120 iR=0.118 power=1 hwtrip=0 pwmL=0.000 pwmR=0.000
+t_ms=1200 enabled=1 fault=none cmdV=0.100 cmdW=0.000 batt=16.10 temp=25.1 estop=1 remote=1 imu=1 enc=1 tilt=0.8 yaw=0.004 vL=0.091 vR=0.094 iL=1.230 iR=1.180 power=1 hwtrip=0 pwmL=0.220 pwmR=0.215
+serial monitor note that must be ignored
+t_ms=1400 enabled=1 fault=none cmdV=0.100 cmdW=0.000 batt=16.05 temp=26.2 estop=1 remote=1 imu=1 enc=1 tilt=1.1 yaw=0.003 vL=0.099 vR=0.101 iL=1.310 iR=1.260 power=1 hwtrip=0 pwmL=0.205 pwmR=0.201
+t_ms=1600 enabled=0 fault=remote_timeout cmdV=0.100 cmdW=0.000 batt=16.08 temp=26.0 estop=1 remote=0 imu=1 enc=1 tilt=0.5 yaw=0.002 vL=0.012 vR=0.013 iL=0.160 iR=0.150 power=1 hwtrip=0 pwmL=0.000 pwmR=0.000

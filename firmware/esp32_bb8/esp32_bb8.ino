@@ -518,12 +518,18 @@ void loop() {
   if (millis() - last_report_ms >= 200) {
     last_report_ms = millis();
     Serial.printf(
-        "enabled=%d fault=%s batt=%.2f temp=%.1f imu=%d enc=%d tilt=%.1f yaw=%.3f "
-        "vL=%.3f vR=%.3f iL=%.3f iR=%.3f power=%d pwmL=%.3f pwmR=%.3f\n",
+        "t_ms=%lu enabled=%d fault=%s cmdV=%.3f cmdW=%.3f batt=%.2f temp=%.1f "
+        "estop=%d remote=%d imu=%d enc=%d tilt=%.1f yaw=%.3f "
+        "vL=%.3f vR=%.3f iL=%.3f iR=%.3f power=%d hwtrip=%d pwmL=%.3f pwmR=%.3f\n",
+        static_cast<unsigned long>(millis()),
         latest_output.enabled,
         bb8::faultName(latest_output.fault),
+        command.linear_mps,
+        command.yaw_radps,
         sensors.battery_v,
         sensors.motor_temp_c,
+        sensors.emergency_stop,
+        sensors.remote_ok,
         sensors.imu_fresh,
         sensors.encoders_fresh,
         sensors.chassis_tilt_deg,
@@ -533,6 +539,7 @@ void loop() {
         sensors.left_motor_current_a,
         sensors.right_motor_current_a,
         sensors.current_protection_ready,
+        sensors.hardware_current_trip,
         latest_output.left_normalized,
         latest_output.right_normalized);
   }

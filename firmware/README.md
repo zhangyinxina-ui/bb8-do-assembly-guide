@@ -39,6 +39,17 @@ npm run test:firmware
 
 闭环仿真会生成 `engineering/closed_loop_telemetry.csv`，电流故障回放会生成 `engineering/power_safety_replay.csv`。两者都是确定性软件证据，不等于真机地面验证。
 
+阶段16把ESP32每200 ms输出的真机遥测扩展为带单调毫秒时间戳的固定字段：命令速度、使能、故障、电池、温度、急停、遥控、IMU、编码器、轮速、电流、硬件ALERT和PWM。将串口监视器原始文本保存后，可运行：
+
+```bash
+python3 tools/parse_bb8_telemetry.py \
+  --input evidence/run-001/serial.log \
+  --output evidence/run-001/telemetry.csv \
+  --summary evidence/run-001/telemetry_summary.json
+```
+
+解析器只整理真实记录，不会把软件仿真或示例日志转成物理验收PASS。物理记录还必须按 `engineering/commissioning_test_plan.json` 补齐仪表、照片/视频、测量值和SHA-256，再由阶段16验证器审计。
+
 ## ESP32 硬件适配合同
 
 200 Hz 主循环必须执行：
@@ -70,6 +81,8 @@ arduino-cli compile \
 阶段 11 传感器适配编译结果：程序 367791 bytes（28%），全局变量 24636 bytes（7%）。
 
 阶段 12 电流保护适配编译结果：程序 369971 bytes（28%），全局变量 24676 bytes（7%）。
+
+阶段 16 固定字段真机遥测编译结果：程序 370095 bytes（28%），全局变量 24676 bytes（7%）。
 
 台架串口协议：
 

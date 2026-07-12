@@ -1,0 +1,116 @@
+{
+  "schema_version": 1,
+  "stage": 16,
+  "overall": "HOLD_PHYSICAL_TESTS_NOT_RUN",
+  "physical_origin": "REAL_HARDWARE_REQUIRED",
+  "mandatory_total": 19,
+  "mandatory_passed": 0,
+  "counts": {
+    "BLOCKED": 0,
+    "FAIL": 0,
+    "NOT_RUN": 19,
+    "PASS": 0
+  },
+  "verified_evidence_files": [],
+  "records": [
+    {
+      "id": "M01",
+      "status": "NOT_RUN",
+      "valid": true
+    },
+    {
+      "id": "H01",
+      "status": "NOT_RUN",
+      "valid": true
+    },
+    {
+      "id": "E01",
+      "status": "NOT_RUN",
+      "valid": true
+    },
+    {
+      "id": "E02",
+      "status": "NOT_RUN",
+      "valid": true
+    },
+    {
+      "id": "E03",
+      "status": "NOT_RUN",
+      "valid": true
+    },
+    {
+      "id": "C01",
+      "status": "NOT_RUN",
+      "valid": true
+    },
+    {
+      "id": "D01",
+      "status": "NOT_RUN",
+      "valid": true
+    },
+    {
+      "id": "D02",
+      "status": "NOT_RUN",
+      "valid": true
+    },
+    {
+      "id": "T01",
+      "status": "NOT_RUN",
+      "valid": true
+    },
+    {
+      "id": "T02",
+      "status": "NOT_RUN",
+      "valid": true
+    },
+    {
+      "id": "G01",
+      "status": "NOT_RUN",
+      "valid": true
+    },
+    {
+      "id": "G02",
+      "status": "NOT_RUN",
+      "valid": true
+    },
+    {
+      "id": "G03",
+      "status": "NOT_RUN",
+      "valid": true
+    },
+    {
+      "id": "G04",
+      "status": "NOT_RUN",
+      "valid": true
+    },
+    {
+      "id": "F01",
+      "status": "NOT_RUN",
+      "valid": true
+    },
+    {
+      "id": "F02",
+      "status": "NOT_RUN",
+      "valid": true
+    },
+    {
+      "id": "P01",
+      "status": "NOT_RUN",
+      "valid": true
+    },
+    {
+      "id": "S01",
+      "status": "NOT_RUN",
+      "valid": true
+    },
+    {
+      "id": "L01",
+      "status": "NOT_RUN",
+      "valid": true
+    }
+  ],
+  "errors": [],
+  "warnings": [],
+  "plan_sha256": "16ce6196d757241b6d55d42fb435559d8a5f3a337eab33e0b21f239e646d6e98",
+  "evidence_sha256": "948ac115ffc3d6c5b04bc965a7a2b0b20db28424b57cac10166488b9ca9b95dd"
+}

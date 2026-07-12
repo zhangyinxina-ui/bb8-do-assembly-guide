@@ -1,0 +1,346 @@
+{
+  "schema_version": 1,
+  "stage": 16,
+  "title_cn": "BB-8 真机调试与运行验收矩阵",
+  "title_en": "BB-8 physical commissioning and running acceptance matrix",
+  "status_contract": {
+    "allowed_record_statuses": ["NOT_RUN", "BLOCKED", "PASS", "FAIL"],
+    "pass_requires_real_files": true,
+    "pass_requires_sha256_match": true,
+    "synthetic_evidence_is_forbidden": true,
+    "analytical_or_simulation_results_do_not_count_as_physical_evidence": true
+  },
+  "telemetry_contract": {
+    "firmware_source": "firmware/esp32_bb8/esp32_bb8.ino",
+    "report_period_ms": 200,
+    "parser": "tools/parse_bb8_telemetry.py",
+    "required_keys": [
+      "t_ms", "enabled", "fault", "cmdV", "cmdW", "batt", "temp",
+      "estop", "remote", "imu", "enc", "tilt", "yaw", "vL", "vR",
+      "iL", "iR", "power", "hwtrip", "pwmL", "pwmR"
+    ]
+  },
+  "tests": [
+    {
+      "id": "M01",
+      "category": "mechanical",
+      "mandatory": true,
+      "name_cn": "整机质量与质心实测",
+      "name_en": "Measured mass and centre of mass",
+      "method_cn": "逐件称重后复核整机质量，并用悬挂法或四点秤求质心。",
+      "method_en": "Weigh the parts and complete machine, then determine CoM by suspension or four-scale measurement.",
+      "required_metrics": {
+        "total_mass_kg": {"unit": "kg", "min": 6.0, "max": 10.628},
+        "cog_z_mm": {"unit": "mm", "max": -20.0},
+        "scale_repeatability_g": {"unit": "g", "max": 20.0}
+      },
+      "minimum_evidence_files": 2,
+      "accepted_evidence_kinds": ["photo", "measurement_sheet", "scale_export"]
+    },
+    {
+      "id": "H01",
+      "category": "head",
+      "mandatory": true,
+      "name_cn": "磁头装机拉脱力",
+      "name_en": "Installed magnetic-head pull-off force",
+      "method_cn": "在实际球壳、8 mm设计气隙和完整0.65 kg头部上沿最不利方向缓慢拉脱。",
+      "method_en": "Pull the complete 0.65 kg head from the real shell at the 8 mm design gap in the worst direction.",
+      "required_metrics": {
+        "pull_off_force_n": {"unit": "N", "min": 40.0},
+        "measured_gap_mm": {"unit": "mm", "min": 7.5, "max": 8.5},
+        "head_mass_kg": {"unit": "kg", "min": 0.55, "max": 0.75}
+      },
+      "minimum_evidence_files": 2,
+      "accepted_evidence_kinds": ["video", "photo", "force_gauge_export", "measurement_sheet"]
+    },
+    {
+      "id": "E01",
+      "category": "electrical",
+      "mandatory": true,
+      "name_cn": "断电布线、极性与双通道常闭检查",
+      "name_en": "De-energised wiring, polarity and dual-NC continuity",
+      "method_cn": "断开电池与维护断电，逐线检查极性、相邻短路和急停A/B常闭回路。",
+      "method_en": "Remove battery power and service disconnect, then check polarity, adjacent shorts and both normally-closed E-stop channels.",
+      "required_metrics": {
+        "bus_isolation_kohm": {"unit": "kOhm", "min": 100.0},
+        "polarity_ok": {"unit": "bool", "equals": true},
+        "estop_channel_a_nc": {"unit": "bool", "equals": true},
+        "estop_channel_b_nc": {"unit": "bool", "equals": true}
+      },
+      "minimum_evidence_files": 2,
+      "accepted_evidence_kinds": ["photo", "measurement_sheet", "meter_export"]
+    },
+    {
+      "id": "E02",
+      "category": "electrical",
+      "mandatory": true,
+      "name_cn": "硬件急停、接触器与EN去能",
+      "name_en": "Hard E-stop, contactor and EN de-energising",
+      "method_cn": "分别断开急停A/B、停止MCU并触发ALERT，测量接触器和两路EN释放时间。",
+      "method_en": "Open E-stop A and B separately, halt the MCU and trigger ALERT while timing contactor and both EN releases.",
+      "required_metrics": {
+        "contactor_release_ms": {"unit": "ms", "max": 100.0},
+        "driver_enable_low_ms": {"unit": "ms", "max": 20.0},
+        "mcu_halted_cutoff": {"unit": "bool", "equals": true},
+        "manual_reset_required": {"unit": "bool", "equals": true}
+      },
+      "minimum_evidence_files": 2,
+      "accepted_evidence_kinds": ["oscilloscope_export", "video", "measurement_sheet"]
+    },
+    {
+      "id": "E03",
+      "category": "electrical",
+      "mandatory": true,
+      "name_cn": "双INA226与ALERT标定",
+      "name_en": "Dual INA226 and ALERT calibration",
+      "method_cn": "用可溯源电流表在低、中、高三点对比两路电流，并验证锁存ALERT。",
+      "method_en": "Compare both channels with a traceable ammeter at low, medium and high current, then prove latched ALERT.",
+      "required_metrics": {
+        "left_current_error_pct": {"unit": "%", "max": 3.0},
+        "right_current_error_pct": {"unit": "%", "max": 3.0},
+        "alert_latches": {"unit": "bool", "equals": true}
+      },
+      "minimum_evidence_files": 2,
+      "accepted_evidence_kinds": ["telemetry_csv", "meter_export", "measurement_sheet"]
+    },
+    {
+      "id": "C01",
+      "category": "controls",
+      "mandatory": true,
+      "name_cn": "编码器CPR、方向与IMU静止标定",
+      "name_en": "Encoder CPR, direction and stationary IMU calibration",
+      "method_cn": "架空逐轮转动三次，记录CPR重复性与方向；静止记录陀螺残余偏置和轴向。",
+      "method_en": "With wheels raised, rotate each wheel three times to check CPR and direction; log stationary gyro residual and axes.",
+      "required_metrics": {
+        "left_cpr_repeat_error_pct": {"unit": "%", "max": 1.0},
+        "right_cpr_repeat_error_pct": {"unit": "%", "max": 1.0},
+        "imu_static_yaw_dps": {"unit": "deg/s", "max": 0.5},
+        "axes_verified": {"unit": "bool", "equals": true}
+      },
+      "minimum_evidence_files": 2,
+      "accepted_evidence_kinds": ["telemetry_csv", "video", "measurement_sheet"]
+    },
+    {
+      "id": "D01",
+      "category": "drive",
+      "mandatory": true,
+      "name_cn": "架空空载驱动",
+      "name_en": "Raised-wheel no-load drive",
+      "method_cn": "使用限流电源从最低占空比逐级点动，记录方向、空载电流、轮速和故障。",
+      "method_en": "Use a current-limited supply and increase duty in small steps while recording direction, no-load current, wheel speed and faults.",
+      "required_metrics": {
+        "left_no_load_current_a": {"unit": "A"},
+        "right_no_load_current_a": {"unit": "A"},
+        "wheel_direction_correct": {"unit": "bool", "equals": true},
+        "fault_count": {"unit": "count", "equals": 0}
+      },
+      "minimum_evidence_files": 2,
+      "accepted_evidence_kinds": ["telemetry_csv", "video", "measurement_sheet"]
+    },
+    {
+      "id": "D02",
+      "category": "drive",
+      "mandatory": true,
+      "name_cn": "受控堵转与硬件切断",
+      "name_en": "Controlled stall and hardware cutoff",
+      "method_cn": "在轮子架空、限流和机械约束下短时制造堵转，验证设定电流和EN切断。",
+      "method_en": "With raised wheels, current limiting and a controlled restraint, create a brief stall and verify current threshold and EN cutoff.",
+      "required_metrics": {
+        "trip_time_ms": {"unit": "ms", "max": 300.0},
+        "peak_current_a": {"unit": "A"},
+        "en_low_after_trip": {"unit": "bool", "equals": true},
+        "motor_stationary": {"unit": "bool", "equals": true}
+      },
+      "minimum_evidence_files": 2,
+      "accepted_evidence_kinds": ["telemetry_csv", "oscilloscope_export", "video"]
+    },
+    {
+      "id": "T01",
+      "category": "thermal",
+      "mandatory": true,
+      "name_cn": "开壳连续热试验",
+      "name_en": "Open-shell continuous thermal test",
+      "method_cn": "开壳、轮子架空运行至少20分钟，记录电机、驱动器、电池和环境温度。",
+      "method_en": "Run with shell open and wheels raised for at least 20 minutes while logging motor, driver, battery and ambient temperature.",
+      "required_metrics": {
+        "duration_min": {"unit": "min", "min": 20.0},
+        "motor_peak_c": {"unit": "degC", "max": 80.0},
+        "driver_peak_c": {"unit": "degC", "max": 80.0},
+        "battery_peak_c": {"unit": "degC", "max": 50.0},
+        "ambient_c": {"unit": "degC", "max": 35.0}
+      },
+      "minimum_evidence_files": 2,
+      "accepted_evidence_kinds": ["telemetry_csv", "thermal_export", "video"]
+    },
+    {
+      "id": "T02",
+      "category": "thermal",
+      "mandatory": true,
+      "name_cn": "封壳热平衡试验",
+      "name_en": "Sealed-shell thermal equilibrium test",
+      "method_cn": "T01通过后封壳低速运行至少15分钟，记录壳内、电机、驱动器和电池峰值。",
+      "method_en": "After T01 passes, run sealed at low speed for at least 15 minutes and record internal, motor, driver and battery peaks.",
+      "required_metrics": {
+        "duration_min": {"unit": "min", "min": 15.0},
+        "motor_peak_c": {"unit": "degC", "max": 80.0},
+        "driver_peak_c": {"unit": "degC", "max": 80.0},
+        "battery_peak_c": {"unit": "degC", "max": 50.0},
+        "shell_internal_peak_c": {"unit": "degC", "max": 70.0}
+      },
+      "minimum_evidence_files": 2,
+      "accepted_evidence_kinds": ["telemetry_csv", "thermal_export", "video"]
+    },
+    {
+      "id": "G01",
+      "category": "ground",
+      "mandatory": true,
+      "name_cn": "5米低速直行",
+      "name_en": "Five-metre low-speed straight run",
+      "method_cn": "软围栏内以0.10 m/s在水平地面行驶5 m，记录横向误差和壳内打滑。",
+      "method_en": "Inside soft barriers, travel 5 m at 0.10 m/s on level ground and measure lateral error and internal slip.",
+      "required_metrics": {
+        "distance_m": {"unit": "m", "min": 5.0},
+        "mean_speed_mps": {"unit": "m/s", "min": 0.08, "max": 0.12},
+        "lateral_error_m": {"unit": "m", "max": 0.15},
+        "internal_slip_events": {"unit": "count", "equals": 0}
+      },
+      "minimum_evidence_files": 2,
+      "accepted_evidence_kinds": ["telemetry_csv", "tracking_export", "video"]
+    },
+    {
+      "id": "G02",
+      "category": "ground",
+      "mandatory": true,
+      "name_cn": "0.8米半径动态转弯",
+      "name_en": "0.8-m-radius dynamic turn",
+      "method_cn": "在水平防护区以0.30 m/s完成0.8 m目标半径转弯，比较跟踪轨迹与IMU/编码器。",
+      "method_en": "In a protected level area, turn at 0.30 m/s with a target radius of 0.8 m and compare tracking with IMU/encoder data.",
+      "required_metrics": {
+        "mean_speed_mps": {"unit": "m/s", "min": 0.25, "max": 0.35},
+        "measured_radius_m": {"unit": "m", "min": 0.70, "max": 0.90},
+        "yaw_error_deg": {"unit": "deg", "max": 10.0},
+        "internal_slip_events": {"unit": "count", "equals": 0}
+      },
+      "minimum_evidence_files": 2,
+      "accepted_evidence_kinds": ["telemetry_csv", "tracking_export", "video"]
+    },
+    {
+      "id": "G03",
+      "category": "ground",
+      "mandatory": true,
+      "name_cn": "0.30米每秒急停距离",
+      "name_en": "Emergency-stop distance from 0.30 m/s",
+      "method_cn": "软围栏和系留急停下从稳定0.30 m/s触发急停，测量接触器释放与停止距离。",
+      "method_en": "With soft barriers and tether E-stop, trigger from a stable 0.30 m/s and measure contactor release and stopping distance.",
+      "required_metrics": {
+        "initial_speed_mps": {"unit": "m/s", "min": 0.28, "max": 0.32},
+        "stop_distance_m": {"unit": "m", "max": 0.50},
+        "contactor_release_ms": {"unit": "ms", "max": 100.0},
+        "soft_barriers_present": {"unit": "bool", "equals": true}
+      },
+      "minimum_evidence_files": 2,
+      "accepted_evidence_kinds": ["telemetry_csv", "tracking_export", "video", "oscilloscope_export"]
+    },
+    {
+      "id": "G04",
+      "category": "ground",
+      "mandatory": true,
+      "name_cn": "3度带电坡道运行",
+      "name_en": "Powered operation on a three-degree ramp",
+      "method_cn": "仅在G01–G03通过后，以0.20 m/s²加速和约0.30 m/s速度完成3°仪器坡道运行；不测试断电驻坡。",
+      "method_en": "Only after G01–G03 pass, run the instrumented 3° ramp at 0.20 m/s² and about 0.30 m/s; do not claim unpowered holding.",
+      "required_metrics": {
+        "measured_grade_deg": {"unit": "deg", "min": 2.8, "max": 3.2},
+        "mean_accel_mps2": {"unit": "m/s2", "min": 0.15, "max": 0.25},
+        "mean_speed_mps": {"unit": "m/s", "min": 0.25, "max": 0.35},
+        "internal_slip_events": {"unit": "count", "equals": 0}
+      },
+      "minimum_evidence_files": 2,
+      "accepted_evidence_kinds": ["telemetry_csv", "inclinometer_export", "tracking_export", "video"]
+    },
+    {
+      "id": "F01",
+      "category": "fault",
+      "mandatory": true,
+      "name_cn": "遥控或指令丢失停车",
+      "name_en": "Lost-command safe stop",
+      "method_cn": "低速行驶中停止发送V帧，测量EN撤销时间和0.8秒后的残余速度。",
+      "method_en": "While moving slowly, stop V frames and measure EN removal plus residual speed after 0.8 seconds.",
+      "required_metrics": {
+        "command_to_en_low_ms": {"unit": "ms", "max": 150.0},
+        "speed_after_0_8s_mps": {"unit": "m/s", "max": 0.02},
+        "manual_reset_required": {"unit": "bool", "equals": true}
+      },
+      "minimum_evidence_files": 2,
+      "accepted_evidence_kinds": ["telemetry_csv", "oscilloscope_export", "video"]
+    },
+    {
+      "id": "F02",
+      "category": "fault",
+      "mandatory": true,
+      "name_cn": "IMU、编码器和电流传感器失效停车",
+      "name_en": "IMU, encoder and current-sensor failure stops",
+      "method_cn": "逐项断开或冻结传感器，测量故障锁存和EN撤销；每项测试后人工复位。",
+      "method_en": "Disconnect or freeze each sensor in turn, timing fault latch and EN removal, with manual reset after every test.",
+      "required_metrics": {
+        "imu_stale_to_en_low_ms": {"unit": "ms", "max": 50.0},
+        "current_stale_to_en_low_ms": {"unit": "ms", "max": 30.0},
+        "encoder_no_response_to_en_low_ms": {"unit": "ms", "max": 800.0},
+        "all_faults_latched": {"unit": "bool", "equals": true}
+      },
+      "minimum_evidence_files": 2,
+      "accepted_evidence_kinds": ["telemetry_csv", "oscilloscope_export", "video"]
+    },
+    {
+      "id": "P01",
+      "category": "power",
+      "mandatory": true,
+      "name_cn": "减速与急停再生母线峰值",
+      "name_en": "Regenerative bus peak during deceleration and E-stop",
+      "method_cn": "在不同荷电状态下执行受控减速和急停，测量电池母线峰值并确认BMS/驱动器无过压。",
+      "method_en": "At several states of charge, perform controlled deceleration and E-stop while measuring bus peak and checking BMS/driver over-voltage.",
+      "required_metrics": {
+        "maximum_bus_v": {"unit": "V", "max": 16.8},
+        "bms_overvoltage_events": {"unit": "count", "equals": 0},
+        "driver_overvoltage_events": {"unit": "count", "equals": 0}
+      },
+      "minimum_evidence_files": 2,
+      "accepted_evidence_kinds": ["oscilloscope_export", "telemetry_csv", "measurement_sheet"]
+    },
+    {
+      "id": "S01",
+      "category": "service",
+      "mandatory": true,
+      "name_cn": "20次开合与维护连接",
+      "name_en": "Twenty open/close and service-connector cycles",
+      "method_cn": "重复断电、断连接器、开壳、检查、闭壳和复位20次。",
+      "method_en": "Repeat power-off, disconnect, open, inspect, close and reset for twenty cycles.",
+      "required_metrics": {
+        "completed_cycles": {"unit": "count", "min": 20},
+        "harness_damage_count": {"unit": "count", "equals": 0},
+        "connector_failure_count": {"unit": "count", "equals": 0},
+        "latch_position_shift_mm": {"unit": "mm", "max": 1.0}
+      },
+      "minimum_evidence_files": 2,
+      "accepted_evidence_kinds": ["photo", "video", "measurement_sheet"]
+    },
+    {
+      "id": "L01",
+      "category": "final_run",
+      "mandatory": true,
+      "name_cn": "封闭区域10分钟低速综合运行",
+      "name_en": "Ten-minute low-speed integrated run in a closed area",
+      "method_cn": "全部前置门通过后，在软围栏内装头运行10分钟，包含直行、转弯、停车和重新起步。",
+      "method_en": "After every preceding gate passes, run with the head for ten minutes inside soft barriers, including straight travel, turns, stops and restarts.",
+      "required_metrics": {
+        "duration_min": {"unit": "min", "min": 10.0},
+        "maximum_speed_mps": {"unit": "m/s", "max": 0.30},
+        "head_separation_count": {"unit": "count", "equals": 0},
+        "uncommanded_motion_count": {"unit": "count", "equals": 0},
+        "soft_barriers_present": {"unit": "bool", "equals": true}
+      },
+      "minimum_evidence_files": 3,
+      "accepted_evidence_kinds": ["telemetry_csv", "tracking_export", "video", "thermal_export"]
+    }
+  ]
+}

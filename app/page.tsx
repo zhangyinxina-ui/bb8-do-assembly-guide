@@ -265,6 +265,7 @@ export default function Home() {
               电子托盘另有双INA226、双2 mΩ四线分流器、6个M2.5支柱和独立ALERT→EN门的实体包络；真实带电试验仍为NOT_RUN。
               阶段14新增120 × 70 × 24 mm、名义1.50 kg的密封低位钢配重盒，并用17组质量账本替代未经证明的110 mm质心假设。
               阶段15再加入左右电机驱动器、散热器、主保险丝、常开接触器、双通道常闭急停、安全继电器、维护断电和系留急停插口；30个新对象全部随内车运动，器件型号与电流额定仍保持未冻结。
+              阶段16不伪造新的几何完成度，而是把19项真机调试门、真实文件哈希和测量限值接到同一工程证据链；当前为0/19通过。
             </p>
             <div className="doc-actions">
               <a className="button" href={asset("/downloads/BB8_BOM.md")} download>
@@ -306,6 +307,12 @@ export default function Home() {
               <a className="button" href={asset("/downloads/BB8_stage15_drive_power_dynamic_stability.md")} download>
                 Download Stage 15 English report
               </a>
+              <a className="button" href={asset("/downloads/BB8_阶段16_真机调试证据门.md")} download>
+                下载阶段 16 真机调试证据门
+              </a>
+              <a className="button" href={asset("/downloads/BB8_stage16_physical_commissioning_evidence_gate.md")} download>
+                Download Stage 16 English report
+              </a>
               <a className="button" href={asset("/model/BB8_three_view_dimension_sheet.png")} download>
                 下载最新三视图尺寸图
               </a>
@@ -342,7 +349,7 @@ export default function Home() {
         <div className="section-head">
           <span>03 / MOTION CONTROLLER</span>
           <h2>不只会动，<br />还必须会停。</h2>
-          <p>控制核心、双正交编码器、MPU6050 和双 INA226 适配均已通过 ESP32-S3 编译：轮速/偏航闭环、电流新鲜度、过流与堵转保护已接入同一控制循环。阶段15把主保险丝—常开接触器—双通道急停—左右驱动EN落实为实体结构合同；器件选型、实体接线、限值标定和带电台架仍是落地门槛。</p>
+          <p>控制核心、双正交编码器、MPU6050 和双 INA226 适配均已通过 ESP32-S3 编译：轮速/偏航闭环、电流新鲜度、过流与堵转保护已接入同一控制循环。阶段15把主保险丝—常开接触器—双通道急停—左右驱动EN落实为实体结构合同；阶段16把每200 ms真机遥测固定为可解析字段，并要求测量文件和SHA-256才能形成PASS。</p>
         </div>
         <div className="control-grid">
           <article><span>01</span><h3>200 Hz 闭环速度</h3><p>左右编码器轮速进入 PI，IMU 偏航率修正差动目标；直线巡航 RMS 误差 0.00772 m/s。</p></article>
@@ -351,6 +358,7 @@ export default function Home() {
           <article><span>04</span><h3>行驶中失效停车</h3><p>0.20 m/s 重新起步后注入 IMU 过期，PWM 同周期归零，0.8 s 后速度 0.00224 m/s。</p></article>
           <article><span>05</span><h3>传感器默认拒动</h3><p>编码器 CPR 默认为0且每次上电必须显式配置；MPU6050 完成400个静止样本前，驱动EN保持关闭。</p></article>
           <article><span>06</span><h3>硬件急停去能</h3><p>双通道常闭回路驱动安全继电器与常开接触器；首次试验必须接有线系留急停，无线不能单独作为安全链。</p></article>
+          <article><span>07</span><h3>真机证据不允许空PASS</h3><p>19项记录必须同时有实测数值、真实相对路径和匹配SHA-256；合成数据默认被审计器拒绝。</p></article>
         </div>
         <div className="firmware-downloads">
           <a href={asset("/downloads/BB8_controller_core.zip")} download>下载 C++ 控制核心</a>
@@ -365,6 +373,11 @@ export default function Home() {
           <a href={asset("/downloads/BB8_stage12_power_safety.md")} download>下载阶段 12 电流保护</a>
           <a href={asset("/downloads/power_safety_contract.json")} download>下载电流保护合同</a>
           <a href={asset("/downloads/power_safety_replay.csv")} download>下载 5 ms 故障回放</a>
+          <a href={asset("/downloads/commissioning_test_plan.json")} download>下载19项真机测试矩阵</a>
+          <a href={asset("/downloads/commissioning_evidence.json")} download>下载实物证据填写模板</a>
+          <a href={asset("/downloads/commissioning_results.json")} download>下载当前验收状态</a>
+          <a href={asset("/downloads/parse_bb8_telemetry.py")} download>下载真机遥测解析器</a>
+          <a href={asset("/downloads/verify_commissioning_evidence.py")} download>下载证据审计器</a>
         </div>
       </section>
 
@@ -372,7 +385,7 @@ export default function Home() {
         <div className="section-head">
           <span>04 / PHYSICS GATE</span>
           <h2>先算清楚，<br />再让它落地跑。</h2>
-          <p>阶段14以17组质量账本替代110 mm旧假设；阶段15继续把斜坡重力、球壳转动惯量、轮壳附着、差速转弯、合成倾角和磁头冲击放入同一个可重跑包络。当前 PASS 只针对可追溯假设参数，不替代实物称重与台架。</p>
+          <p>阶段14以17组质量账本替代110 mm旧假设；阶段15继续把斜坡重力、球壳转动惯量、轮壳附着、差速转弯、合成倾角和磁头冲击放入同一个可重跑包络。阶段16将这些解析门转换为19项真机测量合同；当前 PASS 只针对可追溯假设参数，物理状态仍是HOLD。</p>
         </div>
         <div className="control-grid">
           <article><span>01</span><h3>8.463 kg 名义质量</h3><p>17组输入范围为6.375–10.628 kg；所有分组在实物称重前均保持NOT_RUN。</p></article>
@@ -381,6 +394,8 @@ export default function Home() {
           <article><span>04</span><h3>2.07× 连续扭矩裕量</h3><p>3°设计点刚超过2×门槛；0加速度的解析坡度上限约4.50°，不是实物认证。</p></article>
           <article><span>05</span><h3>4.22°合成倾角</h3><p>同时包含上坡、纵向加速与转弯侧向加速度，低于12°设计合同。</p></article>
           <article><span>06</span><h3>断电坡道不驻车</h3><p>当前没有机械驻车制动，断电后不能在坡道保持位置，必须用平地、支架或止轮措施。</p></article>
+          <article><span>07</span><h3>19项强制真机门</h3><p>覆盖称重/质心、40 N磁头、电气去能、标定、堵转、热、地面、坡道、再生和维护。</p></article>
+          <article><span>08</span><h3>当前0 / 19</h3><p>审计结果为HOLD_PHYSICAL_TESTS_NOT_RUN；没有真实硬件文件时，--require-pass必然失败。</p></article>
         </div>
         <div className="firmware-downloads">
           <a href={asset("/downloads/BB8_physics_validation.md")} download>下载物理验证报告</a>
@@ -396,6 +411,8 @@ export default function Home() {
           <a href={asset("/downloads/stability_envelope_input.json")} download>下载稳定性输入</a>
           <a href={asset("/downloads/stability_envelope_results.json")} download>下载稳定性结果</a>
           <a href={asset("/downloads/stability_envelope_sweep.csv")} download>下载坡度/加速度扫描</a>
+          <a href={asset("/downloads/BB8_阶段16_真机调试证据门.md")} download>下载阶段16中文报告</a>
+          <a href={asset("/downloads/BB8_stage16_physical_commissioning_evidence_gate.md")} download>下载阶段16英文报告</a>
         </div>
       </section>
 
@@ -476,8 +493,8 @@ export default function Home() {
       <section className="section build" id="build">
         <div className="section-head">
           <span>05 / EXECUTABLE ASSEMBLY</span>
-          <h2>24 个可验收步骤，从模型到可控机器</h2>
-          <p>进度保存在本机浏览器。每一步均给出零件、工具、动作与验收门槛；实物尺寸和安全限值仍须用采购件复测。</p>
+          <h2>24 个装配步骤 + 19 个真机门，从模型到可控机器</h2>
+          <p>装配进度保存在本机浏览器。每一步均给出零件、工具、动作与验收门槛；最终能否运行由阶段16真实证据矩阵决定，实物尺寸和安全限值仍须用采购件复测。</p>
         </div>
         <div className="progress-summary" aria-label="装配进度">
           <div><span>当前位置</span><b>{step + 1} / {assemblySteps.length}</b></div>

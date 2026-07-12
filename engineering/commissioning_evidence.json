@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "stage": 16,
+  "project": "BB8_DO_Assembly_Guide",
+  "hardware_serial": "UNASSIGNED",
+  "operator": "UNASSIGNED",
+  "test_date": "NOT_RUN",
+  "physical_origin": "REAL_HARDWARE_REQUIRED",
+  "physical_test_status": "NOT_RUN",
+  "records": [
+    {"id": "M01", "status": "NOT_RUN", "run_id": "UNASSIGNED", "metrics": {}, "evidence": [], "notes": ""},
+    {"id": "H01", "status": "NOT_RUN", "run_id": "UNASSIGNED", "metrics": {}, "evidence": [], "notes": ""},
+    {"id": "E01", "status": "NOT_RUN", "run_id": "UNASSIGNED", "metrics": {}, "evidence": [], "notes": ""},
+    {"id": "E02", "status": "NOT_RUN", "run_id": "UNASSIGNED", "metrics": {}, "evidence": [], "notes": ""},
+    {"id": "E03", "status": "NOT_RUN", "run_id": "UNASSIGNED", "metrics": {}, "evidence": [], "notes": ""},
+    {"id": "C01", "status": "NOT_RUN", "run_id": "UNASSIGNED", "metrics": {}, "evidence": [], "notes": ""},
+    {"id": "D01", "status": "NOT_RUN", "run_id": "UNASSIGNED", "metrics": {}, "evidence": [], "notes": ""},
+    {"id": "D02", "status": "NOT_RUN", "run_id": "UNASSIGNED", "metrics": {}, "evidence": [], "notes": ""},
+    {"id": "T01", "status": "NOT_RUN", "run_id": "UNASSIGNED", "metrics": {}, "evidence": [], "notes": ""},
+    {"id": "T02", "status": "NOT_RUN", "run_id": "UNASSIGNED", "metrics": {}, "evidence": [], "notes": ""},
+    {"id": "G01", "status": "NOT_RUN", "run_id": "UNASSIGNED", "metrics": {}, "evidence": [], "notes": ""},
+    {"id": "G02", "status": "NOT_RUN", "run_id": "UNASSIGNED", "metrics": {}, "evidence": [], "notes": ""},
+    {"id": "G03", "status": "NOT_RUN", "run_id": "UNASSIGNED", "metrics": {}, "evidence": [], "notes": ""},
+    {"id": "G04", "status": "NOT_RUN", "run_id": "UNASSIGNED", "metrics": {}, "evidence": [], "notes": ""},
+    {"id": "F01", "status": "NOT_RUN", "run_id": "UNASSIGNED", "metrics": {}, "evidence": [], "notes": ""},
+    {"id": "F02", "status": "NOT_RUN", "run_id": "UNASSIGNED", "metrics": {}, "evidence": [], "notes": ""},
+    {"id": "P01", "status": "NOT_RUN", "run_id": "UNASSIGNED", "metrics": {}, "evidence": [], "notes": ""},
+    {"id": "S01", "status": "NOT_RUN", "run_id": "UNASSIGNED", "metrics": {}, "evidence": [], "notes": ""},
+    {"id": "L01", "status": "NOT_RUN", "run_id": "UNASSIGNED", "metrics": {}, "evidence": [], "notes": ""}
+  ]
+}

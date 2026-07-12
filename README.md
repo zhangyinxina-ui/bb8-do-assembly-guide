@@ -18,7 +18,8 @@
 - ESP32-S3 已编译双正交编码器与 MPU6050 适配；CPR默认为0、静止标定未完成时保持拒动。
 - 双 INA226 电流适配、开漏 ALERT、显式限值、过流/堵转回放与11类锁存故障已编译验证；对应板卡、Kelvin分流和独立EN门已进入内部模型，实体测试仍为 `NOT_RUN`。
 - 阶段15新增左右电机驱动包络、双散热器、主保险丝、常开接触器、双通道常闭急停、安全继电器、维护断电与系留急停插口；3°动态坡道解析点为0.289 N·m/电机、2.07×连续扭矩裕量和4.22°合成倾角。器件型号与实体测试仍未冻结。
-- 24 步可验收装配指南，进度只保存在访问者自己的浏览器。
+- 阶段16新增19项强制真机调试门、固定字段ESP32遥测解析器和带文件SHA-256的证据审计；当前结果为 `HOLD_PHYSICAL_TESTS_NOT_RUN`，0/19通过。
+- 24 步装配指南与19项真机门；浏览器进度不能替代真机证据。
 
 这些拆分尺寸和外观细节来自公开画面、社区摄影测量和制作者资料，不是 Lucasfilm 官方 CAD，也不应宣称逐毫米复制电影道具。
 
@@ -29,11 +30,11 @@
 | `blender/` | 参数化生成器、主工程、阶段检查点、审计和导出脚本 |
 | `engineering/` | 物理输入、计算结果、D-O 清单和采购门控 |
 | `firmware/` | BB-8 C++ 控制核心与 ESP32-S3 适配草案 |
-| `docs/` | 从阶段 1 到阶段 15 的设计、验证和续接记录 |
+| `docs/` | 从阶段 1 到阶段 16 的设计、验证和续接记录 |
 | `app/` | Vinext/Next 开发网站 |
 | `github-pages-src/` | GitHub Pages 纯静态 React 入口 |
 | `public/` | 网站公开的图像、GLB、STL、CSV 和说明文件 |
-| `tools/` | 运动学、物理、磁耦合、D-O 与 Pages 审计工具 |
+| `tools/` | 运动学、物理、磁耦合、真机证据、D-O 与 Pages 审计工具 |
 
 ## 本地运行
 
@@ -68,6 +69,7 @@ python3 tools/verify_motor_selection.py
 python3 tools/verify_magnetic_coupling.py
 python3 tools/verify_mass_properties.py
 python3 tools/verify_stability_envelope.py
+python3 tools/verify_commissioning_evidence.py
 python3 tools/audit_do_resources.py
 sh tools/run_closed_loop_sim.sh
 ```
@@ -83,6 +85,8 @@ sh tools/run_closed_loop_sim.sh
 阶段 14 增加可拆卸密封低位配重盒，并以17组质量账本、全部最小/最大角点和刚体惯量替代旧110 mm假设，见 [中文验证报告](docs/BB8_阶段14_质量质心与惯量验证.md)、[English validation report](docs/BB8_stage14_mass_cg_inertia_validation.md) 和 [当前内部装配清单](engineering/internal_assembly_manifest.csv)。
 
 阶段 15 把驱动器与硬件去能链落实为30个新内部对象，并新增斜坡、牵引、转弯、倾角和磁头合载荷扫描，见 [中文阶段15报告](docs/BB8_阶段15_驱动电源与动态稳定性.md)、[English Stage 15 report](docs/BB8_stage15_drive_power_dynamic_stability.md) 和 [147件制造清单](engineering/internal_assembly_manifest.csv)。未提供机械驻车制动，因此断电坡道保持明确为不支持。
+
+阶段 16 不新增 `.blend` 副本，而是把真实硬件运行转换为19项可审计门：固定字段串口遥测、测量值、证据文件和SHA-256必须同时存在，空填PASS会被拒绝。见 [中文阶段16报告](docs/BB8_阶段16_真机调试证据门.md)、[English Stage 16 report](docs/BB8_stage16_physical_commissioning_evidence_gate.md)、[测试矩阵](engineering/commissioning_test_plan.json)、[证据模板](engineering/commissioning_evidence.json) 和 [当前HOLD结果](engineering/commissioning_results.json)。
 
 ## D-O 公开资源边界
 

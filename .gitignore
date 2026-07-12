@@ -49,6 +49,7 @@ next-env.d.ts
 # Rebuildable firmware toolchains and compiler outputs
 /blender/__pycache__/
 /tools/__pycache__/
+**/__pycache__/
 /engineering/arduino-data/
 /engineering/arduino-downloads/
 /engineering/arduino-user/
