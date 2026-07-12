@@ -8,6 +8,8 @@ enum class Fault : std::uint8_t {
   None,
   EmergencyStop,
   RemoteLost,
+  MotionSensorStale,
+  MotionSensorDisagreement,
   UnderVoltage,
   OverTemperature,
   ExcessiveTilt,
@@ -24,6 +26,11 @@ struct Sensors {
   float battery_v{0.0F};
   float motor_temp_c{25.0F};
   float chassis_tilt_deg{0.0F};
+  bool imu_fresh{false};
+  bool encoders_fresh{false};
+  float left_wheel_mps{0.0F};
+  float right_wheel_mps{0.0F};
+  float yaw_rate_radps{0.0F};
 };
 
 struct Output {
@@ -31,6 +38,8 @@ struct Output {
   float right_normalized{0.0F};
   float limited_linear_mps{0.0F};
   float limited_yaw_radps{0.0F};
+  float left_target_mps{0.0F};
+  float right_target_mps{0.0F};
   float power_limit{0.0F};
   bool enabled{false};
   Fault fault{Fault::None};
@@ -47,6 +56,12 @@ struct Config {
   float maximum_motor_voltage_v{12.0F};
   float maximum_motor_temp_c{75.0F};
   float maximum_tilt_deg{30.0F};
+  bool require_motion_feedback{false};
+  float wheel_speed_kp{0.35F};
+  float wheel_speed_ki_per_s{0.80F};
+  float yaw_rate_kp_m_per_rad{0.08F};
+  float maximum_yaw_correction_mps{0.10F};
+  float maximum_yaw_sensor_disagreement_radps{0.80F};
 };
 
 class Controller {
@@ -65,6 +80,8 @@ class Controller {
   Fault latched_fault_{Fault::None};
   float linear_mps_{0.0F};
   float yaw_radps_{0.0F};
+  float left_integral_{0.0F};
+  float right_integral_{0.0F};
 };
 
 const char* faultName(Fault fault);

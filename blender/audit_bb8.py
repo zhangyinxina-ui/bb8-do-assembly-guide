@@ -234,6 +234,6 @@ elif sheet_path.exists():
 if errors:
     print("FAIL", " | ".join(errors))
     raise SystemExit(1)
-print(f"PASS reopenable_blend stage={scene['engineering_stage']} objects={len(bpy.data.objects)} internal={len(internals)} "
+print(f"PASS reopenable_blend engineering_stage={scene['engineering_stage']} objects={len(bpy.data.objects)} internal={len(internals)} "
       f"panels=6 triangles=8 rings=3/2/1 body={scene['body_diameter_mm']}mm "
       f"head={scene['head_diameter_mm']}mm height={scene['untopped_height_mm']}mm")

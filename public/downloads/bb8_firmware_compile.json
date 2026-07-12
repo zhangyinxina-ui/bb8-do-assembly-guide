@@ -1,0 +1,15 @@
+{
+  "status": "PASS_COMPILE_ONLY",
+  "stage": 10,
+  "target": "esp32:esp32:esp32s3",
+  "arduino_esp32_core": "3.3.10",
+  "program_bytes": 338051,
+  "program_capacity_bytes": 1310720,
+  "program_percent": 25,
+  "global_bytes": 22492,
+  "global_capacity_bytes": 327680,
+  "global_percent": 6,
+  "motion_feedback_required": true,
+  "hardware_adapter_state": "imu_and_encoder_freshness_forced_false_until_real_adapters_exist",
+  "verified_at": "2026-07-12T19:04:00+08:00"
+}

@@ -76,7 +76,12 @@ test("server-renders the BB-8 and D-O build guide", async () => {
   assert.match(html, /12\.55 V/);
   assert.match(html, /转弯合载荷 2\.31×/);
   assert.match(html, /differential_turn\.csv/);
-  assert.match(html, /5 类故障锁存/);
+  assert.match(html, /7 类故障锁存/);
+  assert.match(html, /BB8_closed_loop_simulation\.md/);
+  assert.match(html, /closed_loop_telemetry\.csv/);
+  assert.match(html, /bb8_firmware_compile\.json/);
+  assert.match(html, /0\.00772 m\/s/);
+  assert.match(html, /91\.20° 动态转弯/);
   assert.match(html, /24 个可验收步骤/);
   assert.match(html, /冻结 1:1 尺寸基准/);
   assert.match(html, /BB8_stage8_exterior_topology\.md/);

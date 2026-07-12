@@ -4,6 +4,7 @@
 #include "controller_core.h"
 
 using bb8::Command;
+using bb8::Config;
 using bb8::Controller;
 using bb8::Output;
 using bb8::Sensors;
@@ -28,7 +29,13 @@ constexpr uint32_t kControlPeriodUs = 5000;   // 200 Hz.
 constexpr uint32_t kRemoteTimeoutMs = 100;
 constexpr float kBatteryDividerRatio = 5.55556F;  // 82k high / 18k low.
 
-Controller controller;
+Config groundSafeConfig() {
+  Config config;
+  config.require_motion_feedback = true;
+  return config;
+}
+
+Controller controller(groundSafeConfig());
 Command command;
 uint32_t last_command_ms = 0;
 uint32_t last_control_us = 0;
@@ -90,6 +97,8 @@ void readBenchCommand() {
     sensors.battery_v = readBatteryV();
     sensors.motor_temp_c = max(readNtcC(pins::kLeftTempAdc), readNtcC(pins::kRightTempAdc));
     sensors.chassis_tilt_deg = 0.0F;  // Replace with fresh IMU value before ground test.
+    sensors.imu_fresh = false;
+    sensors.encoders_fresh = false;
     Serial.println(controller.resetFault(sensors) ? "RESET_OK" : "RESET_REJECTED");
   }
   while (Serial.available() && Serial.read() != '\n') {}
@@ -123,7 +132,14 @@ void loop() {
   sensors.emergency_stop = digitalRead(pins::kEmergencyStop) != LOW;
   sensors.battery_v = readBatteryV();
   sensors.motor_temp_c = max(readNtcC(pins::kLeftTempAdc), readNtcC(pins::kRightTempAdc));
-  sensors.chassis_tilt_deg = 0.0F;  // Intentionally blocks ground approval until IMU adapter lands.
+  sensors.chassis_tilt_deg = 0.0F;
+  // These remain false until timestamped IMU and quadrature-encoder adapters land.
+  // Ground-safe configuration therefore latches motion_sensor_stale and keeps EN low.
+  sensors.imu_fresh = false;
+  sensors.encoders_fresh = false;
+  sensors.left_wheel_mps = 0.0F;
+  sensors.right_wheel_mps = 0.0F;
+  sensors.yaw_rate_radps = 0.0F;
 
   const Output output = controller.update(dt_s, command, sensors);
   applyOutput(output);

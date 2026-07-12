@@ -28,6 +28,9 @@ for (const required of [
   "model/BB8_1to1_kinematic.glb",
   "downloads/DO_self_build_route.md",
   "downloads/do_self_build_bom.csv",
+  "downloads/BB8_closed_loop_simulation.md",
+  "downloads/closed_loop_telemetry.csv",
+  "downloads/bb8_firmware_compile.json",
   ".nojekyll",
 ]) {
   assert.equal((await stat(path.join(output, required))).isFile(), true, required);

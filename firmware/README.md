@@ -8,10 +8,12 @@
 
 - `v / ω` 到左右轮速差速混控
 - 线速度和角速度斜坡限制
+- 编码器左右轮速 PI 闭环与 IMU 偏航率差动修正
+- IMU/编码器新鲜度和两类偏航测量一致性检查
 - 左右输出按最大轮速同比例饱和
 - 13.2–14.3 V 之间连续功率降额，避免低电量峰值电流触发压降停机
 - 12 V 电机母线归一化：4S 满电 16.8 V 时占空比上限 71.4%，避免电机过压
-- 急停、遥控丢失、欠压、过温、过度倾斜五类锁存故障
+- 急停、遥控丢失、运动传感器过期、IMU/编码器不一致、欠压、过温、过度倾斜七类锁存故障
 - 只有当所有传感器恢复安全后才允许手动复位
 
 ## 本地验证
@@ -21,11 +23,14 @@ clang++ -std=c++20 -Wall -Wextra -Werror \
   firmware/controller_core.cpp tests/controller_core_test.cpp \
   -o build/controller_core_test
 ./build/controller_core_test
+sh tools/run_closed_loop_sim.sh
 ```
 
 预期输出：
 
-`PASS controller_core: ramp, differential mix, saturation, and 5 fail-safe paths`
+`PASS controller_core: closed-loop wheel/IMU feedback, derating, saturation, and 7 fail-safe paths`
+
+闭环仿真还会生成 `engineering/closed_loop_telemetry.csv`；当前确定性场景包含直线巡航、约 90° 转弯、重新起步和行驶中 IMU 数据过期。它验证控制逻辑和故障路径，不等于真机地面验证。
 
 ## ESP32 硬件适配合同
 
@@ -35,7 +40,7 @@ clang++ -std=c++20 -Wall -Wextra -Werror \
 2. 从独立常闭急停回路读取 `emergency_stop`；不得只用软件按钮。
 3. 电池电压必须经电阻分压和 ADC 标定；默认 4S 欠压门槛 13.2 V。
 4. 电机温度传感器脱落必须视为故障，不能当作低温。
-5. IMU 数据过期必须视为过度倾斜/不可运行。
+5. IMU 与编码器数据必须带时间戳；任一过期或二者偏航率差异超过门槛都必须锁存停机。
 6. 调用 `Controller::update(0.005F, command, sensors)`。
 7. `enabled=false` 时必须在同一循环内拉低驱动器 EN 硬件引脚，而不只把 PWM 设为零。
 
@@ -51,7 +56,7 @@ arduino-cli compile \
   firmware/esp32_bb8
 ```
 
-编译结果：程序 337627 bytes（25%），全局变量 22460 bytes（6%）。这只证明源码与当前官方工具链兼容，尚未上传开发板，也未进行带电电机试验。
+阶段 10 编译结果：程序 338051 bytes（25%），全局变量 22492 bytes（6%）。这只证明源码与当前官方工具链兼容，尚未上传开发板，也未进行带电电机试验。
 
 台架串口协议：以至少 10 Hz 发送 `V <线速度m/s> <角速度rad/s>`；发送 `R` 请求在全部传感器安全时清除故障锁存。超过 100 ms 未收到有效速度帧会停机。
 
@@ -73,7 +78,7 @@ arduino-cli compile \
 
 ## 真机前未完成的门槛
 
-- 当前 IMU 输入仍为明确的占位值；接入实物 IMU、数据时效检查和姿态估计前，不得落地运行。
-- 确定具体电机、编码器分辨率、驱动器和电池后，必须补齐闭环编码器速度控制与电流限制。
+- 闭环算法与仿真已实现，但当前 ESP32 适配器仍把 `imu_fresh`、`encoders_fresh` 置为 `false`，因此硬件 EN 会保持关闭；接入实物驱动前不得绕过该门槛。
+- 确定具体编码器分辨率后，需要实现 PCNT/中断采样、时间戳、方向校验和低速滤波；当前仍缺少驱动器电流采样与硬限流验证。
 - 必须在轮子架空时标定方向、比例和电流上限。
 - 必须有物理急停、保险丝、独立驱动 EN 和围栏后才可落地。
