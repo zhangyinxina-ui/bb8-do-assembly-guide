@@ -1,0 +1,12 @@
+board_manager:
+  additional_urls: []
+directories:
+  data: ./engineering/arduino-data
+  downloads: ./engineering/arduino-downloads
+  user: ./engineering/arduino-user
+library:
+  enable_unsafe_install: false
+logging:
+  level: info
+metrics:
+  enabled: false

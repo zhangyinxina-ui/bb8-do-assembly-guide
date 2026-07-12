@@ -1,0 +1,81 @@
+{
+  "audit_date": "2026-07-12",
+  "repository": {
+    "url": "https://github.com/PrintedDroid/D-O-Printed-Droid.git",
+    "commit": "e90aacdbe26a62fd4f0229d5504a3f2f3c409055",
+    "commit_date": "2026-06-08T18:36:38+02:00",
+    "branch": "main",
+    "working_tree_clean": true
+  },
+  "license": {
+    "root_license_file_present": false,
+    "classification": "public source under a custom personal non-commercial license; not OSI open source",
+    "licensed_readmes": [
+      "D-O_ibus_v1.1/README.md",
+      "D-O_ibus_v2.1/README.md",
+      "D-O_ibus_v3.4/README.md"
+    ],
+    "required_conditions": [
+      "personal non-commercial use only",
+      "retain copyright and permission notice",
+      "attribute original authors and Printed-Droid.com community",
+      "no commercial products, services, selling, or licensing"
+    ]
+  },
+  "firmware": {
+    "recommended": "D-O_ibus_v3.4/D_O_printed_droid_rc_ibus_v3.4.3.ino",
+    "recommended_present": true,
+    "sketch_count": 5,
+    "sketches": [
+      "D-O_ibus_v1.1/D-O_printed_droid_rc_ibus_v1.1.ino",
+      "D-O_ibus_v2.1/D_O_printed_droid_rc_ibus_v2.1.ino",
+      "D-O_ibus_v3.4/D_O_printed_droid_rc_ibus_v3.4.3.ino",
+      "D-Ov2_Mega2560_sketch/D-Ov2_Mega2560_sketch.ino",
+      "D_O_Nano_Sketch_v2/D_O_Nano_Sketch_v2.ino"
+    ],
+    "target": "Arduino Mega 2560",
+    "dependencies": [
+      "IBusBM",
+      "Servo",
+      "EEPROM",
+      "SoftwareSerial",
+      "DFRobotDFPlayerMini",
+      "Wire",
+      "avr/wdt"
+    ]
+  },
+  "mechanical_models": {
+    "count": 0,
+    "files": [],
+    "status": "absent from this repository"
+  },
+  "separate_public_model": {
+    "path": "third_party/DO-Stand-60mm.stl",
+    "purpose": "60 mm wheel-off electronics test stand; not a D-O body component",
+    "license": "publicly downloadable but no explicit redistribution license found"
+  },
+  "reference_downloads": [
+    {
+      "path": "third_party/DO-Instructions-Pt1.1.pdf",
+      "present": true,
+      "bytes": 3287102,
+      "sha256": "15ac7291ef6aa6abaa49c0ea0f8db40501c396a3144e312f7cf17faf78d5f369",
+      "redistribution": "not bundled into public site; retain for personal build reference because upstream redistribution terms are not explicit"
+    },
+    {
+      "path": "third_party/DOV2-Wiring-diagram-notes.pdf",
+      "present": true,
+      "bytes": 873321,
+      "sha256": "1e939c34cc4dab2410d013c97d3917008624cb70459869e9dace9c9f7f074d3c",
+      "redistribution": "not bundled into public site; retain for personal build reference because upstream redistribution terms are not explicit"
+    },
+    {
+      "path": "third_party/DO-Stand-60mm.stl",
+      "present": true,
+      "bytes": 7684,
+      "sha256": "429cbcf27c94d840007da24ea2b297d22b6ac3a8bc4b79d90d6dd86d8724af57",
+      "redistribution": "not bundled into public site; retain for personal build reference because upstream redistribution terms are not explicit"
+    }
+  ],
+  "conclusion": "Firmware and documentation are usable for a personal non-commercial build; complete mechanical CAD/STL is still missing from the public repository."
+}

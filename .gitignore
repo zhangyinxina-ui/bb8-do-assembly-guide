@@ -1,0 +1,67 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/.vinext/
+/out/
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# env files (can opt-in for committing if needed)
+.env*
+
+# vercel
+.vercel
+
+# typescript
+next-env.d.ts
+/dist/
+/.wrangler/
+/outputs/
+/work/
+
+# Local application/runtime state
+/.arduino/
+/tsconfig.tsbuildinfo
+/pages-dist/
+
+# Rebuildable firmware toolchains and compiler outputs
+/engineering/arduino-data/
+/engineering/arduino-downloads/
+/engineering/arduino-user/
+/engineering/do-firmware-build/
+/engineering/do-firmware-stage/
+/build/*
+!/build/sites-vite-plugin.ts
+
+# Third-party research copies stay local; publish links/manifests instead
+/third_party/
+/engineering/vendor_refs/
+
+# Heavy/rebuildable Blender output
+/blender/output/kinematic_frames/
+/blender/output/*.blend1
+
+# Kept locally for provenance but intentionally not published by Pages
+/public/model/*.blend

@@ -1,0 +1,90 @@
+# BB-8 & D-O 1:1 Assembly Guide
+
+[在线装配网站](https://zhangyinxina-ui.github.io/bb8-do-assembly-guide/) · [权利与再分发边界](NOTICE.md)
+
+一个面向个人制作者的公开工程记录：包含《星球大战：原力觉醒》BB-8 的 1:1 屏幕参考 Blender 模型、三视图、内部运动机构、运动学/动力学验证、控制器草案，以及 D-O 合法公开资源和采购门控路线。
+
+![BB-8 三视图](public/model/BB8_three_view_dimension_sheet.png)
+
+## 当前基准
+
+- BB-8 身体球：Ø508 mm。
+- 头部最大直径：Ø295 mm。
+- 无天线总高：670 mm，对齐 StarWars.com 公开的 0.67 m。
+- Blender 主工程后台重开审计：292 个对象，其中 88 个内部机构对象。
+- 双轮差速内车、310 mm 轮距、6+6 磁体随动头和 40 N 装机拉脱力验收合同。
+- 24 步可验收装配指南，进度只保存在访问者自己的浏览器。
+
+这些拆分尺寸和外观细节来自公开画面、社区摄影测量和制作者资料，不是 Lucasfilm 官方 CAD，也不应宣称逐毫米复制电影道具。
+
+## 仓库结构
+
+| 路径 | 内容 |
+| --- | --- |
+| `blender/` | 参数化生成器、主工程、阶段检查点、审计和导出脚本 |
+| `engineering/` | 物理输入、计算结果、D-O 清单和采购门控 |
+| `firmware/` | BB-8 C++ 控制核心与 ESP32-S3 适配草案 |
+| `docs/` | 从阶段 1 到阶段 9.3 的设计、验证和续接记录 |
+| `app/` | Vinext/Next 开发网站 |
+| `github-pages-src/` | GitHub Pages 纯静态 React 入口 |
+| `public/` | 网站公开的图像、GLB、STL、CSV 和说明文件 |
+| `tools/` | 运动学、物理、磁耦合、D-O 与 Pages 审计工具 |
+
+## 本地运行
+
+要求 Node.js 22.13.0 或更高版本、Python 3，以及可选的 Blender 5.1.x。
+
+```bash
+npm ci
+npm run dev
+```
+
+构建并审计 GitHub Pages 静态网站：
+
+```bash
+npm run build:pages
+```
+
+完整网站回归测试：
+
+```bash
+npm test
+npm run lint
+```
+
+主要工程验证：
+
+```bash
+python3 tools/verify_kinematics.py
+python3 tools/verify_physics.py
+python3 tools/verify_multibody.py
+python3 tools/verify_differential_turn.py
+python3 tools/verify_motor_selection.py
+python3 tools/verify_magnetic_coupling.py
+python3 tools/audit_do_resources.py
+```
+
+## D-O 公开资源边界
+
+仓库不冒充拥有 D-O 整机机械文件：
+
+- Printed Droid 公开仓库固定审计到提交 `e90aacdbe26a62fd4f0229d5504a3f2f3c409055`。
+- 公开仓库包含 5 个 Arduino 草图，但整机机械 CAD/STL 数量为 0。
+- v1.1、v2.1、v3.4 使用个人非商业条款，不能笼统称为 OSI 开源。
+- Mr Baddeley D-O V2 机械包属于付费资源，本仓库不包含。
+- 许可不明确的调试支架、第三方 PDF、本地工具链和编译缓存不会推送到 GitHub。
+
+详见 [D-O 资源审计与自组入口](docs/DO_资源审计与自组入口.md)、[D01-D16 自组路线](docs/DO_自组采购与调试路线.md) 和 [24 项采购门控 BOM](engineering/do_self_build_bom.csv)。
+
+## 自动部署
+
+推送到 `main` 后，`.github/workflows/deploy-pages.yml` 会：
+
+1. 安装固定依赖；
+2. 构建 `/bb8-do-assembly-guide/` 子路径静态站点；
+3. 扫描本机绝对路径、GitHub 令牌和禁止发布的 `.blend` 网站副本；
+4. 上传 Pages artifact 并部署到 GitHub Pages。
+
+## 免责声明
+
+这是非官方粉丝研究、个人教育和工程原型。STAR WARS、BB-8、D-O 及相关角色归各自权利人所有。除非文件单独声明许可证，本仓库公开可见不等于自动授予商用、复制或再分发许可。使用前请阅读 [NOTICE.md](NOTICE.md)。

@@ -1,0 +1,17 @@
+{
+  "status": "geometry frozen; magnetic grade and measured assembled pull force pending",
+  "head_mass_kg": 0.65,
+  "gravity_mps2": 9.80665,
+  "vertical_shock_g": 2.5,
+  "lateral_shock_g": 1.0,
+  "required_safety_factor": 2.0,
+  "design_measured_pull_force_gate_n": 40.0,
+  "chassis_magnet_count": 6,
+  "head_magnet_count": 6,
+  "magnet_envelope_diameter_mm": 20.0,
+  "magnet_envelope_thickness_mm": 6.0,
+  "face_gap_mm": 8.0,
+  "head_roller_count": 3,
+  "head_roller_diameter_mm": 24.0,
+  "shell_radius_mm": 254.0
+}

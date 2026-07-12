@@ -1,0 +1,38 @@
+{
+  "status": "design-assumption set; replace with measured hardware values before fabrication approval",
+  "body_radius_m": 0.254,
+  "drive_wheel_radius_m": 0.048,
+  "total_mass_kg": 6.0,
+  "shell_rotating_mass_kg": 1.2,
+  "head_mass_kg": 0.65,
+  "target_speed_mps": 1.0,
+  "target_accel_mps2": 1.0,
+  "rolling_resistance_coefficient": 0.03,
+  "drive_efficiency": 0.72,
+  "wheel_shell_friction_coefficient": 0.7,
+  "normal_preload_per_wheel_n": 80.0,
+  "motor_count": 2,
+  "motor_continuous_torque_nm": 0.6,
+  "motor_peak_torque_nm": 1.2,
+  "magnetic_retention_n": 40.0,
+  "vertical_shock_g": 2.5,
+  "com_offset_below_center_m": 0.11,
+  "required_design_safety_factor": 2.0
+  ,"design_yaw_rate_radps": 0.6
+  ,"head_lateral_shock_g": 1.0
+  ,"magnetic_lateral_capacity_fraction": 0.55
+  ,"mast_length_m": 0.3
+  ,"mast_outer_diameter_m": 0.012
+  ,"mast_inner_diameter_m": 0.008
+  ,"mast_yield_strength_pa": 276000000.0
+  ,"motor_torque_constant_nm_per_a": 0.12
+  ,"motor_winding_resistance_ohm": 0.35
+  ,"motor_thermal_resistance_k_per_w": 7.0
+  ,"ambient_temperature_c": 25.0
+  ,"motor_temperature_limit_c": 80.0
+  ,"battery_nominal_open_voltage_v": 14.8
+  ,"battery_low_open_voltage_v": 13.6
+  ,"battery_internal_resistance_ohm": 0.05
+  ,"battery_cutoff_loaded_voltage_v": 13.2
+  ,"auxiliary_current_a": 1.0
+}

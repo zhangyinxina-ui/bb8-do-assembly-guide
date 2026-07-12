@@ -1,0 +1,44 @@
+{
+  "required": {
+    "wheel_diameter_mm": 96,
+    "continuous_torque_each_nm": 0.286,
+    "minimum_continuous_safety_factor": 2.0,
+    "target_ground_speed_mps": 1.0,
+    "battery": "4S, 13.2-16.8 V loaded/full range"
+  },
+  "candidates": [
+    {
+      "name": "Sha Yang Ye / Cytron IG42E-24K",
+      "status": "recommended design candidate; not purchased",
+      "nominal_voltage_v": 12,
+      "rated_speed_rpm": 248,
+      "rated_torque_nm": 0.98,
+      "rated_current_a": 5.5,
+      "diameter_mm": 45,
+      "gearbox_length_mm": 39.2,
+      "verified_total_length_mm": 125.2,
+      "shaft_diameter_mm": 8,
+      "shaft_length_mm": 20,
+      "encoder_counts_per_output_rev": 120,
+      "mass_g": 360,
+      "mounting": "4 x M4 x 6 mm deep on PCD 35 mm",
+      "mass_note": "Cytron product page says 609 g; its linked Sha Yang Ye IG-42GM drawing says 360 g. Use 609 g for conservative mass budget until a sample is weighed.",
+      "source": "https://my.cytron.io/p-12v-248rpm-10kgfcm-planetary-dc-geared-motor-with-encoder"
+    },
+    {
+      "name": "Pololu 4692 30:1 37D 24V encoder",
+      "status": "compact alternative; continuous torque margin insufficient at max-efficiency point",
+      "nominal_voltage_v": 24,
+      "rated_speed_rpm": 280,
+      "rated_torque_nm": 0.186,
+      "rated_current_a": 0.46,
+      "diameter_mm": 37,
+      "provisional_total_length_mm": 68,
+      "shaft_diameter_mm": 6,
+      "shaft_length_mm": 16,
+      "encoder_counts_per_output_rev": 1920,
+      "mass_g": 200,
+      "source": "https://www.pololu.com/product/4692/specs"
+    }
+  ]
+}
