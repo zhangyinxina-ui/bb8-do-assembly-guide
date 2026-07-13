@@ -1,0 +1,7557 @@
+{
+  "stage": 18,
+  "source_blend": "blender/output/BB8_1to1_screen_referenced.blend",
+  "source_saved_state": false,
+  "engineering_stage": 15,
+  "body_inner_radius_assumption_mm": 254.0,
+  "internal_object_count": 150,
+  "key_objects": {
+    "Internal 4S battery ballast": {
+      "name": "Internal 4S battery ballast",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -60.0,
+        -39.316,
+        -108.672
+      ],
+      "maximum_mm": [
+        60.0,
+        38.41,
+        -47.646
+      ],
+      "dimensions_mm": [
+        120.0,
+        77.726,
+        61.026
+      ],
+      "centre_mm": [
+        0.0,
+        -0.453,
+        -78.159
+      ],
+      "parent_minimum_mm": [
+        -60.0,
+        -32.0,
+        -106.0
+      ],
+      "parent_maximum_mm": [
+        60.0,
+        42.0,
+        -50.0
+      ],
+      "parent_dimensions_mm": [
+        120.0,
+        74.0,
+        56.0
+      ],
+      "parent_centre_mm": [
+        0.0,
+        5.0,
+        -78.0
+      ]
+    },
+    "Internal ALERT to driver EN hardware gate": {
+      "name": "Internal ALERT to driver EN hardware gate",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -14.0,
+        14.741,
+        -91.225
+      ],
+      "maximum_mm": [
+        14.0,
+        28.818,
+        -88.652
+      ],
+      "dimensions_mm": [
+        28.0,
+        14.078,
+        2.573
+      ],
+      "centre_mm": [
+        0.0,
+        21.779,
+        -89.938
+      ],
+      "parent_minimum_mm": [
+        -14.0,
+        21.0,
+        -89.0
+      ],
+      "parent_maximum_mm": [
+        14.0,
+        35.0,
+        -87.4
+      ],
+      "parent_dimensions_mm": [
+        28.0,
+        14.0,
+        1.6
+      ],
+      "parent_centre_mm": [
+        0.0,
+        28.0,
+        -88.2
+      ]
+    },
+    "Internal E-stop safety relay": {
+      "name": "Internal E-stop safety relay",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        6.0,
+        33.994,
+        -103.572
+      ],
+      "maximum_mm": [
+        44.0,
+        63.182,
+        -83.663
+      ],
+      "dimensions_mm": [
+        38.0,
+        29.187,
+        19.909
+      ],
+      "centre_mm": [
+        25.0,
+        48.588,
+        -93.617
+      ],
+      "parent_minimum_mm": [
+        6.0,
+        41.0,
+        -99.0
+      ],
+      "parent_maximum_mm": [
+        44.0,
+        69.0,
+        -81.0
+      ],
+      "parent_dimensions_mm": [
+        38.0,
+        28.0,
+        18.0
+      ],
+      "parent_centre_mm": [
+        25.0,
+        55.0,
+        -90.0
+      ]
+    },
+    "Internal IMU controller": {
+      "name": "Internal IMU controller",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -28.0,
+        -72.236,
+        -103.998
+      ],
+      "maximum_mm": [
+        28.0,
+        -31.496,
+        -89.237
+      ],
+      "dimensions_mm": [
+        56.0,
+        40.74,
+        14.761
+      ],
+      "centre_mm": [
+        0.0,
+        -51.866,
+        -96.617
+      ],
+      "parent_minimum_mm": [
+        -28.0,
+        -65.0,
+        -106.0
+      ],
+      "parent_maximum_mm": [
+        28.0,
+        -25.0,
+        -94.0
+      ],
+      "parent_dimensions_mm": [
+        56.0,
+        40.0,
+        12.0
+      ],
+      "parent_centre_mm": [
+        0.0,
+        -45.0,
+        -100.0
+      ]
+    },
+    "Internal aluminium chassis": {
+      "name": "Internal aluminium chassis",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -190.0,
+        -65.65,
+        -122.973
+      ],
+      "maximum_mm": [
+        190.0,
+        -46.857,
+        -109.746
+      ],
+      "dimensions_mm": [
+        380.0,
+        18.793,
+        13.226
+      ],
+      "centre_mm": [
+        0.0,
+        -56.254,
+        -116.359
+      ],
+      "parent_minimum_mm": [
+        -190.0,
+        -57.0,
+        -126.0
+      ],
+      "parent_maximum_mm": [
+        190.0,
+        -39.0,
+        -114.0
+      ],
+      "parent_dimensions_mm": [
+        380.0,
+        18.0,
+        12.0
+      ],
+      "parent_centre_mm": [
+        0.0,
+        -48.0,
+        -120.0
+      ]
+    },
+    "Internal drive wheel L": {
+      "name": "Internal drive wheel L",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -168.0,
+        -60.696,
+        -186.588
+      ],
+      "maximum_mm": [
+        -142.0,
+        41.766,
+        -84.125
+      ],
+      "dimensions_mm": [
+        26.0,
+        102.463,
+        102.463
+      ],
+      "centre_mm": [
+        -155.0,
+        -9.465,
+        -135.357
+      ],
+      "parent_minimum_mm": [
+        -168.0,
+        -48.0,
+        -183.687
+      ],
+      "parent_maximum_mm": [
+        -142.0,
+        48.0,
+        -87.687
+      ],
+      "parent_dimensions_mm": [
+        26.0,
+        96.0,
+        96.0
+      ],
+      "parent_centre_mm": [
+        -155.0,
+        0.0,
+        -135.687
+      ]
+    },
+    "Internal drive wheel R": {
+      "name": "Internal drive wheel R",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        142.0,
+        -60.696,
+        -186.588
+      ],
+      "maximum_mm": [
+        168.0,
+        41.766,
+        -84.125
+      ],
+      "dimensions_mm": [
+        26.0,
+        102.463,
+        102.463
+      ],
+      "centre_mm": [
+        155.0,
+        -9.465,
+        -135.357
+      ],
+      "parent_minimum_mm": [
+        142.0,
+        -48.0,
+        -183.687
+      ],
+      "parent_maximum_mm": [
+        168.0,
+        48.0,
+        -87.687
+      ],
+      "parent_dimensions_mm": [
+        26.0,
+        96.0,
+        96.0
+      ],
+      "parent_centre_mm": [
+        155.0,
+        0.0,
+        -135.687
+      ]
+    },
+    "Internal geared motor L": {
+      "name": "Internal geared motor L",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -135.0,
+        -33.48,
+        -159.371
+      ],
+      "maximum_mm": [
+        -9.8,
+        14.55,
+        -111.342
+      ],
+      "dimensions_mm": [
+        125.2,
+        48.029,
+        48.029
+      ],
+      "centre_mm": [
+        -72.4,
+        -9.465,
+        -135.357
+      ],
+      "parent_minimum_mm": [
+        -135.0,
+        -22.5,
+        -158.187
+      ],
+      "parent_maximum_mm": [
+        -9.8,
+        22.5,
+        -113.187
+      ],
+      "parent_dimensions_mm": [
+        125.2,
+        45.0,
+        45.0
+      ],
+      "parent_centre_mm": [
+        -72.4,
+        0.0,
+        -135.687
+      ]
+    },
+    "Internal geared motor R": {
+      "name": "Internal geared motor R",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        9.8,
+        -33.48,
+        -159.371
+      ],
+      "maximum_mm": [
+        135.0,
+        14.55,
+        -111.342
+      ],
+      "dimensions_mm": [
+        125.2,
+        48.029,
+        48.029
+      ],
+      "centre_mm": [
+        72.4,
+        -9.465,
+        -135.357
+      ],
+      "parent_minimum_mm": [
+        9.8,
+        -22.5,
+        -158.187
+      ],
+      "parent_maximum_mm": [
+        135.0,
+        22.5,
+        -113.187
+      ],
+      "parent_dimensions_mm": [
+        125.2,
+        45.0,
+        45.0
+      ],
+      "parent_centre_mm": [
+        72.4,
+        0.0,
+        -135.687
+      ]
+    },
+    "Internal main contactor": {
+      "name": "Internal main contactor",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        108.0,
+        -26.278,
+        -105.372
+      ],
+      "maximum_mm": [
+        148.0,
+        3.328,
+        -79.477
+      ],
+      "dimensions_mm": [
+        40.0,
+        29.606,
+        25.895
+      ],
+      "centre_mm": [
+        128.0,
+        -11.475,
+        -92.425
+      ],
+      "parent_minimum_mm": [
+        108.0,
+        -19.0,
+        -105.0
+      ],
+      "parent_maximum_mm": [
+        148.0,
+        9.0,
+        -81.0
+      ],
+      "parent_dimensions_mm": [
+        40.0,
+        28.0,
+        24.0
+      ],
+      "parent_centre_mm": [
+        128.0,
+        -5.0,
+        -93.0
+      ]
+    },
+    "Internal main fuse holder": {
+      "name": "Internal main fuse holder",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        110.0,
+        9.843,
+        -104.053
+      ],
+      "maximum_mm": [
+        146.0,
+        27.06,
+        -84.981
+      ],
+      "dimensions_mm": [
+        36.0,
+        17.217,
+        19.072
+      ],
+      "centre_mm": [
+        128.0,
+        18.452,
+        -94.517
+      ],
+      "parent_minimum_mm": [
+        110.0,
+        17.0,
+        -102.0
+      ],
+      "parent_maximum_mm": [
+        146.0,
+        33.0,
+        -84.0
+      ],
+      "parent_dimensions_mm": [
+        36.0,
+        16.0,
+        18.0
+      ],
+      "parent_centre_mm": [
+        128.0,
+        25.0,
+        -93.0
+      ]
+    },
+    "Internal motor driver L": {
+      "name": "Internal motor driver L",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -106.0,
+        -51.168,
+        -89.013
+      ],
+      "maximum_mm": [
+        -54.0,
+        -16.833,
+        -80.656
+      ],
+      "dimensions_mm": [
+        52.0,
+        34.336,
+        8.357
+      ],
+      "centre_mm": [
+        -80.0,
+        -34.001,
+        -84.835
+      ],
+      "parent_minimum_mm": [
+        -106.0,
+        -45.0,
+        -90.0
+      ],
+      "parent_maximum_mm": [
+        -54.0,
+        -11.0,
+        -84.0
+      ],
+      "parent_dimensions_mm": [
+        52.0,
+        34.0,
+        6.0
+      ],
+      "parent_centre_mm": [
+        -80.0,
+        -28.0,
+        -87.0
+      ]
+    },
+    "Internal motor driver R": {
+      "name": "Internal motor driver R",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        54.0,
+        -51.168,
+        -89.013
+      ],
+      "maximum_mm": [
+        106.0,
+        -16.833,
+        -80.656
+      ],
+      "dimensions_mm": [
+        52.0,
+        34.336,
+        8.357
+      ],
+      "centre_mm": [
+        80.0,
+        -34.001,
+        -84.835
+      ],
+      "parent_minimum_mm": [
+        54.0,
+        -45.0,
+        -90.0
+      ],
+      "parent_maximum_mm": [
+        106.0,
+        -11.0,
+        -84.0
+      ],
+      "parent_dimensions_mm": [
+        52.0,
+        34.0,
+        6.0
+      ],
+      "parent_centre_mm": [
+        80.0,
+        -28.0,
+        -87.0
+      ]
+    },
+    "Internal sealed low ballast cassette": {
+      "name": "Internal sealed low ballast cassette",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -60.0,
+        -50.052,
+        -218.913
+      ],
+      "maximum_mm": [
+        60.0,
+        21.452,
+        -190.088
+      ],
+      "dimensions_mm": [
+        120.0,
+        71.504,
+        28.824
+      ],
+      "centre_mm": [
+        0.0,
+        -14.3,
+        -204.501
+      ],
+      "parent_minimum_mm": [
+        -60.0,
+        -35.0,
+        -217.0
+      ],
+      "parent_maximum_mm": [
+        60.0,
+        35.0,
+        -193.0
+      ],
+      "parent_dimensions_mm": [
+        120.0,
+        70.0,
+        24.0
+      ],
+      "parent_centre_mm": [
+        0.0,
+        0.0,
+        -205.0
+      ]
+    }
+  },
+  "all_internal_aabbs": [
+    {
+      "name": "Engineering legacy 110mm COM marker",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": true,
+      "minimum_mm": [
+        -7.0,
+        -15.144,
+        -117.203
+      ],
+      "maximum_mm": [
+        7.0,
+        -0.202,
+        -102.261
+      ],
+      "dimensions_mm": [
+        14.0,
+        14.942,
+        14.942
+      ],
+      "centre_mm": [
+        -0.0,
+        -7.673,
+        -109.732
+      ],
+      "parent_minimum_mm": [
+        -7.0,
+        -7.0,
+        -117.0
+      ],
+      "parent_maximum_mm": [
+        7.0,
+        7.0,
+        -103.0
+      ],
+      "parent_dimensions_mm": [
+        14.0,
+        14.0,
+        14.0
+      ],
+      "parent_centre_mm": [
+        -0.0,
+        0.0,
+        -110.0
+      ]
+    },
+    {
+      "name": "Engineering nominal COM marker",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": true,
+      "minimum_mm": [
+        -8.139,
+        -13.156,
+        -66.846
+      ],
+      "maximum_mm": [
+        11.861,
+        8.19,
+        -45.499
+      ],
+      "dimensions_mm": [
+        20.0,
+        21.346,
+        21.346
+      ],
+      "centre_mm": [
+        1.861,
+        -2.483,
+        -56.172
+      ],
+      "parent_minimum_mm": [
+        -8.139,
+        -8.558,
+        -66.209
+      ],
+      "parent_maximum_mm": [
+        11.861,
+        11.442,
+        -46.209
+      ],
+      "parent_dimensions_mm": [
+        20.0,
+        20.0,
+        20.0
+      ],
+      "parent_centre_mm": [
+        1.861,
+        1.442,
+        -56.209
+      ]
+    },
+    {
+      "name": "Head internal follower magnet 1",
+      "type": "MESH",
+      "parent": "RIG 30 - Magnetically coupled head",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        25.0,
+        -10.0,
+        258.0
+      ],
+      "maximum_mm": [
+        45.0,
+        10.0,
+        264.0
+      ],
+      "dimensions_mm": [
+        20.0,
+        20.0,
+        6.0
+      ],
+      "centre_mm": [
+        35.0,
+        0.0,
+        261.0
+      ],
+      "parent_minimum_mm": [
+        25.0,
+        -10.0,
+        258.0
+      ],
+      "parent_maximum_mm": [
+        45.0,
+        10.0,
+        264.0
+      ],
+      "parent_dimensions_mm": [
+        20.0,
+        20.0,
+        6.0
+      ],
+      "parent_centre_mm": [
+        35.0,
+        0.0,
+        261.0
+      ]
+    },
+    {
+      "name": "Head internal follower magnet 2",
+      "type": "MESH",
+      "parent": "RIG 30 - Magnetically coupled head",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        7.5,
+        20.311,
+        258.0
+      ],
+      "maximum_mm": [
+        27.5,
+        40.311,
+        264.0
+      ],
+      "dimensions_mm": [
+        20.0,
+        20.0,
+        6.0
+      ],
+      "centre_mm": [
+        17.5,
+        30.311,
+        261.0
+      ],
+      "parent_minimum_mm": [
+        7.5,
+        20.311,
+        258.0
+      ],
+      "parent_maximum_mm": [
+        27.5,
+        40.311,
+        264.0
+      ],
+      "parent_dimensions_mm": [
+        20.0,
+        20.0,
+        6.0
+      ],
+      "parent_centre_mm": [
+        17.5,
+        30.311,
+        261.0
+      ]
+    },
+    {
+      "name": "Head internal follower magnet 3",
+      "type": "MESH",
+      "parent": "RIG 30 - Magnetically coupled head",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -27.5,
+        20.311,
+        258.0
+      ],
+      "maximum_mm": [
+        -7.5,
+        40.311,
+        264.0
+      ],
+      "dimensions_mm": [
+        20.0,
+        20.0,
+        6.0
+      ],
+      "centre_mm": [
+        -17.5,
+        30.311,
+        261.0
+      ],
+      "parent_minimum_mm": [
+        -27.5,
+        20.311,
+        258.0
+      ],
+      "parent_maximum_mm": [
+        -7.5,
+        40.311,
+        264.0
+      ],
+      "parent_dimensions_mm": [
+        20.0,
+        20.0,
+        6.0
+      ],
+      "parent_centre_mm": [
+        -17.5,
+        30.311,
+        261.0
+      ]
+    },
+    {
+      "name": "Head internal follower magnet 4",
+      "type": "MESH",
+      "parent": "RIG 30 - Magnetically coupled head",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -45.0,
+        -10.0,
+        258.0
+      ],
+      "maximum_mm": [
+        -25.0,
+        10.0,
+        264.0
+      ],
+      "dimensions_mm": [
+        20.0,
+        20.0,
+        6.0
+      ],
+      "centre_mm": [
+        -35.0,
+        0.0,
+        261.0
+      ],
+      "parent_minimum_mm": [
+        -45.0,
+        -10.0,
+        258.0
+      ],
+      "parent_maximum_mm": [
+        -25.0,
+        10.0,
+        264.0
+      ],
+      "parent_dimensions_mm": [
+        20.0,
+        20.0,
+        6.0
+      ],
+      "parent_centre_mm": [
+        -35.0,
+        0.0,
+        261.0
+      ]
+    },
+    {
+      "name": "Head internal follower magnet 5",
+      "type": "MESH",
+      "parent": "RIG 30 - Magnetically coupled head",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -27.5,
+        -40.311,
+        258.0
+      ],
+      "maximum_mm": [
+        -7.5,
+        -20.311,
+        264.0
+      ],
+      "dimensions_mm": [
+        20.0,
+        20.0,
+        6.0
+      ],
+      "centre_mm": [
+        -17.5,
+        -30.311,
+        261.0
+      ],
+      "parent_minimum_mm": [
+        -27.5,
+        -40.311,
+        258.0
+      ],
+      "parent_maximum_mm": [
+        -7.5,
+        -20.311,
+        264.0
+      ],
+      "parent_dimensions_mm": [
+        20.0,
+        20.0,
+        6.0
+      ],
+      "parent_centre_mm": [
+        -17.5,
+        -30.311,
+        261.0
+      ]
+    },
+    {
+      "name": "Head internal follower magnet 6",
+      "type": "MESH",
+      "parent": "RIG 30 - Magnetically coupled head",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        7.5,
+        -40.311,
+        258.0
+      ],
+      "maximum_mm": [
+        27.5,
+        -20.311,
+        264.0
+      ],
+      "dimensions_mm": [
+        20.0,
+        20.0,
+        6.0
+      ],
+      "centre_mm": [
+        17.5,
+        -30.311,
+        261.0
+      ],
+      "parent_minimum_mm": [
+        7.5,
+        -40.311,
+        258.0
+      ],
+      "parent_maximum_mm": [
+        27.5,
+        -20.311,
+        264.0
+      ],
+      "parent_dimensions_mm": [
+        20.0,
+        20.0,
+        6.0
+      ],
+      "parent_centre_mm": [
+        17.5,
+        -30.311,
+        261.0
+      ]
+    },
+    {
+      "name": "Head internal magnetic carrier",
+      "type": "MESH",
+      "parent": "RIG 30 - Magnetically coupled head",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -55.0,
+        -55.0,
+        264.0
+      ],
+      "maximum_mm": [
+        55.0,
+        55.0,
+        270.0
+      ],
+      "dimensions_mm": [
+        110.0,
+        110.0,
+        6.0
+      ],
+      "centre_mm": [
+        0.0,
+        0.0,
+        267.0
+      ],
+      "parent_minimum_mm": [
+        -55.0,
+        -55.0,
+        264.0
+      ],
+      "parent_maximum_mm": [
+        55.0,
+        55.0,
+        270.0
+      ],
+      "parent_dimensions_mm": [
+        110.0,
+        110.0,
+        6.0
+      ],
+      "parent_centre_mm": [
+        0.0,
+        0.0,
+        267.0
+      ]
+    },
+    {
+      "name": "Head underside roller 1",
+      "type": "MESH",
+      "parent": "RIG 30 - Magnetically coupled head",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -12.0,
+        82.252,
+        236.742
+      ],
+      "maximum_mm": [
+        12.0,
+        106.252,
+        260.742
+      ],
+      "dimensions_mm": [
+        24.0,
+        24.0,
+        24.0
+      ],
+      "centre_mm": [
+        0.0,
+        94.252,
+        248.742
+      ],
+      "parent_minimum_mm": [
+        -12.0,
+        82.252,
+        236.742
+      ],
+      "parent_maximum_mm": [
+        12.0,
+        106.252,
+        260.742
+      ],
+      "parent_dimensions_mm": [
+        24.0,
+        24.0,
+        24.0
+      ],
+      "parent_centre_mm": [
+        0.0,
+        94.252,
+        248.742
+      ]
+    },
+    {
+      "name": "Head underside roller 2",
+      "type": "MESH",
+      "parent": "RIG 30 - Magnetically coupled head",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -93.625,
+        -59.126,
+        236.742
+      ],
+      "maximum_mm": [
+        -69.625,
+        -35.126,
+        260.742
+      ],
+      "dimensions_mm": [
+        24.0,
+        24.0,
+        24.0
+      ],
+      "centre_mm": [
+        -81.625,
+        -47.126,
+        248.742
+      ],
+      "parent_minimum_mm": [
+        -93.625,
+        -59.126,
+        236.742
+      ],
+      "parent_maximum_mm": [
+        -69.625,
+        -35.126,
+        260.742
+      ],
+      "parent_dimensions_mm": [
+        24.0,
+        24.0,
+        24.0
+      ],
+      "parent_centre_mm": [
+        -81.625,
+        -47.126,
+        248.742
+      ]
+    },
+    {
+      "name": "Head underside roller 3",
+      "type": "MESH",
+      "parent": "RIG 30 - Magnetically coupled head",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        69.625,
+        -59.126,
+        236.742
+      ],
+      "maximum_mm": [
+        93.625,
+        -35.126,
+        260.742
+      ],
+      "dimensions_mm": [
+        24.0,
+        24.0,
+        24.0
+      ],
+      "centre_mm": [
+        81.625,
+        -47.126,
+        248.742
+      ],
+      "parent_minimum_mm": [
+        69.625,
+        -59.126,
+        236.742
+      ],
+      "parent_maximum_mm": [
+        93.625,
+        -35.126,
+        260.742
+      ],
+      "parent_dimensions_mm": [
+        24.0,
+        24.0,
+        24.0
+      ],
+      "parent_centre_mm": [
+        81.625,
+        -47.126,
+        248.742
+      ]
+    },
+    {
+      "name": "Head underside roller carrier ring",
+      "type": "MESH",
+      "parent": "RIG 30 - Magnetically coupled head",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -98.0,
+        -98.0,
+        264.0
+      ],
+      "maximum_mm": [
+        98.0,
+        98.0,
+        272.0
+      ],
+      "dimensions_mm": [
+        196.0,
+        196.0,
+        8.0
+      ],
+      "centre_mm": [
+        0.0,
+        0.0,
+        268.0
+      ],
+      "parent_minimum_mm": [
+        -98.0,
+        -98.0,
+        264.0
+      ],
+      "parent_maximum_mm": [
+        98.0,
+        98.0,
+        272.0
+      ],
+      "parent_dimensions_mm": [
+        196.0,
+        196.0,
+        8.0
+      ],
+      "parent_centre_mm": [
+        0.0,
+        0.0,
+        268.0
+      ]
+    },
+    {
+      "name": "Internal 2mOhm Kelvin shunt L",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -33.0,
+        -6.595,
+        -87.501
+      ],
+      "maximum_mm": [
+        -21.0,
+        -1.398,
+        -84.16
+      ],
+      "dimensions_mm": [
+        12.0,
+        5.197,
+        3.341
+      ],
+      "centre_mm": [
+        -27.0,
+        -3.997,
+        -85.83
+      ],
+      "parent_minimum_mm": [
+        -33.0,
+        -0.5,
+        -87.4
+      ],
+      "parent_maximum_mm": [
+        -21.0,
+        4.5,
+        -84.4
+      ],
+      "parent_dimensions_mm": [
+        12.0,
+        5.0,
+        3.0
+      ],
+      "parent_centre_mm": [
+        -27.0,
+        2.0,
+        -85.9
+      ]
+    },
+    {
+      "name": "Internal 2mOhm Kelvin shunt R",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        21.0,
+        -6.595,
+        -87.501
+      ],
+      "maximum_mm": [
+        33.0,
+        -1.398,
+        -84.16
+      ],
+      "dimensions_mm": [
+        12.0,
+        5.197,
+        3.341
+      ],
+      "centre_mm": [
+        27.0,
+        -3.997,
+        -85.83
+      ],
+      "parent_minimum_mm": [
+        21.0,
+        -0.5,
+        -87.4
+      ],
+      "parent_maximum_mm": [
+        33.0,
+        4.5,
+        -84.4
+      ],
+      "parent_dimensions_mm": [
+        12.0,
+        5.0,
+        3.0
+      ],
+      "parent_centre_mm": [
+        27.0,
+        2.0,
+        -85.9
+      ]
+    },
+    {
+      "name": "Internal 4S battery ballast",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -60.0,
+        -39.316,
+        -108.672
+      ],
+      "maximum_mm": [
+        60.0,
+        38.41,
+        -47.646
+      ],
+      "dimensions_mm": [
+        120.0,
+        77.726,
+        61.026
+      ],
+      "centre_mm": [
+        0.0,
+        -0.453,
+        -78.159
+      ],
+      "parent_minimum_mm": [
+        -60.0,
+        -32.0,
+        -106.0
+      ],
+      "parent_maximum_mm": [
+        60.0,
+        42.0,
+        -50.0
+      ],
+      "parent_dimensions_mm": [
+        120.0,
+        74.0,
+        56.0
+      ],
+      "parent_centre_mm": [
+        0.0,
+        5.0,
+        -78.0
+      ]
+    },
+    {
+      "name": "Internal 8 mm key hub L",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -168.0,
+        -23.34,
+        -149.232
+      ],
+      "maximum_mm": [
+        -128.0,
+        4.41,
+        -121.481
+      ],
+      "dimensions_mm": [
+        40.0,
+        27.75,
+        27.75
+      ],
+      "centre_mm": [
+        -148.0,
+        -9.465,
+        -135.357
+      ],
+      "parent_minimum_mm": [
+        -168.0,
+        -13.0,
+        -148.687
+      ],
+      "parent_maximum_mm": [
+        -128.0,
+        13.0,
+        -122.687
+      ],
+      "parent_dimensions_mm": [
+        40.0,
+        26.0,
+        26.0
+      ],
+      "parent_centre_mm": [
+        -148.0,
+        0.0,
+        -135.687
+      ]
+    },
+    {
+      "name": "Internal 8 mm key hub R",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        128.0,
+        -23.34,
+        -149.232
+      ],
+      "maximum_mm": [
+        168.0,
+        4.41,
+        -121.481
+      ],
+      "dimensions_mm": [
+        40.0,
+        27.75,
+        27.75
+      ],
+      "centre_mm": [
+        148.0,
+        -9.465,
+        -135.357
+      ],
+      "parent_minimum_mm": [
+        128.0,
+        -13.0,
+        -148.687
+      ],
+      "parent_maximum_mm": [
+        168.0,
+        13.0,
+        -122.687
+      ],
+      "parent_dimensions_mm": [
+        40.0,
+        26.0,
+        26.0
+      ],
+      "parent_centre_mm": [
+        148.0,
+        0.0,
+        -135.687
+      ]
+    },
+    {
+      "name": "Internal ALERT gate M2.5 standoff 1",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -11.5,
+        20.018,
+        -93.834
+      ],
+      "maximum_mm": [
+        -8.5,
+        23.22,
+        -90.632
+      ],
+      "dimensions_mm": [
+        3.0,
+        3.202,
+        3.202
+      ],
+      "centre_mm": [
+        -10.0,
+        21.619,
+        -92.233
+      ],
+      "parent_minimum_mm": [
+        -11.5,
+        26.5,
+        -92.0
+      ],
+      "parent_maximum_mm": [
+        -8.5,
+        29.5,
+        -89.0
+      ],
+      "parent_dimensions_mm": [
+        3.0,
+        3.0,
+        3.0
+      ],
+      "parent_centre_mm": [
+        -10.0,
+        28.0,
+        -90.5
+      ]
+    },
+    {
+      "name": "Internal ALERT gate M2.5 standoff 2",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        8.5,
+        20.018,
+        -93.834
+      ],
+      "maximum_mm": [
+        11.5,
+        23.22,
+        -90.632
+      ],
+      "dimensions_mm": [
+        3.0,
+        3.202,
+        3.202
+      ],
+      "centre_mm": [
+        10.0,
+        21.619,
+        -92.233
+      ],
+      "parent_minimum_mm": [
+        8.5,
+        26.5,
+        -92.0
+      ],
+      "parent_maximum_mm": [
+        11.5,
+        29.5,
+        -89.0
+      ],
+      "parent_dimensions_mm": [
+        3.0,
+        3.0,
+        3.0
+      ],
+      "parent_centre_mm": [
+        10.0,
+        28.0,
+        -90.5
+      ]
+    },
+    {
+      "name": "Internal ALERT to driver EN hardware gate",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -14.0,
+        14.741,
+        -91.225
+      ],
+      "maximum_mm": [
+        14.0,
+        28.818,
+        -88.652
+      ],
+      "dimensions_mm": [
+        28.0,
+        14.078,
+        2.573
+      ],
+      "centre_mm": [
+        0.0,
+        21.779,
+        -89.938
+      ],
+      "parent_minimum_mm": [
+        -14.0,
+        21.0,
+        -89.0
+      ],
+      "parent_maximum_mm": [
+        14.0,
+        35.0,
+        -87.4
+      ],
+      "parent_dimensions_mm": [
+        28.0,
+        14.0,
+        1.6
+      ],
+      "parent_centre_mm": [
+        0.0,
+        28.0,
+        -88.2
+      ]
+    },
+    {
+      "name": "Internal E-stop safety relay",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        6.0,
+        33.994,
+        -103.572
+      ],
+      "maximum_mm": [
+        44.0,
+        63.182,
+        -83.663
+      ],
+      "dimensions_mm": [
+        38.0,
+        29.187,
+        19.909
+      ],
+      "centre_mm": [
+        25.0,
+        48.588,
+        -93.617
+      ],
+      "parent_minimum_mm": [
+        6.0,
+        41.0,
+        -99.0
+      ],
+      "parent_maximum_mm": [
+        44.0,
+        69.0,
+        -81.0
+      ],
+      "parent_dimensions_mm": [
+        38.0,
+        28.0,
+        18.0
+      ],
+      "parent_centre_mm": [
+        25.0,
+        55.0,
+        -90.0
+      ]
+    },
+    {
+      "name": "Internal IMU controller",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -28.0,
+        -72.236,
+        -103.998
+      ],
+      "maximum_mm": [
+        28.0,
+        -31.496,
+        -89.237
+      ],
+      "dimensions_mm": [
+        56.0,
+        40.74,
+        14.761
+      ],
+      "centre_mm": [
+        0.0,
+        -51.866,
+        -96.617
+      ],
+      "parent_minimum_mm": [
+        -28.0,
+        -65.0,
+        -106.0
+      ],
+      "parent_maximum_mm": [
+        28.0,
+        -25.0,
+        -94.0
+      ],
+      "parent_dimensions_mm": [
+        56.0,
+        40.0,
+        12.0
+      ],
+      "parent_centre_mm": [
+        0.0,
+        -45.0,
+        -100.0
+      ]
+    },
+    {
+      "name": "Internal INA226 ALERT wire L",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -27.412,
+        3.247,
+        -88.876
+      ],
+      "maximum_mm": [
+        -5.669,
+        16.762,
+        -84.535
+      ],
+      "dimensions_mm": [
+        21.743,
+        13.516,
+        4.341
+      ],
+      "centre_mm": [
+        -16.541,
+        10.004,
+        -86.705
+      ],
+      "parent_minimum_mm": [
+        -27.412,
+        9.374,
+        -87.507
+      ],
+      "parent_maximum_mm": [
+        -5.669,
+        22.683,
+        -84.086
+      ],
+      "parent_dimensions_mm": [
+        21.743,
+        13.31,
+        3.42
+      ],
+      "parent_centre_mm": [
+        -16.541,
+        16.028,
+        -85.796
+      ]
+    },
+    {
+      "name": "Internal INA226 ALERT wire R",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        5.669,
+        3.247,
+        -88.876
+      ],
+      "maximum_mm": [
+        27.412,
+        16.762,
+        -84.535
+      ],
+      "dimensions_mm": [
+        21.743,
+        13.516,
+        4.341
+      ],
+      "centre_mm": [
+        16.541,
+        10.004,
+        -86.705
+      ],
+      "parent_minimum_mm": [
+        5.669,
+        9.374,
+        -87.507
+      ],
+      "parent_maximum_mm": [
+        27.412,
+        22.683,
+        -84.086
+      ],
+      "parent_dimensions_mm": [
+        21.743,
+        13.31,
+        3.42
+      ],
+      "parent_centre_mm": [
+        16.541,
+        16.028,
+        -85.796
+      ]
+    },
+    {
+      "name": "Internal INA226 M2.5 standoff L1",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -28.5,
+        -13.899,
+        -91.462
+      ],
+      "maximum_mm": [
+        -25.5,
+        -10.697,
+        -88.26
+      ],
+      "dimensions_mm": [
+        3.0,
+        3.202,
+        3.202
+      ],
+      "centre_mm": [
+        -27.0,
+        -12.298,
+        -89.861
+      ],
+      "parent_minimum_mm": [
+        -28.5,
+        -7.5,
+        -92.0
+      ],
+      "parent_maximum_mm": [
+        -25.5,
+        -4.5,
+        -89.0
+      ],
+      "parent_dimensions_mm": [
+        3.0,
+        3.0,
+        3.0
+      ],
+      "parent_centre_mm": [
+        -27.0,
+        -6.0,
+        -90.5
+      ]
+    },
+    {
+      "name": "Internal INA226 M2.5 standoff L2",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -28.5,
+        2.062,
+        -92.578
+      ],
+      "maximum_mm": [
+        -25.5,
+        5.264,
+        -89.376
+      ],
+      "dimensions_mm": [
+        3.0,
+        3.202,
+        3.202
+      ],
+      "centre_mm": [
+        -27.0,
+        3.663,
+        -90.977
+      ],
+      "parent_minimum_mm": [
+        -28.5,
+        8.5,
+        -92.0
+      ],
+      "parent_maximum_mm": [
+        -25.5,
+        11.5,
+        -89.0
+      ],
+      "parent_dimensions_mm": [
+        3.0,
+        3.0,
+        3.0
+      ],
+      "parent_centre_mm": [
+        -27.0,
+        10.0,
+        -90.5
+      ]
+    },
+    {
+      "name": "Internal INA226 M2.5 standoff R1",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        25.5,
+        -13.899,
+        -91.462
+      ],
+      "maximum_mm": [
+        28.5,
+        -10.697,
+        -88.26
+      ],
+      "dimensions_mm": [
+        3.0,
+        3.202,
+        3.202
+      ],
+      "centre_mm": [
+        27.0,
+        -12.298,
+        -89.861
+      ],
+      "parent_minimum_mm": [
+        25.5,
+        -7.5,
+        -92.0
+      ],
+      "parent_maximum_mm": [
+        28.5,
+        -4.5,
+        -89.0
+      ],
+      "parent_dimensions_mm": [
+        3.0,
+        3.0,
+        3.0
+      ],
+      "parent_centre_mm": [
+        27.0,
+        -6.0,
+        -90.5
+      ]
+    },
+    {
+      "name": "Internal INA226 M2.5 standoff R2",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        25.5,
+        2.062,
+        -92.578
+      ],
+      "maximum_mm": [
+        28.5,
+        5.264,
+        -89.376
+      ],
+      "dimensions_mm": [
+        3.0,
+        3.202,
+        3.202
+      ],
+      "centre_mm": [
+        27.0,
+        3.663,
+        -90.977
+      ],
+      "parent_minimum_mm": [
+        25.5,
+        8.5,
+        -92.0
+      ],
+      "parent_maximum_mm": [
+        28.5,
+        11.5,
+        -89.0
+      ],
+      "parent_dimensions_mm": [
+        3.0,
+        3.0,
+        3.0
+      ],
+      "parent_centre_mm": [
+        27.0,
+        10.0,
+        -90.5
+      ]
+    },
+    {
+      "name": "Internal INA226 current monitor L",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -44.0,
+        -15.186,
+        -89.69
+      ],
+      "maximum_mm": [
+        -10.0,
+        6.872,
+        -86.559
+      ],
+      "dimensions_mm": [
+        34.0,
+        22.058,
+        3.131
+      ],
+      "centre_mm": [
+        -27.0,
+        -4.157,
+        -88.125
+      ],
+      "parent_minimum_mm": [
+        -44.0,
+        -9.0,
+        -89.0
+      ],
+      "parent_maximum_mm": [
+        -10.0,
+        13.0,
+        -87.4
+      ],
+      "parent_dimensions_mm": [
+        34.0,
+        22.0,
+        1.6
+      ],
+      "parent_centre_mm": [
+        -27.0,
+        2.0,
+        -88.2
+      ]
+    },
+    {
+      "name": "Internal INA226 current monitor R",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        10.0,
+        -15.186,
+        -89.69
+      ],
+      "maximum_mm": [
+        44.0,
+        6.872,
+        -86.559
+      ],
+      "dimensions_mm": [
+        34.0,
+        22.058,
+        3.131
+      ],
+      "centre_mm": [
+        27.0,
+        -4.157,
+        -88.125
+      ],
+      "parent_minimum_mm": [
+        10.0,
+        -9.0,
+        -89.0
+      ],
+      "parent_maximum_mm": [
+        44.0,
+        13.0,
+        -87.4
+      ],
+      "parent_dimensions_mm": [
+        34.0,
+        22.0,
+        1.6
+      ],
+      "parent_centre_mm": [
+        27.0,
+        2.0,
+        -88.2
+      ]
+    },
+    {
+      "name": "Internal Kelvin sense + L",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -33.522,
+        -11.312,
+        -86.964
+      ],
+      "maximum_mm": [
+        -30.478,
+        -4.593,
+        -83.141
+      ],
+      "dimensions_mm": [
+        3.044,
+        6.719,
+        3.823
+      ],
+      "centre_mm": [
+        -32.0,
+        -7.952,
+        -85.052
+      ],
+      "parent_minimum_mm": [
+        -33.522,
+        -5.25,
+        -87.089
+      ],
+      "parent_maximum_mm": [
+        -30.478,
+        1.25,
+        -83.711
+      ],
+      "parent_dimensions_mm": [
+        3.044,
+        6.499,
+        3.378
+      ],
+      "parent_centre_mm": [
+        -32.0,
+        -2.0,
+        -85.4
+      ]
+    },
+    {
+      "name": "Internal Kelvin sense + R",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        20.478,
+        -11.312,
+        -86.964
+      ],
+      "maximum_mm": [
+        23.522,
+        -4.593,
+        -83.141
+      ],
+      "dimensions_mm": [
+        3.044,
+        6.719,
+        3.823
+      ],
+      "centre_mm": [
+        22.0,
+        -7.952,
+        -85.052
+      ],
+      "parent_minimum_mm": [
+        20.478,
+        -5.25,
+        -87.089
+      ],
+      "parent_maximum_mm": [
+        23.522,
+        1.25,
+        -83.711
+      ],
+      "parent_dimensions_mm": [
+        3.044,
+        6.499,
+        3.378
+      ],
+      "parent_centre_mm": [
+        22.0,
+        -2.0,
+        -85.4
+      ]
+    },
+    {
+      "name": "Internal Kelvin sense - L",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -23.534,
+        -11.259,
+        -87.113
+      ],
+      "maximum_mm": [
+        -20.466,
+        -2.651,
+        -83.131
+      ],
+      "dimensions_mm": [
+        3.067,
+        8.608,
+        3.982
+      ],
+      "centre_mm": [
+        -22.0,
+        -6.955,
+        -85.122
+      ],
+      "parent_minimum_mm": [
+        -23.534,
+        -5.196,
+        -87.102
+      ],
+      "parent_maximum_mm": [
+        -20.466,
+        3.196,
+        -83.698
+      ],
+      "parent_dimensions_mm": [
+        3.067,
+        8.391,
+        3.404
+      ],
+      "parent_centre_mm": [
+        -22.0,
+        -1.0,
+        -85.4
+      ]
+    },
+    {
+      "name": "Internal Kelvin sense - R",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        30.466,
+        -11.259,
+        -87.113
+      ],
+      "maximum_mm": [
+        33.534,
+        -2.651,
+        -83.131
+      ],
+      "dimensions_mm": [
+        3.067,
+        8.608,
+        3.982
+      ],
+      "centre_mm": [
+        32.0,
+        -6.955,
+        -85.122
+      ],
+      "parent_minimum_mm": [
+        30.466,
+        -5.196,
+        -87.102
+      ],
+      "parent_maximum_mm": [
+        33.534,
+        3.196,
+        -83.698
+      ],
+      "parent_dimensions_mm": [
+        3.067,
+        8.391,
+        3.404
+      ],
+      "parent_centre_mm": [
+        32.0,
+        -1.0,
+        -85.4
+      ]
+    },
+    {
+      "name": "Internal aluminium chassis",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -190.0,
+        -65.65,
+        -122.973
+      ],
+      "maximum_mm": [
+        190.0,
+        -46.857,
+        -109.746
+      ],
+      "dimensions_mm": [
+        380.0,
+        18.793,
+        13.226
+      ],
+      "centre_mm": [
+        0.0,
+        -56.254,
+        -116.359
+      ],
+      "parent_minimum_mm": [
+        -190.0,
+        -57.0,
+        -126.0
+      ],
+      "parent_maximum_mm": [
+        190.0,
+        -39.0,
+        -114.0
+      ],
+      "parent_dimensions_mm": [
+        380.0,
+        18.0,
+        12.0
+      ],
+      "parent_centre_mm": [
+        0.0,
+        -48.0,
+        -120.0
+      ]
+    },
+    {
+      "name": "Internal aluminium chassis rail R",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -190.0,
+        30.116,
+        -129.669
+      ],
+      "maximum_mm": [
+        190.0,
+        48.909,
+        -116.443
+      ],
+      "dimensions_mm": [
+        380.0,
+        18.793,
+        13.226
+      ],
+      "centre_mm": [
+        0.0,
+        39.512,
+        -123.056
+      ],
+      "parent_minimum_mm": [
+        -190.0,
+        39.0,
+        -126.0
+      ],
+      "parent_maximum_mm": [
+        190.0,
+        57.0,
+        -114.0
+      ],
+      "parent_dimensions_mm": [
+        380.0,
+        18.0,
+        12.0
+      ],
+      "parent_centre_mm": [
+        0.0,
+        48.0,
+        -120.0
+      ]
+    },
+    {
+      "name": "Internal ballast M5 captive bolt 1",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -4.0,
+        -35.908,
+        -191.309
+      ],
+      "maximum_mm": [
+        1.0,
+        -29.525,
+        -171.009
+      ],
+      "dimensions_mm": [
+        5.0,
+        6.383,
+        20.3
+      ],
+      "centre_mm": [
+        -1.5,
+        -32.717,
+        -181.159
+      ],
+      "parent_minimum_mm": [
+        -4.0,
+        -22.5,
+        -193.0
+      ],
+      "parent_maximum_mm": [
+        1.0,
+        -17.5,
+        -173.0
+      ],
+      "parent_dimensions_mm": [
+        5.0,
+        5.0,
+        20.0
+      ],
+      "parent_centre_mm": [
+        -1.5,
+        -20.0,
+        -183.0
+      ]
+    },
+    {
+      "name": "Internal ballast M5 captive bolt 2",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -4.0,
+        3.994,
+        -194.099
+      ],
+      "maximum_mm": [
+        1.0,
+        10.377,
+        -173.799
+      ],
+      "dimensions_mm": [
+        5.0,
+        6.383,
+        20.3
+      ],
+      "centre_mm": [
+        -1.5,
+        7.186,
+        -183.949
+      ],
+      "parent_minimum_mm": [
+        -4.0,
+        17.5,
+        -193.0
+      ],
+      "parent_maximum_mm": [
+        1.0,
+        22.5,
+        -173.0
+      ],
+      "parent_dimensions_mm": [
+        5.0,
+        5.0,
+        20.0
+      ],
+      "parent_centre_mm": [
+        -1.5,
+        20.0,
+        -183.0
+      ]
+    },
+    {
+      "name": "Internal ballast M5 captive bolt 3",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -1.0,
+        -35.908,
+        -191.309
+      ],
+      "maximum_mm": [
+        4.0,
+        -29.525,
+        -171.009
+      ],
+      "dimensions_mm": [
+        5.0,
+        6.383,
+        20.3
+      ],
+      "centre_mm": [
+        1.5,
+        -32.717,
+        -181.159
+      ],
+      "parent_minimum_mm": [
+        -1.0,
+        -22.5,
+        -193.0
+      ],
+      "parent_maximum_mm": [
+        4.0,
+        -17.5,
+        -173.0
+      ],
+      "parent_dimensions_mm": [
+        5.0,
+        5.0,
+        20.0
+      ],
+      "parent_centre_mm": [
+        1.5,
+        -20.0,
+        -183.0
+      ]
+    },
+    {
+      "name": "Internal ballast M5 captive bolt 4",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -1.0,
+        3.994,
+        -194.099
+      ],
+      "maximum_mm": [
+        4.0,
+        10.377,
+        -173.799
+      ],
+      "dimensions_mm": [
+        5.0,
+        6.383,
+        20.3
+      ],
+      "centre_mm": [
+        1.5,
+        7.186,
+        -183.949
+      ],
+      "parent_minimum_mm": [
+        -1.0,
+        17.5,
+        -193.0
+      ],
+      "parent_maximum_mm": [
+        4.0,
+        22.5,
+        -173.0
+      ],
+      "parent_dimensions_mm": [
+        5.0,
+        5.0,
+        20.0
+      ],
+      "parent_centre_mm": [
+        1.5,
+        20.0,
+        -183.0
+      ]
+    },
+    {
+      "name": "Internal ballast central hanger",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -4.0,
+        -43.39,
+        -194.623
+      ],
+      "maximum_mm": [
+        4.0,
+        21.556,
+        -117.615
+      ],
+      "dimensions_mm": [
+        8.0,
+        64.946,
+        77.008
+      ],
+      "centre_mm": [
+        0.0,
+        -10.917,
+        -156.119
+      ],
+      "parent_minimum_mm": [
+        -4.0,
+        -30.0,
+        -193.0
+      ],
+      "parent_maximum_mm": [
+        4.0,
+        30.0,
+        -120.0
+      ],
+      "parent_dimensions_mm": [
+        8.0,
+        60.0,
+        73.0
+      ],
+      "parent_centre_mm": [
+        0.0,
+        0.0,
+        -156.5
+      ]
+    },
+    {
+      "name": "Internal ballast retention strap F",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -66.0,
+        -44.276,
+        -217.86
+      ],
+      "maximum_mm": [
+        66.0,
+        -36.198,
+        -187.514
+      ],
+      "dimensions_mm": [
+        132.0,
+        8.078,
+        30.345
+      ],
+      "centre_mm": [
+        0.0,
+        -40.237,
+        -202.687
+      ],
+      "parent_minimum_mm": [
+        -66.0,
+        -29.0,
+        -220.0
+      ],
+      "parent_maximum_mm": [
+        66.0,
+        -23.0,
+        -190.0
+      ],
+      "parent_dimensions_mm": [
+        132.0,
+        6.0,
+        30.0
+      ],
+      "parent_centre_mm": [
+        0.0,
+        -26.0,
+        -205.0
+      ]
+    },
+    {
+      "name": "Internal ballast retention strap R",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -66.0,
+        7.598,
+        -221.487
+      ],
+      "maximum_mm": [
+        66.0,
+        15.676,
+        -191.142
+      ],
+      "dimensions_mm": [
+        132.0,
+        8.078,
+        30.345
+      ],
+      "centre_mm": [
+        0.0,
+        11.637,
+        -206.314
+      ],
+      "parent_minimum_mm": [
+        -66.0,
+        23.0,
+        -220.0
+      ],
+      "parent_maximum_mm": [
+        66.0,
+        29.0,
+        -190.0
+      ],
+      "parent_dimensions_mm": [
+        132.0,
+        6.0,
+        30.0
+      ],
+      "parent_centre_mm": [
+        0.0,
+        26.0,
+        -205.0
+      ]
+    },
+    {
+      "name": "Internal battery strap front",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -66.0,
+        -33.54,
+        -107.479
+      ],
+      "maximum_mm": [
+        66.0,
+        -21.095,
+        -43.077
+      ],
+      "dimensions_mm": [
+        132.0,
+        12.445,
+        64.402
+      ],
+      "centre_mm": [
+        0.0,
+        -27.318,
+        -75.278
+      ],
+      "parent_minimum_mm": [
+        -66.0,
+        -26.0,
+        -109.0
+      ],
+      "parent_maximum_mm": [
+        66.0,
+        -18.0,
+        -45.0
+      ],
+      "parent_dimensions_mm": [
+        132.0,
+        8.0,
+        64.0
+      ],
+      "parent_centre_mm": [
+        0.0,
+        -22.0,
+        -77.0
+      ]
+    },
+    {
+      "name": "Internal battery strap rear",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -66.0,
+        20.328,
+        -111.246
+      ],
+      "maximum_mm": [
+        66.0,
+        32.773,
+        -46.844
+      ],
+      "dimensions_mm": [
+        132.0,
+        12.445,
+        64.402
+      ],
+      "centre_mm": [
+        0.0,
+        26.551,
+        -79.045
+      ],
+      "parent_minimum_mm": [
+        -66.0,
+        28.0,
+        -109.0
+      ],
+      "parent_maximum_mm": [
+        66.0,
+        36.0,
+        -45.0
+      ],
+      "parent_dimensions_mm": [
+        132.0,
+        8.0,
+        64.0
+      ],
+      "parent_centre_mm": [
+        0.0,
+        32.0,
+        -77.0
+      ]
+    },
+    {
+      "name": "Internal chassis centre crossmember",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -4.0,
+        -68.643,
+        -129.878
+      ],
+      "maximum_mm": [
+        4.0,
+        51.902,
+        -109.537
+      ],
+      "dimensions_mm": [
+        8.0,
+        120.545,
+        20.342
+      ],
+      "centre_mm": [
+        0.0,
+        -8.371,
+        -119.708
+      ],
+      "parent_minimum_mm": [
+        -4.0,
+        -60.0,
+        -126.0
+      ],
+      "parent_maximum_mm": [
+        4.0,
+        60.0,
+        -114.0
+      ],
+      "parent_dimensions_mm": [
+        8.0,
+        120.0,
+        12.0
+      ],
+      "parent_centre_mm": [
+        0.0,
+        0.0,
+        -120.0
+      ]
+    },
+    {
+      "name": "Internal chassis magnet 1",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        25.0,
+        7.045,
+        242.708
+      ],
+      "maximum_mm": [
+        45.0,
+        27.415,
+        250.089
+      ],
+      "dimensions_mm": [
+        20.0,
+        20.37,
+        7.381
+      ],
+      "centre_mm": [
+        35.0,
+        17.23,
+        246.398
+      ],
+      "parent_minimum_mm": [
+        25.0,
+        -10.0,
+        244.0
+      ],
+      "parent_maximum_mm": [
+        45.0,
+        10.0,
+        250.0
+      ],
+      "parent_dimensions_mm": [
+        20.0,
+        20.0,
+        6.0
+      ],
+      "parent_centre_mm": [
+        35.0,
+        0.0,
+        247.0
+      ]
+    },
+    {
+      "name": "Internal chassis magnet 2",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        7.5,
+        37.282,
+        240.594
+      ],
+      "maximum_mm": [
+        27.5,
+        57.652,
+        247.974
+      ],
+      "dimensions_mm": [
+        20.0,
+        20.37,
+        7.381
+      ],
+      "centre_mm": [
+        17.5,
+        47.467,
+        244.284
+      ],
+      "parent_minimum_mm": [
+        7.5,
+        20.311,
+        244.0
+      ],
+      "parent_maximum_mm": [
+        27.5,
+        40.311,
+        250.0
+      ],
+      "parent_dimensions_mm": [
+        20.0,
+        20.0,
+        6.0
+      ],
+      "parent_centre_mm": [
+        17.5,
+        30.311,
+        247.0
+      ]
+    },
+    {
+      "name": "Internal chassis magnet 3",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -27.5,
+        37.282,
+        240.594
+      ],
+      "maximum_mm": [
+        -7.5,
+        57.652,
+        247.974
+      ],
+      "dimensions_mm": [
+        20.0,
+        20.37,
+        7.381
+      ],
+      "centre_mm": [
+        -17.5,
+        47.467,
+        244.284
+      ],
+      "parent_minimum_mm": [
+        -27.5,
+        20.311,
+        244.0
+      ],
+      "parent_maximum_mm": [
+        -7.5,
+        40.311,
+        250.0
+      ],
+      "parent_dimensions_mm": [
+        20.0,
+        20.0,
+        6.0
+      ],
+      "parent_centre_mm": [
+        -17.5,
+        30.311,
+        247.0
+      ]
+    },
+    {
+      "name": "Internal chassis magnet 4",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -45.0,
+        7.045,
+        242.708
+      ],
+      "maximum_mm": [
+        -25.0,
+        27.415,
+        250.089
+      ],
+      "dimensions_mm": [
+        20.0,
+        20.37,
+        7.381
+      ],
+      "centre_mm": [
+        -35.0,
+        17.23,
+        246.398
+      ],
+      "parent_minimum_mm": [
+        -45.0,
+        -10.0,
+        244.0
+      ],
+      "parent_maximum_mm": [
+        -25.0,
+        10.0,
+        250.0
+      ],
+      "parent_dimensions_mm": [
+        20.0,
+        20.0,
+        6.0
+      ],
+      "parent_centre_mm": [
+        -35.0,
+        0.0,
+        247.0
+      ]
+    },
+    {
+      "name": "Internal chassis magnet 5",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -27.5,
+        -23.192,
+        244.822
+      ],
+      "maximum_mm": [
+        -7.5,
+        -2.822,
+        252.203
+      ],
+      "dimensions_mm": [
+        20.0,
+        20.37,
+        7.381
+      ],
+      "centre_mm": [
+        -17.5,
+        -13.007,
+        248.513
+      ],
+      "parent_minimum_mm": [
+        -27.5,
+        -40.311,
+        244.0
+      ],
+      "parent_maximum_mm": [
+        -7.5,
+        -20.311,
+        250.0
+      ],
+      "parent_dimensions_mm": [
+        20.0,
+        20.0,
+        6.0
+      ],
+      "parent_centre_mm": [
+        -17.5,
+        -30.311,
+        247.0
+      ]
+    },
+    {
+      "name": "Internal chassis magnet 6",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        7.5,
+        -23.192,
+        244.822
+      ],
+      "maximum_mm": [
+        27.5,
+        -2.822,
+        252.203
+      ],
+      "dimensions_mm": [
+        20.0,
+        20.37,
+        7.381
+      ],
+      "centre_mm": [
+        17.5,
+        -13.007,
+        248.513
+      ],
+      "parent_minimum_mm": [
+        7.5,
+        -40.311,
+        244.0
+      ],
+      "parent_maximum_mm": [
+        27.5,
+        -20.311,
+        250.0
+      ],
+      "parent_dimensions_mm": [
+        20.0,
+        20.0,
+        6.0
+      ],
+      "parent_centre_mm": [
+        17.5,
+        -30.311,
+        247.0
+      ]
+    },
+    {
+      "name": "Internal contactor feedback",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        43.646,
+        1.852,
+        -94.17
+      ],
+      "maximum_mm": [
+        128.429,
+        44.907,
+        -83.512
+      ],
+      "dimensions_mm": [
+        84.783,
+        43.056,
+        10.659
+      ],
+      "centre_mm": [
+        86.037,
+        23.379,
+        -88.841
+      ],
+      "parent_minimum_mm": [
+        43.646,
+        8.209,
+        -90.846
+      ],
+      "parent_maximum_mm": [
+        128.429,
+        50.831,
+        -83.142
+      ],
+      "parent_dimensions_mm": [
+        84.783,
+        42.622,
+        7.704
+      ],
+      "parent_centre_mm": [
+        86.037,
+        29.52,
+        -86.994
+      ]
+    },
+    {
+      "name": "Internal drive power battery positive to service disconnect",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        54.079,
+        -2.945,
+        -82.425
+      ],
+      "maximum_mm": [
+        162.453,
+        28.397,
+        -57.668
+      ],
+      "dimensions_mm": [
+        108.374,
+        31.342,
+        24.757
+      ],
+      "centre_mm": [
+        108.266,
+        12.726,
+        -70.046
+      ],
+      "parent_minimum_mm": [
+        54.079,
+        2.667,
+        -80.354
+      ],
+      "parent_maximum_mm": [
+        162.453,
+        32.495,
+        -57.622
+      ],
+      "parent_dimensions_mm": [
+        108.374,
+        29.829,
+        22.731
+      ],
+      "parent_centre_mm": [
+        108.266,
+        17.581,
+        -68.988
+      ]
+    },
+    {
+      "name": "Internal drive power contactor to driver L",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -54.556,
+        -60.998,
+        -94.95
+      ],
+      "maximum_mm": [
+        109.178,
+        -8.69,
+        -80.599
+      ],
+      "dimensions_mm": [
+        163.734,
+        52.308,
+        14.351
+      ],
+      "centre_mm": [
+        27.311,
+        -34.844,
+        -87.775
+      ],
+      "parent_minimum_mm": [
+        -54.556,
+        -54.478,
+        -95.377
+      ],
+      "parent_maximum_mm": [
+        109.178,
+        -2.795,
+        -84.606
+      ],
+      "parent_dimensions_mm": [
+        163.734,
+        51.683,
+        10.772
+      ],
+      "parent_centre_mm": [
+        27.311,
+        -28.636,
+        -89.991
+      ]
+    },
+    {
+      "name": "Internal drive power contactor to driver R",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        97.664,
+        -36.963,
+        -94.839
+      ],
+      "maximum_mm": [
+        110.336,
+        -10.005,
+        -82.496
+      ],
+      "dimensions_mm": [
+        12.672,
+        26.957,
+        12.343
+      ],
+      "centre_mm": [
+        104.0,
+        -23.484,
+        -88.667
+      ],
+      "parent_minimum_mm": [
+        97.664,
+        -30.385,
+        -95.357
+      ],
+      "parent_maximum_mm": [
+        110.336,
+        -4.098,
+        -84.822
+      ],
+      "parent_dimensions_mm": [
+        12.672,
+        26.286,
+        10.535
+      ],
+      "parent_centre_mm": [
+        104.0,
+        -17.242,
+        -90.089
+      ]
+    },
+    {
+      "name": "Internal drive power driver output L",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -107.416,
+        -36.891,
+        -99.385
+      ],
+      "maximum_mm": [
+        -40.536,
+        12.074,
+        -82.399
+      ],
+      "dimensions_mm": [
+        66.881,
+        48.965,
+        16.987
+      ],
+      "centre_mm": [
+        -73.976,
+        -12.409,
+        -90.892
+      ],
+      "parent_minimum_mm": [
+        -107.416,
+        -30.103,
+        -98.367
+      ],
+      "parent_maximum_mm": [
+        -40.536,
+        18.026,
+        -84.705
+      ],
+      "parent_dimensions_mm": [
+        66.881,
+        48.129,
+        13.663
+      ],
+      "parent_centre_mm": [
+        -73.976,
+        -6.038,
+        -91.536
+      ]
+    },
+    {
+      "name": "Internal drive power driver output R",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        40.142,
+        -35.809,
+        -99.416
+      ],
+      "maximum_mm": [
+        62.418,
+        11.672,
+        -82.546
+      ],
+      "dimensions_mm": [
+        22.275,
+        47.481,
+        16.87
+      ],
+      "centre_mm": [
+        51.28,
+        -12.069,
+        -90.981
+      ],
+      "parent_minimum_mm": [
+        40.142,
+        -29.014,
+        -98.426
+      ],
+      "parent_maximum_mm": [
+        62.418,
+        17.629,
+        -84.776
+      ],
+      "parent_dimensions_mm": [
+        22.275,
+        46.643,
+        13.65
+      ],
+      "parent_centre_mm": [
+        51.28,
+        -5.693,
+        -91.601
+      ]
+    },
+    {
+      "name": "Internal drive power fuse to contactor",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        125.5,
+        2.325,
+        -96.331
+      ],
+      "maximum_mm": [
+        130.5,
+        10.637,
+        -91.029
+      ],
+      "dimensions_mm": [
+        5.0,
+        8.312,
+        5.302
+      ],
+      "centre_mm": [
+        128.0,
+        6.481,
+        -93.68
+      ],
+      "parent_minimum_mm": [
+        125.5,
+        9.0,
+        -95.378
+      ],
+      "parent_maximum_mm": [
+        130.5,
+        17.0,
+        -90.622
+      ],
+      "parent_dimensions_mm": [
+        5.0,
+        8.0,
+        4.755
+      ],
+      "parent_centre_mm": [
+        128.0,
+        13.0,
+        -93.0
+      ]
+    },
+    {
+      "name": "Internal drive power service disconnect to fuse",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        144.402,
+        16.083,
+        -94.0
+      ],
+      "maximum_mm": [
+        195.092,
+        28.383,
+        -59.32
+      ],
+      "dimensions_mm": [
+        50.69,
+        12.3,
+        34.679
+      ],
+      "centre_mm": [
+        169.747,
+        22.233,
+        -76.66
+      ],
+      "parent_minimum_mm": [
+        144.402,
+        22.552,
+        -91.957
+      ],
+      "parent_maximum_mm": [
+        195.092,
+        32.5,
+        -57.888
+      ],
+      "parent_dimensions_mm": [
+        50.69,
+        9.948,
+        34.068
+      ],
+      "parent_centre_mm": [
+        169.747,
+        27.526,
+        -74.922
+      ]
+    },
+    {
+      "name": "Internal drive wheel L",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -168.0,
+        -60.696,
+        -186.588
+      ],
+      "maximum_mm": [
+        -142.0,
+        41.766,
+        -84.125
+      ],
+      "dimensions_mm": [
+        26.0,
+        102.463,
+        102.463
+      ],
+      "centre_mm": [
+        -155.0,
+        -9.465,
+        -135.357
+      ],
+      "parent_minimum_mm": [
+        -168.0,
+        -48.0,
+        -183.687
+      ],
+      "parent_maximum_mm": [
+        -142.0,
+        48.0,
+        -87.687
+      ],
+      "parent_dimensions_mm": [
+        26.0,
+        96.0,
+        96.0
+      ],
+      "parent_centre_mm": [
+        -155.0,
+        0.0,
+        -135.687
+      ]
+    },
+    {
+      "name": "Internal drive wheel R",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        142.0,
+        -60.696,
+        -186.588
+      ],
+      "maximum_mm": [
+        168.0,
+        41.766,
+        -84.125
+      ],
+      "dimensions_mm": [
+        26.0,
+        102.463,
+        102.463
+      ],
+      "centre_mm": [
+        155.0,
+        -9.465,
+        -135.357
+      ],
+      "parent_minimum_mm": [
+        142.0,
+        -48.0,
+        -183.687
+      ],
+      "parent_maximum_mm": [
+        168.0,
+        48.0,
+        -87.687
+      ],
+      "parent_dimensions_mm": [
+        26.0,
+        96.0,
+        96.0
+      ],
+      "parent_centre_mm": [
+        155.0,
+        0.0,
+        -135.687
+      ]
+    },
+    {
+      "name": "Internal driver enable L",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -80.0,
+        -52.262,
+        -90.57
+      ],
+      "maximum_mm": [
+        0.435,
+        -34.923,
+        -79.726
+      ],
+      "dimensions_mm": [
+        80.435,
+        17.34,
+        10.844
+      ],
+      "centre_mm": [
+        -39.782,
+        -43.593,
+        -85.148
+      ],
+      "parent_minimum_mm": [
+        -80.0,
+        -45.899,
+        -92.833
+      ],
+      "parent_maximum_mm": [
+        0.435,
+        -29.195,
+        -83.13
+      ],
+      "parent_dimensions_mm": [
+        80.435,
+        16.704,
+        9.703
+      ],
+      "parent_centre_mm": [
+        -39.782,
+        -37.547,
+        -87.981
+      ]
+    },
+    {
+      "name": "Internal driver enable R",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -0.435,
+        -52.262,
+        -90.57
+      ],
+      "maximum_mm": [
+        80.0,
+        -34.923,
+        -79.726
+      ],
+      "dimensions_mm": [
+        80.435,
+        17.34,
+        10.844
+      ],
+      "centre_mm": [
+        39.782,
+        -43.593,
+        -85.148
+      ],
+      "parent_minimum_mm": [
+        -0.435,
+        -45.899,
+        -92.833
+      ],
+      "parent_maximum_mm": [
+        80.0,
+        -29.195,
+        -83.13
+      ],
+      "parent_dimensions_mm": [
+        80.435,
+        16.704,
+        9.703
+      ],
+      "parent_centre_mm": [
+        39.782,
+        -37.547,
+        -87.981
+      ]
+    },
+    {
+      "name": "Internal dual-channel E-stop receiver",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        59.0,
+        33.206,
+        -100.649
+      ],
+      "maximum_mm": [
+        101.0,
+        63.97,
+        -86.586
+      ],
+      "dimensions_mm": [
+        42.0,
+        30.764,
+        14.063
+      ],
+      "centre_mm": [
+        80.0,
+        48.588,
+        -93.617
+      ],
+      "parent_minimum_mm": [
+        59.0,
+        40.0,
+        -96.0
+      ],
+      "parent_maximum_mm": [
+        101.0,
+        70.0,
+        -84.0
+      ],
+      "parent_dimensions_mm": [
+        42.0,
+        30.0,
+        12.0
+      ],
+      "parent_centre_mm": [
+        80.0,
+        55.0,
+        -90.0
+      ]
+    },
+    {
+      "name": "Internal electronics tray",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -52.0,
+        -37.182,
+        -107.234
+      ],
+      "maximum_mm": [
+        52.0,
+        43.461,
+        -89.683
+      ],
+      "dimensions_mm": [
+        104.0,
+        80.642,
+        17.551
+      ],
+      "centre_mm": [
+        0.0,
+        3.14,
+        -98.459
+      ],
+      "parent_minimum_mm": [
+        -52.0,
+        -30.0,
+        -104.0
+      ],
+      "parent_maximum_mm": [
+        52.0,
+        50.0,
+        -92.0
+      ],
+      "parent_dimensions_mm": [
+        104.0,
+        80.0,
+        12.0
+      ],
+      "parent_centre_mm": [
+        0.0,
+        10.0,
+        -98.0
+      ]
+    },
+    {
+      "name": "Internal encoder connector L",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -40.0,
+        -7.276,
+        -90.409
+      ],
+      "maximum_mm": [
+        -24.0,
+        3.258,
+        -81.73
+      ],
+      "dimensions_mm": [
+        16.0,
+        10.534,
+        8.678
+      ],
+      "centre_mm": [
+        -32.0,
+        -2.009,
+        -86.07
+      ],
+      "parent_minimum_mm": [
+        -40.0,
+        -1.0,
+        -90.0
+      ],
+      "parent_maximum_mm": [
+        -24.0,
+        9.0,
+        -82.0
+      ],
+      "parent_dimensions_mm": [
+        16.0,
+        10.0,
+        8.0
+      ],
+      "parent_centre_mm": [
+        -32.0,
+        4.0,
+        -86.0
+      ]
+    },
+    {
+      "name": "Internal encoder connector R",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        24.0,
+        -7.276,
+        -90.409
+      ],
+      "maximum_mm": [
+        40.0,
+        3.258,
+        -81.73
+      ],
+      "dimensions_mm": [
+        16.0,
+        10.534,
+        8.678
+      ],
+      "centre_mm": [
+        32.0,
+        -2.009,
+        -86.07
+      ],
+      "parent_minimum_mm": [
+        24.0,
+        -1.0,
+        -90.0
+      ],
+      "parent_maximum_mm": [
+        40.0,
+        9.0,
+        -82.0
+      ],
+      "parent_dimensions_mm": [
+        16.0,
+        10.0,
+        8.0
+      ],
+      "parent_centre_mm": [
+        32.0,
+        4.0,
+        -86.0
+      ]
+    },
+    {
+      "name": "Internal encoder harness L1",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -26.752,
+        -48.562,
+        -126.458
+      ],
+      "maximum_mm": [
+        -8.248,
+        -17.408,
+        -100.179
+      ],
+      "dimensions_mm": [
+        18.504,
+        31.154,
+        26.279
+      ],
+      "centre_mm": [
+        -17.5,
+        -32.985,
+        -113.319
+      ],
+      "parent_minimum_mm": [
+        -26.752,
+        -41.296,
+        -127.514
+      ],
+      "parent_maximum_mm": [
+        -8.248,
+        -8.704,
+        -103.173
+      ],
+      "parent_dimensions_mm": [
+        18.504,
+        32.592,
+        24.341
+      ],
+      "parent_centre_mm": [
+        -17.5,
+        -25.0,
+        -115.344
+      ]
+    },
+    {
+      "name": "Internal encoder harness L2",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -60.63,
+        -48.926,
+        -103.533
+      ],
+      "maximum_mm": [
+        -24.37,
+        -44.482,
+        -85.412
+      ],
+      "dimensions_mm": [
+        36.261,
+        4.444,
+        18.121
+      ],
+      "centre_mm": [
+        -42.5,
+        -46.704,
+        -94.472
+      ],
+      "parent_minimum_mm": [
+        -60.63,
+        -41.6,
+        -106.471
+      ],
+      "parent_maximum_mm": [
+        -24.37,
+        -38.4,
+        -88.529
+      ],
+      "parent_dimensions_mm": [
+        36.261,
+        3.2,
+        17.941
+      ],
+      "parent_centre_mm": [
+        -42.5,
+        -40.0,
+        -97.5
+      ]
+    },
+    {
+      "name": "Internal encoder harness L3",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -61.843,
+        -47.361,
+        -89.179
+      ],
+      "maximum_mm": [
+        -30.157,
+        -0.828,
+        -83.881
+      ],
+      "dimensions_mm": [
+        31.687,
+        46.533,
+        5.298
+      ],
+      "centre_mm": [
+        -46.0,
+        -24.095,
+        -86.53
+      ],
+      "parent_minimum_mm": [
+        -61.843,
+        -41.218,
+        -92.202
+      ],
+      "parent_maximum_mm": [
+        -30.157,
+        5.218,
+        -83.798
+      ],
+      "parent_dimensions_mm": [
+        31.687,
+        46.435,
+        8.405
+      ],
+      "parent_centre_mm": [
+        -46.0,
+        -18.0,
+        -88.0
+      ]
+    },
+    {
+      "name": "Internal encoder harness R1",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        8.248,
+        -0.042,
+        -127.949
+      ],
+      "maximum_mm": [
+        26.752,
+        33.828,
+        -105.664
+      ],
+      "dimensions_mm": [
+        18.504,
+        33.871,
+        22.285
+      ],
+      "centre_mm": [
+        17.5,
+        16.893,
+        -116.807
+      ],
+      "parent_minimum_mm": [
+        8.248,
+        8.704,
+        -127.514
+      ],
+      "parent_maximum_mm": [
+        26.752,
+        41.296,
+        -103.173
+      ],
+      "parent_dimensions_mm": [
+        18.504,
+        32.592,
+        24.341
+      ],
+      "parent_centre_mm": [
+        17.5,
+        25.0,
+        -115.344
+      ]
+    },
+    {
+      "name": "Internal encoder harness R2",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        24.37,
+        30.879,
+        -109.113
+      ],
+      "maximum_mm": [
+        60.63,
+        35.323,
+        -90.992
+      ],
+      "dimensions_mm": [
+        36.261,
+        4.444,
+        18.121
+      ],
+      "centre_mm": [
+        42.5,
+        33.101,
+        -100.053
+      ],
+      "parent_minimum_mm": [
+        24.37,
+        38.4,
+        -106.471
+      ],
+      "parent_maximum_mm": [
+        60.63,
+        41.6,
+        -88.529
+      ],
+      "parent_dimensions_mm": [
+        36.261,
+        3.2,
+        17.941
+      ],
+      "parent_centre_mm": [
+        42.5,
+        40.0,
+        -97.5
+      ]
+    },
+    {
+      "name": "Internal encoder harness R3",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        30.243,
+        -3.423,
+        -94.803
+      ],
+      "maximum_mm": [
+        61.757,
+        35.038,
+        -83.837
+      ],
+      "dimensions_mm": [
+        31.515,
+        38.461,
+        10.966
+      ],
+      "centre_mm": [
+        46.0,
+        15.808,
+        -89.32
+      ],
+      "parent_minimum_mm": [
+        30.243,
+        2.602,
+        -92.237
+      ],
+      "parent_maximum_mm": [
+        61.757,
+        41.398,
+        -83.763
+      ],
+      "parent_dimensions_mm": [
+        31.515,
+        38.796,
+        8.473
+      ],
+      "parent_centre_mm": [
+        46.0,
+        22.0,
+        -88.0
+      ]
+    },
+    {
+      "name": "Internal equator gasket envelope",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -249.5,
+        -249.067,
+        -19.898
+      ],
+      "maximum_mm": [
+        249.5,
+        249.067,
+        19.898
+      ],
+      "dimensions_mm": [
+        499.0,
+        498.133,
+        39.796
+      ],
+      "centre_mm": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent_minimum_mm": [
+        -249.5,
+        -249.5,
+        -2.5
+      ],
+      "parent_maximum_mm": [
+        249.5,
+        249.5,
+        2.5
+      ],
+      "parent_dimensions_mm": [
+        499.0,
+        499.0,
+        5.0
+      ],
+      "parent_centre_mm": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "name": "Internal equator latch envelope 1",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        230.0,
+        -4.409,
+        -6.264
+      ],
+      "maximum_mm": [
+        246.0,
+        4.409,
+        6.264
+      ],
+      "dimensions_mm": [
+        16.0,
+        8.818,
+        12.529
+      ],
+      "centre_mm": [
+        238.0,
+        0.0,
+        0.0
+      ],
+      "parent_minimum_mm": [
+        230.0,
+        -4.0,
+        -6.0
+      ],
+      "parent_maximum_mm": [
+        246.0,
+        4.0,
+        6.0
+      ],
+      "parent_dimensions_mm": [
+        16.0,
+        8.0,
+        12.0
+      ],
+      "parent_centre_mm": [
+        238.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "name": "Internal equator latch envelope 2",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        159.806,
+        158.998,
+        -18.317
+      ],
+      "maximum_mm": [
+        176.777,
+        176.765,
+        -5.162
+      ],
+      "dimensions_mm": [
+        16.971,
+        17.766,
+        13.155
+      ],
+      "centre_mm": [
+        168.291,
+        167.881,
+        -11.739
+      ],
+      "parent_minimum_mm": [
+        159.806,
+        159.806,
+        -6.0
+      ],
+      "parent_maximum_mm": [
+        176.777,
+        176.777,
+        6.0
+      ],
+      "parent_dimensions_mm": [
+        16.971,
+        16.971,
+        12.0
+      ],
+      "parent_centre_mm": [
+        168.291,
+        168.291,
+        0.0
+      ]
+    },
+    {
+      "name": "Internal equator latch envelope 3",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -4.0,
+        229.021,
+        -23.145
+      ],
+      "maximum_mm": [
+        4.0,
+        245.819,
+        -10.059
+      ],
+      "dimensions_mm": [
+        8.0,
+        16.798,
+        13.087
+      ],
+      "centre_mm": [
+        0.0,
+        237.42,
+        -16.602
+      ],
+      "parent_minimum_mm": [
+        -4.0,
+        230.0,
+        -6.0
+      ],
+      "parent_maximum_mm": [
+        4.0,
+        246.0,
+        6.0
+      ],
+      "parent_dimensions_mm": [
+        8.0,
+        16.0,
+        12.0
+      ],
+      "parent_centre_mm": [
+        0.0,
+        238.0,
+        0.0
+      ]
+    },
+    {
+      "name": "Internal equator latch envelope 4",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -176.777,
+        158.998,
+        -18.317
+      ],
+      "maximum_mm": [
+        -159.806,
+        176.765,
+        -5.162
+      ],
+      "dimensions_mm": [
+        16.971,
+        17.766,
+        13.155
+      ],
+      "centre_mm": [
+        -168.291,
+        167.881,
+        -11.739
+      ],
+      "parent_minimum_mm": [
+        -176.777,
+        159.806,
+        -6.0
+      ],
+      "parent_maximum_mm": [
+        -159.806,
+        176.777,
+        6.0
+      ],
+      "parent_dimensions_mm": [
+        16.971,
+        16.971,
+        12.0
+      ],
+      "parent_centre_mm": [
+        -168.291,
+        168.291,
+        0.0
+      ]
+    },
+    {
+      "name": "Internal equator latch envelope 5",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -246.0,
+        -4.409,
+        -6.264
+      ],
+      "maximum_mm": [
+        -230.0,
+        4.409,
+        6.264
+      ],
+      "dimensions_mm": [
+        16.0,
+        8.818,
+        12.529
+      ],
+      "centre_mm": [
+        -238.0,
+        0.0,
+        0.0
+      ],
+      "parent_minimum_mm": [
+        -246.0,
+        -4.0,
+        -6.0
+      ],
+      "parent_maximum_mm": [
+        -230.0,
+        4.0,
+        6.0
+      ],
+      "parent_dimensions_mm": [
+        16.0,
+        8.0,
+        12.0
+      ],
+      "parent_centre_mm": [
+        -238.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "name": "Internal equator latch envelope 6",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -176.777,
+        -176.765,
+        5.162
+      ],
+      "maximum_mm": [
+        -159.806,
+        -158.998,
+        18.317
+      ],
+      "dimensions_mm": [
+        16.971,
+        17.766,
+        13.155
+      ],
+      "centre_mm": [
+        -168.291,
+        -167.881,
+        11.739
+      ],
+      "parent_minimum_mm": [
+        -176.777,
+        -176.777,
+        -6.0
+      ],
+      "parent_maximum_mm": [
+        -159.806,
+        -159.806,
+        6.0
+      ],
+      "parent_dimensions_mm": [
+        16.971,
+        16.971,
+        12.0
+      ],
+      "parent_centre_mm": [
+        -168.291,
+        -168.291,
+        -0.0
+      ]
+    },
+    {
+      "name": "Internal equator latch envelope 7",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -4.0,
+        -245.819,
+        10.059
+      ],
+      "maximum_mm": [
+        4.0,
+        -229.021,
+        23.145
+      ],
+      "dimensions_mm": [
+        8.0,
+        16.798,
+        13.087
+      ],
+      "centre_mm": [
+        0.0,
+        -237.42,
+        16.602
+      ],
+      "parent_minimum_mm": [
+        -4.0,
+        -246.0,
+        -6.0
+      ],
+      "parent_maximum_mm": [
+        4.0,
+        -230.0,
+        6.0
+      ],
+      "parent_dimensions_mm": [
+        8.0,
+        16.0,
+        12.0
+      ],
+      "parent_centre_mm": [
+        0.0,
+        -238.0,
+        0.0
+      ]
+    },
+    {
+      "name": "Internal equator latch envelope 8",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        159.806,
+        -176.765,
+        5.162
+      ],
+      "maximum_mm": [
+        176.777,
+        -158.998,
+        18.317
+      ],
+      "dimensions_mm": [
+        16.971,
+        17.766,
+        13.155
+      ],
+      "centre_mm": [
+        168.291,
+        -167.881,
+        11.739
+      ],
+      "parent_minimum_mm": [
+        159.806,
+        -176.777,
+        -6.0
+      ],
+      "parent_maximum_mm": [
+        176.777,
+        -159.806,
+        6.0
+      ],
+      "parent_dimensions_mm": [
+        16.971,
+        16.971,
+        12.0
+      ],
+      "parent_centre_mm": [
+        168.291,
+        -168.291,
+        -0.0
+      ]
+    },
+    {
+      "name": "Internal estop channel A",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        43.981,
+        -10.669,
+        -89.583
+      ],
+      "maximum_mm": [
+        210.651,
+        53.357,
+        -33.811
+      ],
+      "dimensions_mm": [
+        166.67,
+        64.026,
+        55.772
+      ],
+      "centre_mm": [
+        127.316,
+        21.344,
+        -61.697
+      ],
+      "parent_minimum_mm": [
+        43.981,
+        -4.689,
+        -85.895
+      ],
+      "parent_maximum_mm": [
+        210.651,
+        55.881,
+        -34.222
+      ],
+      "parent_dimensions_mm": [
+        166.67,
+        60.569,
+        51.673
+      ],
+      "parent_centre_mm": [
+        127.316,
+        25.596,
+        -60.058
+      ]
+    },
+    {
+      "name": "Internal estop channel B",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        24.957,
+        -2.7,
+        -90.211
+      ],
+      "maximum_mm": [
+        210.676,
+        62.333,
+        -34.389
+      ],
+      "dimensions_mm": [
+        185.719,
+        65.033,
+        55.822
+      ],
+      "centre_mm": [
+        117.817,
+        29.817,
+        -62.3
+      ],
+      "parent_minimum_mm": [
+        24.957,
+        3.3,
+        -85.895
+      ],
+      "parent_maximum_mm": [
+        210.676,
+        64.88,
+        -34.242
+      ],
+      "parent_dimensions_mm": [
+        185.719,
+        61.58,
+        51.653
+      ],
+      "parent_centre_mm": [
+        117.817,
+        34.09,
+        -60.068
+      ]
+    },
+    {
+      "name": "Internal externally reachable service disconnect",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        162.0,
+        15.138,
+        -71.622
+      ],
+      "maximum_mm": [
+        194.0,
+        36.345,
+        -52.271
+      ],
+      "dimensions_mm": [
+        32.0,
+        21.207,
+        19.351
+      ],
+      "centre_mm": [
+        178.0,
+        25.742,
+        -61.947
+      ],
+      "parent_minimum_mm": [
+        162.0,
+        20.0,
+        -69.0
+      ],
+      "parent_maximum_mm": [
+        194.0,
+        40.0,
+        -51.0
+      ],
+      "parent_dimensions_mm": [
+        32.0,
+        20.0,
+        18.0
+      ],
+      "parent_centre_mm": [
+        178.0,
+        30.0,
+        -60.0
+      ]
+    },
+    {
+      "name": "Internal fuse and contactor",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": true,
+      "minimum_mm": [
+        83.0,
+        -1.479,
+        -109.111
+      ],
+      "maximum_mm": [
+        127.0,
+        28.127,
+        -83.216
+      ],
+      "dimensions_mm": [
+        44.0,
+        29.606,
+        25.895
+      ],
+      "centre_mm": [
+        105.0,
+        13.324,
+        -96.164
+      ],
+      "parent_minimum_mm": [
+        83.0,
+        6.0,
+        -107.0
+      ],
+      "parent_maximum_mm": [
+        127.0,
+        34.0,
+        -83.0
+      ],
+      "parent_dimensions_mm": [
+        44.0,
+        28.0,
+        24.0
+      ],
+      "parent_centre_mm": [
+        105.0,
+        20.0,
+        -95.0
+      ]
+    },
+    {
+      "name": "Internal geared motor L",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -135.0,
+        -33.48,
+        -159.371
+      ],
+      "maximum_mm": [
+        -9.8,
+        14.55,
+        -111.342
+      ],
+      "dimensions_mm": [
+        125.2,
+        48.029,
+        48.029
+      ],
+      "centre_mm": [
+        -72.4,
+        -9.465,
+        -135.357
+      ],
+      "parent_minimum_mm": [
+        -135.0,
+        -22.5,
+        -158.187
+      ],
+      "parent_maximum_mm": [
+        -9.8,
+        22.5,
+        -113.187
+      ],
+      "parent_dimensions_mm": [
+        125.2,
+        45.0,
+        45.0
+      ],
+      "parent_centre_mm": [
+        -72.4,
+        0.0,
+        -135.687
+      ]
+    },
+    {
+      "name": "Internal geared motor R",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        9.8,
+        -33.48,
+        -159.371
+      ],
+      "maximum_mm": [
+        135.0,
+        14.55,
+        -111.342
+      ],
+      "dimensions_mm": [
+        125.2,
+        48.029,
+        48.029
+      ],
+      "centre_mm": [
+        72.4,
+        -9.465,
+        -135.357
+      ],
+      "parent_minimum_mm": [
+        9.8,
+        -22.5,
+        -158.187
+      ],
+      "parent_maximum_mm": [
+        135.0,
+        22.5,
+        -113.187
+      ],
+      "parent_dimensions_mm": [
+        125.2,
+        45.0,
+        45.0
+      ],
+      "parent_centre_mm": [
+        72.4,
+        0.0,
+        -135.687
+      ]
+    },
+    {
+      "name": "Internal hardware driver enable line",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -0.9,
+        -36.905,
+        -93.93
+      ],
+      "maximum_mm": [
+        0.9,
+        15.299,
+        -79.847
+      ],
+      "dimensions_mm": [
+        1.8,
+        52.204,
+        14.083
+      ],
+      "centre_mm": [
+        0.0,
+        -10.803,
+        -86.888
+      ],
+      "parent_minimum_mm": [
+        -0.9,
+        -30.514,
+        -92.685
+      ],
+      "parent_maximum_mm": [
+        0.9,
+        21.083,
+        -82.176
+      ],
+      "parent_dimensions_mm": [
+        1.8,
+        51.597,
+        10.509
+      ],
+      "parent_centre_mm": [
+        0.0,
+        -4.715,
+        -87.43
+      ]
+    },
+    {
+      "name": "Internal magnet array riser",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -45.0,
+        -28.567,
+        230.291
+      ],
+      "maximum_mm": [
+        45.0,
+        61.911,
+        246.545
+      ],
+      "dimensions_mm": [
+        90.0,
+        90.478,
+        16.254
+      ],
+      "centre_mm": [
+        0.0,
+        16.672,
+        238.418
+      ],
+      "parent_minimum_mm": [
+        -45.0,
+        -45.0,
+        234.0
+      ],
+      "parent_maximum_mm": [
+        45.0,
+        45.0,
+        244.0
+      ],
+      "parent_dimensions_mm": [
+        90.0,
+        90.0,
+        10.0
+      ],
+      "parent_centre_mm": [
+        0.0,
+        0.0,
+        239.0
+      ]
+    },
+    {
+      "name": "Internal magnetic mast",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -12.0,
+        -20.342,
+        -120.545
+      ],
+      "maximum_mm": [
+        12.0,
+        27.317,
+        220.301
+      ],
+      "dimensions_mm": [
+        24.0,
+        47.659,
+        340.846
+      ],
+      "centre_mm": [
+        0.0,
+        3.488,
+        49.878
+      ],
+      "parent_minimum_mm": [
+        -12.0,
+        -12.0,
+        -120.0
+      ],
+      "parent_maximum_mm": [
+        12.0,
+        12.0,
+        220.0
+      ],
+      "parent_dimensions_mm": [
+        24.0,
+        24.0,
+        340.0
+      ],
+      "parent_centre_mm": [
+        0.0,
+        -0.0,
+        50.0
+      ]
+    },
+    {
+      "name": "Internal main contactor",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        108.0,
+        -26.278,
+        -105.372
+      ],
+      "maximum_mm": [
+        148.0,
+        3.328,
+        -79.477
+      ],
+      "dimensions_mm": [
+        40.0,
+        29.606,
+        25.895
+      ],
+      "centre_mm": [
+        128.0,
+        -11.475,
+        -92.425
+      ],
+      "parent_minimum_mm": [
+        108.0,
+        -19.0,
+        -105.0
+      ],
+      "parent_maximum_mm": [
+        148.0,
+        9.0,
+        -81.0
+      ],
+      "parent_dimensions_mm": [
+        40.0,
+        28.0,
+        24.0
+      ],
+      "parent_centre_mm": [
+        128.0,
+        -5.0,
+        -93.0
+      ]
+    },
+    {
+      "name": "Internal main fuse holder",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        110.0,
+        9.843,
+        -104.053
+      ],
+      "maximum_mm": [
+        146.0,
+        27.06,
+        -84.981
+      ],
+      "dimensions_mm": [
+        36.0,
+        17.217,
+        19.072
+      ],
+      "centre_mm": [
+        128.0,
+        18.452,
+        -94.517
+      ],
+      "parent_minimum_mm": [
+        110.0,
+        17.0,
+        -102.0
+      ],
+      "parent_maximum_mm": [
+        146.0,
+        33.0,
+        -84.0
+      ],
+      "parent_dimensions_mm": [
+        36.0,
+        16.0,
+        18.0
+      ],
+      "parent_centre_mm": [
+        128.0,
+        25.0,
+        -93.0
+      ]
+    },
+    {
+      "name": "Internal mast brace L",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -170.026,
+        -13.748,
+        -111.425
+      ],
+      "maximum_mm": [
+        5.026,
+        16.329,
+        148.335
+      ],
+      "dimensions_mm": [
+        175.051,
+        30.076,
+        259.76
+      ],
+      "centre_mm": [
+        -82.5,
+        1.29,
+        18.455
+      ],
+      "parent_minimum_mm": [
+        -170.026,
+        -6.0,
+        -111.278
+      ],
+      "parent_maximum_mm": [
+        5.026,
+        6.0,
+        148.278
+      ],
+      "parent_dimensions_mm": [
+        175.051,
+        12.0,
+        259.555
+      ],
+      "parent_centre_mm": [
+        -82.5,
+        0.0,
+        18.5
+      ]
+    },
+    {
+      "name": "Internal mast brace R",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -5.026,
+        -13.748,
+        -111.425
+      ],
+      "maximum_mm": [
+        170.026,
+        16.329,
+        148.335
+      ],
+      "dimensions_mm": [
+        175.051,
+        30.076,
+        259.76
+      ],
+      "centre_mm": [
+        82.5,
+        1.29,
+        18.455
+      ],
+      "parent_minimum_mm": [
+        -5.026,
+        -6.0,
+        -111.278
+      ],
+      "parent_maximum_mm": [
+        170.026,
+        6.0,
+        148.278
+      ],
+      "parent_dimensions_mm": [
+        175.051,
+        12.0,
+        259.555
+      ],
+      "parent_centre_mm": [
+        82.5,
+        0.0,
+        18.5
+      ]
+    },
+    {
+      "name": "Internal monitored power input L",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -45.994,
+        -1.795,
+        -96.174
+      ],
+      "maximum_mm": [
+        84.122,
+        28.299,
+        -82.974
+      ],
+      "dimensions_mm": [
+        130.116,
+        30.094,
+        13.2
+      ],
+      "centre_mm": [
+        19.064,
+        13.252,
+        -89.574
+      ],
+      "parent_minimum_mm": [
+        -45.994,
+        4.775,
+        -94.02
+      ],
+      "parent_maximum_mm": [
+        84.122,
+        34.162,
+        -82.843
+      ],
+      "parent_dimensions_mm": [
+        130.116,
+        29.386,
+        11.177
+      ],
+      "parent_centre_mm": [
+        19.064,
+        19.468,
+        -88.432
+      ]
+    },
+    {
+      "name": "Internal monitored power input R",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        34.831,
+        -2.432,
+        -95.36
+      ],
+      "maximum_mm": [
+        83.54,
+        16.345,
+        -82.981
+      ],
+      "dimensions_mm": [
+        48.709,
+        18.778,
+        12.379
+      ],
+      "centre_mm": [
+        59.186,
+        6.957,
+        -89.17
+      ],
+      "parent_minimum_mm": [
+        34.831,
+        4.138,
+        -94.042
+      ],
+      "parent_maximum_mm": [
+        83.54,
+        22.182,
+        -82.894
+      ],
+      "parent_dimensions_mm": [
+        48.709,
+        18.044,
+        11.148
+      ],
+      "parent_centre_mm": [
+        59.186,
+        13.16,
+        -88.468
+      ]
+    },
+    {
+      "name": "Internal monitored power output L",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -42.906,
+        -2.508,
+        -97.018
+      ],
+      "maximum_mm": [
+        -16.738,
+        12.225,
+        -83.927
+      ],
+      "dimensions_mm": [
+        26.168,
+        14.733,
+        13.092
+      ],
+      "centre_mm": [
+        -29.822,
+        4.858,
+        -90.473
+      ],
+      "parent_minimum_mm": [
+        -42.906,
+        4.198,
+        -95.988
+      ],
+      "parent_maximum_mm": [
+        -16.738,
+        18.117,
+        -83.838
+      ],
+      "parent_dimensions_mm": [
+        26.168,
+        13.919,
+        12.151
+      ],
+      "parent_centre_mm": [
+        -29.822,
+        11.157,
+        -89.913
+      ]
+    },
+    {
+      "name": "Internal monitored power output R",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        16.738,
+        -2.508,
+        -97.018
+      ],
+      "maximum_mm": [
+        42.906,
+        12.225,
+        -83.927
+      ],
+      "dimensions_mm": [
+        26.168,
+        14.733,
+        13.092
+      ],
+      "centre_mm": [
+        29.822,
+        4.858,
+        -90.473
+      ],
+      "parent_minimum_mm": [
+        16.738,
+        4.198,
+        -95.988
+      ],
+      "parent_maximum_mm": [
+        42.906,
+        18.117,
+        -83.838
+      ],
+      "parent_dimensions_mm": [
+        26.168,
+        13.919,
+        12.151
+      ],
+      "parent_centre_mm": [
+        29.822,
+        11.157,
+        -89.913
+      ]
+    },
+    {
+      "name": "Internal motor M4 bolt L1",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -139.0,
+        1.608,
+        -126.01
+      ],
+      "maximum_mm": [
+        -129.0,
+        5.877,
+        -121.741
+      ],
+      "dimensions_mm": [
+        10.0,
+        4.269,
+        4.269
+      ],
+      "centre_mm": [
+        -134.0,
+        3.742,
+        -123.876
+      ],
+      "parent_minimum_mm": [
+        -139.0,
+        10.374,
+        -125.313
+      ],
+      "parent_maximum_mm": [
+        -129.0,
+        14.374,
+        -121.313
+      ],
+      "parent_dimensions_mm": [
+        10.0,
+        4.0,
+        4.0
+      ],
+      "parent_centre_mm": [
+        -134.0,
+        12.374,
+        -123.313
+      ]
+    },
+    {
+      "name": "Internal motor M4 bolt L2",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -139.0,
+        -23.081,
+        -124.284
+      ],
+      "maximum_mm": [
+        -129.0,
+        -18.811,
+        -120.015
+      ],
+      "dimensions_mm": [
+        10.0,
+        4.269,
+        4.269
+      ],
+      "centre_mm": [
+        -134.0,
+        -20.946,
+        -122.149
+      ],
+      "parent_minimum_mm": [
+        -139.0,
+        -14.374,
+        -125.313
+      ],
+      "parent_maximum_mm": [
+        -129.0,
+        -10.374,
+        -121.313
+      ],
+      "parent_dimensions_mm": [
+        10.0,
+        4.0,
+        4.0
+      ],
+      "parent_centre_mm": [
+        -134.0,
+        -12.374,
+        -123.313
+      ]
+    },
+    {
+      "name": "Internal motor M4 bolt L3",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -139.0,
+        -24.807,
+        -148.972
+      ],
+      "maximum_mm": [
+        -129.0,
+        -20.538,
+        -144.703
+      ],
+      "dimensions_mm": [
+        10.0,
+        4.269,
+        4.269
+      ],
+      "centre_mm": [
+        -134.0,
+        -22.672,
+        -146.838
+      ],
+      "parent_minimum_mm": [
+        -139.0,
+        -14.374,
+        -150.062
+      ],
+      "parent_maximum_mm": [
+        -129.0,
+        -10.374,
+        -146.061
+      ],
+      "parent_dimensions_mm": [
+        10.0,
+        4.0,
+        4.0
+      ],
+      "parent_centre_mm": [
+        -134.0,
+        -12.374,
+        -148.061
+      ]
+    },
+    {
+      "name": "Internal motor M4 bolt L4",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -139.0,
+        -0.119,
+        -150.699
+      ],
+      "maximum_mm": [
+        -129.0,
+        4.151,
+        -146.429
+      ],
+      "dimensions_mm": [
+        10.0,
+        4.269,
+        4.269
+      ],
+      "centre_mm": [
+        -134.0,
+        2.016,
+        -148.564
+      ],
+      "parent_minimum_mm": [
+        -139.0,
+        10.374,
+        -150.062
+      ],
+      "parent_maximum_mm": [
+        -129.0,
+        14.374,
+        -146.062
+      ],
+      "parent_dimensions_mm": [
+        10.0,
+        4.0,
+        4.0
+      ],
+      "parent_centre_mm": [
+        -134.0,
+        12.374,
+        -148.062
+      ]
+    },
+    {
+      "name": "Internal motor M4 bolt R1",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        129.0,
+        1.608,
+        -126.01
+      ],
+      "maximum_mm": [
+        139.0,
+        5.877,
+        -121.741
+      ],
+      "dimensions_mm": [
+        10.0,
+        4.269,
+        4.269
+      ],
+      "centre_mm": [
+        134.0,
+        3.742,
+        -123.876
+      ],
+      "parent_minimum_mm": [
+        129.0,
+        10.374,
+        -125.313
+      ],
+      "parent_maximum_mm": [
+        139.0,
+        14.374,
+        -121.313
+      ],
+      "parent_dimensions_mm": [
+        10.0,
+        4.0,
+        4.0
+      ],
+      "parent_centre_mm": [
+        134.0,
+        12.374,
+        -123.313
+      ]
+    },
+    {
+      "name": "Internal motor M4 bolt R2",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        129.0,
+        -23.081,
+        -124.284
+      ],
+      "maximum_mm": [
+        139.0,
+        -18.811,
+        -120.015
+      ],
+      "dimensions_mm": [
+        10.0,
+        4.269,
+        4.269
+      ],
+      "centre_mm": [
+        134.0,
+        -20.946,
+        -122.149
+      ],
+      "parent_minimum_mm": [
+        129.0,
+        -14.374,
+        -125.313
+      ],
+      "parent_maximum_mm": [
+        139.0,
+        -10.374,
+        -121.313
+      ],
+      "parent_dimensions_mm": [
+        10.0,
+        4.0,
+        4.0
+      ],
+      "parent_centre_mm": [
+        134.0,
+        -12.374,
+        -123.313
+      ]
+    },
+    {
+      "name": "Internal motor M4 bolt R3",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        129.0,
+        -24.807,
+        -148.972
+      ],
+      "maximum_mm": [
+        139.0,
+        -20.538,
+        -144.703
+      ],
+      "dimensions_mm": [
+        10.0,
+        4.269,
+        4.269
+      ],
+      "centre_mm": [
+        134.0,
+        -22.672,
+        -146.838
+      ],
+      "parent_minimum_mm": [
+        129.0,
+        -14.374,
+        -150.062
+      ],
+      "parent_maximum_mm": [
+        139.0,
+        -10.374,
+        -146.061
+      ],
+      "parent_dimensions_mm": [
+        10.0,
+        4.0,
+        4.0
+      ],
+      "parent_centre_mm": [
+        134.0,
+        -12.374,
+        -148.061
+      ]
+    },
+    {
+      "name": "Internal motor M4 bolt R4",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        129.0,
+        -0.119,
+        -150.699
+      ],
+      "maximum_mm": [
+        139.0,
+        4.151,
+        -146.429
+      ],
+      "dimensions_mm": [
+        10.0,
+        4.269,
+        4.269
+      ],
+      "centre_mm": [
+        134.0,
+        2.016,
+        -148.564
+      ],
+      "parent_minimum_mm": [
+        129.0,
+        10.374,
+        -150.062
+      ],
+      "parent_maximum_mm": [
+        139.0,
+        14.374,
+        -146.062
+      ],
+      "parent_dimensions_mm": [
+        10.0,
+        4.0,
+        4.0
+      ],
+      "parent_centre_mm": [
+        134.0,
+        12.374,
+        -148.062
+      ]
+    },
+    {
+      "name": "Internal motor driver L",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -106.0,
+        -51.168,
+        -89.013
+      ],
+      "maximum_mm": [
+        -54.0,
+        -16.833,
+        -80.656
+      ],
+      "dimensions_mm": [
+        52.0,
+        34.336,
+        8.357
+      ],
+      "centre_mm": [
+        -80.0,
+        -34.001,
+        -84.835
+      ],
+      "parent_minimum_mm": [
+        -106.0,
+        -45.0,
+        -90.0
+      ],
+      "parent_maximum_mm": [
+        -54.0,
+        -11.0,
+        -84.0
+      ],
+      "parent_dimensions_mm": [
+        52.0,
+        34.0,
+        6.0
+      ],
+      "parent_centre_mm": [
+        -80.0,
+        -28.0,
+        -87.0
+      ]
+    },
+    {
+      "name": "Internal motor driver M3 standoff L1",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -101.7,
+        -48.295,
+        -93.094
+      ],
+      "maximum_mm": [
+        -98.3,
+        -44.485,
+        -86.872
+      ],
+      "dimensions_mm": [
+        3.4,
+        3.81,
+        6.223
+      ],
+      "centre_mm": [
+        -100.0,
+        -46.39,
+        -89.983
+      ],
+      "parent_minimum_mm": [
+        -101.7,
+        -41.7,
+        -96.0
+      ],
+      "parent_maximum_mm": [
+        -98.3,
+        -38.3,
+        -90.0
+      ],
+      "parent_dimensions_mm": [
+        3.4,
+        3.4,
+        6.0
+      ],
+      "parent_centre_mm": [
+        -100.0,
+        -40.0,
+        -93.0
+      ]
+    },
+    {
+      "name": "Internal motor driver M3 standoff L2",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -101.7,
+        -24.354,
+        -94.769
+      ],
+      "maximum_mm": [
+        -98.3,
+        -20.543,
+        -88.546
+      ],
+      "dimensions_mm": [
+        3.4,
+        3.81,
+        6.223
+      ],
+      "centre_mm": [
+        -100.0,
+        -22.448,
+        -91.657
+      ],
+      "parent_minimum_mm": [
+        -101.7,
+        -17.7,
+        -96.0
+      ],
+      "parent_maximum_mm": [
+        -98.3,
+        -14.3,
+        -90.0
+      ],
+      "parent_dimensions_mm": [
+        3.4,
+        3.4,
+        6.0
+      ],
+      "parent_centre_mm": [
+        -100.0,
+        -16.0,
+        -93.0
+      ]
+    },
+    {
+      "name": "Internal motor driver M3 standoff L3",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -61.7,
+        -48.295,
+        -93.094
+      ],
+      "maximum_mm": [
+        -58.3,
+        -44.485,
+        -86.872
+      ],
+      "dimensions_mm": [
+        3.4,
+        3.81,
+        6.223
+      ],
+      "centre_mm": [
+        -60.0,
+        -46.39,
+        -89.983
+      ],
+      "parent_minimum_mm": [
+        -61.7,
+        -41.7,
+        -96.0
+      ],
+      "parent_maximum_mm": [
+        -58.3,
+        -38.3,
+        -90.0
+      ],
+      "parent_dimensions_mm": [
+        3.4,
+        3.4,
+        6.0
+      ],
+      "parent_centre_mm": [
+        -60.0,
+        -40.0,
+        -93.0
+      ]
+    },
+    {
+      "name": "Internal motor driver M3 standoff L4",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -61.7,
+        -24.354,
+        -94.769
+      ],
+      "maximum_mm": [
+        -58.3,
+        -20.543,
+        -88.546
+      ],
+      "dimensions_mm": [
+        3.4,
+        3.81,
+        6.223
+      ],
+      "centre_mm": [
+        -60.0,
+        -22.448,
+        -91.657
+      ],
+      "parent_minimum_mm": [
+        -61.7,
+        -17.7,
+        -96.0
+      ],
+      "parent_maximum_mm": [
+        -58.3,
+        -14.3,
+        -90.0
+      ],
+      "parent_dimensions_mm": [
+        3.4,
+        3.4,
+        6.0
+      ],
+      "parent_centre_mm": [
+        -60.0,
+        -16.0,
+        -93.0
+      ]
+    },
+    {
+      "name": "Internal motor driver M3 standoff R1",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        58.3,
+        -48.295,
+        -93.094
+      ],
+      "maximum_mm": [
+        61.7,
+        -44.485,
+        -86.872
+      ],
+      "dimensions_mm": [
+        3.4,
+        3.81,
+        6.223
+      ],
+      "centre_mm": [
+        60.0,
+        -46.39,
+        -89.983
+      ],
+      "parent_minimum_mm": [
+        58.3,
+        -41.7,
+        -96.0
+      ],
+      "parent_maximum_mm": [
+        61.7,
+        -38.3,
+        -90.0
+      ],
+      "parent_dimensions_mm": [
+        3.4,
+        3.4,
+        6.0
+      ],
+      "parent_centre_mm": [
+        60.0,
+        -40.0,
+        -93.0
+      ]
+    },
+    {
+      "name": "Internal motor driver M3 standoff R2",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        58.3,
+        -24.354,
+        -94.769
+      ],
+      "maximum_mm": [
+        61.7,
+        -20.543,
+        -88.546
+      ],
+      "dimensions_mm": [
+        3.4,
+        3.81,
+        6.223
+      ],
+      "centre_mm": [
+        60.0,
+        -22.448,
+        -91.657
+      ],
+      "parent_minimum_mm": [
+        58.3,
+        -17.7,
+        -96.0
+      ],
+      "parent_maximum_mm": [
+        61.7,
+        -14.3,
+        -90.0
+      ],
+      "parent_dimensions_mm": [
+        3.4,
+        3.4,
+        6.0
+      ],
+      "parent_centre_mm": [
+        60.0,
+        -16.0,
+        -93.0
+      ]
+    },
+    {
+      "name": "Internal motor driver M3 standoff R3",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        98.3,
+        -48.295,
+        -93.094
+      ],
+      "maximum_mm": [
+        101.7,
+        -44.485,
+        -86.872
+      ],
+      "dimensions_mm": [
+        3.4,
+        3.81,
+        6.223
+      ],
+      "centre_mm": [
+        100.0,
+        -46.39,
+        -89.983
+      ],
+      "parent_minimum_mm": [
+        98.3,
+        -41.7,
+        -96.0
+      ],
+      "parent_maximum_mm": [
+        101.7,
+        -38.3,
+        -90.0
+      ],
+      "parent_dimensions_mm": [
+        3.4,
+        3.4,
+        6.0
+      ],
+      "parent_centre_mm": [
+        100.0,
+        -40.0,
+        -93.0
+      ]
+    },
+    {
+      "name": "Internal motor driver M3 standoff R4",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        98.3,
+        -24.354,
+        -94.769
+      ],
+      "maximum_mm": [
+        101.7,
+        -20.543,
+        -88.546
+      ],
+      "dimensions_mm": [
+        3.4,
+        3.81,
+        6.223
+      ],
+      "centre_mm": [
+        100.0,
+        -22.448,
+        -91.657
+      ],
+      "parent_minimum_mm": [
+        98.3,
+        -17.7,
+        -96.0
+      ],
+      "parent_maximum_mm": [
+        101.7,
+        -14.3,
+        -90.0
+      ],
+      "parent_dimensions_mm": [
+        3.4,
+        3.4,
+        6.0
+      ],
+      "parent_centre_mm": [
+        100.0,
+        -16.0,
+        -93.0
+      ]
+    },
+    {
+      "name": "Internal motor driver R",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        54.0,
+        -51.168,
+        -89.013
+      ],
+      "maximum_mm": [
+        106.0,
+        -16.833,
+        -80.656
+      ],
+      "dimensions_mm": [
+        52.0,
+        34.336,
+        8.357
+      ],
+      "centre_mm": [
+        80.0,
+        -34.001,
+        -84.835
+      ],
+      "parent_minimum_mm": [
+        54.0,
+        -45.0,
+        -90.0
+      ],
+      "parent_maximum_mm": [
+        106.0,
+        -11.0,
+        -84.0
+      ],
+      "parent_dimensions_mm": [
+        52.0,
+        34.0,
+        6.0
+      ],
+      "parent_centre_mm": [
+        80.0,
+        -28.0,
+        -87.0
+      ]
+    },
+    {
+      "name": "Internal motor driver heatsink L",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -102.0,
+        -46.76,
+        -82.749
+      ],
+      "maximum_mm": [
+        -58.0,
+        -20.125,
+        -70.96
+      ],
+      "dimensions_mm": [
+        44.0,
+        26.634,
+        11.789
+      ],
+      "centre_mm": [
+        -80.0,
+        -33.443,
+        -76.854
+      ],
+      "parent_minimum_mm": [
+        -102.0,
+        -41.0,
+        -84.0
+      ],
+      "parent_maximum_mm": [
+        -58.0,
+        -15.0,
+        -74.0
+      ],
+      "parent_dimensions_mm": [
+        44.0,
+        26.0,
+        10.0
+      ],
+      "parent_centre_mm": [
+        -80.0,
+        -28.0,
+        -79.0
+      ]
+    },
+    {
+      "name": "Internal motor driver heatsink R",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        58.0,
+        -46.76,
+        -82.749
+      ],
+      "maximum_mm": [
+        102.0,
+        -20.125,
+        -70.96
+      ],
+      "dimensions_mm": [
+        44.0,
+        26.634,
+        11.789
+      ],
+      "centre_mm": [
+        80.0,
+        -33.443,
+        -76.854
+      ],
+      "parent_minimum_mm": [
+        58.0,
+        -41.0,
+        -84.0
+      ],
+      "parent_maximum_mm": [
+        102.0,
+        -15.0,
+        -74.0
+      ],
+      "parent_dimensions_mm": [
+        44.0,
+        26.0,
+        10.0
+      ],
+      "parent_centre_mm": [
+        80.0,
+        -28.0,
+        -79.0
+      ]
+    },
+    {
+      "name": "Internal motor face mount L",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -135.0,
+        -37.215,
+        -163.107
+      ],
+      "maximum_mm": [
+        -131.0,
+        18.285,
+        -107.606
+      ],
+      "dimensions_mm": [
+        4.0,
+        55.501,
+        55.501
+      ],
+      "centre_mm": [
+        -133.0,
+        -9.465,
+        -135.357
+      ],
+      "parent_minimum_mm": [
+        -135.0,
+        -26.0,
+        -161.687
+      ],
+      "parent_maximum_mm": [
+        -131.0,
+        26.0,
+        -109.687
+      ],
+      "parent_dimensions_mm": [
+        4.0,
+        52.0,
+        52.0
+      ],
+      "parent_centre_mm": [
+        -133.0,
+        0.0,
+        -135.687
+      ]
+    },
+    {
+      "name": "Internal motor face mount R",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        131.0,
+        -37.215,
+        -163.107
+      ],
+      "maximum_mm": [
+        135.0,
+        18.285,
+        -107.606
+      ],
+      "dimensions_mm": [
+        4.0,
+        55.501,
+        55.501
+      ],
+      "centre_mm": [
+        133.0,
+        -9.465,
+        -135.357
+      ],
+      "parent_minimum_mm": [
+        131.0,
+        -26.0,
+        -161.687
+      ],
+      "parent_maximum_mm": [
+        135.0,
+        26.0,
+        -109.687
+      ],
+      "parent_dimensions_mm": [
+        4.0,
+        52.0,
+        52.0
+      ],
+      "parent_centre_mm": [
+        133.0,
+        0.0,
+        -135.687
+      ]
+    },
+    {
+      "name": "Internal motor shaft L",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -155.0,
+        -13.734,
+        -139.626
+      ],
+      "maximum_mm": [
+        -135.0,
+        -5.196,
+        -131.087
+      ],
+      "dimensions_mm": [
+        20.0,
+        8.539,
+        8.539
+      ],
+      "centre_mm": [
+        -145.0,
+        -9.465,
+        -135.357
+      ],
+      "parent_minimum_mm": [
+        -155.0,
+        -4.0,
+        -139.687
+      ],
+      "parent_maximum_mm": [
+        -135.0,
+        4.0,
+        -131.687
+      ],
+      "parent_dimensions_mm": [
+        20.0,
+        8.0,
+        8.0
+      ],
+      "parent_centre_mm": [
+        -145.0,
+        0.0,
+        -135.687
+      ]
+    },
+    {
+      "name": "Internal motor shaft R",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        135.0,
+        -13.734,
+        -139.626
+      ],
+      "maximum_mm": [
+        155.0,
+        -5.196,
+        -131.087
+      ],
+      "dimensions_mm": [
+        20.0,
+        8.539,
+        8.539
+      ],
+      "centre_mm": [
+        145.0,
+        -9.465,
+        -135.357
+      ],
+      "parent_minimum_mm": [
+        135.0,
+        -4.0,
+        -139.687
+      ],
+      "parent_maximum_mm": [
+        155.0,
+        4.0,
+        -131.687
+      ],
+      "parent_dimensions_mm": [
+        20.0,
+        8.0,
+        8.0
+      ],
+      "parent_centre_mm": [
+        145.0,
+        0.0,
+        -135.687
+      ]
+    },
+    {
+      "name": "Internal power connector L",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -50.0,
+        4.137,
+        -99.226
+      ],
+      "maximum_mm": [
+        -34.0,
+        14.671,
+        -90.548
+      ],
+      "dimensions_mm": [
+        16.0,
+        10.534,
+        8.678
+      ],
+      "centre_mm": [
+        -42.0,
+        9.404,
+        -94.887
+      ],
+      "parent_minimum_mm": [
+        -50.0,
+        11.0,
+        -98.0
+      ],
+      "parent_maximum_mm": [
+        -34.0,
+        21.0,
+        -90.0
+      ],
+      "parent_dimensions_mm": [
+        16.0,
+        10.0,
+        8.0
+      ],
+      "parent_centre_mm": [
+        -42.0,
+        16.0,
+        -94.0
+      ]
+    },
+    {
+      "name": "Internal power connector R",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        34.0,
+        4.137,
+        -99.226
+      ],
+      "maximum_mm": [
+        50.0,
+        14.671,
+        -90.548
+      ],
+      "dimensions_mm": [
+        16.0,
+        10.534,
+        8.678
+      ],
+      "centre_mm": [
+        42.0,
+        9.404,
+        -94.887
+      ],
+      "parent_minimum_mm": [
+        34.0,
+        11.0,
+        -98.0
+      ],
+      "parent_maximum_mm": [
+        50.0,
+        21.0,
+        -90.0
+      ],
+      "parent_dimensions_mm": [
+        16.0,
+        10.0,
+        8.0
+      ],
+      "parent_centre_mm": [
+        42.0,
+        16.0,
+        -94.0
+      ]
+    },
+    {
+      "name": "Internal power harness L1",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -30.349,
+        -40.301,
+        -136.294
+      ],
+      "maximum_mm": [
+        -7.651,
+        -24.86,
+        -107.442
+      ],
+      "dimensions_mm": [
+        22.698,
+        15.442,
+        28.852
+      ],
+      "centre_mm": [
+        -19.0,
+        -32.58,
+        -121.868
+      ],
+      "parent_minimum_mm": [
+        -30.349,
+        -32.601,
+        -138.025
+      ],
+      "parent_maximum_mm": [
+        -7.651,
+        -15.399,
+        -109.662
+      ],
+      "parent_dimensions_mm": [
+        22.698,
+        17.201,
+        28.363
+      ],
+      "parent_centre_mm": [
+        -19.0,
+        -24.0,
+        -123.844
+      ]
+    },
+    {
+      "name": "Internal power harness L2",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -70.687,
+        -40.401,
+        -112.207
+      ],
+      "maximum_mm": [
+        -27.313,
+        -34.241,
+        -95.091
+      ],
+      "dimensions_mm": [
+        43.374,
+        6.16,
+        17.115
+      ],
+      "centre_mm": [
+        -49.0,
+        -37.321,
+        -103.649
+      ],
+      "parent_minimum_mm": [
+        -70.687,
+        -32.5,
+        -114.404
+      ],
+      "parent_maximum_mm": [
+        -27.313,
+        -27.5,
+        -97.596
+      ],
+      "parent_dimensions_mm": [
+        43.374,
+        5.0,
+        16.808
+      ],
+      "parent_centre_mm": [
+        -49.0,
+        -30.0,
+        -106.0
+      ]
+    },
+    {
+      "name": "Internal power harness L3",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -72.886,
+        -38.705,
+        -101.062
+      ],
+      "maximum_mm": [
+        -39.114,
+        11.207,
+        -91.489
+      ],
+      "dimensions_mm": [
+        33.773,
+        49.912,
+        9.573
+      ],
+      "centre_mm": [
+        -56.0,
+        -13.749,
+        -96.275
+      ],
+      "parent_minimum_mm": [
+        -72.886,
+        -31.865,
+        -103.414
+      ],
+      "parent_maximum_mm": [
+        -39.114,
+        17.865,
+        -90.586
+      ],
+      "parent_dimensions_mm": [
+        33.773,
+        49.73,
+        12.828
+      ],
+      "parent_centre_mm": [
+        -56.0,
+        -7.0,
+        -97.0
+      ]
+    },
+    {
+      "name": "Internal power harness R1",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        7.651,
+        5.864,
+        -139.084
+      ],
+      "maximum_mm": [
+        30.349,
+        24.741,
+        -111.348
+      ],
+      "dimensions_mm": [
+        22.698,
+        18.877,
+        27.735
+      ],
+      "centre_mm": [
+        19.0,
+        15.303,
+        -125.216
+      ],
+      "parent_minimum_mm": [
+        7.651,
+        15.399,
+        -138.025
+      ],
+      "parent_maximum_mm": [
+        30.349,
+        32.601,
+        -109.662
+      ],
+      "parent_dimensions_mm": [
+        22.698,
+        17.201,
+        28.363
+      ],
+      "parent_centre_mm": [
+        19.0,
+        24.0,
+        -123.844
+      ]
+    },
+    {
+      "name": "Internal power harness R2",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        27.313,
+        19.453,
+        -116.392
+      ],
+      "maximum_mm": [
+        70.687,
+        25.613,
+        -99.277
+      ],
+      "dimensions_mm": [
+        43.374,
+        6.16,
+        17.115
+      ],
+      "centre_mm": [
+        49.0,
+        22.533,
+        -107.834
+      ],
+      "parent_minimum_mm": [
+        27.313,
+        27.5,
+        -114.404
+      ],
+      "parent_maximum_mm": [
+        70.687,
+        32.5,
+        -97.596
+      ],
+      "parent_dimensions_mm": [
+        43.374,
+        5.0,
+        16.808
+      ],
+      "parent_centre_mm": [
+        49.0,
+        30.0,
+        -106.0
+      ]
+    },
+    {
+      "name": "Internal power harness R3",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        40.312,
+        6.582,
+        -105.046
+      ],
+      "maximum_mm": [
+        71.688,
+        25.773,
+        -91.69
+      ],
+      "dimensions_mm": [
+        31.376,
+        19.192,
+        13.355
+      ],
+      "centre_mm": [
+        56.0,
+        16.178,
+        -98.368
+      ],
+      "parent_minimum_mm": [
+        40.312,
+        13.094,
+        -103.294
+      ],
+      "parent_maximum_mm": [
+        71.688,
+        32.906,
+        -90.706
+      ],
+      "parent_dimensions_mm": [
+        31.376,
+        19.812,
+        12.588
+      ],
+      "parent_centre_mm": [
+        56.0,
+        23.0,
+        -97.0
+      ]
+    },
+    {
+      "name": "Internal roller arm +0.090 +0.075",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        85.5,
+        40.349,
+        -112.354
+      ],
+      "maximum_mm": [
+        117.0,
+        93.597,
+        200.092
+      ],
+      "dimensions_mm": [
+        31.5,
+        53.248,
+        312.446
+      ],
+      "centre_mm": [
+        101.25,
+        66.973,
+        43.869
+      ],
+      "parent_minimum_mm": [
+        85.5,
+        48.0,
+        -108.644
+      ],
+      "parent_maximum_mm": [
+        117.0,
+        79.5,
+        205.512
+      ],
+      "parent_dimensions_mm": [
+        31.5,
+        31.5,
+        314.156
+      ],
+      "parent_centre_mm": [
+        101.25,
+        63.75,
+        48.434
+      ]
+    },
+    {
+      "name": "Internal roller arm +0.090 -0.075",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        85.5,
+        -65.037,
+        -104.405
+      ],
+      "maximum_mm": [
+        117.0,
+        -55.395,
+        209.931
+      ],
+      "dimensions_mm": [
+        31.5,
+        9.642,
+        314.336
+      ],
+      "centre_mm": [
+        101.25,
+        -60.216,
+        52.763
+      ],
+      "parent_minimum_mm": [
+        85.5,
+        -79.5,
+        -108.644
+      ],
+      "parent_maximum_mm": [
+        117.0,
+        -48.0,
+        205.512
+      ],
+      "parent_dimensions_mm": [
+        31.5,
+        31.5,
+        314.156
+      ],
+      "parent_centre_mm": [
+        101.25,
+        -63.75,
+        48.434
+      ]
+    },
+    {
+      "name": "Internal roller arm -0.090 +0.075",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -117.0,
+        40.349,
+        -112.354
+      ],
+      "maximum_mm": [
+        -85.5,
+        93.597,
+        200.092
+      ],
+      "dimensions_mm": [
+        31.5,
+        53.248,
+        312.446
+      ],
+      "centre_mm": [
+        -101.25,
+        66.973,
+        43.869
+      ],
+      "parent_minimum_mm": [
+        -117.0,
+        48.0,
+        -108.644
+      ],
+      "parent_maximum_mm": [
+        -85.5,
+        79.5,
+        205.512
+      ],
+      "parent_dimensions_mm": [
+        31.5,
+        31.5,
+        314.156
+      ],
+      "parent_centre_mm": [
+        -101.25,
+        63.75,
+        48.434
+      ]
+    },
+    {
+      "name": "Internal roller arm -0.090 -0.075",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -117.0,
+        -65.037,
+        -104.405
+      ],
+      "maximum_mm": [
+        -85.5,
+        -55.395,
+        209.931
+      ],
+      "dimensions_mm": [
+        31.5,
+        9.642,
+        314.336
+      ],
+      "centre_mm": [
+        -101.25,
+        -60.216,
+        52.763
+      ],
+      "parent_minimum_mm": [
+        -117.0,
+        -79.5,
+        -108.644
+      ],
+      "parent_maximum_mm": [
+        -85.5,
+        -48.0,
+        205.512
+      ],
+      "parent_dimensions_mm": [
+        31.5,
+        31.5,
+        314.156
+      ],
+      "parent_centre_mm": [
+        -101.25,
+        -63.75,
+        48.434
+      ]
+    },
+    {
+      "name": "Internal sealed low ballast cassette",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -60.0,
+        -50.052,
+        -218.913
+      ],
+      "maximum_mm": [
+        60.0,
+        21.452,
+        -190.088
+      ],
+      "dimensions_mm": [
+        120.0,
+        71.504,
+        28.824
+      ],
+      "centre_mm": [
+        0.0,
+        -14.3,
+        -204.501
+      ],
+      "parent_minimum_mm": [
+        -60.0,
+        -35.0,
+        -217.0
+      ],
+      "parent_maximum_mm": [
+        60.0,
+        35.0,
+        -193.0
+      ],
+      "parent_dimensions_mm": [
+        120.0,
+        70.0,
+        24.0
+      ],
+      "parent_centre_mm": [
+        0.0,
+        0.0,
+        -205.0
+      ]
+    },
+    {
+      "name": "Internal stabiliser roller L B",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -108.0,
+        69.896,
+        179.926
+      ],
+      "maximum_mm": [
+        -72.0,
+        108.32,
+        218.349
+      ],
+      "dimensions_mm": [
+        36.0,
+        38.424,
+        38.424
+      ],
+      "centre_mm": [
+        -90.0,
+        89.108,
+        199.137
+      ],
+      "parent_minimum_mm": [
+        -108.0,
+        57.0,
+        186.868
+      ],
+      "parent_maximum_mm": [
+        -72.0,
+        93.0,
+        222.868
+      ],
+      "parent_dimensions_mm": [
+        36.0,
+        36.0,
+        36.0
+      ],
+      "parent_centre_mm": [
+        -90.0,
+        75.0,
+        204.868
+      ]
+    },
+    {
+      "name": "Internal stabiliser roller L F",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -108.0,
+        -79.738,
+        190.389
+      ],
+      "maximum_mm": [
+        -72.0,
+        -41.315,
+        228.813
+      ],
+      "dimensions_mm": [
+        36.0,
+        38.424,
+        38.424
+      ],
+      "centre_mm": [
+        -90.0,
+        -60.526,
+        209.601
+      ],
+      "parent_minimum_mm": [
+        -108.0,
+        -93.0,
+        186.868
+      ],
+      "parent_maximum_mm": [
+        -72.0,
+        -57.0,
+        222.868
+      ],
+      "parent_dimensions_mm": [
+        36.0,
+        36.0,
+        36.0
+      ],
+      "parent_centre_mm": [
+        -90.0,
+        -75.0,
+        204.868
+      ]
+    },
+    {
+      "name": "Internal stabiliser roller R B",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        72.0,
+        69.896,
+        179.926
+      ],
+      "maximum_mm": [
+        108.0,
+        108.32,
+        218.349
+      ],
+      "dimensions_mm": [
+        36.0,
+        38.424,
+        38.424
+      ],
+      "centre_mm": [
+        90.0,
+        89.108,
+        199.137
+      ],
+      "parent_minimum_mm": [
+        72.0,
+        57.0,
+        186.868
+      ],
+      "parent_maximum_mm": [
+        108.0,
+        93.0,
+        222.868
+      ],
+      "parent_dimensions_mm": [
+        36.0,
+        36.0,
+        36.0
+      ],
+      "parent_centre_mm": [
+        90.0,
+        75.0,
+        204.868
+      ]
+    },
+    {
+      "name": "Internal stabiliser roller R F",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        72.0,
+        -79.738,
+        190.389
+      ],
+      "maximum_mm": [
+        108.0,
+        -41.315,
+        228.813
+      ],
+      "dimensions_mm": [
+        36.0,
+        38.424,
+        38.424
+      ],
+      "centre_mm": [
+        90.0,
+        -60.526,
+        209.601
+      ],
+      "parent_minimum_mm": [
+        72.0,
+        -93.0,
+        186.868
+      ],
+      "parent_maximum_mm": [
+        108.0,
+        -57.0,
+        222.868
+      ],
+      "parent_dimensions_mm": [
+        36.0,
+        36.0,
+        36.0
+      ],
+      "parent_centre_mm": [
+        90.0,
+        -75.0,
+        204.868
+      ]
+    },
+    {
+      "name": "Internal tether E-stop NC jack",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        200.0,
+        -10.98,
+        -43.453
+      ],
+      "maximum_mm": [
+        220.0,
+        6.097,
+        -26.376
+      ],
+      "dimensions_mm": [
+        20.0,
+        17.077,
+        17.077
+      ],
+      "centre_mm": [
+        210.0,
+        -2.441,
+        -34.915
+      ],
+      "parent_minimum_mm": [
+        200.0,
+        -8.0,
+        -43.0
+      ],
+      "parent_maximum_mm": [
+        220.0,
+        8.0,
+        -27.0
+      ],
+      "parent_dimensions_mm": [
+        20.0,
+        16.0,
+        16.0
+      ],
+      "parent_centre_mm": [
+        210.0,
+        0.0,
+        -35.0
+      ]
+    },
+    {
+      "name": "Internal top magnet carrier",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -56.0,
+        -40.796,
+        211.567
+      ],
+      "maximum_mm": [
+        56.0,
+        72.187,
+        237.336
+      ],
+      "dimensions_mm": [
+        112.0,
+        112.983,
+        25.769
+      ],
+      "centre_mm": [
+        0.0,
+        15.695,
+        224.452
+      ],
+      "parent_minimum_mm": [
+        -56.0,
+        -56.0,
+        216.0
+      ],
+      "parent_maximum_mm": [
+        56.0,
+        56.0,
+        234.0
+      ],
+      "parent_dimensions_mm": [
+        112.0,
+        112.0,
+        18.0
+      ],
+      "parent_centre_mm": [
+        0.0,
+        -0.0,
+        225.0
+      ]
+    },
+    {
+      "name": "Internal wheel M5 bolt L1",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -171.0,
+        -11.506,
+        -129.047
+      ],
+      "maximum_mm": [
+        -139.0,
+        -6.169,
+        -123.71
+      ],
+      "dimensions_mm": [
+        32.0,
+        5.337,
+        5.337
+      ],
+      "centre_mm": [
+        -155.0,
+        -8.837,
+        -126.379
+      ],
+      "parent_minimum_mm": [
+        -171.0,
+        -2.5,
+        -129.187
+      ],
+      "parent_maximum_mm": [
+        -139.0,
+        2.5,
+        -124.187
+      ],
+      "parent_dimensions_mm": [
+        32.0,
+        5.0,
+        5.0
+      ],
+      "parent_centre_mm": [
+        -155.0,
+        0.0,
+        -126.687
+      ]
+    },
+    {
+      "name": "Internal wheel M5 bolt L2",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -171.0,
+        -20.223,
+        -141.97
+      ],
+      "maximum_mm": [
+        -139.0,
+        -14.886,
+        -136.634
+      ],
+      "dimensions_mm": [
+        32.0,
+        5.337,
+        5.337
+      ],
+      "centre_mm": [
+        -155.0,
+        -17.554,
+        -139.302
+      ],
+      "parent_minimum_mm": [
+        -171.0,
+        -10.294,
+        -142.687
+      ],
+      "parent_maximum_mm": [
+        -139.0,
+        -5.294,
+        -137.687
+      ],
+      "parent_dimensions_mm": [
+        32.0,
+        5.0,
+        5.0
+      ],
+      "parent_centre_mm": [
+        -155.0,
+        -7.794,
+        -140.187
+      ]
+    },
+    {
+      "name": "Internal wheel M5 bolt L3",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        -171.0,
+        -4.672,
+        -143.058
+      ],
+      "maximum_mm": [
+        -139.0,
+        0.665,
+        -137.721
+      ],
+      "dimensions_mm": [
+        32.0,
+        5.337,
+        5.337
+      ],
+      "centre_mm": [
+        -155.0,
+        -2.004,
+        -140.389
+      ],
+      "parent_minimum_mm": [
+        -171.0,
+        5.294,
+        -142.687
+      ],
+      "parent_maximum_mm": [
+        -139.0,
+        10.294,
+        -137.687
+      ],
+      "parent_dimensions_mm": [
+        32.0,
+        5.0,
+        5.0
+      ],
+      "parent_centre_mm": [
+        -155.0,
+        7.794,
+        -140.187
+      ]
+    },
+    {
+      "name": "Internal wheel M5 bolt R1",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        139.0,
+        -11.506,
+        -129.047
+      ],
+      "maximum_mm": [
+        171.0,
+        -6.169,
+        -123.71
+      ],
+      "dimensions_mm": [
+        32.0,
+        5.337,
+        5.337
+      ],
+      "centre_mm": [
+        155.0,
+        -8.837,
+        -126.379
+      ],
+      "parent_minimum_mm": [
+        139.0,
+        -2.5,
+        -129.187
+      ],
+      "parent_maximum_mm": [
+        171.0,
+        2.5,
+        -124.187
+      ],
+      "parent_dimensions_mm": [
+        32.0,
+        5.0,
+        5.0
+      ],
+      "parent_centre_mm": [
+        155.0,
+        0.0,
+        -126.687
+      ]
+    },
+    {
+      "name": "Internal wheel M5 bolt R2",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        139.0,
+        -20.223,
+        -141.97
+      ],
+      "maximum_mm": [
+        171.0,
+        -14.886,
+        -136.634
+      ],
+      "dimensions_mm": [
+        32.0,
+        5.337,
+        5.337
+      ],
+      "centre_mm": [
+        155.0,
+        -17.554,
+        -139.302
+      ],
+      "parent_minimum_mm": [
+        139.0,
+        -10.294,
+        -142.687
+      ],
+      "parent_maximum_mm": [
+        171.0,
+        -5.294,
+        -137.687
+      ],
+      "parent_dimensions_mm": [
+        32.0,
+        5.0,
+        5.0
+      ],
+      "parent_centre_mm": [
+        155.0,
+        -7.794,
+        -140.187
+      ]
+    },
+    {
+      "name": "Internal wheel M5 bolt R3",
+      "type": "MESH",
+      "parent": "RIG 20 - Gravity stabilised chassis",
+      "engineering_annotation": false,
+      "minimum_mm": [
+        139.0,
+        -4.672,
+        -143.058
+      ],
+      "maximum_mm": [
+        171.0,
+        0.665,
+        -137.721
+      ],
+      "dimensions_mm": [
+        32.0,
+        5.337,
+        5.337
+      ],
+      "centre_mm": [
+        155.0,
+        -2.004,
+        -140.389
+      ],
+      "parent_minimum_mm": [
+        139.0,
+        5.294,
+        -142.687
+      ],
+      "parent_maximum_mm": [
+        171.0,
+        10.294,
+        -137.687
+      ],
+      "parent_dimensions_mm": [
+        32.0,
+        5.0,
+        5.0
+      ],
+      "parent_centre_mm": [
+        155.0,
+        7.794,
+        -140.187
+      ]
+    }
+  ],
+  "missing_key_objects": []
+}

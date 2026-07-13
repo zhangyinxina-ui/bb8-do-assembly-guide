@@ -1,0 +1,136 @@
+{
+  "stage": 18,
+  "title_en": "BB-8 modular drive-power cassette analytical layout",
+  "title_zh": "BB-8 模块化驱动电源舱解析布局",
+  "status": "HOLD_PHYSICAL_FIT_AND_INTERFACE_VALIDATION_REQUIRED",
+  "evidence_boundary": "catalogue dimensions plus a conservative AABB packaging study; no purchased-sample fit, powered test, thermal test or physical commissioning",
+  "coordinate_system": "millimetres in the parent space of RIG 20 - Gravity stabilised chassis",
+  "body_inner_radius_assumption_mm": 254.0,
+  "minimum_shell_clearance_mm": 12.0,
+  "minimum_protected_hardware_clearance_mm": 5.0,
+  "minimum_candidate_pair_clearance_mm": 5.0,
+  "official_sources": {
+    "rec_active_bms_4s": "https://www.rec-bms.com/datasheet/Manual_ActiveBMS_4S_RV.pdf",
+    "cytron_mdd20a": "https://docs.google.com/document/d/1YHKcs8N0UBrRI4r2OaIqHs6m_B_NaVBF7EB5C3fPTG4/edit?usp=sharing",
+    "albright_sw60": "https://www.albrightinternational.com/wpcms/wp-content/uploads/2020/08/SW60-Data-Sheet.pdf",
+    "littelfuse_midi": "https://www.littelfuse.com/~/media/automotive/datasheets/fuses/passenger-car-and-commercial-vehicle/bolt-down-fuses/littelfuse_midi_datasheet.pdf"
+  },
+  "bms_candidate": {
+    "name": "REC Active BMS 4S",
+    "series_cells": 4,
+    "enclosed_dimensions_mm": [44.0, 111.0, 135.0],
+    "unenclosed_dimensions_mm": [38.0, 100.0, 109.0],
+    "temperature_sensor_channels": 2,
+    "active_balance_current_a": 2.0,
+    "external_shunt_range_a": 200.0,
+    "contactor_control_outputs": true,
+    "charge_disable_output": true,
+    "communication": ["CAN", "RS-485"],
+    "status": "PROTOTYPE_CANDIDATE_NOT_PURCHASE_FROZEN",
+    "note": "The BMS controls external contactors and measures an external shunt; it is not an inline 30 A MOSFET board. Chemistry, order code, shunt and contactor interface still require supplier confirmation."
+  },
+  "components": [
+    {
+      "id": "BMS01",
+      "name": "Internal REC Active BMS 4S candidate",
+      "centre_mm": [-145.0, 0.0, -10.0],
+      "dimensions_mm": [44.0, 111.0, 135.0],
+      "dimension_basis": "official enclosed envelope, rotated vertically",
+      "minimum_shell_clearance_mm": 12.0,
+      "status": "OFFICIAL_ENVELOPE_ANALYTICAL_FIT_ONLY"
+    },
+    {
+      "id": "DRV01",
+      "name": "Internal MDD20A dual motor driver keepout",
+      "centre_mm": [136.0, 0.0, -40.0],
+      "dimensions_mm": [25.0, 88.9, 78.74],
+      "board_dimensions_mm": [1.6, 88.9, 78.74],
+      "mount_hole_spacing_mm": [83.82, 73.66],
+      "mount_hole_diameter_mm": 3.0,
+      "dimension_basis": "official board footprint rotated vertically; 25 mm component-height keepout is an explicit conservative assumption",
+      "minimum_shell_clearance_mm": 12.0,
+      "status": "HEIGHT_AND_CONNECTOR_SWEEP_MEASUREMENT_REQUIRED"
+    },
+    {
+      "id": "CON01",
+      "name": "Internal SW60 main contactor candidate",
+      "centre_mm": [65.0, 110.0, -70.0],
+      "dimensions_mm": [81.0, 37.0, 28.1],
+      "dimension_basis": "official SW60 overall drawing envelope without an added cable-bend keepout",
+      "minimum_shell_clearance_mm": 12.0,
+      "status": "ORDER_CODE_SUPPRESSION_AND_CABLE_SWEEP_REQUIRED"
+    },
+    {
+      "id": "FUS01",
+      "name": "Internal MIDI fuse service keepout",
+      "centre_mm": [145.0, 105.0, -70.0],
+      "dimensions_mm": [60.0, 25.0, 25.0],
+      "dimension_basis": "provisional replaceable-holder service envelope; fuse body catalogue footprint is 41 x 16 mm",
+      "minimum_shell_clearance_mm": 12.0,
+      "status": "HOLDER_SAMPLE_AND_I2T_REQUIRED"
+    },
+    {
+      "id": "GAT01",
+      "name": "Internal dual-channel MDD20A hardware gate keepout",
+      "centre_mm": [85.0, -110.0, -60.0],
+      "dimensions_mm": [50.0, 35.0, 15.0],
+      "dimension_basis": "engineering keepout for a future independently verified gate board; no released PCB exists",
+      "minimum_shell_clearance_mm": 12.0,
+      "status": "CIRCUIT_PCB_AND_BENCH_TEST_REQUIRED"
+    },
+    {
+      "id": "SHN01",
+      "name": "Internal REC BMS external shunt keepout",
+      "centre_mm": [-65.0, 100.0, -70.0],
+      "dimensions_mm": [50.0, 25.0, 15.0],
+      "dimension_basis": "engineering keepout for the REC low-side external current shunt; exact shunt part and resistance are not released",
+      "minimum_shell_clearance_mm": 12.0,
+      "status": "SHUNT_PART_THERMAL_AND_KELVIN_INTERFACE_REQUIRED"
+    },
+    {
+      "id": "REL01",
+      "name": "Internal E-stop safety relay",
+      "centre_mm": [20.0, 70.0, -45.0],
+      "dimensions_mm": [38.0, 28.0, 18.0],
+      "dimension_basis": "existing generic stage-15 relay envelope repositioned for the cassette study",
+      "minimum_shell_clearance_mm": 12.0,
+      "status": "SAFETY_PART_NOT_FROZEN"
+    },
+    {
+      "id": "EST01",
+      "name": "Internal dual-channel E-stop receiver",
+      "centre_mm": [-30.0, 105.0, -45.0],
+      "dimensions_mm": [42.0, 30.0, 12.0],
+      "dimension_basis": "existing generic stage-15 receiver envelope repositioned for the cassette study",
+      "minimum_shell_clearance_mm": 12.0,
+      "status": "SAFETY_PART_NOT_FROZEN"
+    }
+  ],
+  "protected_internal_objects": [
+    "Internal 4S battery ballast",
+    "Internal geared motor L",
+    "Internal geared motor R",
+    "Internal drive wheel L",
+    "Internal drive wheel R",
+    "Internal sealed low ballast cassette",
+    "Internal magnetic mast",
+    "Internal roller arm +0.090 +0.075",
+    "Internal roller arm +0.090 -0.075",
+    "Internal roller arm -0.090 +0.075",
+    "Internal roller arm -0.090 -0.075"
+  ],
+  "freeze_gates": {
+    "master_blend_reloaded_from_verified_disk_state": false,
+    "catalogue_envelopes_instantiated_in_master_blend": false,
+    "mdd20a_total_height_measured": false,
+    "mdd20a_connector_and_wire_sweeps_verified": false,
+    "rec_bms_exact_order_code_and_chemistry_confirmed": false,
+    "rec_bms_shunt_and_contactor_interface_released": false,
+    "sw60_order_code_and_suppression_released": false,
+    "midi_holder_sample_and_fuse_i2t_verified": false,
+    "dual_channel_gate_pcb_released_and_tested": false,
+    "purchased_sample_fit_check_passed": false,
+    "sealed_shell_thermal_test_passed": false,
+    "physical_commissioning_passed": false
+  }
+}

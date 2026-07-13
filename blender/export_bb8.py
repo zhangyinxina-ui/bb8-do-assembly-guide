@@ -1,11 +1,15 @@
 import bpy
 import os
+from pathlib import Path
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# Resolve from the already-open verified master so the exporter is portable
+# when invoked from Blender's console or a temporary execution wrapper.
+ROOT = str(Path(bpy.data.filepath).resolve().parents[2])
 BLEND = os.path.join(ROOT, "blender", "output", "BB8_1to1_screen_referenced.blend")
 OUT = os.path.join(ROOT, "blender", "exports")
 os.makedirs(OUT, exist_ok=True)
-bpy.ops.wm.open_mainfile(filepath=BLEND)
+if Path(bpy.data.filepath).resolve() != Path(BLEND).resolve():
+    bpy.ops.wm.open_mainfile(filepath=BLEND)
 
 
 def select_names(predicate, include_empties=False):

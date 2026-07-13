@@ -39,7 +39,7 @@ test("server-renders the BB-8 and D-O build guide", async () => {
   assert.doesNotMatch(html, /href=["']\/model\/BB8_1to1_screen_referenced\.blend/);
   assert.match(html, /BB8_internal_three_view\.png/);
   assert.match(html, /internal_assembly_manifest\.csv/);
-  assert.match(html, /147个制造对象和3个非制造工程标记/);
+  assert.match(html, /150个制造对象和9个非制造工程标记/);
   assert.match(html, /BB8_motor_selection\.md/);
   assert.match(html, /IG42E-24K/);
   assert.match(html, /PCD 35 mm/);
@@ -116,6 +116,13 @@ test("server-renders the BB-8 and D-O build guide", async () => {
   assert.match(html, /power_component_candidates\.json/);
   assert.match(html, /power_component_selection_results\.json/);
   assert.match(html, /PWM低是制动而非隔离/);
+  assert.match(html, /8件布局通过，12门未冻结/);
+  assert.match(html, /HOLD_PHYSICAL_FIT_AND_INTERFACE_VALIDATION_REQUIRED/);
+  assert.match(html, /BB8_阶段18_模块化驱动电源舱布局门\.md/);
+  assert.match(html, /BB8_stage18_modular_drive_power_cassette_layout_gate\.md/);
+  assert.match(html, /stage18_power_cassette_layout\.json/);
+  assert.match(html, /stage18_power_cassette_results\.json/);
+  assert.match(html, /重开审计确认39个阶段18对象/);
   assert.match(html, /冻结 1:1 尺寸基准/);
   assert.match(html, /BB8_stage8_exterior_topology\.md/);
   assert.match(html, /BB8_stage9_head_calibration\.md/);
@@ -134,7 +141,7 @@ test("server-renders the complete English build guide", async () => {
   assert.equal(response.status, 200);
   const html = await response.text();
   assert.match(html, /Turn the screen droid/);
-  assert.match(html, /147 fabrication objects plus three non-fabrication engineering markers/);
+  assert.match(html, /150 fabrication objects plus nine non-fabrication engineering markers/);
   assert.match(html, /8\.463 kg nominal/);
   assert.match(html, /56\.2 mm nominal CoM/);
   assert.match(html, /2\.07× torque margin/);
@@ -152,6 +159,10 @@ test("server-renders the complete English build guide", async () => {
   assert.match(html, /BB8_stage17_drive_power_component_selection_gate\.md/);
   assert.match(html, /Selection HOLD result/);
   assert.match(html, /PWM-low means brake rather than isolation/);
+  assert.match(html, /8 modules clear, 12 gates open/);
+  assert.match(html, /BB8_stage18_modular_drive_power_cassette_layout_gate\.md/);
+  assert.match(html, /Stage 18 HOLD result/);
+  assert.match(html, /The reopened master passes the Blender audit/);
   assert.match(html, /Freeze the 1:1 dimensional baseline/);
   assert.match(html, /personal non-commercial/);
   assert.match(html, /zero complete mechanical CAD\/STL files/);
