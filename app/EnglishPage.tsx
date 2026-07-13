@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { assemblyStepsEn } from "./data/assemblyStepsEn";
 
 const asset = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, "")}`;
+const repositoryUrl = "https://github.com/zhangyinxina-ui/bb8-do-assembly-guide";
 
 const views = [
   { label: "Front", src: asset("/model/bb8-front.png") },
@@ -101,7 +102,7 @@ export default function EnglishPage() {
         <div className="eyebrow">SCREEN-REFERENCED · 1:1 BUILD</div>
         <h1>Turn the screen droid<br /><em>into a real machine.</em></h1>
         <p>A maker-focused BB-8 parametric model, auditable D-O resource map and safety-gated assembly guide. Facts, assumptions, paid files and licence boundaries remain explicit.</p>
-        <div className="hero-actions"><a className="button primary" href="#model">View model evidence</a><a className="button" href="#build">Start the build ↓</a></div>
+        <div className="hero-actions"><a className="button primary" href="#model">View model evidence</a><a className="button" href="#build">Start the build ↓</a><a className="button" href={repositoryUrl} target="_blank" rel="noreferrer">GitHub repository ↗</a></div>
         <div className="metrics">
           <div><b>508</b><span>mm body diameter</span></div><div><b>295</b><span>mm head diameter</span></div><div><b>670</b><span>mm antenna-free height</span></div>
         </div>
@@ -211,7 +212,7 @@ export default function EnglishPage() {
       </section>
 
       <section className="section sources" id="sources"><div className="section-head"><span>06 / SOURCES & LICENCES</span><h2>What you may use,<br />and where the boundary is</h2></div><div className="source-list">{sources.map((source, index) => <a href={source.href} target="_blank" rel="noreferrer" key={source.name}><span>{String(index + 1).padStart(2, "0")}</span><b>{source.name}</b><em>{source.tag}</em><i>↗</i></a>)}</div></section>
-      <footer><p>Unofficial fan research and personal educational prototype. STAR WARS, BB-8, D-O and related characters belong to their respective rights holders. Check each licence before printing, modifying or redistributing files.</p><b>REP·LAB / BUILD LOG 001</b></footer>
+      <footer><p>Unofficial fan research and personal educational prototype. STAR WARS, BB-8, D-O and related characters belong to their respective rights holders. Check each licence before printing, modifying or redistributing files.<br />GitHub: <a href={repositoryUrl} target="_blank" rel="noreferrer">{repositoryUrl}</a></p><b>REP·LAB / BUILD LOG 001</b></footer>
     </main>
   );
 }

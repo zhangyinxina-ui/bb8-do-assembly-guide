@@ -548,6 +548,11 @@ footer p {
   color: #a9aa9f;
   font-size: 13px;
 }
+footer p a {
+  color: #eeeadd;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
 footer b {
   white-space: nowrap;
   font: 12px monospace;

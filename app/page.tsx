@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { assemblySteps } from "./data/assemblySteps";
 
 const asset = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, "")}`;
+const repositoryUrl = "https://github.com/zhangyinxina-ui/bb8-do-assembly-guide";
 
 const views = [
   { label: "正视图", src: asset("/model/bb8-front.png") },
@@ -188,6 +189,9 @@ export default function Home() {
           </a>
           <a className="button" href="#build">
             开始装配 ↓
+          </a>
+          <a className="button" href={repositoryUrl} target="_blank" rel="noreferrer">
+            GitHub 项目 ↗
           </a>
         </div>
         <div className="metrics">
@@ -693,6 +697,8 @@ export default function Home() {
         <p>
           非官方粉丝研究与个人教育原型。STAR WARS、BB-8、D-O
           及相关角色归权利人所有。请在打印、改作或再分发前逐项检查许可证。
+          <br />
+          GitHub：<a href={repositoryUrl} target="_blank" rel="noreferrer">{repositoryUrl}</a>
         </p>
         <b>REP·LAB / BUILD LOG 001</b>
       </footer>
