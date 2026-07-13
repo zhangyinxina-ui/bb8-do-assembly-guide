@@ -84,3 +84,9 @@ D1,1,SAFE_A_RETURN,opto A reverse clamp anode
 D1,2,SAFE_A_LED_A,opto A reverse clamp cathode
 D2,1,SAFE_B_RETURN,opto B reverse clamp anode
 D2,2,SAFE_B_LED_A,opto B reverse clamp cathode
+TP1,1,SAFE_A_OK,safety permissive A test point
+TP2,1,SAFE_B_OK,safety permissive B test point
+TP3,1,ALERT_N,dual-current-alert test point
+TP4,1,PWM_L_OUT,gated left PWM test point
+TP5,1,PWM_R_OUT,gated right PWM test point
+TP6,1,GND,logic return test point

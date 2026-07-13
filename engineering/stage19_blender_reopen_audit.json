@@ -1,0 +1,99 @@
+{
+  "audited_at": "2026-07-13",
+  "blender_version": "5.1.2",
+  "master": {
+    "path": "blender/output/BB8_1to1_screen_referenced.blend",
+    "present": true,
+    "bytes": 1437784,
+    "sha256": "ecd9a8b02db7c0b253c06005aaf16e7a8bf10147f8adec9c8900415e18b38af4"
+  },
+  "result": "PASS_REOPEN_AUDIT_ONLY",
+  "engineering_stage": 19,
+  "object_counts": {
+    "total": 386,
+    "internal": 182,
+    "fabrication": 150,
+    "engineering_annotations": 9,
+    "pre_cad_references": 23,
+    "stage19_gate": 23,
+    "internal_manifest_rows": 150
+  },
+  "dimensions_mm": {
+    "body_diameter": 508,
+    "head_diameter": 295,
+    "untopped_height": 670
+  },
+  "stage19_boundary": {
+    "design_status": "PASS_ANALYTICAL_ONLY",
+    "physical_test_status": "NOT_RUN",
+    "safety_certification": "NONE",
+    "manufacturing_release": "NOT_RELEASED_NO_KICAD_GERBER",
+    "fabrication_export": false,
+    "truth_table_rows": 64
+  },
+  "renders": [
+    {
+      "path": "blender/output/mechanism.png",
+      "present": true,
+      "bytes": 902486,
+      "sha256": "6fd2792fbb0d71c3cd2e3015fd81401bb6afa805f2dc164460bf96df077deb37"
+    },
+    {
+      "path": "blender/output/internal_front.png",
+      "present": true,
+      "bytes": 657308,
+      "sha256": "7bf439ee42ac75ac3d002d964cf2da89bc7bdccb4d9d89438756afbcfe97a37a"
+    },
+    {
+      "path": "blender/output/internal_side.png",
+      "present": true,
+      "bytes": 605847,
+      "sha256": "2ab9c8a9b320c5f895c442b560210bc561390e6d9727d17a87d26ddb3cbb15dc"
+    },
+    {
+      "path": "blender/output/internal_top.png",
+      "present": true,
+      "bytes": 654743,
+      "sha256": "6a1fbc00cbaa331f67a1bcb7de5d2fd0c7e9c64fc87f489c5f0fb4b034e745b9"
+    },
+    {
+      "path": "blender/output/BB8_internal_three_view.png",
+      "present": true,
+      "bytes": 917758,
+      "sha256": "18960a683fb3dae61f87bafc95e46265d0660cb9073cc243b783e80f65feeff7"
+    }
+  ],
+  "exports": [
+    {
+      "path": "engineering/internal_assembly_manifest.csv",
+      "present": true,
+      "bytes": 11040,
+      "sha256": "a87ee8b704edc7603c9fd37a92b02d3cc45df5824f6b4f0ae14968749a271c18"
+    },
+    {
+      "path": "blender/exports/BB8_body_visual_reference_mm.stl",
+      "present": true,
+      "bytes": 1986084,
+      "sha256": "8d3d35cb1da9ffb60034ba1b340ab9e27b3dd2c028903e678f25fea635d825a4"
+    },
+    {
+      "path": "blender/exports/BB8_head_visual_reference_mm.stl",
+      "present": true,
+      "bytes": 3400484,
+      "sha256": "5370bb18ff74e992195412c04ed4424d355482c5c7d3f7dcff62848843a61c29"
+    },
+    {
+      "path": "blender/exports/BB8_internal_mechanism_mm.stl",
+      "present": true,
+      "bytes": 2448484,
+      "sha256": "118b2f610a1c2f54b529640c6da5213b9b3ee4eeb8b699ac9c1dc99371cbe66d"
+    },
+    {
+      "path": "blender/exports/BB8_1to1_kinematic.glb",
+      "present": true,
+      "bytes": 3439860,
+      "sha256": "4eabbd817521cdf697112f48726ac09f0b266ee28358d1d8efba548c8b72e892"
+    }
+  ],
+  "release_boundary": "The Blender master is reopenable and the analytical geometry/export boundary passes. Physical commissioning remains 0/19; there is no PCB CAD, Gerber, assembled gate board, bench waveform or safety certification."
+}

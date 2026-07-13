@@ -35,8 +35,10 @@
 
 ## 机械与制造边界
 
-- PCB预设为50 × 35 × 1.6 mm、四个Ø3.2 mm孔；JST XH最高9.8 mm，装配总高预估11.4 mm，较阶段18的15 mm空间余3.6 mm。
+- PCB预设为50 × 35 × 1.6 mm、四个Ø3.2 mm孔；JST XH最高9.8 mm，PCB加器件高11.4 mm。再计入3.0 mm绝缘安装柱后总安装高14.4 mm，阶段18的15 mm空间实际只余0.6 mm，必须用实物复核。
 - OpenSCAD源文件只表达板框、孔和器件包络，不含焊盘、铜箔、阻焊、丝印、爬电距离或线束弯曲半径。本机OpenSCAD 2021.01无头导出未在限定时间内完成，因此本阶段不声称已有STL。
+- Blender 中的23个板件/器件包络标为 `non_fabrication_reference`：它们可以进入带属性的GLB和内部三视图用于设计复核，但必须从150件制造清单及内部机构STL排除，不能伪装成可打印零件。
+- 这23个参考包络已写入唯一主工程并完成关闭后重开审计。Blender 5.1.2确认386个总对象、182个内部对象、150个制造对象、9个工程标记和23个阶段19参考对象；主文件SHA-256为 `ecd9a8b02db7c0b253c06005aaf16e7a8bf10147f8adec9c8900415e18b38af4`。150行制造清单、内部机构STL、动画GLB和内部正/侧/俯三视图均已重导出。
 - 当前没有`.kicad_sch`、`.kicad_pcb`、Gerber或钻孔文件；任何PCB厂家下单都不被本阶段授权。
 
 ## 已发布证据
@@ -46,6 +48,7 @@
 - [预选BOM](../engineering/stage19_gate_bom.csv)
 - [引脚网表](../engineering/stage19_gate_netlist.csv)
 - [当前HOLD结果](../engineering/stage19_dual_permissive_gate_results.json)
+- [Blender重开审计与导出哈希](../engineering/stage19_blender_reopen_audit.json)
 - [验证器](../tools/verify_dual_permissive_gate.py)
 - [硬件包说明](../hardware/stage19_dual_permissive_gate/README.md)
 

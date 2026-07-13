@@ -1,11 +1,13 @@
 {
-  "audit_date": "2026-07-12",
+  "audit_date": "2026-07-13",
   "repository": {
     "url": "https://github.com/PrintedDroid/D-O-Printed-Droid.git",
     "commit": "e90aacdbe26a62fd4f0229d5504a3f2f3c409055",
     "commit_date": "2026-06-08T18:36:38+02:00",
     "branch": "main",
-    "working_tree_clean": true
+    "working_tree_clean": true,
+    "upstream_main_head_checked_2026_07_13": "e90aacdbe26a62fd4f0229d5504a3f2f3c409055",
+    "upstream_main_matched_local_on_check": true
   },
   "license": {
     "root_license_file_present": false,
@@ -25,6 +27,7 @@
   "firmware": {
     "recommended": "D-O_ibus_v3.4/D_O_printed_droid_rc_ibus_v3.4.3.ino",
     "recommended_present": true,
+    "recommended_sha256": "6cb3ce0d96c83724aaf9170eaef592c3d7cc866b9da66819db9e9f3fe134a707",
     "sketch_count": 5,
     "sketches": [
       "D-O_ibus_v1.1/D-O_printed_droid_rc_ibus_v1.1.ino",
@@ -42,7 +45,381 @@
       "DFRobotDFPlayerMini",
       "Wire",
       "avr/wdt"
-    ]
+    ],
+    "pin_contract": {
+      "servo_pins": {
+        "MAINBAR_SERVO_PIN": 0,
+        "HEAD1_SERVO_PIN": 1,
+        "HEAD2_SERVO_PIN": 5,
+        "HEAD3_SERVO_PIN": 6
+      },
+      "all_numeric_signal_pins": {
+        "DIR1_PIN": 13,
+        "PWM1_PIN": 12,
+        "DIR2_PIN": 11,
+        "PWM2_PIN": 10,
+        "PWM_DRIVE1_PIN": 3,
+        "PWM_DRIVE2_PIN": 4,
+        "PWM_SOUND_CH1_PIN": 14,
+        "PWM_SOUND_CH2_PIN": 15,
+        "PWM_SOUND_CH3_PIN": 16,
+        "PWM_SOUND_CH4_PIN": 17,
+        "MAINBAR_SERVO_PIN": 0,
+        "HEAD1_SERVO_PIN": 1,
+        "HEAD2_SERVO_PIN": 5,
+        "HEAD3_SERVO_PIN": 6,
+        "DFPLAYER_RX_PIN": 7,
+        "DFPLAYER_TX_PIN": 8
+      },
+      "battery_monitor_pin": "A15",
+      "serial1_receiver_pin": "D19/RX1",
+      "i2c_pins": {
+        "sda": "D20",
+        "scl": "D21"
+      },
+      "serial0_console_enabled": true,
+      "serial0_baud": 9600,
+      "servo_attach_calls_present": {
+        "mainbar": true,
+        "head1": true,
+        "head2": true,
+        "head3": true
+      }
+    },
+    "versioned_wiring_contract": {
+      "status": "HOLD_D0_D1_REMAP_AND_PHYSICAL_CONTINUITY",
+      "source_path": "D-O_ibus_v3.4/D_O_printed_droid_rc_ibus_v3.4.3.ino",
+      "source_commit": "e90aacdbe26a62fd4f0229d5504a3f2f3c409055",
+      "source_sha256": "6cb3ce0d96c83724aaf9170eaef592c3d7cc866b9da66819db9e9f3fe134a707",
+      "compile_evidence_path": "engineering/do_firmware_compile.json",
+      "compile_evidence_sha256": "2e9b8e2f46b5ea6ceae3e52ac5101010744c07aaed9b8eeb8de77ab5e6063e40",
+      "generated_from_source_constants": true,
+      "physical_continuity_test": "NOT_RUN",
+      "actuator_power_release": false
+    }
+  },
+  "source_conflicts": [
+    {
+      "id": "DO-SRC-001",
+      "status": "HOLD_BENCH_VERIFICATION",
+      "issue": "v3.4.3 assigns two servo outputs to Mega D0/D1 while also enabling the Serial0 console",
+      "source_evidence": {
+        "mainbar_servo_pin": 0,
+        "head1_servo_pin": 1,
+        "serial_begin_present": true,
+        "all_four_servo_attach_calls_present": true
+      },
+      "board_mapping": "Arduino Mega 2560 maps D0 to RX0 and D1 to TX0",
+      "risk": "Servo signalling and the USB/Serial0 upload or configuration path contend for the same physical pins; neither function is accepted without bench evidence",
+      "verification_gate": [
+        "do not connect servos to D0/D1 during first USB upload or Serial0 configuration",
+        "choose and document a non-UART servo pin remap or a verified hardware isolation/multiplexing design",
+        "capture oscilloscope or logic-analyser evidence for servo pulse width and Serial0 RX/TX integrity",
+        "repeat upload, reset, configuration-menu, four-servo motion and failsafe tests"
+      ],
+      "authoritative_pin_reference": "https://docs.arduino.cc/language-reference/en/functions/communication/serial/"
+    },
+    {
+      "id": "DO-SRC-002",
+      "status": "HOLD_VERSIONED_WIRING_REQUIRED",
+      "issue": "the official control-page v2.1 wiring table publishes D2/D3/D4/D5 servo pins while pinned v3.4.3 source and the current GitHub README use D0/D1/D5/D6",
+      "source_evidence": {
+        "official_page_section": "D-O Droid Control System v2.1 -> Mega to Servos",
+        "official_page_pins": {
+          "mainbar": 2,
+          "head1": 3,
+          "head2": 4,
+          "head3": 5
+        },
+        "pinned_v3_4_3_pins": {
+          "MAINBAR_SERVO_PIN": 0,
+          "HEAD1_SERVO_PIN": 1,
+          "HEAD2_SERVO_PIN": 5,
+          "HEAD3_SERVO_PIN": 6
+        }
+      },
+      "risk": "combining the embedded v2.1 webpage wiring table with v3.4.3 firmware can put each servo signal on the wrong connector and hides the D0/D1 Serial0 contention",
+      "verification_gate": [
+        "record the exact firmware filename and SHA-256 beside every generated wiring diagram",
+        "derive the harness from the compiled source constants rather than the generic webpage table",
+        "continuity-test all four servo signal nets before power is applied",
+        "retain DO-SRC-001 until D0/D1 are remapped or independently isolated and bench-verified"
+      ],
+      "official_control_page": "https://www.printed-droid.com/kb/d-o-control-and-power-board/"
+    },
+    {
+      "id": "DO-SRC-003",
+      "status": "USE_PINNED_GITHUB_V3_4_3",
+      "issue": "the official D-O_ibus_v3.4.zip attachment contains v3.4.0 while the pinned GitHub repository contains the later v3.4.3 source",
+      "source_evidence": {
+        "attachment_filename": "D-O_ibus_v3.4.zip",
+        "attachment_version_header": "3.4.0 (Review fixes on top of v3.3.6)",
+        "pinned_source": "D-O_ibus_v3.4/D_O_printed_droid_rc_ibus_v3.4.3.ino",
+        "pinned_source_version": "3.4.3"
+      },
+      "risk": "a patch-unspecific attachment filename can silently roll a builder back past later watchdog, receiver and channel-map fixes",
+      "verification_gate": [
+        "use the pinned GitHub v3.4.3 source for the current Mega route",
+        "record the flashed source SHA-256 and compiler report",
+        "treat the website v3.4 ZIP as a historical reference rather than the recommended binary input"
+      ],
+      "official_control_page": "https://www.printed-droid.com/kb/d-o-control-and-power-board/"
+    }
+  ],
+  "official_attachment_catalog": {
+    "source_page": "https://www.printed-droid.com/kb/d-o-control-and-power-board/",
+    "checked_date": "2026-07-13",
+    "attachment_count": 12,
+    "local_directory": "third_party/do_public_resources",
+    "local_directory_gitignored": true,
+    "items": [
+      {
+        "name": "D-O_AIO32_v2_User_Handbook_v2.1.1.pdf",
+        "kind": "AIO32 English user handbook",
+        "url": "https://www.printed-droid.com/wp-content/uploads/2020/09/D-O_AIO32_v2_User_Handbook_v2.1.1.pdf",
+        "local_path": "third_party/do_public_resources/D-O_AIO32_v2_User_Handbook_v2.1.1.pdf",
+        "present": true,
+        "bytes": 65572,
+        "sha256": "44153b54a8d7a7f57adc8d02b961dc4547ce28f94810edc93c07a915e4ab07f8",
+        "expected_sha256_checked_2026_07_13": "44153b54a8d7a7f57adc8d02b961dc4547ce28f94810edc93c07a915e4ab07f8",
+        "hash_matches_checked_copy": true,
+        "redistribution": "local reference only; not bundled into the public site because package-level redistribution terms are not explicit"
+      },
+      {
+        "name": "D-O_AIO32_v2_User_Handbook_v2.1.1_DE.pdf",
+        "kind": "AIO32 German user handbook",
+        "url": "https://www.printed-droid.com/wp-content/uploads/2020/09/D-O_AIO32_v2_User_Handbook_v2.1.1_DE.pdf",
+        "local_path": "third_party/do_public_resources/D-O_AIO32_v2_User_Handbook_v2.1.1_DE.pdf",
+        "present": true,
+        "bytes": 66856,
+        "sha256": "7a5f2ca961fef03a73f4af0800688025b1d81843a94d09a60f5681d311828ec3",
+        "expected_sha256_checked_2026_07_13": "7a5f2ca961fef03a73f4af0800688025b1d81843a94d09a60f5681d311828ec3",
+        "hash_matches_checked_copy": true,
+        "redistribution": "local reference only; not bundled into the public site because package-level redistribution terms are not explicit"
+      },
+      {
+        "name": "D-O_AIO32_v2.1.zip",
+        "kind": "experimental ESP32-S3 firmware source archive",
+        "url": "https://www.printed-droid.com/wp-content/uploads/2020/09/D-O_AIO32_v2.1.zip",
+        "local_path": "third_party/do_public_resources/D-O_AIO32_v2.1.zip",
+        "present": true,
+        "bytes": 108711,
+        "sha256": "d873d673d42f6318f051afab0a146145324783d303a3a44f27ccdf604f7365dd",
+        "expected_sha256_checked_2026_07_13": "d873d673d42f6318f051afab0a146145324783d303a3a44f27ccdf604f7365dd",
+        "hash_matches_checked_copy": true,
+        "redistribution": "local reference only; not bundled into the public site because package-level redistribution terms are not explicit"
+      },
+      {
+        "name": "D-O_Control__Power_Board_System_Documentation_v2.2.pdf",
+        "kind": "Mega control and power board English handbook",
+        "url": "https://www.printed-droid.com/wp-content/uploads/2020/09/D-O_Control__Power_Board_System_Documentation_v2.2.pdf",
+        "local_path": "third_party/do_public_resources/D-O_Control__Power_Board_System_Documentation_v2.2.pdf",
+        "present": true,
+        "bytes": 65452,
+        "sha256": "9f50880e6bf84bca5d970136bf026e9ff77d85b032e82c65e710a75a5f616c45",
+        "expected_sha256_checked_2026_07_13": "9f50880e6bf84bca5d970136bf026e9ff77d85b032e82c65e710a75a5f616c45",
+        "hash_matches_checked_copy": true,
+        "redistribution": "local reference only; not bundled into the public site because package-level redistribution terms are not explicit"
+      },
+      {
+        "name": "D-O_Control__Power_Board_System_Documentation_v2.2_DE.pdf",
+        "kind": "Mega control and power board German handbook",
+        "url": "https://www.printed-droid.com/wp-content/uploads/2020/09/D-O_Control__Power_Board_System_Documentation_v2.2_DE.pdf",
+        "local_path": "third_party/do_public_resources/D-O_Control__Power_Board_System_Documentation_v2.2_DE.pdf",
+        "present": true,
+        "bytes": 67295,
+        "sha256": "aa8f4b2e12e2284a75f3f55c2d3ae18771e23c54cbec130c892f76939ca4ace0",
+        "expected_sha256_checked_2026_07_13": "aa8f4b2e12e2284a75f3f55c2d3ae18771e23c54cbec130c892f76939ca4ace0",
+        "hash_matches_checked_copy": true,
+        "redistribution": "local reference only; not bundled into the public site because package-level redistribution terms are not explicit"
+      },
+      {
+        "name": "D-O_ibus_v3.4.zip",
+        "kind": "Mega v3.4.0 historical firmware archive",
+        "url": "https://www.printed-droid.com/wp-content/uploads/2020/09/D-O_ibus_v3.4.zip",
+        "local_path": "third_party/do_public_resources/D-O_ibus_v3.4.zip",
+        "present": true,
+        "bytes": 30647,
+        "sha256": "9e55e08d5b339690275b1714df292a2f0536c0303e6f58867ec5355dafcee478",
+        "expected_sha256_checked_2026_07_13": "9e55e08d5b339690275b1714df292a2f0536c0303e6f58867ec5355dafcee478",
+        "hash_matches_checked_copy": true,
+        "redistribution": "local reference only; not bundled into the public site because package-level redistribution terms are not explicit"
+      },
+      {
+        "name": "D-O_ibus_v2.1.zip",
+        "kind": "Mega v2.1 legacy firmware archive",
+        "url": "https://www.printed-droid.com/wp-content/uploads/2020/09/D-O_ibus_v2.1.zip",
+        "local_path": "third_party/do_public_resources/D-O_ibus_v2.1.zip",
+        "present": true,
+        "bytes": 23196,
+        "sha256": "4124593350b164e80e3d04d53bd8e550751cd57c8833922d9bc6a48406f7e4ad",
+        "expected_sha256_checked_2026_07_13": "4124593350b164e80e3d04d53bd8e550751cd57c8833922d9bc6a48406f7e4ad",
+        "hash_matches_checked_copy": true,
+        "redistribution": "local reference only; not bundled into the public site because package-level redistribution terms are not explicit"
+      },
+      {
+        "name": "D-O-AIO-1.4-v1.3.pdf",
+        "kind": "legacy AIO wiring sheet",
+        "url": "https://www.printed-droid.com/wp-content/uploads/2020/11/D-O-AIO-1.4-v1.3.pdf",
+        "local_path": "third_party/do_public_resources/D-O-AIO-1.4-v1.3.pdf",
+        "present": true,
+        "bytes": 1076608,
+        "sha256": "ecf7700d3526041021215001aeccd95ed7be4b934458de4653469dba8c293fae",
+        "expected_sha256_checked_2026_07_13": "ecf7700d3526041021215001aeccd95ed7be4b934458de4653469dba8c293fae",
+        "hash_matches_checked_copy": true,
+        "redistribution": "local reference only; not bundled into the public site because package-level redistribution terms are not explicit"
+      },
+      {
+        "name": "dov2_printed_droid_rc_ibus_v1.1.zip",
+        "kind": "Mega v1.1 legacy firmware archive",
+        "url": "https://www.printed-droid.com/wp-content/uploads/2020/09/dov2_printed_droid_rc_ibus_v1.1.zip",
+        "local_path": "third_party/do_public_resources/dov2_printed_droid_rc_ibus_v1.1.zip",
+        "present": true,
+        "bytes": 4350,
+        "sha256": "13c08a4b16afe7084c75e32f3042994ecac3725dbdbe6f142f712f97f5f1a311",
+        "expected_sha256_checked_2026_07_13": "13c08a4b16afe7084c75e32f3042994ecac3725dbdbe6f142f712f97f5f1a311",
+        "hash_matches_checked_copy": true,
+        "redistribution": "local reference only; not bundled into the public site because package-level redistribution terms are not explicit"
+      },
+      {
+        "name": "D_O_Nano_Sketch_v2.zip",
+        "kind": "Nano v2 legacy sound firmware archive",
+        "url": "https://www.printed-droid.com/wp-content/uploads/2020/09/D_O_Nano_Sketch_v2.zip",
+        "local_path": "third_party/do_public_resources/D_O_Nano_Sketch_v2.zip",
+        "present": true,
+        "bytes": 4284,
+        "sha256": "2ac4bfcee9f54182c65c803c09899c06620d9d2b4fb78ba9d9ac02f6502d219b",
+        "expected_sha256_checked_2026_07_13": "2ac4bfcee9f54182c65c803c09899c06620d9d2b4fb78ba9d9ac02f6502d219b",
+        "hash_matches_checked_copy": true,
+        "redistribution": "local reference only; not bundled into the public site because package-level redistribution terms are not explicit"
+      },
+      {
+        "name": "D-O_Nano_Sketch.zip",
+        "kind": "Nano v1 legacy sound firmware archive",
+        "url": "https://www.printed-droid.com/wp-content/uploads/2020/09/D-O_Nano_Sketch.zip",
+        "local_path": "third_party/do_public_resources/D-O_Nano_Sketch.zip",
+        "present": true,
+        "bytes": 1788,
+        "sha256": "04fb652e1b055e888a4a9e3b212cc467b15a509c668e3d83142c635f970961e4",
+        "expected_sha256_checked_2026_07_13": "04fb652e1b055e888a4a9e3b212cc467b15a509c668e3d83142c635f970961e4",
+        "hash_matches_checked_copy": true,
+        "redistribution": "local reference only; not bundled into the public site because package-level redistribution terms are not explicit"
+      },
+      {
+        "name": "DO-Stand-60mm.stl",
+        "kind": "60 mm wheel-off test stand; not a complete droid model",
+        "url": "https://www.printed-droid.com/wp-content/uploads/2020/09/DO-Stand-60mm.stl",
+        "local_path": "third_party/do_public_resources/DO-Stand-60mm.stl",
+        "present": true,
+        "bytes": 7684,
+        "sha256": "429cbcf27c94d840007da24ea2b297d22b6ac3a8bc4b79d90d6dd86d8724af57",
+        "expected_sha256_checked_2026_07_13": "429cbcf27c94d840007da24ea2b297d22b6ac3a8bc4b79d90d6dd86d8724af57",
+        "hash_matches_checked_copy": true,
+        "redistribution": "local reference only; not bundled into the public site because package-level redistribution terms are not explicit"
+      }
+    ],
+    "aio32_archive_audit": {
+      "member_count": 23,
+      "members": [
+        "D-O_AIO32_v2.1.ino",
+        "README.md",
+        "button_handler.cpp",
+        "button_handler.h",
+        "cli.h",
+        "cli.ino",
+        "config.h",
+        "display_handler.cpp",
+        "display_handler.h",
+        "imu_handler.cpp",
+        "imu_handler.h",
+        "madgwick_ahrs.cpp",
+        "madgwick_ahrs.h",
+        "pid_autotune.cpp",
+        "pid_autotune.h",
+        "pid_controller.cpp",
+        "pid_controller.h",
+        "rc_receiver.cpp",
+        "rc_receiver.h",
+        "sound_controller.cpp",
+        "sound_controller.h",
+        "utilities.cpp",
+        "utilities.h"
+      ],
+      "source_file_count": 22,
+      "source_files": [
+        "D-O_AIO32_v2.1.ino",
+        "button_handler.cpp",
+        "button_handler.h",
+        "cli.h",
+        "cli.ino",
+        "config.h",
+        "display_handler.cpp",
+        "display_handler.h",
+        "imu_handler.cpp",
+        "imu_handler.h",
+        "madgwick_ahrs.cpp",
+        "madgwick_ahrs.h",
+        "pid_autotune.cpp",
+        "pid_autotune.h",
+        "pid_controller.cpp",
+        "pid_controller.h",
+        "rc_receiver.cpp",
+        "rc_receiver.h",
+        "sound_controller.cpp",
+        "sound_controller.h",
+        "utilities.cpp",
+        "utilities.h"
+      ],
+      "package_license_file_present": false,
+      "package_license_files": [],
+      "apache_marked_source_files": [
+        "cli.ino",
+        "madgwick_ahrs.cpp",
+        "madgwick_ahrs.h",
+        "pid_controller.cpp",
+        "pid_controller.h"
+      ],
+      "pcb_cad_file_count": 0,
+      "pcb_cad_files": [],
+      "mechanical_file_count": 0,
+      "mechanical_files": [],
+      "status": "HOLD_PACKAGE_LICENSE_AND_HARDWARE_CAD_NOT_FOUND",
+      "classification": "publicly downloadable experimental source archive; not proven OSI open source as a complete package",
+      "compile_status": "PASS_COMPILE_ONLY",
+      "compile_evidence_path": "engineering/do_aio32_firmware_compile.json",
+      "compile_evidence_sha256": "4a2a2d9bc225a3e396a20b4ea90645f9147b4bda59b50cdd9276a3fe4bbc371e",
+      "compile_target": "esp32:esp32:adafruit_feather_esp32s3_tft:CDCOnBoot=cdc,PSRAM=disabled,FlashSize=4M,PartitionScheme=default",
+      "compile_release_boundary": "Compilation proves source/toolchain compatibility only. Package licensing, missing hardware CAD, bench wiring, motion, failsafe and safety validation remain HOLD.",
+      "compiler_discovered_dependency": "SensorLib",
+      "handbook_claim": "the AIO32 handbook says source and hardware KiCad files live in the shared GitHub repository",
+      "observed_repository_aio32_files": 0,
+      "observed_repository_pcb_cad_files": 0,
+      "observed_attachment_pcb_cad_files": 0,
+      "boundary": "file-level Apache markers do not license every file in the archive; no package LICENSE or KiCad/Gerber was found in the checked attachment"
+    },
+    "ibus_v3_4_attachment_audit": {
+      "member_count": 2,
+      "members": [
+        "D_O_printed_droid_rc_ibus_v3.4.ino",
+        "README.md"
+      ],
+      "source_file_count": 1,
+      "source_files": [
+        "D_O_printed_droid_rc_ibus_v3.4.ino"
+      ],
+      "package_license_file_present": false,
+      "package_license_files": [],
+      "apache_marked_source_files": [
+        "D_O_printed_droid_rc_ibus_v3.4.ino"
+      ],
+      "pcb_cad_file_count": 0,
+      "pcb_cad_files": [],
+      "mechanical_file_count": 0,
+      "mechanical_files": [],
+      "version_header": "3.4.0 (Review fixes on top of v3.3.6)",
+      "recommended_for_current_build": false,
+      "replacement": "D-O_ibus_v3.4/D_O_printed_droid_rc_ibus_v3.4.3.ino"
+    }
   },
   "mechanical_models": {
     "count": 0,
@@ -77,5 +454,5 @@
       "redistribution": "not bundled into public site; retain for personal build reference because upstream redistribution terms are not explicit"
     }
   ],
-  "conclusion": "Firmware and documentation are usable for a personal non-commercial build; complete mechanical CAD/STL is still missing from the public repository."
+  "conclusion": "Pinned Mega firmware and public reference documents can support a personal non-commercial bench build, but versioned wiring, package licences, complete mechanical CAD and PCB manufacturing files remain unresolved."
 }

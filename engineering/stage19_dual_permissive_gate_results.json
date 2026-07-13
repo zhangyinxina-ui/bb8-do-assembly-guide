@@ -21,7 +21,9 @@
     "lvc_output_high_exceeds_mdd20a_3v3_compatibility": true,
     "board_xy_matches_stage18_keepout": true,
     "assembled_height_within_stage18_keepout": true,
+    "installed_height_with_standoffs_within_stage18_keepout": true,
     "four_mount_holes_declared": true,
+    "six_unique_test_points_declared": true,
     "opto_switching_not_misrepresented_as_maximum": true
   },
   "computed": {
@@ -33,7 +35,9 @@
     "opto_emitter_high_min_v_at_25c_model": 2.9,
     "opto_emitter_load_ma_at_25c_model": 0.617,
     "three_package_logic_tpd_max_ns": 15.9,
-    "assembled_height_margin_mm": 3.6
+    "assembled_height_margin_mm": 3.6,
+    "installed_height_with_standoffs_mm": 14.4,
+    "installed_height_margin_mm": 0.6
   },
   "timing_boundary": {
     "logic_gate_chain_has_datasheet_maximum": true,

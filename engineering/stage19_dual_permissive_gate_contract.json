@@ -60,7 +60,10 @@
     "width_mm": 35.0,
     "pcb_thickness_mm": 1.6,
     "maximum_assembled_height_mm": 11.4,
+    "mounting_stack_height_mm": 3.0,
+    "maximum_installed_height_mm": 14.4,
     "stage18_keepout_height_mm": 15.0,
+    "installed_height_margin_mm": 0.6,
     "layers": 2,
     "mount_hole_diameter_mm": 3.2,
     "mount_hole_centres_mm": [[3.0, 3.0], [47.0, 3.0], [3.0, 32.0], [47.0, 32.0]],
@@ -76,6 +79,14 @@
     {"reference": "J3", "part": "B5B-XH-A", "pins": ["PWM_L_OUT", "DIR_L", "PWM_R_OUT", "DIR_R", "GND"], "purpose": "MDD20A logic output"},
     {"reference": "J4", "part": "B2B-XH-A", "pins": ["SAFE_A_PLUS", "SAFE_A_RETURN"], "purpose": "independent energise-to-run safety permissive A"},
     {"reference": "J5", "part": "B2B-XH-A", "pins": ["SAFE_B_PLUS", "SAFE_B_RETURN"], "purpose": "independent energise-to-run safety permissive B"}
+  ],
+  "test_points": [
+    {"reference": "TP1", "net": "SAFE_A_OK"},
+    {"reference": "TP2", "net": "SAFE_B_OK"},
+    {"reference": "TP3", "net": "ALERT_N"},
+    {"reference": "TP4", "net": "PWM_L_OUT"},
+    {"reference": "TP5", "net": "PWM_R_OUT"},
+    {"reference": "TP6", "net": "GND"}
   ],
   "official_sources": {
     "ti_sn74lvc2g08_datasheet": "https://www.ti.com/lit/ds/symlink/sn74lvc2g08.pdf",

@@ -6,7 +6,9 @@ root = Path(bpy.data.filepath).parents[2]
 output = root / "engineering" / "internal_assembly_manifest.csv"
 rows = []
 for obj in sorted((o for o in bpy.data.objects
-                   if o.get("bb8_internal") and not o.get("engineering_annotation")), key=lambda o: o.name):
+                   if o.get("bb8_internal")
+                   and not o.get("engineering_annotation")
+                   and not o.get("non_fabrication_reference")), key=lambda o: o.name):
     dimensions = obj.dimensions
     location = obj.matrix_world.translation
     rows.append({
