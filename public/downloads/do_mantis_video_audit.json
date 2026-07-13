@@ -1,0 +1,68 @@
+{
+  "audit_date": "2026-07-13",
+  "scope": "metadata-only audit of every entry in Matt Denton's public Droid Build D-O playlist",
+  "playlist": {
+    "url": "https://youtube.com/playlist?list=PLTSAQ5KEjPVCldgA1t-KT1lRTKJdAY7er",
+    "title": "Droid Build D-O",
+    "uploader": "Matt Denton",
+    "entry_count": 6
+  },
+  "retrieval": {
+    "method": "yt-dlp --skip-download --dump-json; video media was not downloaded",
+    "fields_audited": [
+      "video id",
+      "title",
+      "upload date",
+      "public description URLs"
+    ]
+  },
+  "entries": [
+    {
+      "id": "zplirkxl6iM",
+      "title": "Droid Build D-O - #1 - Mantis Hacks",
+      "upload_date": "2019-10-24"
+    },
+    {
+      "id": "a1trQXC5bqI",
+      "title": "Droid Build D-O - #2 - Mantis Hacks",
+      "upload_date": "2019-11-01"
+    },
+    {
+      "id": "NxBvnvnvBc0",
+      "title": "Droid Build D-O - #3 - Mantis Hacks",
+      "upload_date": "2019-11-16"
+    },
+    {
+      "id": "DK3hTPibldo",
+      "title": "Droid Build D-O - #4 - Mantis Hacks",
+      "upload_date": "2019-11-27",
+      "description_evidence": "states that the build is based on Michael Baddeley's CAD sent directly to Matt, with Matt making his own servo, drive and electronics changes"
+    },
+    {
+      "id": "2cIdjQiS2ZE",
+      "title": "Droid Build D-O - #5 - Mantis Hacks",
+      "upload_date": "2020-04-01"
+    },
+    {
+      "id": "XyuE0PggtiE",
+      "title": "3D Printing a D-O Droid Tyre using High Speed TPU",
+      "upload_date": "2021-03-07"
+    }
+  ],
+  "description_link_findings": {
+    "direct_matt_modified_cad_download_found": false,
+    "direct_matt_control_source_download_found": false,
+    "github_gitlab_drive_dropbox_release_link_found": false,
+    "direct_release_links": [],
+    "links_found_instead": [
+      "D-O Builders Facebook group",
+      "Michael Baddeley Facebook group",
+      "Mr Baddeley Patreon",
+      "Matt Denton Threeding profile",
+      "component vendor and affiliate product pages",
+      "Matt Denton social and support pages"
+    ]
+  },
+  "conclusion": "The six-entry playlist is five numbered build episodes plus one tyre-printing video. Its public descriptions document parts and provenance but do not release Matt Denton's modified D-O CAD or control source.",
+  "boundary": "This proves only what the six public descriptions exposed on the audit date. It does not prove that no file exists in a private Facebook group, paid membership, later post or unindexed source. Any newly found file still requires an explicit licence review before use or redistribution."
+}

@@ -35,8 +35,10 @@ The three-package LVC chain has a 15.9 ns digital maximum. The optocoupler switc
 
 ## Mechanical and manufacturing boundary
 
-- Proposed PCB: 50 x 35 x 1.6 mm, four Ø3.2 mm holes. With the 9.8 mm JST XH envelope, estimated assembled height is 11.4 mm, leaving 3.6 mm inside the Stage-18 keepout.
+- Proposed PCB: 50 x 35 x 1.6 mm, four Ø3.2 mm holes. The PCB plus 9.8 mm JST XH envelope is 11.4 mm high. Including a 3.0 mm insulated mounting stack makes the installed height 14.4 mm, leaving only 0.6 mm inside the Stage-18 keepout; a purchased-sample fit check is mandatory.
 - The OpenSCAD source contains only board, holes and component envelopes. It has no pads, copper, solder mask, silkscreen, creepage or cable-bend proof. The local OpenSCAD 2021.01 headless export did not complete within the bounded run, so Stage 19 does not claim an STL.
+- The 23 Blender board/component envelopes are tagged `non_fabrication_reference`. They may appear in the GLB (with custom properties) and internal orthographic renders for design review, but they are excluded from the 150-part fabrication manifest and internal-mechanism STL.
+- Those 23 references are now written into the sole master and have passed a close-and-reopen audit. Blender 5.1.2 reports 386 total objects, 182 internal objects, 150 fabrication objects, nine engineering markers and 23 Stage-19 reference objects. The master SHA-256 is `ecd9a8b02db7c0b253c06005aaf16e7a8bf10147f8adec9c8900415e18b38af4`; the 150-row manifest, internal STL, animated GLB and front/side/top internal views were re-exported.
 - There is no `.kicad_sch`, `.kicad_pcb`, Gerber or drill release. This stage does not authorise a PCB order.
 
 ## Released evidence
@@ -46,6 +48,7 @@ The three-package LVC chain has a 15.9 ns digital maximum. The optocoupler switc
 - [Provisional BOM](../engineering/stage19_gate_bom.csv)
 - [Pin netlist](../engineering/stage19_gate_netlist.csv)
 - [Current HOLD result](../engineering/stage19_dual_permissive_gate_results.json)
+- [Blender reopen audit and export hashes](../engineering/stage19_blender_reopen_audit.json)
 - [Verifier](../tools/verify_dual_permissive_gate.py)
 - [Hardware package notes](../hardware/stage19_dual_permissive_gate/README.md)
 

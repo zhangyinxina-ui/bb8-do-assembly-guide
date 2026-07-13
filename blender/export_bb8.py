@@ -34,16 +34,25 @@ def stl(filename, predicate):
     print("EXPORTED", path, len(selected))
 
 
+def is_fabrication_object(obj):
+    return not bool(obj.get("engineering_annotation")) and not bool(
+        obj.get("non_fabrication_reference"))
+
+
 body_prefixes = ("BB-8 body", "Body panel", "Body orange", "Body accent", "Body triangle")
 head_prefixes = ("Head ", "Main photoreceptor", "Photoreceptor", "Holographic", "Long antenna", "Short antenna")
 stl("BB8_body_visual_reference_mm.stl", lambda o: o.name.startswith(body_prefixes))
 stl("BB8_head_visual_reference_mm.stl",
     lambda o: o.name.startswith(head_prefixes) and not bool(o.get("bb8_internal")))
 stl("BB8_internal_mechanism_mm.stl",
-    lambda o: bool(o.get("bb8_internal")) and not bool(o.get("engineering_annotation")))
+    lambda o: bool(o.get("bb8_internal")) and is_fabrication_object(o))
 
 # GLB keeps hierarchy, materials and animation. Exclude render-only floor/lights/cameras.
-select_names(lambda o: o.name.startswith(body_prefixes + head_prefixes + ("Internal", "RIG ")), include_empties=True)
+select_names(
+    lambda o: o.name.startswith(body_prefixes + head_prefixes + ("Internal", "RIG "))
+    and not bool(o.get("stage19_superseded_keepout")),
+    include_empties=True,
+)
 glb = os.path.join(OUT, "BB8_1to1_kinematic.glb")
 bpy.ops.export_scene.gltf(
     filepath=glb,
@@ -51,5 +60,6 @@ bpy.ops.export_scene.gltf(
     use_selection=True,
     export_animations=True,
     export_frame_range=True,
+    export_extras=True,
 )
 print("EXPORTED", glb)

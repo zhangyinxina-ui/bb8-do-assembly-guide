@@ -278,17 +278,17 @@ export default function Home() {
             </h3>
             <p>
               Blender
-              文件内已有150个制造对象和9个非制造工程标记。驱动轮和四只稳定球实际到达254 mm内壳；
+              文件内重开审计确认386个总对象、182个内部对象：150个制造对象、9个非制造工程标记和23个阶段19非制造预CAD参考对象。驱动轮和四只稳定球实际到达254 mm内壳；
               IG42E-24K按125.2 mm总长、PCD 35 mm安装孔和310 mm轮距布置，两台电机不再互相穿透。
               赤道维护接口包含494 mm密封圈、8个锁扣，并明确建模12段动力/编码器线束和4个可断开连接器。
               磁性头部采用6+6磁体包络、8 mm总气隙和3只24 mm头底滚轮，装机拉力验收线为40 N。
-              电子托盘另有双INA226、双2 mΩ四线分流器、6个M2.5支柱和独立ALERT→EN门的实体包络；真实带电试验仍为NOT_RUN。
+              电子托盘另有双INA226、双2 mΩ四线分流器、6个M2.5支柱和独立SAFE_A/SAFE_B/ALERT_N→PWM门的预CAD包络；真实带电试验仍为NOT_RUN。
               阶段14新增120 × 70 × 24 mm、名义1.50 kg的密封低位钢配重盒，并用17组质量账本替代未经证明的110 mm质心假设。
               阶段15再加入左右电机驱动器、散热器、主保险丝、常开接触器、双通道常闭急停、安全继电器、维护断电和系留急停插口；30个新对象全部随内车运动，器件型号与电流额定仍保持未冻结。
               阶段16不伪造新的几何完成度，而是把19项真机调试门、真实文件哈希和测量限值接到同一工程证据链；当前为0/19通过。
               阶段17用厂商官方资料筛选MDD20A、30 A MIDI保险丝、SW60接触器和P28A 4S2P电池候选：15/15额定检查通过，但独立去能、再生、堵转、BMS和电池包仍未冻结，不能采购放行。
               阶段18已把REC Active BMS 4S、MDD20A、SW60、MIDI保险丝、外置分流器和双通道门板的模块化电源舱写入唯一Blender主工程；重开审计确认39个阶段18对象、150个制造对象和9个工程标记。8个候选包络通过数字间隙门，12项实物冻结门仍未通过，不能把解析几何描述成实物装配完成。
-              阶段19进一步发布双许可PWM门的预CAD合同：SAFE_A、SAFE_B、双INA226 ALERT_N和3.3 V逻辑电源任一失效都会解析拉低左右PWM；64组真值表全部通过，但没有KiCad、Gerber或台架波形，仍不能制造或上电。
+              阶段19进一步发布双许可PWM门的预CAD合同，并把23个板件/器件参考包络写入同一主工程；关闭重开后的Blender 5.1.2审计确认386个总对象和182个内部对象，制造清单仍严格保持150项。SAFE_A、SAFE_B、双INA226 ALERT_N和3.3 V逻辑电源任一失效都会解析拉低左右PWM；64组真值表全部通过，但没有KiCad、Gerber或台架波形，仍不能制造或上电。
             </p>
             <div className="doc-actions">
               <a className="button" href={asset("/downloads/BB8_BOM.md")} download>
@@ -353,6 +353,9 @@ export default function Home() {
               </a>
               <a className="button" href={asset("/downloads/BB8_stage19_independent_dual_permissive_pwm_gate.md")} download>
                 Download Stage 19 English report
+              </a>
+              <a className="button" href={asset("/downloads/stage19_blender_reopen_audit.json")} download>
+                下载 Stage 19 Blender 重开证据
               </a>
               <a className="button" href={asset("/model/BB8_three_view_dimension_sheet.png")} download>
                 下载最新三视图尺寸图
@@ -437,6 +440,7 @@ export default function Home() {
           <a href={asset("/downloads/BB8_stage19_independent_dual_permissive_pwm_gate.md")} download>下载阶段19英文报告</a>
           <a href={asset("/downloads/stage19_dual_permissive_gate_contract.json")} download>下载阶段19机器合同</a>
           <a href={asset("/downloads/stage19_dual_permissive_gate_results.json")} download>下载阶段19 HOLD结果</a>
+          <a href={asset("/downloads/stage19_blender_reopen_audit.json")} download>下载阶段19 Blender重开证据</a>
           <a href={asset("/downloads/stage19_gate_truth_table.csv")} download>下载64行真值表</a>
           <a href={asset("/downloads/stage19_gate_bom.csv")} download>下载门板预选BOM</a>
           <a href={asset("/downloads/stage19_gate_netlist.csv")} download>下载引脚网表</a>
@@ -500,7 +504,8 @@ export default function Home() {
           <p>
             目前未找到可免费再分发的 D-O 整机机械包。但装配、接线、BOM
             和受个人非商业许可约束的控制源码，已经可以组成一条可审计的个人制作路线。
-            现有24项采购状态表和D01–D16调试门；MDD10A与两块MD10C的来源冲突、
+            现有26项采购状态表和D01–D16调试门；MDD10A与两块MD10C的来源冲突、
+            D0/D1舵机与Serial0引脚争用，以及官网v2.1的D2–D5接线表与v3.4.3源码不一致；
             电机/舵机负载和电源保护未冻结前，相关零件明确暂缓购买。
           </p>
         </div>
@@ -513,17 +518,17 @@ export default function Home() {
           <div>
             <span>CONTROL CODE</span>
             <strong>已固定版本</strong>
-            <p>v3.4.3 固定到 e90aacd；README 允许个人非商业使用、修改和分发，须保留声明与署名。Mega 2560 真编译通过：Flash 17%，RAM 18%。</p>
+            <p>v3.4.3 固定到 e90aacd；README 允许个人非商业使用、修改和分发，须保留声明与署名。Mega 2560 真编译通过：Flash 17%，RAM 18%。官网泛名v3.4 ZIP实际仍是v3.4.0，只作历史参考。</p>
           </div>
           <div>
             <span>ASSEMBLY</span>
             <strong>免费</strong>
-            <p>Printed Droid 两份 PDF 已校验哈希；公开仓库含5个 Arduino 草图，但整机机械 CAD/STL 为0。另有一个60 mm无轮调试支架，许可未明确，未在网站再分发。</p>
+            <p>官网12个附件已在本机逐项校验哈希；公开仓库含5个 Arduino 草图，但整机机械 CAD/STL 为0。AIO32附件22个源码文件已用ESP32 core 3.3.7实编译通过：Flash 41%、RAM 15%，并发现手册遗漏SensorLib依赖；包级LICENSE与KiCad/Gerber仍缺失。60 mm无轮调试支架许可也未明确，均未在网站镜像。</p>
           </div>
           <div>
             <span>MANTIS HACKS</span>
             <strong>参考</strong>
-            <p>六集开发记录与 BOM，未见 Matt 改版 CAD/程序下载。</p>
+            <p>5集编号构建记录加1个轮胎打印视频；六条公开描述未见 Matt 改版 CAD/程序下载。</p>
             <a
               className="inline-download"
               href={asset("/downloads/DO_resources.md")}
@@ -547,6 +552,20 @@ export default function Home() {
             </a>
             <a
               className="inline-download"
+              href={asset("/downloads/do_aio32_firmware_compile.json")}
+              download
+            >
+              下载AIO32实编译证据 ↓
+            </a>
+            <a
+              className="inline-download"
+              href={asset("/downloads/do_mantis_video_audit.json")}
+              download
+            >
+              下载Mantis视频描述审计 ↓
+            </a>
+            <a
+              className="inline-download"
               href={asset("/downloads/DO_self_build_route.md")}
               download
             >
@@ -557,7 +576,7 @@ export default function Home() {
               href={asset("/downloads/do_self_build_bom.csv")}
               download
             >
-              下载24项采购门控BOM ↓
+              下载26项采购门控BOM ↓
             </a>
           </div>
         </div>

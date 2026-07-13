@@ -35,6 +35,15 @@ required_internal = {
     "Internal SW60 main contactor candidate",
     "Internal 30A MIDI fuse body candidate",
     "Internal dual-channel MDD20A hardware gate PCB placeholder",
+    "Internal stage19 dual-permissive gate PCB",
+    "Internal stage19 gate J1 logic power XH",
+    "Internal stage19 gate J2 MCU and ALERT input XH",
+    "Internal stage19 gate J3 MDD20A logic output XH",
+    "Internal stage19 gate J4 SAFE_A energise-to-run input XH",
+    "Internal stage19 gate J5 SAFE_B energise-to-run input XH",
+    "Internal stage19 gate U1 VO617A-4", "Internal stage19 gate U2 VO617A-4",
+    "Internal stage19 gate U3 SN74LVC2G08", "Internal stage19 gate U4 SN74LVC2G08",
+    "Internal stage19 gate U5 SN74LVC2G08",
     "Internal REC BMS external shunt keepout",
     "Internal dual-channel E-stop receiver", "Internal E-stop safety relay",
     "Internal externally reachable service disconnect", "Internal tether E-stop NC jack",
@@ -42,11 +51,11 @@ required_internal = {
 missing = required_internal - {o.name for o in internals}
 if missing:
     errors.append(f"missing internal objects: {sorted(missing)}")
-if len(internals) < 159:
-    errors.append(f"stage-18 internal assembly requires at least 159 objects, got {len(internals)}")
+if len(internals) < 182:
+    errors.append(f"stage-19 internal assembly requires at least 182 objects, got {len(internals)}")
 
-if engineering_stage != 18:
-    errors.append(f"engineering_stage expected 18, got {engineering_stage}")
+if engineering_stage != 19:
+    errors.append(f"engineering_stage expected 19, got {engineering_stage}")
 if scene.get("drive_track_mm") != 310:
     errors.append(f"drive_track_mm expected 310, got {scene.get('drive_track_mm')}")
 
@@ -358,6 +367,8 @@ else:
         errors.append("SW60 must remain normally-open and reject plain-diode suppression")
     if gate_board.get("released_pcb") is not False or gate_board.get("mcu_independent_disable_required") is not True:
         errors.append("dual-channel gate must remain an unreleased MCU-independent PCB contract")
+    if gate_board.get("stage19_superseded_keepout") is not True or gate_board.hide_render is not True:
+        errors.append("stage-18 gate placeholder must remain a hidden superseded keepout")
     if pack_shunt.get("kelvin_connection_required") is not True:
         errors.append("REC BMS pack shunt lacks the Kelvin interface contract")
 
@@ -384,6 +395,112 @@ if chassis_rig is None or any(o.parent != chassis_rig for o in stage18_objects):
 legacy_power_block = bpy.data.objects.get("Internal fuse and contactor")
 if legacy_power_block is None or legacy_power_block.get("mass_accounting_only") is not True:
     errors.append("stage-14 grouped fuse/contactor mass representative was not preserved")
+
+# Stage 19 replaces the empty GAT01 visual placeholder with component envelopes
+# that match the published 50 x 35 x 1.6 mm pre-CAD contract. These objects are
+# still analytical-only: there is no copper, routed PCB, Gerber or bench proof.
+stage19_objects = [o for o in internals if o.get("dual_permissive_gate_geometry_stage") == 19]
+if len(stage19_objects) != 23:
+    errors.append(f"stage-19 dual-permissive gate expected 23 objects, got {len(stage19_objects)}")
+if scene.get("stage19_gate_model_object_count") != 23:
+    errors.append(
+        f"stage-19 scene object count expected 23, got {scene.get('stage19_gate_model_object_count')}")
+if scene.get("stage19_gate_design_status") != "PASS_ANALYTICAL_ONLY":
+    errors.append("stage-19 gate design status must remain analytical-only PASS")
+if scene.get("stage19_gate_physical_test_status") != "NOT_RUN":
+    errors.append("stage-19 gate physical status must remain NOT_RUN")
+if scene.get("stage19_gate_safety_certification") != "NONE":
+    errors.append("stage-19 gate must not claim safety certification")
+if scene.get("stage19_gate_manufacturing_release") != "NOT_RELEASED_NO_KICAD_GERBER":
+    errors.append("stage-19 gate must not claim a manufacturing release")
+if scene.get("stage19_gate_fabrication_export") is not False:
+    errors.append("stage-19 pre-CAD geometry must be excluded from fabrication exports")
+if scene.get("stage19_gate_truth_table_rows") != 64:
+    errors.append("stage-19 gate must retain the exhaustive 64-row truth-table contract")
+if any(o.get("physical_test_status") != "NOT_RUN" for o in stage19_objects):
+    errors.append("all stage-19 gate objects must remain NOT_RUN before bench validation")
+if any(o.get("stage19_pre_cad_reference_only") is not True for o in stage19_objects):
+    errors.append("one or more stage-19 objects lack the pre-CAD reference boundary")
+if any(o.get("non_fabrication_reference") is not True for o in stage19_objects):
+    errors.append("one or more stage-19 objects could leak into fabrication STL/CSV exports")
+if any(o.get("manufacturing_release") != "NOT_RELEASED_NO_KICAD_GERBER"
+       for o in stage19_objects):
+    errors.append("one or more stage-19 objects incorrectly claim manufacturing release")
+if chassis_rig is None or any(o.parent != chassis_rig for o in stage19_objects):
+    errors.append("all stage-19 gate objects must inherit the chassis rig")
+
+stage19_references = {o.get("component_reference") for o in stage19_objects}
+expected_stage19_references = {
+    "PCB1", "H1", "H2", "H3", "H4", "J1", "J2", "J3", "J4", "J5",
+    "U1", "U2", "U3", "U4", "U5", "R1", "R2",
+    "TP1", "TP2", "TP3", "TP4", "TP5", "TP6",
+}
+if stage19_references != expected_stage19_references:
+    errors.append(
+        f"stage-19 component references mismatch: {sorted(str(v) for v in stage19_references)}")
+
+stage19_board = bpy.data.objects.get("Internal stage19 dual-permissive gate PCB")
+if stage19_board is None:
+    errors.append("missing Stage-19 detailed dual-permissive gate PCB")
+else:
+    board_dimensions_mm = tuple(round(value * 1000, 2) for value in stage19_board.dimensions)
+    if board_dimensions_mm != (50.0, 35.0, 1.6):
+        errors.append(f"stage-19 gate board dimensions mismatch: {board_dimensions_mm}")
+    if stage19_board.get("two_independent_energise_to_run_inputs") is not True:
+        errors.append("stage-19 gate board lacks two independent energise-to-run inputs")
+    if stage19_board.get("direct_dual_ina226_alert_gate") is not True:
+        errors.append("stage-19 gate board lacks the direct dual-INA226 ALERT_N contract")
+    if stage19_board.get("safety_certification") != "NONE":
+        errors.append("stage-19 board must explicitly retain safety certification NONE")
+
+if len([o for o in stage19_objects if o.name.startswith(
+        "Internal stage19 gate M3 insulated standoff")]) != 4:
+    errors.append("stage-19 gate requires four M3 insulated standoff envelopes")
+if len([o for o in stage19_objects if " XH" in o.name]) != 5:
+    errors.append("stage-19 gate requires five JST XH connector envelopes")
+if len([o for o in stage19_objects if "VO617A-4" in o.name]) != 2:
+    errors.append("stage-19 gate requires two VO617A-4 optocoupler envelopes")
+if len([o for o in stage19_objects if "SN74LVC2G08" in o.name]) != 3:
+    errors.append("stage-19 gate requires three SN74LVC2G08 package envelopes")
+if len([o for o in stage19_objects if "2k input resistor" in o.name]) != 2:
+    errors.append("stage-19 gate requires two 2.00 kOhm input resistor envelopes")
+
+test_points = [o for o in stage19_objects if o.get("test_net")]
+expected_test_nets = {"SAFE_A_OK", "SAFE_B_OK", "ALERT_N", "PWM_L_OUT", "PWM_R_OUT", "GND"}
+if len(test_points) != 6 or {o.get("test_net") for o in test_points} != expected_test_nets:
+    errors.append("stage-19 gate requires six unique safety and PWM test points")
+
+connectors = [o for o in stage19_objects if o.get("connector_series")]
+if connectors and stage19_board is not None:
+    assembled_height_mm = max(
+        (o.location.z + o.dimensions.z / 2) -
+        (stage19_board.location.z - stage19_board.dimensions.z / 2)
+        for o in connectors
+    ) * 1000
+    if abs(assembled_height_mm - 11.4) > 0.2:
+        errors.append(
+            f"stage-19 connector assembled height {assembled_height_mm:.2f} mm, expected 11.4 mm")
+    installed_min_z = min(o.location.z - o.dimensions.z / 2 for o in stage19_objects)
+    installed_max_z = max(o.location.z + o.dimensions.z / 2 for o in stage19_objects)
+    installed_height_mm = (installed_max_z - installed_min_z) * 1000
+    if abs(installed_height_mm - 14.4) > 0.2:
+        errors.append(
+            f"stage-19 installed height {installed_height_mm:.2f} mm, expected 14.4 mm")
+    keepout = bpy.data.objects.get("Internal dual-channel MDD20A hardware gate keepout")
+    if keepout is None:
+        errors.append("stage-19 gate cannot be checked without the Stage-18 GAT01 keepout")
+    else:
+        keepout_min_z = keepout.location.z - keepout.dimensions.z / 2
+        keepout_max_z = keepout.location.z + keepout.dimensions.z / 2
+        if installed_min_z < keepout_min_z - 0.0002 or installed_max_z > keepout_max_z + 0.0002:
+            errors.append("stage-19 installed board exceeds the Stage-18 15 mm vertical keepout")
+        for axis in range(2):
+            installed_min = min(o.location[axis] - o.dimensions[axis] / 2 for o in stage19_objects)
+            installed_max = max(o.location[axis] + o.dimensions[axis] / 2 for o in stage19_objects)
+            keepout_min = keepout.location[axis] - keepout.dimensions[axis] / 2
+            keepout_max = keepout.location[axis] + keepout.dimensions[axis] / 2
+            if installed_min < keepout_min - 0.0002 or installed_max > keepout_max + 0.0002:
+                errors.append(f"stage-19 installed board exceeds the Stage-18 keepout on axis {axis}")
 
 # Stage 7 opposed magnet arrays and head follower rollers.
 lower_magnets = [o for o in internals if o.name.startswith("Internal chassis magnet")]
@@ -457,11 +574,102 @@ elif sheet_path.exists():
 
 annotations = [o for o in internals if o.get("engineering_annotation") is True]
 if len(annotations) != 9:
-    errors.append(f"stage-18 expects 9 non-fabrication engineering annotations, got {len(annotations)}")
+    errors.append(f"stage-19 expects 9 non-fabrication engineering annotations, got {len(annotations)}")
+pre_cad_references = [o for o in internals if o.get("non_fabrication_reference") is True]
+if len(pre_cad_references) != 23 or {o.name for o in pre_cad_references} != {
+        o.name for o in stage19_objects}:
+    errors.append(
+        f"stage-19 expects exactly 23 non-fabrication pre-CAD references, got {len(pre_cad_references)}")
+fabrication_objects = [
+    o for o in internals
+    if not o.get("engineering_annotation") and not o.get("non_fabrication_reference")
+]
+if len(fabrication_objects) != 150:
+    errors.append(f"stage-19 expects the fabrication set to remain 150 objects, got {len(fabrication_objects)}")
 
 if errors:
     print("FAIL", " | ".join(errors))
     raise SystemExit(1)
-print(f"PASS reopenable_blend engineering_stage={scene['engineering_stage']} objects={len(bpy.data.objects)} internal={len(internals)} fabrication={len(internals) - len(annotations)} "
-      f"panels=6 triangles=8 rings=3/2/1 body={scene['body_diameter_mm']}mm "
+
+
+def file_evidence(relative_path):
+    path = root / relative_path
+    if not path.is_file():
+        return {"path": relative_path, "present": False}
+    return {
+        "path": relative_path,
+        "present": True,
+        "bytes": path.stat().st_size,
+        "sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
+    }
+
+
+manifest_path = root / "engineering" / "internal_assembly_manifest.csv"
+manifest_rows = max(
+    len(manifest_path.read_text(encoding="utf-8").splitlines()) - 1,
+    0,
+)
+reopen_evidence = {
+    "audited_at": "2026-07-13",
+    "blender_version": bpy.app.version_string,
+    "master": file_evidence("blender/output/BB8_1to1_screen_referenced.blend"),
+    "result": "PASS_REOPEN_AUDIT_ONLY",
+    "engineering_stage": int(scene["engineering_stage"]),
+    "object_counts": {
+        "total": len(bpy.data.objects),
+        "internal": len(internals),
+        "fabrication": len(fabrication_objects),
+        "engineering_annotations": len(annotations),
+        "pre_cad_references": len(pre_cad_references),
+        "stage19_gate": len(stage19_objects),
+        "internal_manifest_rows": manifest_rows,
+    },
+    "dimensions_mm": {
+        "body_diameter": int(scene["body_diameter_mm"]),
+        "head_diameter": int(scene["head_diameter_mm"]),
+        "untopped_height": int(scene["untopped_height_mm"]),
+    },
+    "stage19_boundary": {
+        "design_status": scene["stage19_gate_design_status"],
+        "physical_test_status": scene["stage19_gate_physical_test_status"],
+        "safety_certification": scene["stage19_gate_safety_certification"],
+        "manufacturing_release": scene["stage19_gate_manufacturing_release"],
+        "fabrication_export": bool(scene["stage19_gate_fabrication_export"]),
+        "truth_table_rows": int(scene["stage19_gate_truth_table_rows"]),
+    },
+    "renders": [
+        file_evidence(f"blender/output/{name}")
+        for name in (
+            "mechanism.png",
+            "internal_front.png",
+            "internal_side.png",
+            "internal_top.png",
+            "BB8_internal_three_view.png",
+        )
+    ],
+    "exports": [
+        file_evidence(relative_path)
+        for relative_path in (
+            "engineering/internal_assembly_manifest.csv",
+            "blender/exports/BB8_body_visual_reference_mm.stl",
+            "blender/exports/BB8_head_visual_reference_mm.stl",
+            "blender/exports/BB8_internal_mechanism_mm.stl",
+            "blender/exports/BB8_1to1_kinematic.glb",
+        )
+    ],
+    "release_boundary": (
+        "The Blender master is reopenable and the analytical geometry/export boundary passes. "
+        "Physical commissioning remains 0/19; there is no PCB CAD, Gerber, assembled gate board, "
+        "bench waveform or safety certification."
+    ),
+}
+encoded_reopen_evidence = json.dumps(reopen_evidence, ensure_ascii=False, indent=2) + "\n"
+for output_path in (
+        root / "engineering" / "stage19_blender_reopen_audit.json",
+        root / "public" / "downloads" / "stage19_blender_reopen_audit.json"):
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    output_path.write_text(encoded_reopen_evidence, encoding="utf-8")
+
+print(f"PASS reopenable_blend engineering_stage={scene['engineering_stage']} objects={len(bpy.data.objects)} internal={len(internals)} fabrication={len(fabrication_objects)} "
+      f"pre_cad_reference={len(pre_cad_references)} annotations={len(annotations)} stage19_gate={len(stage19_objects)} panels=6 triangles=8 rings=3/2/1 body={scene['body_diameter_mm']}mm "
       f"head={scene['head_diameter_mm']}mm height={scene['untopped_height_mm']}mm")

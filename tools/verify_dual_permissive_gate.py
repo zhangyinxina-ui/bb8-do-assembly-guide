@@ -55,6 +55,7 @@ def evaluate(data: dict[str, Any]) -> dict[str, Any]:
     logic = data["logic_contract"]
     electrical = data["electrical_design"]
     board = data["board_envelope"]
+    test_points = data["test_points"]
     gates = data["freeze_gates"]
     rows = truth_rows()
 
@@ -129,7 +130,26 @@ def evaluate(data: dict[str, Any]) -> dict[str, Any]:
         ),
         "board_xy_matches_stage18_keepout": board["length_mm"] <= 50.0 and board["width_mm"] <= 35.0,
         "assembled_height_within_stage18_keepout": board["maximum_assembled_height_mm"] <= board["stage18_keepout_height_mm"],
+        "installed_height_with_standoffs_within_stage18_keepout": (
+            abs(
+                board["maximum_installed_height_mm"]
+                - board["maximum_assembled_height_mm"]
+                - board["mounting_stack_height_mm"]
+            ) <= 1e-9
+            and board["maximum_installed_height_mm"] <= board["stage18_keepout_height_mm"]
+            and abs(
+                board["installed_height_margin_mm"]
+                - board["stage18_keepout_height_mm"]
+                + board["maximum_installed_height_mm"]
+            ) <= 1e-9
+        ),
         "four_mount_holes_declared": len(board["mount_hole_centres_mm"]) == 4,
+        "six_unique_test_points_declared": (
+            len(test_points) == 6
+            and len({item["reference"] for item in test_points}) == 6
+            and {item["net"] for item in test_points}
+            == {"SAFE_A_OK", "SAFE_B_OK", "ALERT_N", "PWM_L_OUT", "PWM_R_OUT", "GND"}
+        ),
         "opto_switching_not_misrepresented_as_maximum": electrical["opto_switching_value_is_maximum_bound"] is False,
     }
 
@@ -161,6 +181,8 @@ def evaluate(data: dict[str, Any]) -> dict[str, Any]:
             "assembled_height_margin_mm": round(
                 board["stage18_keepout_height_mm"] - board["maximum_assembled_height_mm"], 3
             ),
+            "installed_height_with_standoffs_mm": round(board["maximum_installed_height_mm"], 3),
+            "installed_height_margin_mm": round(board["installed_height_margin_mm"], 3),
         },
         "timing_boundary": {
             "logic_gate_chain_has_datasheet_maximum": True,

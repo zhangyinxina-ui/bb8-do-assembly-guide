@@ -1,0 +1,36 @@
+{
+  "verified_at": "2026-07-13",
+  "source_archive": "third_party/do_public_resources/D-O_AIO32_v2.1.zip",
+  "source_archive_url": "https://www.printed-droid.com/wp-content/uploads/2020/09/D-O_AIO32_v2.1.zip",
+  "source_archive_sha256": "d873d673d42f6318f051afab0a146145324783d303a3a44f27ccdf604f7365dd",
+  "source_files": 22,
+  "fqbn": "esp32:esp32:adafruit_feather_esp32s3_tft:CDCOnBoot=cdc,PSRAM=disabled,FlashSize=4M,PartitionScheme=default",
+  "arduino_cli": "1.5.1",
+  "platform": "esp32:esp32@3.3.7",
+  "libraries": {
+    "Adafruit ST7735 and ST7789 Library": "1.11.0",
+    "Adafruit GFX Library": "1.12.6",
+    "Adafruit BusIO": "1.17.4",
+    "Adafruit seesaw Library": "1.7.9",
+    "Adafruit NeoPixel": "1.15.5",
+    "SD": "1.3.0",
+    "DFPlayer Mini Mp3 by Makuna": "1.2.3",
+    "SensorLib": "0.4.1"
+  },
+  "dependency_audit": {
+    "handbook_list_complete": false,
+    "compiler_discovered_dependency": "SensorLib",
+    "missing_header_before_install": "SensorQMI8658.hpp",
+    "sensorlib_upstream": "https://github.com/lewisxhe/SensorLib",
+    "sensorlib_license": "MIT"
+  },
+  "program_bytes": 549831,
+  "program_percent": 41,
+  "program_max_bytes": 1310720,
+  "global_ram_bytes": 49652,
+  "global_ram_percent": 15,
+  "ram_available_bytes": 278028,
+  "ram_max_bytes": 327680,
+  "result": "PASS_COMPILE_ONLY",
+  "release_boundary": "Compilation proves source/toolchain compatibility only. Package licensing, missing hardware CAD, bench wiring, motion, failsafe and safety validation remain HOLD."
+}

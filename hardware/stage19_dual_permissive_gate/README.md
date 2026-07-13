@@ -26,6 +26,8 @@ Both outputs follow:
 
 Either safety channel, a current ALERT, or loss of 3.3 V forces both PWM outputs low. `DIR_L` and `DIR_R` pass through directly and are not safety signals. The contract therefore requires MDD20A sign-magnitude mode, where PWM low is brake.
 
+The board provides six declared test points: `SAFE_A_OK`, `SAFE_B_OK`, `ALERT_N`, `PWM_L_OUT`, `PWM_R_OUT` and `GND`. The PCB-plus-component envelope is 11.4 mm; including the 3.0 mm insulated mounting stack gives 14.4 mm installed height and only 0.6 mm analytical margin inside the Stage-18 keepout.
+
 ## Safety boundary
 
 - PWM low is braking, not energy isolation. The independent safety relay and normally-open contactor must still remove the motor bus.
