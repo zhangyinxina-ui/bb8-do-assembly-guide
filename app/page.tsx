@@ -69,6 +69,26 @@ const sources = [
     href: "https://youtu.be/pgIGhuc5L3M",
   },
   {
+    name: "TI SN74LVC2G08 数据表",
+    tag: "阶段19逻辑门一手资料",
+    href: "https://www.ti.com/lit/ds/symlink/sn74lvc2g08.pdf",
+  },
+  {
+    name: "Vishay VO617A 数据表",
+    tag: "阶段19光耦一手资料",
+    href: "https://www.vishay.com/docs/83430/vo617a.pdf",
+  },
+  {
+    name: "Cytron MDD20A 产品页",
+    tag: "阶段19驱动接口资料",
+    href: "https://sg.cytron.io/p-20amp-6v-30v-dc-motor-driver-2-channels",
+  },
+  {
+    name: "JST XH 官方目录",
+    tag: "阶段19连接器包络",
+    href: "https://www.jst-mfg.com/product/pdf/eng/eXH.pdf",
+  },
+  {
     name: "Printed Droid D-O 总页",
     tag: "公开资料",
     href: "https://www.printed-droid.com/kb/d-o/",
@@ -268,6 +288,7 @@ export default function Home() {
               阶段16不伪造新的几何完成度，而是把19项真机调试门、真实文件哈希和测量限值接到同一工程证据链；当前为0/19通过。
               阶段17用厂商官方资料筛选MDD20A、30 A MIDI保险丝、SW60接触器和P28A 4S2P电池候选：15/15额定检查通过，但独立去能、再生、堵转、BMS和电池包仍未冻结，不能采购放行。
               阶段18已把REC Active BMS 4S、MDD20A、SW60、MIDI保险丝、外置分流器和双通道门板的模块化电源舱写入唯一Blender主工程；重开审计确认39个阶段18对象、150个制造对象和9个工程标记。8个候选包络通过数字间隙门，12项实物冻结门仍未通过，不能把解析几何描述成实物装配完成。
+              阶段19进一步发布双许可PWM门的预CAD合同：SAFE_A、SAFE_B、双INA226 ALERT_N和3.3 V逻辑电源任一失效都会解析拉低左右PWM；64组真值表全部通过，但没有KiCad、Gerber或台架波形，仍不能制造或上电。
             </p>
             <div className="doc-actions">
               <a className="button" href={asset("/downloads/BB8_BOM.md")} download>
@@ -327,6 +348,12 @@ export default function Home() {
               <a className="button" href={asset("/downloads/BB8_stage18_modular_drive_power_cassette_layout_gate.md")} download>
                 Download Stage 18 English report
               </a>
+              <a className="button" href={asset("/downloads/BB8_阶段19_独立双许可PWM硬件门.md")} download>
+                下载阶段 19 双许可 PWM 门报告
+              </a>
+              <a className="button" href={asset("/downloads/BB8_stage19_independent_dual_permissive_pwm_gate.md")} download>
+                Download Stage 19 English report
+              </a>
               <a className="button" href={asset("/model/BB8_three_view_dimension_sheet.png")} download>
                 下载最新三视图尺寸图
               </a>
@@ -363,7 +390,7 @@ export default function Home() {
         <div className="section-head">
           <span>03 / MOTION CONTROLLER</span>
           <h2>不只会动，<br />还必须会停。</h2>
-          <p>控制核心、双正交编码器、MPU6050 和双 INA226 适配均已通过 ESP32-S3 编译。阶段16把每200 ms真机遥测固定为可解析字段；阶段17确认MDD20A额定裕量足够，但其PWM低是制动而非隔离，必须另做双通道硬件门并由主接触器真正撤销驱动母线。阶段18已把这条链写入可拆卸电源舱几何并通过重开审计；实物装配、上电与真机验证仍待完成。</p>
+          <p>控制核心、双正交编码器、MPU6050 和双 INA226 适配均已通过 ESP32-S3 编译。阶段17确认MDD20A额定裕量足够，但其PWM低是制动而非隔离；阶段18把安全链写入可拆卸电源舱几何。阶段19现已冻结 `PWM_OUT = POWER ∧ PWM_IN ∧ SAFE_A ∧ SAFE_B ∧ ALERT_N` 的预CAD合同、引脚网表和64行真值表；真正撤销驱动母线仍由安全继电器和常开接触器完成，实物装配、上电与真机验证仍待完成。</p>
         </div>
         <div className="control-grid">
           <article><span>01</span><h3>200 Hz 闭环速度</h3><p>左右编码器轮速进入 PI，IMU 偏航率修正差动目标；直线巡航 RMS 误差 0.00772 m/s。</p></article>
@@ -375,6 +402,7 @@ export default function Home() {
           <article><span>07</span><h3>真机证据不允许空PASS</h3><p>19项记录必须同时有实测数值、真实相对路径和匹配SHA-256；合成数据默认被审计器拒绝。</p></article>
           <article><span>08</span><h3>15 / 15额定筛选通过，仍HOLD</h3><p>MDD20A、MIDI、SW60和P28A的目录裕量通过；独立去能、再生、堵转、I²t和4S BMS未冻结。</p></article>
           <article><span>09</span><h3>8件布局通过，12门未冻结</h3><p>解析余量为球壳27.643 mm、候选件7.500 mm、既有机构6.000 mm；几何已写入并通过重开审计，实物接口结果仍为HOLD_PHYSICAL_FIT_AND_INTERFACE_VALIDATION_REQUIRED。</p></article>
+          <article><span>10</span><h3>64 / 64逻辑组合通过，仍HOLD</h3><p>SAFE_A、SAFE_B、ALERT_N或3.3 V任一失效均阻断两路PWM；12 V输入电流5.175 mA、0.5 W电阻降额4.006×。没有KiCad/Gerber和台架波形，状态仍为HOLD_PCB_CAD_BENCH_AND_SAFETY_VALIDATION_REQUIRED。</p></article>
         </div>
         <div className="firmware-downloads">
           <a href={asset("/downloads/BB8_controller_core.zip")} download>下载 C++ 控制核心</a>
@@ -405,6 +433,15 @@ export default function Home() {
           <a href={asset("/downloads/stage18_power_cassette_layout.json")} download>下载模块化电源舱布局</a>
           <a href={asset("/downloads/stage18_power_cassette_results.json")} download>下载阶段18 HOLD结果</a>
           <a href={asset("/downloads/verify_power_cassette_layout.py")} download>下载阶段18布局验证器</a>
+          <a href={asset("/downloads/BB8_阶段19_独立双许可PWM硬件门.md")} download>下载阶段19中文报告</a>
+          <a href={asset("/downloads/BB8_stage19_independent_dual_permissive_pwm_gate.md")} download>下载阶段19英文报告</a>
+          <a href={asset("/downloads/stage19_dual_permissive_gate_contract.json")} download>下载阶段19机器合同</a>
+          <a href={asset("/downloads/stage19_dual_permissive_gate_results.json")} download>下载阶段19 HOLD结果</a>
+          <a href={asset("/downloads/stage19_gate_truth_table.csv")} download>下载64行真值表</a>
+          <a href={asset("/downloads/stage19_gate_bom.csv")} download>下载门板预选BOM</a>
+          <a href={asset("/downloads/stage19_gate_netlist.csv")} download>下载引脚网表</a>
+          <a href={asset("/downloads/verify_dual_permissive_gate.py")} download>下载阶段19验证器</a>
+          <a href={asset("/downloads/stage19_gate_board_envelope.scad")} download>下载门板OpenSCAD包络</a>
         </div>
       </section>
 
@@ -412,7 +449,7 @@ export default function Home() {
         <div className="section-head">
           <span>04 / PHYSICS GATE</span>
           <h2>先算清楚，<br />再让它落地跑。</h2>
-          <p>阶段14以17组质量账本替代110 mm旧假设；阶段15加入动态稳定性；阶段16将解析门转换为19项真机测量合同。阶段17把电源目录额定与实测冻结分开；阶段18进一步验证模块布局的数字间隙并写入主模型，但这仍不等于器件采购、实物试装、封壳热或整机运行通过。</p>
+          <p>阶段14以17组质量账本替代110 mm旧假设；阶段15加入动态稳定性；阶段16将解析门转换为19项真机测量合同。阶段17把目录额定与实测冻结分开，阶段18验证模块布局并写入主模型，阶段19再补齐双许可PWM门的预CAD逻辑与电气计算；这些都不等于PCB制造、器件采购、实物试装、封壳热或整机运行通过。</p>
         </div>
         <div className="control-grid">
           <article><span>01</span><h3>8.463 kg 名义质量</h3><p>17组输入范围为6.375–10.628 kg；所有分组在实物称重前均保持NOT_RUN。</p></article>
@@ -446,6 +483,9 @@ export default function Home() {
           <a href={asset("/downloads/BB8_阶段18_模块化驱动电源舱布局门.md")} download>下载阶段18中文报告</a>
           <a href={asset("/downloads/BB8_stage18_modular_drive_power_cassette_layout_gate.md")} download>下载阶段18英文报告</a>
           <a href={asset("/downloads/stage18_power_cassette_results.json")} download>下载阶段18布局结果</a>
+          <a href={asset("/downloads/BB8_阶段19_独立双许可PWM硬件门.md")} download>下载阶段19中文报告</a>
+          <a href={asset("/downloads/BB8_stage19_independent_dual_permissive_pwm_gate.md")} download>下载阶段19英文报告</a>
+          <a href={asset("/downloads/stage19_dual_permissive_gate_results.json")} download>下载阶段19门板结果</a>
         </div>
       </section>
 

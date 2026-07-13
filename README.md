@@ -16,11 +16,12 @@
 - 双轮差速内车、310 mm 轮距、6+6 磁体随动头和 40 N 装机拉脱力验收合同。
 - 编码器轮速 PI + IMU 偏航闭环仿真：直线 RMS 误差 0.00772 m/s、转角 91.20°，传感器过期同周期撤销 PWM。
 - ESP32-S3 已编译双正交编码器与 MPU6050 适配；CPR默认为0、静止标定未完成时保持拒动。
-- 双 INA226 电流适配、开漏 ALERT、显式限值、过流/堵转回放与11类锁存故障已编译验证；对应板卡、Kelvin分流和独立EN门已进入内部模型，实体测试仍为 `NOT_RUN`。
+- 双 INA226 电流适配、开漏 ALERT、显式限值、过流/堵转回放与11类锁存故障已编译验证；阶段19将原ALERT→EN假设改为适配MDD20A的ALERT_N→PWM许可级，实体测试仍为 `NOT_RUN`。
 - 阶段15新增左右电机驱动包络、双散热器、主保险丝、常开接触器、双通道常闭急停、安全继电器、维护断电与系留急停插口；3°动态坡道解析点为0.289 N·m/电机、2.07×连续扭矩裕量和4.22°合成倾角。器件型号与实体测试仍未冻结。
 - 阶段16新增19项强制真机调试门、固定字段ESP32遥测解析器和带文件SHA-256的证据审计；当前结果为 `HOLD_PHYSICAL_TESTS_NOT_RUN`，0/19通过。
 - 阶段17用厂商官方资料筛选MDD20A、30 A MIDI保险丝、SW60接触器和P28A 4S2P候选；15/15额定检查通过，但因堵转、再生、独立去能适配、BMS与电池包未冻结，结果保持 `HOLD_COMPONENT_FREEZE_MEASUREMENTS_REQUIRED`。
 - 阶段18完成REC Active BMS 4S、MDD20A、SW60、MIDI保险丝、外置分流器与双通道门板的模块化电源舱解析布局，并已写入唯一Blender主工程；重开审计确认363个总对象、159个内部对象、150个制造对象、9个工程标记和39个阶段18对象。8个候选包络满足球壳/候选/既有机构间隙门，但12项实物尺寸与接口仍未冻结，结果保持 `HOLD_PHYSICAL_FIT_AND_INTERFACE_VALIDATION_REQUIRED`。
+- 阶段19发布双许可PWM门预CAD设计：SAFE_A、SAFE_B、双INA226 `ALERT_N`与3.3 V掉电均可独立阻断左右PWM；64/64真值组合和电气/机械解析检查通过，但没有KiCad、Gerber或台架波形，结果保持 `HOLD_PCB_CAD_BENCH_AND_SAFETY_VALIDATION_REQUIRED`。
 - 24 步装配指南与19项真机门；浏览器进度不能替代真机证据。
 
 这些拆分尺寸和外观细节来自公开画面、社区摄影测量和制作者资料，不是 Lucasfilm 官方 CAD，也不应宣称逐毫米复制电影道具。
@@ -32,7 +33,8 @@
 | `blender/` | 参数化生成器、主工程、阶段检查点、审计和导出脚本 |
 | `engineering/` | 物理输入、计算结果、D-O 清单和采购门控 |
 | `firmware/` | BB-8 C++ 控制核心与 ESP32-S3 适配草案 |
-| `docs/` | 从阶段 1 到阶段 18 的中英文设计、验证和续接记录 |
+| `docs/` | 从阶段 1 到阶段 19 的中英文设计、验证和续接记录 |
+| `hardware/` | 阶段19双许可PWM门预CAD合同与OpenSCAD机械包络；不含Gerber |
 | `app/` | Vinext/Next 开发网站 |
 | `github-pages-src/` | GitHub Pages 纯静态 React 入口 |
 | `public/` | 网站公开的图像、GLB、STL、CSV 和说明文件 |
@@ -74,6 +76,7 @@ python3 tools/verify_stability_envelope.py
 python3 tools/verify_commissioning_evidence.py
 python3 tools/verify_power_component_selection.py
 python3 tools/verify_power_cassette_layout.py
+python3 tools/verify_dual_permissive_gate.py
 python3 tools/audit_do_resources.py
 sh tools/run_closed_loop_sim.sh
 ```
@@ -82,7 +85,7 @@ sh tools/run_closed_loop_sim.sh
 
 阶段 11 的传感器代码、默认拒动策略和上电标定顺序见 [ESP32 编码器与 MPU6050 适配](docs/BB8_阶段11_ESP32传感器适配.md) 与 [机器可读接口合同](engineering/sensor_adapter_contract.json)。
 
-阶段 12 的双 INA226、ALERT→EN 硬件合同、显式限值和故障回放见 [电流保护与堵转回放](docs/BB8_阶段12_电流保护与堵转回放.md)、[机器可读电流合同](engineering/power_safety_contract.json) 和 [5 ms回放记录](engineering/power_safety_replay.csv)。
+阶段 12 的双 INA226、开漏ALERT、显式限值和故障回放见 [电流保护与堵转回放](docs/BB8_阶段12_电流保护与堵转回放.md)、[机器可读电流合同](engineering/power_safety_contract.json) 和 [5 ms回放记录](engineering/power_safety_replay.csv)；当时的EN假设已由阶段19适配为MDD20A的PWM硬件门。
 
 阶段 13 把这条保护链落实到110件内部总成，见 [电流保护硬件建模与重开审计](docs/BB8_阶段13_电流保护硬件建模.md) 和 [110件装配尺寸清单](engineering/internal_assembly_manifest.csv)。
 
@@ -95,6 +98,8 @@ sh tools/run_closed_loop_sim.sh
 阶段 17 将通用电气包络收敛为官方资料支持的候选，但不越过实物证据边界：MDD20A额定裕量足够，却没有独立EN且再生路径未冻结；30 A MIDI必须用堵转波形做I²t配合；SW60普通续流二极管的35 ms典型释放时间超出20 ms合同；4S BMS尚未冻结。见 [中文阶段17报告](docs/BB8_阶段17_驱动电源器件选型门.md)、[English Stage 17 report](docs/BB8_stage17_drive_power_component_selection_gate.md)、[候选矩阵](engineering/power_component_candidates.json) 和 [当前HOLD结果](engineering/power_component_selection_results.json)。
 
 阶段 18 将候选器件收敛为可拆卸模块化驱动电源舱：REC Active BMS 4S按111 × 135 × 44 mm外壳、MDD20A按88.90 × 78.74 mm官方板框、SW60按81 × 37 × 28.1 mm包络进入解析布局。当前最小球壳余量27.643 mm、候选件间隙7.500 mm、与既有机构间隙6.000 mm；这些只证明数字包络未冲突，不代替实物孔位、接插件、线束弯曲、散热与维护验证。几何已覆盖保存到唯一主工程并在重开后通过审计，主文件SHA-256为 `3b774f3e02c89e15922aac48629a43d4765d37078acad88ccf34f6316827d5c3`。见 [中文阶段18报告](docs/BB8_阶段18_模块化驱动电源舱布局门.md)、[English Stage 18 report](docs/BB8_stage18_modular_drive_power_cassette_layout_gate.md)、[布局输入](engineering/stage18_power_cassette_layout.json) 和 [当前HOLD结果](engineering/stage18_power_cassette_results.json)。
+
+阶段 19 将门板占位收敛为预CAD参考设计：2个VO617A-4隔离SAFE_A/B，3片SN74LVC2G08依次门控SAFE_A、SAFE_B和双INA226 `ALERT_N`；2.00 kΩ/0.5 W输入支路在12.0–16.8 V解析为5.175–7.900 mA，64行真值表证明任一许可丢失均使两路PWM为低。OpenSCAD只给板框和器件包络，本阶段没有KiCad、ERC/DRC、Gerber、实装板或20 ms示波器证据。见 [中文阶段19报告](docs/BB8_阶段19_独立双许可PWM硬件门.md)、[English Stage 19 report](docs/BB8_stage19_independent_dual_permissive_pwm_gate.md)、[机器合同](engineering/stage19_dual_permissive_gate_contract.json) 和 [当前HOLD结果](engineering/stage19_dual_permissive_gate_results.json)。
 
 ## D-O 公开资源边界
 

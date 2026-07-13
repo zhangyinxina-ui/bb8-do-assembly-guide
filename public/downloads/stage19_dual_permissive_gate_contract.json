@@ -1,0 +1,103 @@
+{
+  "stage": 19,
+  "title_en": "BB-8 independent dual-permissive PWM gate pre-CAD reference design",
+  "title_zh": "BB-8 独立双许可 PWM 硬件门预 CAD 参考设计",
+  "status": "HOLD_PCB_CAD_BENCH_AND_SAFETY_VALIDATION_REQUIRED",
+  "release_class": "PRE_CAD_REFERENCE_DESIGN_NOT_FOR_FABRICATION",
+  "evidence_boundary": "official component data plus exhaustive Boolean and room-temperature electrical calculations; no KiCad schematic, ERC, routed PCB, Gerber, assembled board, oscilloscope timing, EMC, thermal or physical commissioning evidence",
+  "system_context": {
+    "motor_driver": "Cytron MDD20A",
+    "required_control_mode": "SIGN_MAGNITUDE_PWM",
+    "pwm_low_driver_behaviour": "BRAKE_NOT_GALVANIC_ISOLATION",
+    "upstream_energy_isolation": "dual-channel safety relay commanding a normally-open Albright SW60-class contactor",
+    "maximum_pwm_gate_deenergise_ms": 20.0,
+    "physical_commissioning_test_id": "E02"
+  },
+  "logic_contract": {
+    "left_equation": "PWM_L_OUT = LOGIC_POWER_OK AND PWM_L_IN AND SAFE_A_OK AND SAFE_B_OK AND ALERT_N",
+    "right_equation": "PWM_R_OUT = LOGIC_POWER_OK AND PWM_R_IN AND SAFE_A_OK AND SAFE_B_OK AND ALERT_N",
+    "safe_input_polarity": "ENERGISE_TO_RUN_12_TO_16_8_V",
+    "current_alert_polarity": "ALERT_N_HIGH_MEANS_NO_INA226_ALERT",
+    "logic_power_loss_behaviour": "SN74LVC2G08 outputs become inactive and dedicated output pull-downs force both PWM outputs low",
+    "direction_path": "DIR_L and DIR_R are direct non-safety pass-through signals; the design is valid only in sign-magnitude mode where PWM low is brake",
+    "gate_chain": [
+      "U3 SN74LVC2G08: each MCU PWM AND SAFE_A_OK",
+      "U4 SN74LVC2G08: each U3 result AND SAFE_B_OK",
+      "U5 SN74LVC2G08: each U4 result AND ALERT_N"
+    ],
+    "truth_table_input_count": 6,
+    "truth_table_expected_rows": 64
+  },
+  "electrical_design": {
+    "logic_supply_nominal_v": 3.3,
+    "logic_supply_min_v": 3.0,
+    "logic_supply_max_v": 3.6,
+    "lvc_vih_min_v_at_3_to_3_6_v": 2.0,
+    "lvc_vil_max_v_at_3_to_3_6_v": 0.8,
+    "lvc_voh_min_v_at_3_v_16_ma": 2.4,
+    "lvc_gate_tpd_max_ns_at_3v3_minus40_to_125c": 5.3,
+    "safe_input_voltage_min_v": 12.0,
+    "safe_input_voltage_max_v": 16.8,
+    "safe_input_resistor_ohm": 2000.0,
+    "safe_input_resistor_power_rating_w": 0.5,
+    "opto_part": "Vishay VO617A-4",
+    "opto_forward_voltage_min_v": 1.0,
+    "opto_forward_voltage_max_v_at_60_ma": 1.65,
+    "opto_ctr_min_percent_at_5ma_5v_25c": 160.0,
+    "opto_vce_sat_max_v_at_5ma_1ma_25c": 0.4,
+    "opto_saturated_turn_off_typ_us_at_5ma": 25.0,
+    "opto_switching_value_is_maximum_bound": false,
+    "safe_ok_emitter_pulldown_ohm": 4700.0,
+    "pwm_and_intermediate_pulldown_ohm": 10000.0,
+    "alert_n_pullup_ohm": 10000.0,
+    "mdd20a_compatible_logic_levels_v": [1.8, 3.3, 5.0, 12.0],
+    "mdd20a_pwm_max_khz": 20.0,
+    "reverse_input_protection": "1N4148W anti-parallel across each optocoupler LED",
+    "decoupling": "100 nF X7R at each SN74LVC2G08 package"
+  },
+  "board_envelope": {
+    "length_mm": 50.0,
+    "width_mm": 35.0,
+    "pcb_thickness_mm": 1.6,
+    "maximum_assembled_height_mm": 11.4,
+    "stage18_keepout_height_mm": 15.0,
+    "layers": 2,
+    "mount_hole_diameter_mm": 3.2,
+    "mount_hole_centres_mm": [[3.0, 3.0], [47.0, 3.0], [3.0, 32.0], [47.0, 32.0]],
+    "connector_series": "JST XH 2.5 mm top-entry",
+    "connector_mounting_height_mm": 9.8,
+    "connector_current_rating_a_with_awg22": 3.0,
+    "connector_voltage_rating_v": 250.0,
+    "mechanical_model_fidelity": "component envelopes only; footprints, courtyard, creepage and harness bend radii remain for KiCad and purchased-sample validation"
+  },
+  "connectors": [
+    {"reference": "J1", "part": "B2B-XH-A", "pins": ["3V3", "GND"], "purpose": "logic power"},
+    {"reference": "J2", "part": "B6B-XH-A", "pins": ["PWM_L_IN", "DIR_L", "PWM_R_IN", "DIR_R", "ALERT_N", "GND"], "purpose": "MCU and dual-INA226 control input"},
+    {"reference": "J3", "part": "B5B-XH-A", "pins": ["PWM_L_OUT", "DIR_L", "PWM_R_OUT", "DIR_R", "GND"], "purpose": "MDD20A logic output"},
+    {"reference": "J4", "part": "B2B-XH-A", "pins": ["SAFE_A_PLUS", "SAFE_A_RETURN"], "purpose": "independent energise-to-run safety permissive A"},
+    {"reference": "J5", "part": "B2B-XH-A", "pins": ["SAFE_B_PLUS", "SAFE_B_RETURN"], "purpose": "independent energise-to-run safety permissive B"}
+  ],
+  "official_sources": {
+    "ti_sn74lvc2g08_datasheet": "https://www.ti.com/lit/ds/symlink/sn74lvc2g08.pdf",
+    "vishay_vo617a_datasheet": "https://www.vishay.com/docs/83430/vo617a.pdf",
+    "cytron_mdd20a_product": "https://sg.cytron.io/p-20amp-6v-30v-dc-motor-driver-2-channels",
+    "jst_xh_product": "https://www.jst-mfg.com/product/index.php?lang=2&series=277",
+    "jst_xh_catalogue": "https://www.jst-mfg.com/product/pdf/eng/eXH.pdf"
+  },
+  "freeze_gates": {
+    "kicad_schematic_captured_and_peer_reviewed": false,
+    "erc_passed": false,
+    "pcb_routed_and_drc_passed": false,
+    "gerber_and_drill_release_reviewed": false,
+    "assembled_board_visual_and_continuity_passed": false,
+    "safe_a_independent_cutoff_bench_passed": false,
+    "safe_b_independent_cutoff_bench_passed": false,
+    "alert_n_direct_cutoff_bench_passed": false,
+    "logic_power_loss_cutoff_bench_passed": false,
+    "twelve_and_sixteen_point_eight_v_corner_tests_passed": false,
+    "twenty_khz_pwm_signal_integrity_passed": false,
+    "temperature_and_emc_validation_passed": false,
+    "contactor_and_gate_combined_e02_passed": false,
+    "physical_commissioning_passed": false
+  }
+}

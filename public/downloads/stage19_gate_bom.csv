@@ -1,0 +1,18 @@
+reference,quantity,category,manufacturer,part_number,value_or_package,release_status,official_source,note
+PCB1,1,pcb,TBD,CUSTOM_STAGE19_GATE,50x35x1.6 mm 2-layer FR-4,NOT_RELEASED_NO_KICAD_OR_GERBER,,Four 3.2 mm mounting holes; fabrication prohibited until ERC/DRC/review
+U1 U2,2,optocoupler,Vishay,VO617A-4,DIP-4,REFERENCE_SELECTED,https://www.vishay.com/docs/83430/vo617a.pdf,CTR bin 160-320% only specified at IF=5 mA VCE=5 V and 25 C
+U3 U4 U5,3,logic,Texas Instruments,SN74LVC2G08DCU,VSSOP-8,REFERENCE_SELECTED,https://www.ti.com/lit/ds/symlink/sn74lvc2g08.pdf,One dual gate package per permissive stage
+R1 R2,2,resistor,TBD,TBD,2.00 kOhm 1% 0.5 W,VALUE_FROZEN_PART_TBD,,Safety-loop LED current limit
+R3 R4,2,resistor,TBD,TBD,4.70 kOhm 1% >=0.1 W,VALUE_FROZEN_PART_TBD,,SAFE_A_OK and SAFE_B_OK emitter pull-down
+R5 R6,2,resistor,TBD,TBD,10.0 kOhm 1% >=0.1 W,VALUE_FROZEN_PART_TBD,,MCU PWM input pull-down
+R7 R8,2,resistor,TBD,TBD,10.0 kOhm 1% >=0.1 W,VALUE_FROZEN_PART_TBD,,U3 intermediate pull-down
+R9 R10,2,resistor,TBD,TBD,10.0 kOhm 1% >=0.1 W,VALUE_FROZEN_PART_TBD,,U4 intermediate pull-down
+R11 R12,2,resistor,TBD,TBD,10.0 kOhm 1% >=0.1 W,VALUE_FROZEN_PART_TBD,,Final MDD20A PWM output fail-low pull-down
+R13,1,resistor,TBD,TBD,10.0 kOhm 1% >=0.1 W,VALUE_FROZEN_PART_TBD,,ALERT_N pull-up; open ALERT wiring is not fail-safe
+C1 C2 C3,3,capacitor,TBD,TBD,100 nF X7R >=10 V,VALUE_FROZEN_PART_TBD,,One local decoupler per LVC package
+D1 D2,2,diode,TBD,1N4148W,SOD-123,REFERENCE_SELECTED_PART_VENDOR_TBD,,Anti-parallel reverse clamp for each optocoupler LED
+J1 J4 J5,3,connector,JST,B2B-XH-A,2-position 2.5 mm top-entry,REFERENCE_SELECTED,https://www.jst-mfg.com/product/pdf/eng/eXH.pdf,Logic power and independent safety inputs
+J2,1,connector,JST,B6B-XH-A,6-position 2.5 mm top-entry,REFERENCE_SELECTED,https://www.jst-mfg.com/product/pdf/eng/eXH.pdf,MCU PWM DIR ALERT_N and GND
+J3,1,connector,JST,B5B-XH-A,5-position 2.5 mm top-entry,REFERENCE_SELECTED,https://www.jst-mfg.com/product/pdf/eng/eXH.pdf,MDD20A PWM DIR and GND
+TP1 TP2 TP3 TP4 TP5 TP6,6,test_point,TBD,TBD,1.0 mm loop or pad,FOOTPRINT_TBD,,SAFE_A_OK SAFE_B_OK ALERT_N PWM_L_OUT PWM_R_OUT and GND
+H1 H2 H3 H4,4,mounting,TBD,TBD,M3 insulated standoff hardware,MECHANICAL_CANDIDATE,,Keep conductive hardware clear of logic and isolated input copper

@@ -1,0 +1,86 @@
+reference,pin,net,role
+J1,1,3V3,logic supply input
+J1,2,GND,logic return
+J2,1,PWM_L_IN,left MCU PWM input
+J2,2,DIR_L,left direction pass-through
+J2,3,PWM_R_IN,right MCU PWM input
+J2,4,DIR_R,right direction pass-through
+J2,5,ALERT_N,wired-open-drain INA226 no-alert permissive
+J2,6,GND,logic return
+J3,1,PWM_L_OUT,gated left PWM to MDD20A
+J3,2,DIR_L,left direction pass-through
+J3,3,PWM_R_OUT,gated right PWM to MDD20A
+J3,4,DIR_R,right direction pass-through
+J3,5,GND,logic return
+J4,1,SAFE_A_PLUS,energise-to-run safety input A positive
+J4,2,SAFE_A_RETURN,isolated safety input A return
+J5,1,SAFE_B_PLUS,energise-to-run safety input B positive
+J5,2,SAFE_B_RETURN,isolated safety input B return
+U1,1,SAFE_A_LED_A,optocoupler A LED anode
+U1,2,SAFE_A_RETURN,optocoupler A LED cathode
+U1,3,SAFE_A_OK,optocoupler A emitter follower output
+U1,4,3V3,optocoupler A collector
+U2,1,SAFE_B_LED_A,optocoupler B LED anode
+U2,2,SAFE_B_RETURN,optocoupler B LED cathode
+U2,3,SAFE_B_OK,optocoupler B emitter follower output
+U2,4,3V3,optocoupler B collector
+U3,1,PWM_L_IN,gate A left input
+U3,2,SAFE_A_OK,gate A left permissive
+U3,7,PWM_L_A,gate A left output
+U3,5,PWM_R_IN,gate A right input
+U3,6,SAFE_A_OK,gate A right permissive
+U3,3,PWM_R_A,gate A right output
+U3,4,GND,logic return
+U3,8,3V3,logic supply
+U4,1,PWM_L_A,gate B left input
+U4,2,SAFE_B_OK,gate B left permissive
+U4,7,PWM_L_AB,gate B left output
+U4,5,PWM_R_A,gate B right input
+U4,6,SAFE_B_OK,gate B right permissive
+U4,3,PWM_R_AB,gate B right output
+U4,4,GND,logic return
+U4,8,3V3,logic supply
+U5,1,PWM_L_AB,current-alert left input
+U5,2,ALERT_N,current-alert left permissive
+U5,7,PWM_L_OUT,final left PWM
+U5,5,PWM_R_AB,current-alert right input
+U5,6,ALERT_N,current-alert right permissive
+U5,3,PWM_R_OUT,final right PWM
+U5,4,GND,logic return
+U5,8,3V3,logic supply
+R1,1,SAFE_A_PLUS,safety input A current limit
+R1,2,SAFE_A_LED_A,safety input A current limit
+R2,1,SAFE_B_PLUS,safety input B current limit
+R2,2,SAFE_B_LED_A,safety input B current limit
+R3,1,SAFE_A_OK,opto A emitter pull-down
+R3,2,GND,opto A emitter pull-down
+R4,1,SAFE_B_OK,opto B emitter pull-down
+R4,2,GND,opto B emitter pull-down
+R5,1,PWM_L_IN,left input fail-low pull-down
+R5,2,GND,left input fail-low pull-down
+R6,1,PWM_R_IN,right input fail-low pull-down
+R6,2,GND,right input fail-low pull-down
+R7,1,PWM_L_A,left A-stage fail-low pull-down
+R7,2,GND,left A-stage fail-low pull-down
+R8,1,PWM_R_A,right A-stage fail-low pull-down
+R8,2,GND,right A-stage fail-low pull-down
+R9,1,PWM_L_AB,left B-stage fail-low pull-down
+R9,2,GND,left B-stage fail-low pull-down
+R10,1,PWM_R_AB,right B-stage fail-low pull-down
+R10,2,GND,right B-stage fail-low pull-down
+R11,1,PWM_L_OUT,left output fail-low pull-down
+R11,2,GND,left output fail-low pull-down
+R12,1,PWM_R_OUT,right output fail-low pull-down
+R12,2,GND,right output fail-low pull-down
+R13,1,3V3,ALERT_N pull-up
+R13,2,ALERT_N,ALERT_N pull-up
+C1,1,3V3,U3 local decoupling
+C1,2,GND,U3 local decoupling
+C2,1,3V3,U4 local decoupling
+C2,2,GND,U4 local decoupling
+C3,1,3V3,U5 local decoupling
+C3,2,GND,U5 local decoupling
+D1,1,SAFE_A_RETURN,opto A reverse clamp anode
+D1,2,SAFE_A_LED_A,opto A reverse clamp cathode
+D2,1,SAFE_B_RETURN,opto B reverse clamp anode
+D2,2,SAFE_B_LED_A,opto B reverse clamp cathode

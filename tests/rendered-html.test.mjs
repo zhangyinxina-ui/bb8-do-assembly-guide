@@ -123,6 +123,13 @@ test("server-renders the BB-8 and D-O build guide", async () => {
   assert.match(html, /stage18_power_cassette_layout\.json/);
   assert.match(html, /stage18_power_cassette_results\.json/);
   assert.match(html, /重开审计确认39个阶段18对象/);
+  assert.match(html, /64 \/ 64逻辑组合通过，仍HOLD/);
+  assert.match(html, /HOLD_PCB_CAD_BENCH_AND_SAFETY_VALIDATION_REQUIRED/);
+  assert.match(html, /BB8_阶段19_独立双许可PWM硬件门\.md/);
+  assert.match(html, /BB8_stage19_independent_dual_permissive_pwm_gate\.md/);
+  assert.match(html, /stage19_dual_permissive_gate_contract\.json/);
+  assert.match(html, /stage19_gate_truth_table\.csv/);
+  assert.match(html, /stage19_gate_board_envelope\.scad/);
   assert.match(html, /冻结 1:1 尺寸基准/);
   assert.match(html, /BB8_stage8_exterior_topology\.md/);
   assert.match(html, /BB8_stage9_head_calibration\.md/);
@@ -163,6 +170,10 @@ test("server-renders the complete English build guide", async () => {
   assert.match(html, /BB8_stage18_modular_drive_power_cassette_layout_gate\.md/);
   assert.match(html, /Stage 18 HOLD result/);
   assert.match(html, /The reopened master passes the Blender audit/);
+  assert.match(html, /64 \/ 64 logic rows pass, still HOLD/);
+  assert.match(html, /Stage 19 machine contract/);
+  assert.match(html, /64-row truth table/);
+  assert.match(html, /OpenSCAD envelope/);
   assert.match(html, /Freeze the 1:1 dimensional baseline/);
   assert.match(html, /personal non-commercial/);
   assert.match(html, /zero complete mechanical CAD\/STL files/);
