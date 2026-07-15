@@ -1,0 +1,10 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "Capacitor_SMD") (type "KiCad") (uri "${KICAD10_FOOTPRINT_DIR}/Capacitor_SMD.pretty") (options "") (descr "KiCad 10 SMD capacitor footprints"))
+  (lib (name "Connector_JST") (type "KiCad") (uri "${KICAD10_FOOTPRINT_DIR}/Connector_JST.pretty") (options "") (descr "KiCad 10 JST connector footprints"))
+  (lib (name "Diode_SMD") (type "KiCad") (uri "${KICAD10_FOOTPRINT_DIR}/Diode_SMD.pretty") (options "") (descr "KiCad 10 SMD diode footprints"))
+  (lib (name "Package_DIP") (type "KiCad") (uri "${KICAD10_FOOTPRINT_DIR}/Package_DIP.pretty") (options "") (descr "KiCad 10 DIP footprints"))
+  (lib (name "Package_SO") (type "KiCad") (uri "${KICAD10_FOOTPRINT_DIR}/Package_SO.pretty") (options "") (descr "KiCad 10 small-outline footprints"))
+  (lib (name "Resistor_SMD") (type "KiCad") (uri "${KICAD10_FOOTPRINT_DIR}/Resistor_SMD.pretty") (options "") (descr "KiCad 10 SMD resistor footprints"))
+  (lib (name "TestPoint") (type "KiCad") (uri "${KICAD10_FOOTPRINT_DIR}/TestPoint.pretty") (options "") (descr "KiCad 10 test-point footprints"))
+)

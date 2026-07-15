@@ -82,7 +82,7 @@
 - 电流监测：左右高侧各1块 INA226，地址0x40/0x41，各配2 mΩ四线分流器；分流脉冲额定必须按实物堵转电流和温升验证。
 - 硬件关断：阶段19预CAD合同用SAFE_A、SAFE_B和双INA226 `ALERT_N`三级相与门把左右PWM拉低，同时安全继电器释放常开主接触器；MDD20A的PWM低是制动而非隔离，MCU GPIO不能替代接触器去能。
 
-完整候选、官方来源、裕量和冻结门见[阶段17中文报告](BB8_阶段17_驱动电源器件选型门.md)与[机器可读结果](../engineering/power_component_selection_results.json)。阶段18已用MDD20A官方板框和REC Active BMS 4S目录包络替换两块通用驱动器并通过重开审计；阶段19进一步给出双许可PWM门的64行逻辑、电气计算、BOM、网表和OpenSCAD包络。没有KiCad/Gerber、样品孔位、接插件、线束、热与示波器试验前，仍不能制造或冒充已完成装机。
+完整候选、官方来源、裕量和冻结门见[阶段17中文报告](BB8_阶段17_驱动电源器件选型门.md)与[机器可读结果](../engineering/power_component_selection_results.json)。阶段18已用MDD20A官方板框和REC Active BMS 4S目录包络替换两块通用驱动器并通过重开审计；阶段19进一步给出双许可PWM门的64行逻辑、电气计算、正式KiCad原理图、0项违规ERC、BOM、网表和OpenSCAD包络。没有独立同行复核、PCB/DRC、Gerber、样品孔位、接插件、线束、热与示波器试验前，仍不能制造或冒充已完成装机。
 
 ## 调试门槛
 

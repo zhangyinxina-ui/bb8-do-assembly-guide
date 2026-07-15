@@ -45,6 +45,7 @@ next-env.d.ts
 /.arduino/
 /tsconfig.tsbuildinfo
 /pages-dist/
+/tmp/
 
 # Rebuildable firmware toolchains and compiler outputs
 /blender/__pycache__/
@@ -70,3 +71,6 @@ next-env.d.ts
 
 # Kept locally for provenance but intentionally not published by Pages
 /public/model/*.blend
+
+# KiCad per-user UI/session state; the shareable project files remain tracked.
+*.kicad_prl

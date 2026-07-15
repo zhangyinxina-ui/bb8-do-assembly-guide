@@ -1,10 +1,10 @@
-# BB-8 阶段19：独立双许可 PWM 硬件门预 CAD 设计门
+# BB-8 阶段19：独立双许可 PWM 硬件门原理图/ERC门
 
-> 结论：**64组布尔组合、输入电流、逻辑电平、功耗降额和50 × 35 × 15 mm机械包络的解析检查全部通过；但当前没有KiCad原理图、ERC/DRC、Gerber、实装板或示波器证据，整体状态必须保持 `HOLD_PCB_CAD_BENCH_AND_SAFETY_VALIDATION_REQUIRED`。**
+> 结论：**64组布尔组合、输入电流、逻辑电平、功耗降额和50 × 35 × 15 mm机械包络的解析检查全部通过；确定性生成的KiCad 10正式原理图现为0项ERC违规，34个器件引用、91条规范引脚连接和21个网络也完成交叉审计。但独立同行复核、PCB/DRC、Gerber、实装板和示波器证据仍缺失，整体状态必须保持 `HOLD_PCB_CAD_BENCH_AND_SAFETY_VALIDATION_REQUIRED`。**
 
 ## 为什么必须新增这一阶段
 
-阶段17确认MDD20A只有PWM+DIR，没有独立EN，而且PWM低的官方行为是制动，不是电气隔离。阶段18只在电源舱里保留了50 × 35 × 15 mm门板空间，没有发布电路。阶段19把这个空白收敛为可机器审计的预CAD参考设计，同时保留安全继电器和常开SW60接触器作为真正的母线去能路径。
+阶段17确认MDD20A只有PWM+DIR，没有独立EN，而且PWM低的官方行为是制动，不是电气隔离。阶段18只在电源舱里保留了50 × 35 × 15 mm门板空间，没有发布电路。阶段19把这个空白收敛为可机器审计的正式原理图/ERC参考设计，同时保留安全继电器和常开SW60接触器作为真正的母线去能路径。
 
 ## 三条独立许可链
 
@@ -39,7 +39,7 @@
 - OpenSCAD源文件只表达板框、孔和器件包络，不含焊盘、铜箔、阻焊、丝印、爬电距离或线束弯曲半径。本机OpenSCAD 2021.01无头导出未在限定时间内完成，因此本阶段不声称已有STL。
 - Blender 中的23个板件/器件包络标为 `non_fabrication_reference`：它们可以进入带属性的GLB和内部三视图用于设计复核，但必须从150件制造清单及内部机构STL排除，不能伪装成可打印零件。
 - 这23个参考包络已写入唯一主工程并完成关闭后重开审计。Blender 5.1.2确认386个总对象、182个内部对象、150个制造对象、9个工程标记和23个阶段19参考对象；主文件SHA-256为 `ecd9a8b02db7c0b253c06005aaf16e7a8bf10147f8adec9c8900415e18b38af4`。150行制造清单、内部机构STL、动画GLB和内部正/侧/俯三视图均已重导出。
-- 当前没有`.kicad_sch`、`.kicad_pcb`、Gerber或钻孔文件；任何PCB厂家下单都不被本阶段授权。
+- 正式`.kicad_sch`已可确定性生成，KiCad 10.0.4报告0项ERC违规；KiCad XML导出与34个器件引用、91条规范引脚连接和21个网络全部一致。但当前仍没有`.kicad_pcb`、DRC、Gerber、钻孔文件或独立原理图同行复核；任何PCB厂家下单都不被本阶段授权。
 
 ## 已发布证据
 
@@ -50,11 +50,17 @@
 - [当前HOLD结果](../engineering/stage19_dual_permissive_gate_results.json)
 - [Blender重开审计与导出哈希](../engineering/stage19_blender_reopen_audit.json)
 - [验证器](../tools/verify_dual_permissive_gate.py)
+- [KiCad正式原理图](../hardware/stage19_dual_permissive_gate/stage19_dual_permissive_gate.kicad_sch)
+- [KiCad ERC报告](../engineering/stage19_kicad_erc.json)
+- [KiCad连接导出](../engineering/stage19_kicad_netlist.xml)
+- [KiCad原理图验证结果](../engineering/stage19_kicad_verification.json)
+- [KiCad原理图PDF](../output/pdf/BB8_stage19_dual_permissive_gate_schematic.pdf)
+- [KiCad验证器](../tools/verify_stage19_kicad.py)
 - [硬件包说明](../hardware/stage19_dual_permissive_gate/README.md)
 
 ## 下一道不可跳过的门
 
-1. 用KiCad正式捕获原理图并做同行复核、ERC；
+1. 对已捕获的KiCad原理图及安全假设做独立同行复核；
 2. 布板后检查隔离区、安装孔、丝印极性、测试点、线束出口并通过DRC；
 3. 人工检查Gerber/钻孔后才允许制造；
 4. 分别在12.0 V与16.8 V测A/B输入电流、输出高低电平和温升；
@@ -62,4 +68,4 @@
 6. 证明两路PWM均在20 ms内拉低，再与安全继电器和接触器组合完成E02；
 7. 完成20 kHz、温度、振动、连接器保持力与EMC试验。
 
-实物状态：`NOT_RUN`；安全认证：`NONE`；制造发布：`NOT_RELEASED_NO_KICAD_GERBER`。
+实物状态：`NOT_RUN`；安全认证：`NONE`；制造发布：`NOT_RELEASED_NO_PCB_OR_GERBER`。

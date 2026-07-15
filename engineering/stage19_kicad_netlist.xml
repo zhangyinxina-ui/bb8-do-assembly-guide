@@ -1,0 +1,1227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<export version="E">
+  <design>
+    <source>hardware/stage19_dual_permissive_gate/stage19_dual_permissive_gate.kicad_sch</source>
+    <date>2026-07-15T16:01:25</date>
+    <tool>Eeschema 10.0.4</tool>
+    <sheet number="1" name="/" tstamps="/">
+      <title_block>
+        <title>BB-8 Independent Dual-Permissive PWM Gate</title>
+        <company>REP-LAB / BB8_DO_Assembly_Guide</company>
+        <rev>S19-A</rev>
+        <date>2026-07-15</date>
+        <source>stage19_dual_permissive_gate.kicad_sch</source>
+        <comment number="1" value="REFERENCE DESIGN - NOT RELEASED FOR FABRICATION"/>
+        <comment number="2" value="PCB, DRC, GERBER, BENCH AND PHYSICAL COMMISSIONING REMAIN NOT_RUN"/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+        <comment number="5" value=""/>
+        <comment number="6" value=""/>
+        <comment number="7" value=""/>
+        <comment number="8" value=""/>
+        <comment number="9" value=""/>
+      </title_block>
+    </sheet>
+  </design>
+  <components>
+    <comp ref="C1">
+      <value>100nF X7R 10V MIN</value>
+      <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <fields>
+        <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Sheetname" value="stage19_dual_permissive_gate"/>
+      <property name="Sheetfile" value="stage19_dual_permissive_gate.kicad_sch"/>
+      <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>7cdb629b-9592-50f2-9512-7f4962f9ef31</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="C2">
+      <value>100nF X7R 10V MIN</value>
+      <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <fields>
+        <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Sheetname" value="stage19_dual_permissive_gate"/>
+      <property name="Sheetfile" value="stage19_dual_permissive_gate.kicad_sch"/>
+      <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>c8439547-d2b4-51aa-98c9-a03e6f35c5f7</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="C3">
+      <value>100nF X7R 10V MIN</value>
+      <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <fields>
+        <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Sheetname" value="stage19_dual_permissive_gate"/>
+      <property name="Sheetfile" value="stage19_dual_permissive_gate.kicad_sch"/>
+      <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>2e33683a-256b-5aa4-a33d-fbe4a960802e</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="D1">
+      <value>1N4148W REVERSE CLAMP</value>
+      <footprint>Diode_SMD:D_SOD-123</footprint>
+      <fields>
+        <field name="Footprint">Diode_SMD:D_SOD-123</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Device" part="D" description="Diode"/>
+      <property name="Sheetname" value="stage19_dual_permissive_gate"/>
+      <property name="Sheetfile" value="stage19_dual_permissive_gate.kicad_sch"/>
+      <property name="ki_keywords" value="diode"/>
+      <property name="ki_fp_filters" value="TO-???* *_Diode_* *SingleDiode* D_*"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>956cd9ef-a958-5edd-882f-de81288f2d1d</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="D2">
+      <value>1N4148W REVERSE CLAMP</value>
+      <footprint>Diode_SMD:D_SOD-123</footprint>
+      <fields>
+        <field name="Footprint">Diode_SMD:D_SOD-123</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Device" part="D" description="Diode"/>
+      <property name="Sheetname" value="stage19_dual_permissive_gate"/>
+      <property name="Sheetfile" value="stage19_dual_permissive_gate.kicad_sch"/>
+      <property name="ki_keywords" value="diode"/>
+      <property name="ki_fp_filters" value="TO-???* *_Diode_* *SingleDiode* D_*"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>4749ccff-f1e0-56bb-a20b-41c1c317034d</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="J1">
+      <value>B2B-XH-A / LOGIC POWER</value>
+      <footprint>Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical</footprint>
+      <fields>
+        <field name="Footprint">Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Connector_Generic" part="Conn_01x02" description="Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="Sheetname" value="stage19_dual_permissive_gate"/>
+      <property name="Sheetfile" value="stage19_dual_permissive_gate.kicad_sch"/>
+      <property name="ki_keywords" value="connector"/>
+      <property name="ki_fp_filters" value="Connector*:*_1x??_*"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>6880ad3d-1982-5b29-b251-c09b5100d069</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="J2">
+      <value>B6B-XH-A / MCU+ALERT</value>
+      <footprint>Connector_JST:JST_XH_B6B-XH-A_1x06_P2.50mm_Vertical</footprint>
+      <fields>
+        <field name="Footprint">Connector_JST:JST_XH_B6B-XH-A_1x06_P2.50mm_Vertical</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="BB8_STAGE19" part="MCU_INPUT_HEADER" description="Generic connector, single row, 01x06, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="Sheetname" value="stage19_dual_permissive_gate"/>
+      <property name="Sheetfile" value="stage19_dual_permissive_gate.kicad_sch"/>
+      <property name="ki_keywords" value="connector"/>
+      <property name="ki_fp_filters" value="Connector*:*_1x??_*"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>622a2ede-86cb-5ac1-bb71-fe9c8aca3db7</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+            <pin num="3"/>
+            <pin num="4"/>
+            <pin num="5"/>
+            <pin num="6"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="J3">
+      <value>B5B-XH-A / MDD20A</value>
+      <footprint>Connector_JST:JST_XH_B5B-XH-A_1x05_P2.50mm_Vertical</footprint>
+      <fields>
+        <field name="Footprint">Connector_JST:JST_XH_B5B-XH-A_1x05_P2.50mm_Vertical</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Connector_Generic" part="Conn_01x05" description="Generic connector, single row, 01x05, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="Sheetname" value="stage19_dual_permissive_gate"/>
+      <property name="Sheetfile" value="stage19_dual_permissive_gate.kicad_sch"/>
+      <property name="ki_keywords" value="connector"/>
+      <property name="ki_fp_filters" value="Connector*:*_1x??_*"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>2cab7b7d-ace7-5e75-b982-0bb0fd0102f3</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+            <pin num="3"/>
+            <pin num="4"/>
+            <pin num="5"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="J4">
+      <value>B2B-XH-A / SAFE A</value>
+      <footprint>Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical</footprint>
+      <fields>
+        <field name="Footprint">Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Connector_Generic" part="Conn_01x02" description="Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="Sheetname" value="stage19_dual_permissive_gate"/>
+      <property name="Sheetfile" value="stage19_dual_permissive_gate.kicad_sch"/>
+      <property name="ki_keywords" value="connector"/>
+      <property name="ki_fp_filters" value="Connector*:*_1x??_*"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>ebe78de3-1c48-5481-982b-61b880c7779c</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="J5">
+      <value>B2B-XH-A / SAFE B</value>
+      <footprint>Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical</footprint>
+      <fields>
+        <field name="Footprint">Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Connector_Generic" part="Conn_01x02" description="Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="Sheetname" value="stage19_dual_permissive_gate"/>
+      <property name="Sheetfile" value="stage19_dual_permissive_gate.kicad_sch"/>
+      <property name="ki_keywords" value="connector"/>
+      <property name="ki_fp_filters" value="Connector*:*_1x??_*"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>27bbee21-7d85-5923-b9e2-762c27fd44f4</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="R1">
+      <value>2.00k 1% 0.5W MIN</value>
+      <footprint>Resistor_SMD:R_1210_3225Metric</footprint>
+      <fields>
+        <field name="Footprint">Resistor_SMD:R_1210_3225Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Sheetname" value="stage19_dual_permissive_gate"/>
+      <property name="Sheetfile" value="stage19_dual_permissive_gate.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>f3b79e0c-f0c4-5f6b-830e-61cea2b79068</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="R2">
+      <value>2.00k 1% 0.5W MIN</value>
+      <footprint>Resistor_SMD:R_1210_3225Metric</footprint>
+      <fields>
+        <field name="Footprint">Resistor_SMD:R_1210_3225Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Sheetname" value="stage19_dual_permissive_gate"/>
+      <property name="Sheetfile" value="stage19_dual_permissive_gate.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>ebe356b7-bdda-59d5-b44b-4b6a0602366e</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="R3">
+      <value>4.70k 1%</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <fields>
+        <field name="Footprint">Resistor_SMD:R_0805_2012Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Sheetname" value="stage19_dual_permissive_gate"/>
+      <property name="Sheetfile" value="stage19_dual_permissive_gate.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>c52fa86e-924a-5648-9833-0ab03e78b88b</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="R4">
+      <value>4.70k 1%</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <fields>
+        <field name="Footprint">Resistor_SMD:R_0805_2012Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Sheetname" value="stage19_dual_permissive_gate"/>
+      <property name="Sheetfile" value="stage19_dual_permissive_gate.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>f31a02a2-9fc7-5454-93a0-861f2a2f53ee</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="R5">
+      <value>10.0k 1%</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <fields>
+        <field name="Footprint">Resistor_SMD:R_0805_2012Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Sheetname" value="stage19_dual_permissive_gate"/>
+      <property name="Sheetfile" value="stage19_dual_permissive_gate.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>ffbb54bd-f73e-55ed-9949-52fa4bdc6d37</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="R6">
+      <value>10.0k 1%</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <fields>
+        <field name="Footprint">Resistor_SMD:R_0805_2012Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Sheetname" value="stage19_dual_permissive_gate"/>
+      <property name="Sheetfile" value="stage19_dual_permissive_gate.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>2bcf6e28-2358-5956-a570-5660a55c0d6d</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="R7">
+      <value>10.0k 1%</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <fields>
+        <field name="Footprint">Resistor_SMD:R_0805_2012Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Sheetname" value="stage19_dual_permissive_gate"/>
+      <property name="Sheetfile" value="stage19_dual_permissive_gate.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>fc337c39-99f9-5e86-8152-c77e146fb02f</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="R8">
+      <value>10.0k 1%</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <fields>
+        <field name="Footprint">Resistor_SMD:R_0805_2012Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Sheetname" value="stage19_dual_permissive_gate"/>
+      <property name="Sheetfile" value="stage19_dual_permissive_gate.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>0221e2f2-fd4c-5c6f-a108-22514f2626ca</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="R9">
+      <value>10.0k 1%</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <fields>
+        <field name="Footprint">Resistor_SMD:R_0805_2012Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Sheetname" value="stage19_dual_permissive_gate"/>
+      <property name="Sheetfile" value="stage19_dual_permissive_gate.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>0ae7ef58-8797-5862-a9bc-0421fb9a8967</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="R10">
+      <value>10.0k 1%</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <fields>
+        <field name="Footprint">Resistor_SMD:R_0805_2012Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Sheetname" value="stage19_dual_permissive_gate"/>
+      <property name="Sheetfile" value="stage19_dual_permissive_gate.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>775f2271-2acc-5b3f-80b3-c7063f59a2df</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="R11">
+      <value>10.0k 1%</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <fields>
+        <field name="Footprint">Resistor_SMD:R_0805_2012Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Sheetname" value="stage19_dual_permissive_gate"/>
+      <property name="Sheetfile" value="stage19_dual_permissive_gate.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>6aeb705f-d53d-5049-bbcb-d57a90861769</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="R12">
+      <value>10.0k 1%</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <fields>
+        <field name="Footprint">Resistor_SMD:R_0805_2012Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Sheetname" value="stage19_dual_permissive_gate"/>
+      <property name="Sheetfile" value="stage19_dual_permissive_gate.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>f2103e9b-ac97-5eb3-b5d6-1ff683e651d8</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="R13">
+      <value>10.0k 1%</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <fields>
+        <field name="Footprint">Resistor_SMD:R_0805_2012Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Sheetname" value="stage19_dual_permissive_gate"/>
+      <property name="Sheetfile" value="stage19_dual_permissive_gate.kicad_sch"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>23b60b09-02d8-583e-8e9d-d53c2fdaced6</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="TP1">
+      <value>SAFE_A_OK</value>
+      <footprint>TestPoint:TestPoint_Loop_D2.50mm_Drill1.0mm</footprint>
+      <fields>
+        <field name="Footprint">TestPoint:TestPoint_Loop_D2.50mm_Drill1.0mm</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <property name="Sheetname" value="stage19_dual_permissive_gate"/>
+      <property name="Sheetfile" value="stage19_dual_permissive_gate.kicad_sch"/>
+      <property name="ki_keywords" value="test point tp"/>
+      <property name="ki_fp_filters" value="Pin* Test*"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>a8c20352-ae92-5f55-b9ce-7a8f5f47b973</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="TP2">
+      <value>SAFE_B_OK</value>
+      <footprint>TestPoint:TestPoint_Loop_D2.50mm_Drill1.0mm</footprint>
+      <fields>
+        <field name="Footprint">TestPoint:TestPoint_Loop_D2.50mm_Drill1.0mm</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <property name="Sheetname" value="stage19_dual_permissive_gate"/>
+      <property name="Sheetfile" value="stage19_dual_permissive_gate.kicad_sch"/>
+      <property name="ki_keywords" value="test point tp"/>
+      <property name="ki_fp_filters" value="Pin* Test*"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>8956408e-b6b3-5377-af7d-d6e6f66b2ec9</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="TP3">
+      <value>ALERT_N</value>
+      <footprint>TestPoint:TestPoint_Loop_D2.50mm_Drill1.0mm</footprint>
+      <fields>
+        <field name="Footprint">TestPoint:TestPoint_Loop_D2.50mm_Drill1.0mm</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <property name="Sheetname" value="stage19_dual_permissive_gate"/>
+      <property name="Sheetfile" value="stage19_dual_permissive_gate.kicad_sch"/>
+      <property name="ki_keywords" value="test point tp"/>
+      <property name="ki_fp_filters" value="Pin* Test*"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>ed97f766-6ec9-5175-a0f6-62ce2b19ce12</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="TP4">
+      <value>PWM_L_OUT</value>
+      <footprint>TestPoint:TestPoint_Loop_D2.50mm_Drill1.0mm</footprint>
+      <fields>
+        <field name="Footprint">TestPoint:TestPoint_Loop_D2.50mm_Drill1.0mm</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <property name="Sheetname" value="stage19_dual_permissive_gate"/>
+      <property name="Sheetfile" value="stage19_dual_permissive_gate.kicad_sch"/>
+      <property name="ki_keywords" value="test point tp"/>
+      <property name="ki_fp_filters" value="Pin* Test*"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>47848853-b06f-5de5-a464-b08382f4d340</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="TP5">
+      <value>PWM_R_OUT</value>
+      <footprint>TestPoint:TestPoint_Loop_D2.50mm_Drill1.0mm</footprint>
+      <fields>
+        <field name="Footprint">TestPoint:TestPoint_Loop_D2.50mm_Drill1.0mm</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <property name="Sheetname" value="stage19_dual_permissive_gate"/>
+      <property name="Sheetfile" value="stage19_dual_permissive_gate.kicad_sch"/>
+      <property name="ki_keywords" value="test point tp"/>
+      <property name="ki_fp_filters" value="Pin* Test*"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>da73452f-2d2d-5f41-a904-707b7a2cd72d</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="TP6">
+      <value>GND</value>
+      <footprint>TestPoint:TestPoint_Loop_D2.50mm_Drill1.0mm</footprint>
+      <fields>
+        <field name="Footprint">TestPoint:TestPoint_Loop_D2.50mm_Drill1.0mm</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <property name="Sheetname" value="stage19_dual_permissive_gate"/>
+      <property name="Sheetfile" value="stage19_dual_permissive_gate.kicad_sch"/>
+      <property name="ki_keywords" value="test point tp"/>
+      <property name="ki_fp_filters" value="Pin* Test*"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>213a509d-2e5c-524f-8b70-0aca658e3bea</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="U1">
+      <value>VO617A-4</value>
+      <footprint>Package_DIP:DIP-4_W7.62mm</footprint>
+      <datasheet>https://www.vishay.com/docs/83430/vo617a.pdf</datasheet>
+      <description>Independent energise-to-run optocoupler</description>
+      <fields>
+        <field name="Footprint">Package_DIP:DIP-4_W7.62mm</field>
+        <field name="Datasheet">https://www.vishay.com/docs/83430/vo617a.pdf</field>
+        <field name="Description">Independent energise-to-run optocoupler</field>
+      </fields>
+      <libsource lib="BB8_STAGE19" part="VO617A-4" description="Generic DC optocoupler with NPN phototransistor output, pins order: anode/cathode/emitter/collector"/>
+      <property name="Sheetname" value="stage19_dual_permissive_gate"/>
+      <property name="Sheetfile" value="stage19_dual_permissive_gate.kicad_sch"/>
+      <property name="ki_keywords" value="NPN DC Optocoupler"/>
+      <property name="ki_fp_filters" value="DIP*W7.62mm*"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>55c74257-2fe9-51e9-80b6-a2bbfcaf0b90</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+            <pin num="4"/>
+            <pin num="3"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="U2">
+      <value>VO617A-4</value>
+      <footprint>Package_DIP:DIP-4_W7.62mm</footprint>
+      <datasheet>https://www.vishay.com/docs/83430/vo617a.pdf</datasheet>
+      <description>Independent energise-to-run optocoupler</description>
+      <fields>
+        <field name="Footprint">Package_DIP:DIP-4_W7.62mm</field>
+        <field name="Datasheet">https://www.vishay.com/docs/83430/vo617a.pdf</field>
+        <field name="Description">Independent energise-to-run optocoupler</field>
+      </fields>
+      <libsource lib="BB8_STAGE19" part="VO617A-4" description="Generic DC optocoupler with NPN phototransistor output, pins order: anode/cathode/emitter/collector"/>
+      <property name="Sheetname" value="stage19_dual_permissive_gate"/>
+      <property name="Sheetfile" value="stage19_dual_permissive_gate.kicad_sch"/>
+      <property name="ki_keywords" value="NPN DC Optocoupler"/>
+      <property name="ki_fp_filters" value="DIP*W7.62mm*"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>296026f2-095f-537f-b28c-6bb8982aa864</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+            <pin num="4"/>
+            <pin num="3"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="U3">
+      <value>SN74LVC2G08DCU</value>
+      <footprint>Package_SO:VSSOP-8_2.3x2mm_P0.5mm</footprint>
+      <datasheet>https://www.ti.com/lit/ds/symlink/sn74lvc2g08.pdf</datasheet>
+      <fields>
+        <field name="Footprint">Package_SO:VSSOP-8_2.3x2mm_P0.5mm</field>
+        <field name="Datasheet">https://www.ti.com/lit/ds/symlink/sn74lvc2g08.pdf</field>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="74xGxx" part="74LVC2G08" description="Dual AND Gate, Low-Voltage CMOS"/>
+      <property name="Sheetname" value="stage19_dual_permissive_gate"/>
+      <property name="Sheetfile" value="stage19_dual_permissive_gate.kicad_sch"/>
+      <property name="ki_keywords" value="Dual Gate AND LVC CMOS"/>
+      <property name="ki_fp_filters" value="SSOP* VSSOP*"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>b51d4455-78f4-564e-8c72-547a8a52c273 e2259537-c304-55a5-905c-397d06ab4688 0abdeac8-6fbc-538b-82b9-fcd3ff54fb8e</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+            <pin num="7"/>
+          </pins>
+        </unit>
+        <unit name="B">
+          <pins>
+            <pin num="5"/>
+            <pin num="6"/>
+            <pin num="3"/>
+          </pins>
+        </unit>
+        <unit name="C">
+          <pins>
+            <pin num="8"/>
+            <pin num="4"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="U4">
+      <value>SN74LVC2G08DCU</value>
+      <footprint>Package_SO:VSSOP-8_2.3x2mm_P0.5mm</footprint>
+      <datasheet>https://www.ti.com/lit/ds/symlink/sn74lvc2g08.pdf</datasheet>
+      <fields>
+        <field name="Footprint">Package_SO:VSSOP-8_2.3x2mm_P0.5mm</field>
+        <field name="Datasheet">https://www.ti.com/lit/ds/symlink/sn74lvc2g08.pdf</field>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="74xGxx" part="74LVC2G08" description="Dual AND Gate, Low-Voltage CMOS"/>
+      <property name="Sheetname" value="stage19_dual_permissive_gate"/>
+      <property name="Sheetfile" value="stage19_dual_permissive_gate.kicad_sch"/>
+      <property name="ki_keywords" value="Dual Gate AND LVC CMOS"/>
+      <property name="ki_fp_filters" value="SSOP* VSSOP*"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>ba111017-6c7a-532d-a87c-51c16d0096ac c2ec8ed0-0e37-54ec-b32a-e49fb3016fe1 5d1a7603-4f11-55b2-9220-0d751ecf96fd</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+            <pin num="7"/>
+          </pins>
+        </unit>
+        <unit name="B">
+          <pins>
+            <pin num="5"/>
+            <pin num="6"/>
+            <pin num="3"/>
+          </pins>
+        </unit>
+        <unit name="C">
+          <pins>
+            <pin num="8"/>
+            <pin num="4"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="U5">
+      <value>SN74LVC2G08DCU</value>
+      <footprint>Package_SO:VSSOP-8_2.3x2mm_P0.5mm</footprint>
+      <datasheet>https://www.ti.com/lit/ds/symlink/sn74lvc2g08.pdf</datasheet>
+      <fields>
+        <field name="Footprint">Package_SO:VSSOP-8_2.3x2mm_P0.5mm</field>
+        <field name="Datasheet">https://www.ti.com/lit/ds/symlink/sn74lvc2g08.pdf</field>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="74xGxx" part="74LVC2G08" description="Dual AND Gate, Low-Voltage CMOS"/>
+      <property name="Sheetname" value="stage19_dual_permissive_gate"/>
+      <property name="Sheetfile" value="stage19_dual_permissive_gate.kicad_sch"/>
+      <property name="ki_keywords" value="Dual Gate AND LVC CMOS"/>
+      <property name="ki_fp_filters" value="SSOP* VSSOP*"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>e7a7135e-fb4e-50d0-8ead-92d7cfa972f4 8bf28e1b-9dd2-5301-8d67-fef90fd83b75 26153bdd-9aad-5393-9114-a6d4187ce1c9</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+            <pin num="7"/>
+          </pins>
+        </unit>
+        <unit name="B">
+          <pins>
+            <pin num="5"/>
+            <pin num="6"/>
+            <pin num="3"/>
+          </pins>
+        </unit>
+        <unit name="C">
+          <pins>
+            <pin num="8"/>
+            <pin num="4"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+  </components>
+  <libparts>
+    <libpart lib="74xGxx" part="74LVC2G08">
+      <description>Dual AND Gate, Low-Voltage CMOS</description>
+      <docs>http://www.ti.com/lit/sg/scyt129e/scyt129e.pdf</docs>
+      <footprints>
+        <fp>SSOP*</fp>
+        <fp>VSSOP*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">74LVC2G08</field>
+        <field name="Footprint"/>
+        <field name="Datasheet">http://www.ti.com/lit/sg/scyt129e/scyt129e.pdf</field>
+        <field name="Description">Dual AND Gate, Low-Voltage CMOS</field>
+      </fields>
+      <pins>
+        <pin num="1" name="" type="input"/>
+        <pin num="2" name="" type="input"/>
+        <pin num="3" name="" type="output"/>
+        <pin num="4" name="GND" type="power_in"/>
+        <pin num="5" name="" type="input"/>
+        <pin num="6" name="" type="input"/>
+        <pin num="7" name="" type="output"/>
+        <pin num="8" name="VCC" type="power_in"/>
+      </pins>
+    </libpart>
+    <libpart lib="BB8_STAGE19" part="MCU_INPUT_HEADER">
+      <description>Generic connector, single row, 01x06, script generated (kicad-library-utils/schlib/autogen/connector/)</description>
+      <footprints>
+        <fp>Connector*:*_1x??_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">MCU_INPUT_HEADER</field>
+        <field name="Footprint"/>
+        <field name="Datasheet"/>
+        <field name="Description">Generic connector, single row, 01x06, script generated (kicad-library-utils/schlib/autogen/connector/)</field>
+      </fields>
+      <pins>
+        <pin num="1" name="Pin_1" type="output"/>
+        <pin num="2" name="Pin_2" type="passive"/>
+        <pin num="3" name="Pin_3" type="output"/>
+        <pin num="4" name="Pin_4" type="passive"/>
+        <pin num="5" name="Pin_5" type="output"/>
+        <pin num="6" name="Pin_6" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="BB8_STAGE19" part="VO617A-4">
+      <description>Generic DC optocoupler with NPN phototransistor output, pins order: anode/cathode/emitter/collector</description>
+      <footprints>
+        <fp>DIP*W7.62mm*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">VO617A-4</field>
+        <field name="Footprint"/>
+        <field name="Datasheet"/>
+        <field name="Description">Generic DC optocoupler with NPN phototransistor output, pins order: anode/cathode/emitter/collector</field>
+      </fields>
+      <pins>
+        <pin num="1" name="" type="passive"/>
+        <pin num="2" name="" type="passive"/>
+        <pin num="3" name="" type="output"/>
+        <pin num="4" name="" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Connector" part="TestPoint">
+      <description>test point</description>
+      <footprints>
+        <fp>Pin*</fp>
+        <fp>Test*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">TP</field>
+        <field name="Value">TestPoint</field>
+        <field name="Footprint"/>
+        <field name="Datasheet"/>
+        <field name="Description">test point</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Connector_Generic" part="Conn_01x02">
+      <description>Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)</description>
+      <footprints>
+        <fp>Connector*:*_1x??_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">Conn_01x02</field>
+        <field name="Footprint"/>
+        <field name="Datasheet"/>
+        <field name="Description">Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)</field>
+      </fields>
+      <pins>
+        <pin num="1" name="Pin_1" type="passive"/>
+        <pin num="2" name="Pin_2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Connector_Generic" part="Conn_01x05">
+      <description>Generic connector, single row, 01x05, script generated (kicad-library-utils/schlib/autogen/connector/)</description>
+      <footprints>
+        <fp>Connector*:*_1x??_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">Conn_01x05</field>
+        <field name="Footprint"/>
+        <field name="Datasheet"/>
+        <field name="Description">Generic connector, single row, 01x05, script generated (kicad-library-utils/schlib/autogen/connector/)</field>
+      </fields>
+      <pins>
+        <pin num="1" name="Pin_1" type="passive"/>
+        <pin num="2" name="Pin_2" type="passive"/>
+        <pin num="3" name="Pin_3" type="passive"/>
+        <pin num="4" name="Pin_4" type="passive"/>
+        <pin num="5" name="Pin_5" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="C">
+      <description>Unpolarized capacitor</description>
+      <footprints>
+        <fp>C_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">C</field>
+        <field name="Footprint"/>
+        <field name="Datasheet"/>
+        <field name="Description">Unpolarized capacitor</field>
+      </fields>
+      <pins>
+        <pin num="1" name="" type="passive"/>
+        <pin num="2" name="" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="D">
+      <description>Diode</description>
+      <footprints>
+        <fp>TO-???*</fp>
+        <fp>*_Diode_*</fp>
+        <fp>*SingleDiode*</fp>
+        <fp>D_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">D</field>
+        <field name="Value">D</field>
+        <field name="Footprint"/>
+        <field name="Datasheet"/>
+        <field name="Description">Diode</field>
+        <field name="Sim.Device">D</field>
+        <field name="Sim.Pins">1=K 2=A</field>
+      </fields>
+      <pins>
+        <pin num="1" name="K" type="passive"/>
+        <pin num="2" name="A" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="R">
+      <description>Resistor</description>
+      <footprints>
+        <fp>R_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">R</field>
+        <field name="Footprint"/>
+        <field name="Datasheet"/>
+        <field name="Description">Resistor</field>
+      </fields>
+      <pins>
+        <pin num="1" name="" type="passive"/>
+        <pin num="2" name="" type="passive"/>
+      </pins>
+    </libpart>
+  </libparts>
+  <libraries>
+    <library logical="74xGxx">
+      <uri>${KICAD10_SYMBOL_DIR}/74xGxx.kicad_sym</uri>
+    </library>
+    <library logical="BB8_STAGE19">
+      <uri>${KIPRJMOD}/stage19_symbols.kicad_sym</uri>
+    </library>
+    <library logical="Connector">
+      <uri>${KICAD10_SYMBOL_DIR}/Connector.kicad_sym</uri>
+    </library>
+    <library logical="Connector_Generic">
+      <uri>${KICAD10_SYMBOL_DIR}/Connector_Generic.kicad_sym</uri>
+    </library>
+    <library logical="Device">
+      <uri>${KICAD10_SYMBOL_DIR}/Device.kicad_sym</uri>
+    </library>
+  </libraries>
+  <nets>
+    <net code="1" name="/3V3" class="Default">
+      <node ref="C1" pin="1" pintype="passive"/>
+      <node ref="C2" pin="1" pintype="passive"/>
+      <node ref="C3" pin="1" pintype="passive"/>
+      <node ref="J1" pin="1" pinfunction="Pin_1_1" pintype="passive"/>
+      <node ref="R13" pin="1" pintype="passive"/>
+      <node ref="U1" pin="4" pintype="passive"/>
+      <node ref="U2" pin="4" pintype="passive"/>
+      <node ref="U3" pin="8" pinfunction="VCC_8" pintype="power_in"/>
+      <node ref="U4" pin="8" pinfunction="VCC_8" pintype="power_in"/>
+      <node ref="U5" pin="8" pinfunction="VCC_8" pintype="power_in"/>
+    </net>
+    <net code="2" name="/ALERT_N" class="Default">
+      <node ref="J2" pin="5" pinfunction="Pin_5_5" pintype="output"/>
+      <node ref="R13" pin="2" pintype="passive"/>
+      <node ref="TP3" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="U5" pin="2" pintype="input"/>
+      <node ref="U5" pin="6" pintype="input"/>
+    </net>
+    <net code="3" name="/DIR_L" class="Default">
+      <node ref="J2" pin="2" pinfunction="Pin_2_2" pintype="passive"/>
+      <node ref="J3" pin="2" pinfunction="Pin_2_2" pintype="passive"/>
+    </net>
+    <net code="4" name="/DIR_R" class="Default">
+      <node ref="J2" pin="4" pinfunction="Pin_4_4" pintype="passive"/>
+      <node ref="J3" pin="4" pinfunction="Pin_4_4" pintype="passive"/>
+    </net>
+    <net code="5" name="/GND" class="Default">
+      <node ref="C1" pin="2" pintype="passive"/>
+      <node ref="C2" pin="2" pintype="passive"/>
+      <node ref="C3" pin="2" pintype="passive"/>
+      <node ref="J1" pin="2" pinfunction="Pin_2_2" pintype="passive"/>
+      <node ref="J2" pin="6" pinfunction="Pin_6_6" pintype="passive"/>
+      <node ref="J3" pin="5" pinfunction="Pin_5_5" pintype="passive"/>
+      <node ref="R10" pin="2" pintype="passive"/>
+      <node ref="R11" pin="2" pintype="passive"/>
+      <node ref="R12" pin="2" pintype="passive"/>
+      <node ref="R3" pin="2" pintype="passive"/>
+      <node ref="R4" pin="2" pintype="passive"/>
+      <node ref="R5" pin="2" pintype="passive"/>
+      <node ref="R6" pin="2" pintype="passive"/>
+      <node ref="R7" pin="2" pintype="passive"/>
+      <node ref="R8" pin="2" pintype="passive"/>
+      <node ref="R9" pin="2" pintype="passive"/>
+      <node ref="TP6" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="U3" pin="4" pinfunction="GND_4" pintype="power_in"/>
+      <node ref="U4" pin="4" pinfunction="GND_4" pintype="power_in"/>
+      <node ref="U5" pin="4" pinfunction="GND_4" pintype="power_in"/>
+    </net>
+    <net code="6" name="/PWM_L_A" class="Default">
+      <node ref="R7" pin="1" pintype="passive"/>
+      <node ref="U3" pin="7" pintype="output"/>
+      <node ref="U4" pin="1" pintype="input"/>
+    </net>
+    <net code="7" name="/PWM_L_AB" class="Default">
+      <node ref="R9" pin="1" pintype="passive"/>
+      <node ref="U4" pin="7" pintype="output"/>
+      <node ref="U5" pin="1" pintype="input"/>
+    </net>
+    <net code="8" name="/PWM_L_IN" class="Default">
+      <node ref="J2" pin="1" pinfunction="Pin_1_1" pintype="output"/>
+      <node ref="R5" pin="1" pintype="passive"/>
+      <node ref="U3" pin="1" pintype="input"/>
+    </net>
+    <net code="9" name="/PWM_L_OUT" class="Default">
+      <node ref="J3" pin="1" pinfunction="Pin_1_1" pintype="passive"/>
+      <node ref="R11" pin="1" pintype="passive"/>
+      <node ref="TP4" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="U5" pin="7" pintype="output"/>
+    </net>
+    <net code="10" name="/PWM_R_A" class="Default">
+      <node ref="R8" pin="1" pintype="passive"/>
+      <node ref="U3" pin="3" pintype="output"/>
+      <node ref="U4" pin="5" pintype="input"/>
+    </net>
+    <net code="11" name="/PWM_R_AB" class="Default">
+      <node ref="R10" pin="1" pintype="passive"/>
+      <node ref="U4" pin="3" pintype="output"/>
+      <node ref="U5" pin="5" pintype="input"/>
+    </net>
+    <net code="12" name="/PWM_R_IN" class="Default">
+      <node ref="J2" pin="3" pinfunction="Pin_3_3" pintype="output"/>
+      <node ref="R6" pin="1" pintype="passive"/>
+      <node ref="U3" pin="5" pintype="input"/>
+    </net>
+    <net code="13" name="/PWM_R_OUT" class="Default">
+      <node ref="J3" pin="3" pinfunction="Pin_3_3" pintype="passive"/>
+      <node ref="R12" pin="1" pintype="passive"/>
+      <node ref="TP5" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="U5" pin="3" pintype="output"/>
+    </net>
+    <net code="14" name="/SAFE_A_LED_A" class="Default">
+      <node ref="D1" pin="1" pinfunction="K_1" pintype="passive"/>
+      <node ref="R1" pin="2" pintype="passive"/>
+      <node ref="U1" pin="1" pintype="passive"/>
+    </net>
+    <net code="15" name="/SAFE_A_OK" class="Default">
+      <node ref="R3" pin="1" pintype="passive"/>
+      <node ref="TP1" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="U1" pin="3" pintype="output"/>
+      <node ref="U3" pin="2" pintype="input"/>
+      <node ref="U3" pin="6" pintype="input"/>
+    </net>
+    <net code="16" name="/SAFE_A_PLUS" class="Default">
+      <node ref="J4" pin="1" pinfunction="Pin_1_1" pintype="passive"/>
+      <node ref="R1" pin="1" pintype="passive"/>
+    </net>
+    <net code="17" name="/SAFE_A_RETURN" class="Default">
+      <node ref="D1" pin="2" pinfunction="A_2" pintype="passive"/>
+      <node ref="J4" pin="2" pinfunction="Pin_2_2" pintype="passive"/>
+      <node ref="U1" pin="2" pintype="passive"/>
+    </net>
+    <net code="18" name="/SAFE_B_LED_A" class="Default">
+      <node ref="D2" pin="1" pinfunction="K_1" pintype="passive"/>
+      <node ref="R2" pin="2" pintype="passive"/>
+      <node ref="U2" pin="1" pintype="passive"/>
+    </net>
+    <net code="19" name="/SAFE_B_OK" class="Default">
+      <node ref="R4" pin="1" pintype="passive"/>
+      <node ref="TP2" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="U2" pin="3" pintype="output"/>
+      <node ref="U4" pin="2" pintype="input"/>
+      <node ref="U4" pin="6" pintype="input"/>
+    </net>
+    <net code="20" name="/SAFE_B_PLUS" class="Default">
+      <node ref="J5" pin="1" pinfunction="Pin_1_1" pintype="passive"/>
+      <node ref="R2" pin="1" pintype="passive"/>
+    </net>
+    <net code="21" name="/SAFE_B_RETURN" class="Default">
+      <node ref="D2" pin="2" pinfunction="A_2" pintype="passive"/>
+      <node ref="J5" pin="2" pinfunction="Pin_2_2" pintype="passive"/>
+      <node ref="U2" pin="2" pintype="passive"/>
+    </net>
+  </nets>
+</export>

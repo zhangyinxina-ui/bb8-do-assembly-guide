@@ -27,7 +27,11 @@ class DualPermissiveGateTests(unittest.TestCase):
             result["overall"], "HOLD_PCB_CAD_BENCH_AND_SAFETY_VALIDATION_REQUIRED"
         )
         self.assertEqual(result["physical_test_status"], "NOT_RUN")
-        self.assertEqual(result["manufacturing_release"], "NOT_RELEASED_NO_KICAD_GERBER")
+        self.assertEqual(result["manufacturing_release"], "NOT_RELEASED_NO_PCB_OR_GERBER")
+        self.assertTrue(self.contract["freeze_gates"]["kicad_schematic_captured"])
+        self.assertTrue(self.contract["freeze_gates"]["erc_passed"])
+        self.assertTrue(self.contract["freeze_gates"]["kicad_netlist_cross_audited"])
+        self.assertFalse(self.contract["freeze_gates"]["kicad_schematic_peer_reviewed"])
         self.assertFalse(result["timing_boundary"]["combined_deenergise_maximum_proven"])
         self.assertTrue(result["checks"]["six_unique_test_points_declared"])
         self.assertTrue(
@@ -87,6 +91,50 @@ class DualPermissiveGateTests(unittest.TestCase):
             for item in self.contract["test_points"]
         }
         self.assertEqual(actual, expected)
+
+    def test_reverse_clamp_diodes_use_kicad_device_d_pin_polarity(self) -> None:
+        with (ROOT / "engineering" / "stage19_gate_netlist.csv").open(
+            encoding="utf-8", newline=""
+        ) as handle:
+            rows = list(csv.DictReader(handle))
+        diode_connections = {
+            (row["reference"], row["pin"]): row["net"]
+            for row in rows
+            if row["reference"] in {"D1", "D2"}
+        }
+        self.assertEqual(
+            diode_connections,
+            {
+                ("D1", "1"): "SAFE_A_LED_A",
+                ("D1", "2"): "SAFE_A_RETURN",
+                ("D2", "1"): "SAFE_B_LED_A",
+                ("D2", "2"): "SAFE_B_RETURN",
+            },
+        )
+
+    def test_formal_kicad_artifacts_pass_schematic_only_verification(self) -> None:
+        evidence = json.loads(
+            (ROOT / "engineering" / "stage19_kicad_verification.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        self.assertEqual(evidence["kicad_version"], "10.0.4")
+        self.assertEqual(
+            evidence["schematic_verification"],
+            "PASS_SCHEMATIC_ERC_AND_NETLIST_ONLY",
+        )
+        self.assertEqual(
+            evidence["overall"],
+            "HOLD_PCB_CAD_BENCH_AND_SAFETY_VALIDATION_REQUIRED",
+        )
+        self.assertTrue(all(evidence["checks"].values()))
+        self.assertEqual(evidence["counts"]["erc_violations"], 0)
+        self.assertEqual(evidence["counts"]["component_references"], 34)
+        self.assertEqual(evidence["counts"]["canonical_pin_connections"], 91)
+        self.assertEqual(evidence["counts"]["exported_nets"], 21)
+        self.assertEqual(
+            evidence["manufacturing_release"], "NOT_RELEASED_NO_PCB_OR_GERBER"
+        )
 
     def test_pre_cad_blender_geometry_cannot_enter_fabrication_exports(self) -> None:
         geometry = (ROOT / "blender" / "stage19_dual_permissive_gate_geometry.py").read_text(

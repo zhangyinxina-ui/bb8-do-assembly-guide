@@ -21,7 +21,7 @@
 - 阶段16新增19项强制真机调试门、固定字段ESP32遥测解析器和带文件SHA-256的证据审计；当前结果为 `HOLD_PHYSICAL_TESTS_NOT_RUN`，0/19通过。
 - 阶段17用厂商官方资料筛选MDD20A、30 A MIDI保险丝、SW60接触器和P28A 4S2P候选；15/15额定检查通过，但因堵转、再生、独立去能适配、BMS与电池包未冻结，结果保持 `HOLD_COMPONENT_FREEZE_MEASUREMENTS_REQUIRED`。
 - 阶段18完成REC Active BMS 4S、MDD20A、SW60、MIDI保险丝、外置分流器与双通道门板的模块化电源舱解析布局，并已写入唯一Blender主工程；重开审计确认363个总对象、159个内部对象、150个制造对象、9个工程标记和39个阶段18对象。8个候选包络满足球壳/候选/既有机构间隙门，但12项实物尺寸与接口仍未冻结，结果保持 `HOLD_PHYSICAL_FIT_AND_INTERFACE_VALIDATION_REQUIRED`。
-- 阶段19发布双许可PWM门预CAD设计，并把23个非制造板件/器件参考包络写入唯一Blender主工程；重开审计与新导出已通过。SAFE_A、SAFE_B、双INA226 `ALERT_N`与3.3 V掉电均可独立阻断左右PWM；64/64真值组合和电气/机械解析检查通过，但没有KiCad、Gerber或台架波形，结果保持 `HOLD_PCB_CAD_BENCH_AND_SAFETY_VALIDATION_REQUIRED`。
+- 阶段19发布双许可PWM门正式KiCad 10原理图，并把23个非制造板件/器件参考包络写入唯一Blender主工程；重开审计与新导出已通过。SAFE_A、SAFE_B、双INA226 `ALERT_N`与3.3 V掉电均可独立阻断左右PWM；64/64真值组合、0项ERC违规以及34个器件引用/91条规范引脚连接/21个网络交叉审计通过。但尚无独立同行复核、PCB/DRC、Gerber或台架波形，结果保持 `HOLD_PCB_CAD_BENCH_AND_SAFETY_VALIDATION_REQUIRED`。
 - D-O v3.4.3 的 D0/D1 舵机—Serial0 冲突已形成固定哈希安全变体：四路舵机移到 D22–D25，Mega 2560 编译仍为 Flash 17% / RAM 18%，并生成版本锁定线束合同；实体导通、USB/Serial0、四路脉宽与失效保护仍为 `NOT_RUN`，不放行舵机电源。
 - 24 步装配指南与19项真机门；浏览器进度不能替代真机证据。
 
@@ -35,7 +35,7 @@
 | `engineering/` | 物理输入、计算结果、D-O 清单和采购门控 |
 | `firmware/` | BB-8 C++ 控制核心与 ESP32-S3 适配草案 |
 | `docs/` | 从阶段 1 到阶段 19 的中英文设计、验证和续接记录 |
-| `hardware/` | 阶段19双许可PWM门预CAD合同与OpenSCAD机械包络；不含Gerber |
+| `hardware/` | 阶段19双许可PWM门正式KiCad原理图与OpenSCAD机械包络；不含PCB/Gerber |
 | `app/` | Vinext/Next 开发网站 |
 | `github-pages-src/` | GitHub Pages 纯静态 React 入口 |
 | `public/` | 网站公开的图像、GLB、STL、CSV 和说明文件 |
@@ -100,7 +100,7 @@ sh tools/run_closed_loop_sim.sh
 
 阶段 18 将候选器件收敛为可拆卸模块化驱动电源舱：REC Active BMS 4S按111 × 135 × 44 mm外壳、MDD20A按88.90 × 78.74 mm官方板框、SW60按81 × 37 × 28.1 mm包络进入解析布局。当前最小球壳余量27.643 mm、候选件间隙7.500 mm、与既有机构间隙6.000 mm；这些只证明数字包络未冲突，不代替实物孔位、接插件、线束弯曲、散热与维护验证。几何已覆盖保存到唯一主工程并在重开后通过审计，主文件SHA-256为 `3b774f3e02c89e15922aac48629a43d4765d37078acad88ccf34f6316827d5c3`。见 [中文阶段18报告](docs/BB8_阶段18_模块化驱动电源舱布局门.md)、[English Stage 18 report](docs/BB8_stage18_modular_drive_power_cassette_layout_gate.md)、[布局输入](engineering/stage18_power_cassette_layout.json) 和 [当前HOLD结果](engineering/stage18_power_cassette_results.json)。
 
-阶段 19 将门板占位收敛为预CAD参考设计：2个VO617A-4隔离SAFE_A/B，3片SN74LVC2G08依次门控SAFE_A、SAFE_B和双INA226 `ALERT_N`；2.00 kΩ/0.5 W输入支路在12.0–16.8 V解析为5.175–7.900 mA，64行真值表证明任一许可丢失均使两路PWM为低。23个板件/器件包络已作为非制造参考写入唯一主工程，重开后确认386个总对象、182个内部对象、150个制造对象、9个工程标记和23个Stage 19对象；STL/GLB、制造清单与内部三视图已重导出。OpenSCAD只给板框和器件包络，本阶段没有KiCad、ERC/DRC、Gerber、实装板或20 ms示波器证据。见 [中文阶段19报告](docs/BB8_阶段19_独立双许可PWM硬件门.md)、[English Stage 19 report](docs/BB8_stage19_independent_dual_permissive_pwm_gate.md)、[Blender重开证据](engineering/stage19_blender_reopen_audit.json)、[机器合同](engineering/stage19_dual_permissive_gate_contract.json) 和 [当前HOLD结果](engineering/stage19_dual_permissive_gate_results.json)。
+阶段 19 将门板占位收敛为正式原理图/ERC参考设计：2个VO617A-4隔离SAFE_A/B，3片SN74LVC2G08依次门控SAFE_A、SAFE_B和双INA226 `ALERT_N`；2.00 kΩ/0.5 W输入支路在12.0–16.8 V解析为5.175–7.900 mA，64行真值表证明任一许可丢失均使两路PWM为低。23个板件/器件包络已作为非制造参考写入唯一主工程，重开后确认386个总对象、182个内部对象、150个制造对象、9个工程标记和23个Stage 19对象；STL/GLB、制造清单与内部三视图已重导出。KiCad 10.0.4正式原理图为0项ERC违规，XML网表与34个器件引用、91条规范引脚连接和21个网络全部一致；OpenSCAD仍只给板框和器件包络，且没有独立同行复核、PCB/DRC、Gerber、实装板或20 ms示波器证据。见 [中文阶段19报告](docs/BB8_阶段19_独立双许可PWM硬件门.md)、[English Stage 19 report](docs/BB8_stage19_independent_dual_permissive_pwm_gate.md)、[KiCad验证结果](engineering/stage19_kicad_verification.json)、[Blender重开证据](engineering/stage19_blender_reopen_audit.json)、[机器合同](engineering/stage19_dual_permissive_gate_contract.json) 和 [当前HOLD结果](engineering/stage19_dual_permissive_gate_results.json)。
 
 ## D-O 公开资源边界
 

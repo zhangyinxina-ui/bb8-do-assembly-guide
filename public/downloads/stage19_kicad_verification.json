@@ -1,0 +1,45 @@
+{
+  "stage": 19,
+  "overall": "HOLD_PCB_CAD_BENCH_AND_SAFETY_VALIDATION_REQUIRED",
+  "schematic_verification": "PASS_SCHEMATIC_ERC_AND_NETLIST_ONLY",
+  "kicad_cli": "kicad-cli",
+  "kicad_version": "10.0.4",
+  "checks": {
+    "kicad_major_version_10": true,
+    "tracked_schematic_matches_deterministic_generator": true,
+    "tracked_symbol_library_matches_deterministic_generator": true,
+    "project_file_present": true,
+    "erc_zero_violations": true,
+    "published_erc_zero_violations": true,
+    "canonical_pin_connections_match_export": true,
+    "published_netlist_matches_canonical": true,
+    "published_netlist_uses_repository_relative_source": true,
+    "component_reference_set_matches_canonical": true,
+    "bom_reference_set_matches_canonical": true,
+    "published_bom_reference_set_matches_canonical": true,
+    "net_name_set_matches_canonical": true,
+    "schematic_pdf_is_nonempty": true,
+    "schematic_pdf_signature_valid": true,
+    "published_schematic_pdf_valid": true
+  },
+  "counts": {
+    "erc_violations": 0,
+    "component_references": 34,
+    "canonical_pin_connections": 91,
+    "exported_nets": 21,
+    "bom_references": 34,
+    "pdf_bytes": 96200
+  },
+  "connection_mismatches": {},
+  "artifact_sha256": {
+    "schematic": "178456f1761e1c93f8012ebcce458dc067a67b7539f7fce29f4906cc41479983",
+    "symbol_library": "f7305dc5db1ddb28cba44cd8e5d3fff02cf0b2e28954fb833e2bda6c374fbade",
+    "erc_json": "6eedd5256300a5fa33426b310943c50d25a7f621259d444b081949339a3016cd",
+    "netlist_xml": "b62b6c8ad5e800c90d8765096b6f3c4b098740a4f4ee32f95670d17a1ee32729",
+    "bom_csv": "ad0314f75303d45735febe5ccbfd271ce29846c00c266fdf58deed59133ec68e",
+    "schematic_pdf": "1fe2eb0d68085ea4040aa20f2dd1b43d26e66a642b938c5c6678085df1c21847"
+  },
+  "evidence_boundary": "Deterministic KiCad 10 schematic, zero-violation ERC, canonical-netlist cross-audit, BOM-reference audit and PDF export only. No independent peer review, PCB, DRC, Gerber, fabrication, power-up, bench waveform or physical commissioning release.",
+  "manufacturing_release": "NOT_RELEASED_NO_PCB_OR_GERBER",
+  "physical_test_status": "NOT_RUN"
+}

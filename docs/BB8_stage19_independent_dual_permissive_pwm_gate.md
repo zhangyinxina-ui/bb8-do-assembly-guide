@@ -1,10 +1,10 @@
-# BB-8 Stage 19: Independent dual-permissive PWM gate pre-CAD design gate
+# BB-8 Stage 19: Independent dual-permissive PWM gate schematic/ERC gate
 
-> Conclusion: **all 64 Boolean combinations, input-current, logic-level, resistor-derating and 50 x 35 x 15 mm envelope checks pass. There is still no KiCad schematic, ERC/DRC, Gerber, assembled board or oscilloscope evidence, so the result remains `HOLD_PCB_CAD_BENCH_AND_SAFETY_VALIDATION_REQUIRED`.**
+> Conclusion: **all 64 Boolean combinations, input-current, logic-level, resistor-derating and 50 x 35 x 15 mm envelope checks pass. A deterministic KiCad 10 schematic now has 0 ERC violations, and its 34 references, 91 canonical pin connections and 21 nets cross-audit cleanly. Independent peer review, PCB/DRC, Gerber, assembled-board and oscilloscope evidence are still absent, so the result remains `HOLD_PCB_CAD_BENCH_AND_SAFETY_VALIDATION_REQUIRED`.**
 
 ## Purpose
 
-Stage 17 established that MDD20A exposes PWM+DIR but no independent enable, and that PWM low is brake rather than electrical isolation. Stage 18 reserved a 50 x 35 x 15 mm gate-board volume without releasing a circuit. Stage 19 turns that placeholder into a machine-auditable pre-CAD reference design while retaining the safety relay and normally-open SW60-class contactor as the actual motor-bus isolation path.
+Stage 17 established that MDD20A exposes PWM+DIR but no independent enable, and that PWM low is brake rather than electrical isolation. Stage 18 reserved a 50 x 35 x 15 mm gate-board volume without releasing a circuit. Stage 19 turns that placeholder into a machine-auditable schematic/ERC reference design while retaining the safety relay and normally-open SW60-class contactor as the actual motor-bus isolation path.
 
 ## Three-permissive chain
 
@@ -39,7 +39,7 @@ The three-package LVC chain has a 15.9 ns digital maximum. The optocoupler switc
 - The OpenSCAD source contains only board, holes and component envelopes. It has no pads, copper, solder mask, silkscreen, creepage or cable-bend proof. The local OpenSCAD 2021.01 headless export did not complete within the bounded run, so Stage 19 does not claim an STL.
 - The 23 Blender board/component envelopes are tagged `non_fabrication_reference`. They may appear in the GLB (with custom properties) and internal orthographic renders for design review, but they are excluded from the 150-part fabrication manifest and internal-mechanism STL.
 - Those 23 references are now written into the sole master and have passed a close-and-reopen audit. Blender 5.1.2 reports 386 total objects, 182 internal objects, 150 fabrication objects, nine engineering markers and 23 Stage-19 reference objects. The master SHA-256 is `ecd9a8b02db7c0b253c06005aaf16e7a8bf10147f8adec9c8900415e18b38af4`; the 150-row manifest, internal STL, animated GLB and front/side/top internal views were re-exported.
-- There is no `.kicad_sch`, `.kicad_pcb`, Gerber or drill release. This stage does not authorise a PCB order.
+- The formal `.kicad_sch` is generated deterministically and KiCad 10.0.4 reports 0 ERC violations. The KiCad XML export matches all 91 canonical reference/pin/net rows across 34 references and 21 nets. There is still no `.kicad_pcb`, DRC, Gerber or drill release, and no independent schematic peer review. This stage does not authorise a PCB order.
 
 ## Released evidence
 
@@ -50,11 +50,17 @@ The three-package LVC chain has a 15.9 ns digital maximum. The optocoupler switc
 - [Current HOLD result](../engineering/stage19_dual_permissive_gate_results.json)
 - [Blender reopen audit and export hashes](../engineering/stage19_blender_reopen_audit.json)
 - [Verifier](../tools/verify_dual_permissive_gate.py)
+- [KiCad schematic](../hardware/stage19_dual_permissive_gate/stage19_dual_permissive_gate.kicad_sch)
+- [KiCad ERC report](../engineering/stage19_kicad_erc.json)
+- [KiCad connectivity export](../engineering/stage19_kicad_netlist.xml)
+- [KiCad schematic verification](../engineering/stage19_kicad_verification.json)
+- [KiCad schematic PDF](../output/pdf/BB8_stage19_dual_permissive_gate_schematic.pdf)
+- [KiCad verifier](../tools/verify_stage19_kicad.py)
 - [Hardware package notes](../hardware/stage19_dual_permissive_gate/README.md)
 
 ## Next non-skippable gates
 
-1. Capture and peer-review the KiCad schematic; pass ERC.
+1. Independently peer-review the captured KiCad schematic and safety assumptions.
 2. Route the PCB, review isolation, mounting, polarity, test points and harness exits; pass DRC.
 3. Review Gerber and drill plots before any fabrication order.
 4. Measure A/B input current, output levels and temperature at 12.0 V and 16.8 V.
@@ -62,4 +68,4 @@ The three-package LVC chain has a 15.9 ns digital maximum. The optocoupler switc
 6. Prove both PWM outputs fall within 20 ms, then combine the board, relay and contactor in commissioning test E02.
 7. Complete 20 kHz integrity, temperature, vibration, connector-retention and EMC testing.
 
-Physical status: `NOT_RUN`; safety certification: `NONE`; manufacturing release: `NOT_RELEASED_NO_KICAD_GERBER`.
+Physical status: `NOT_RUN`; safety certification: `NONE`; manufacturing release: `NOT_RELEASED_NO_PCB_OR_GERBER`.
