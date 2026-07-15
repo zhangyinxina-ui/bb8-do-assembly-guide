@@ -22,6 +22,7 @@
 - 阶段17用厂商官方资料筛选MDD20A、30 A MIDI保险丝、SW60接触器和P28A 4S2P候选；15/15额定检查通过，但因堵转、再生、独立去能适配、BMS与电池包未冻结，结果保持 `HOLD_COMPONENT_FREEZE_MEASUREMENTS_REQUIRED`。
 - 阶段18完成REC Active BMS 4S、MDD20A、SW60、MIDI保险丝、外置分流器与双通道门板的模块化电源舱解析布局，并已写入唯一Blender主工程；重开审计确认363个总对象、159个内部对象、150个制造对象、9个工程标记和39个阶段18对象。8个候选包络满足球壳/候选/既有机构间隙门，但12项实物尺寸与接口仍未冻结，结果保持 `HOLD_PHYSICAL_FIT_AND_INTERFACE_VALIDATION_REQUIRED`。
 - 阶段19发布双许可PWM门正式KiCad 10原理图与50 × 35 mm两层布线PCB，并把23个非制造板件/器件参考包络写入唯一Blender主工程；重开审计与新导出已通过。SAFE_A、SAFE_B、双INA226 `ALERT_N`与3.3 V掉电均可独立阻断左右PWM；64/64真值组合、0项ERC违规、0项PCB DRC违规、0个未连接项，以及34个器件引用/91条规范引脚连接/21个网络交叉审计通过。但尚无独立原理图/布局同行复核、Gerber/钻孔发布复核、实装板或台架波形，结果保持 `HOLD_PCB_CAD_BENCH_AND_SAFETY_VALIDATION_REQUIRED`。
+- 阶段20发现并封锁旧结构分析漂移：当前制造清单的磁力桅杆是Ø24 × 340 mm，而阶段2仍按Ø12/Ø8 × 300 mm铝管计算。新门以当前数字几何筛查2.5 g垂向/1.0 g侧向载荷、斜撑屈曲、纵梁/横梁挠度、PCD35电机安装需求、理想基材疲劳和桅杆模态；解析检查通过，但轮—壳接触还缺5.5 mm径向调节预算，15项材料/连接/公差/实物门全部未关闭，结果保持 `HOLD_JOINT_TOLERANCE_MATERIAL_AND_PHYSICAL_VALIDATION_REQUIRED`。
 - D-O v3.4.3 的 D0/D1 舵机—Serial0 冲突已形成固定哈希安全变体：四路舵机移到 D22–D25，Mega 2560 编译仍为 Flash 17% / RAM 18%，并生成版本锁定线束合同；实体导通、USB/Serial0、四路脉宽与失效保护仍为 `NOT_RUN`，不放行舵机电源。
 - 24 步装配指南与19项真机门；浏览器进度不能替代真机证据。
 
@@ -34,7 +35,7 @@
 | `blender/` | 参数化生成器、主工程、阶段检查点、审计和导出脚本 |
 | `engineering/` | 物理输入、计算结果、D-O 清单和采购门控 |
 | `firmware/` | BB-8 C++ 控制核心与 ESP32-S3 适配草案 |
-| `docs/` | 从阶段 1 到阶段 19 的中英文设计、验证和续接记录 |
+| `docs/` | 从阶段 1 到阶段 20 的中英文设计、验证和续接记录 |
 | `hardware/` | 阶段19双许可PWM门正式KiCad原理图、两层布线PCB与OpenSCAD机械包络；不含Gerber/钻孔发布包 |
 | `app/` | Vinext/Next 开发网站 |
 | `github-pages-src/` | GitHub Pages 纯静态 React 入口 |
@@ -80,6 +81,7 @@ python3 tools/verify_power_cassette_layout.py
 python3 tools/verify_dual_permissive_gate.py
 python3 tools/verify_stage19_kicad.py
 python3 tools/verify_stage19_kicad_pcb.py
+python3 tools/verify_stage20_structural_load_path.py
 python3 tools/audit_do_resources.py
 sh tools/run_closed_loop_sim.sh
 ```
@@ -103,6 +105,8 @@ sh tools/run_closed_loop_sim.sh
 阶段 18 将候选器件收敛为可拆卸模块化驱动电源舱：REC Active BMS 4S按111 × 135 × 44 mm外壳、MDD20A按88.90 × 78.74 mm官方板框、SW60按81 × 37 × 28.1 mm包络进入解析布局。当前最小球壳余量27.643 mm、候选件间隙7.500 mm、与既有机构间隙6.000 mm；这些只证明数字包络未冲突，不代替实物孔位、接插件、线束弯曲、散热与维护验证。几何已覆盖保存到唯一主工程并在重开后通过审计，主文件SHA-256为 `3b774f3e02c89e15922aac48629a43d4765d37078acad88ccf34f6316827d5c3`。见 [中文阶段18报告](docs/BB8_阶段18_模块化驱动电源舱布局门.md)、[English Stage 18 report](docs/BB8_stage18_modular_drive_power_cassette_layout_gate.md)、[布局输入](engineering/stage18_power_cassette_layout.json) 和 [当前HOLD结果](engineering/stage18_power_cassette_results.json)。
 
 阶段 19 将门板占位收敛为正式原理图与布线PCB/DRC参考设计：2个VO617A-4隔离SAFE_A/B，3片SN74LVC2G08依次门控SAFE_A、SAFE_B和双INA226 `ALERT_N`；2.00 kΩ/0.5 W输入支路在12.0–16.8 V解析为5.175–7.900 mA，64行真值表证明任一许可丢失均使两路PWM为低。23个板件/器件包络已作为非制造参考写入唯一主工程，重开后确认386个总对象、182个内部对象、150个制造对象、9个工程标记和23个Stage 19对象；STL/GLB、制造清单与内部三视图已重导出。KiCad 10.0.4正式原理图为0项ERC违规；50 × 35 mm两层PCB含38个封装、1614段走线、54个过孔、F.Cu 3V3和B.Cu GND铜区，DRC为0项违规/0个未连接项。临时重生成板与跟踪板的UUID无关结构哈希一致，XML网表与34个器件引用、91条规范引脚连接和21个网络全部一致。仍没有独立原理图/布局同行复核、Gerber/钻孔发布复核、实装板或20 ms示波器证据。见 [中文阶段19报告](docs/BB8_阶段19_独立双许可PWM硬件门.md)、[English Stage 19 report](docs/BB8_stage19_independent_dual_permissive_pwm_gate.md)、[原理图验证结果](engineering/stage19_kicad_verification.json)、[PCB验证结果](engineering/stage19_kicad_pcb_verification.json)、[PCB DRC报告](engineering/stage19_kicad_pcb_drc.json)、[Blender重开证据](engineering/stage19_blender_reopen_audit.json)、[机器合同](engineering/stage19_dual_permissive_gate_contract.json) 和 [当前HOLD结果](engineering/stage19_dual_permissive_gate_results.json)。
+
+阶段 20 将结构解析重新绑定到当前Stage-19制造清单，并明确标记阶段2的Ø12/Ø8 × 300 mm桅杆已被当前Ø24 × 340 mm包络取代。Ø24/Ø20管材和Ø12/Ø8斜撑只是待冻结候选；2.5 g垂向/1.0 g侧向闭式筛查得到桅杆3.273 MPa、两根纵梁22.814 MPa和0.670 mm挠度，解析裕量通过。PCD35电机面板只报告每颗M4的18.25 N合成需求，不宣称未知等级紧固件已通过。理想6061-T6/T651基材、模态和名义锁扣比值同样只作筛查；轮—壳接触的5.5 mm调节短缺、材料证书、接头、壳体接触、应变、冲击、锤击模态、耐久与19项真机门仍保持开放。见 [中文阶段20报告](docs/BB8_阶段20_结构载荷与公差门.md)、[English Stage 20 report](docs/BB8_stage20_structural_load_and_tolerance_gate.md)、[机器合同](engineering/stage20_structural_load_contract.json)、[当前HOLD结果](engineering/stage20_structural_load_results.json) 和 [载荷扫描](engineering/stage20_structural_load_sweep.csv)。
 
 ## D-O 公开资源边界
 

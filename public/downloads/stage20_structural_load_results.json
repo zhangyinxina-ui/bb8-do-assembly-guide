@@ -1,0 +1,421 @@
+{
+  "stage": 20,
+  "overall": "HOLD_JOINT_TOLERANCE_MATERIAL_AND_PHYSICAL_VALIDATION_REQUIRED",
+  "analytical_screen_passed": true,
+  "manufacturing_release": false,
+  "physical_test_status": "NOT_RUN",
+  "legacy_stage2_mast_analysis_current": false,
+  "legacy_mismatch": {
+    "detected": true,
+    "current_mast_envelope_mm": [
+      24.0,
+      24.0,
+      340.0
+    ],
+    "legacy_tube_od_id_length_mm": [
+      12.0,
+      8.0,
+      300.0
+    ],
+    "disposition": "SUPERSEDED_FOR_CURRENT_MAST_GEOMETRY"
+  },
+  "load_summary": {
+    "head_lateral_service_force_n": 6.764322,
+    "total_vertical_service_shock_n": 207.484197,
+    "peak_wheel_tangential_force_each_n": 25.0
+  },
+  "mast_candidate": {
+    "area_mm2": 138.230077,
+    "second_moment_mm4": 8432.034682,
+    "root_moment_nm": 2.29987,
+    "bending_stress_mpa": 3.273046,
+    "tip_deflection_mm": 0.153882,
+    "static_yield_safety_factor": 84.325126,
+    "ideal_material_fatigue_screen_factor": 29.636004,
+    "first_bending_frequency_hz": 40.467028,
+    "tube_mass_kg": 0.126895,
+    "modal_effective_mass_kg": 0.679947,
+    "motor_rotation_frequency_hz": 4.133333,
+    "frequency_ratio": 9.79041
+  },
+  "brace_candidate": {
+    "area_mm2": 62.831853,
+    "axial_force_each_n": 6.191405,
+    "axial_stress_mpa": 0.098539,
+    "euler_critical_load_n": 6035.121108,
+    "buckling_factor": 974.757946
+  },
+  "chassis_rail_candidate": {
+    "load_each_n": 103.742099,
+    "bending_stress_mpa": 22.813656,
+    "deflection_mm": 0.669898,
+    "static_yield_safety_factor": 12.098017,
+    "ideal_material_fatigue_screen_factor": 4.251839
+  },
+  "crossmember_candidate": {
+    "load_n": 51.871049,
+    "bending_stress_mpa": 8.104851,
+    "deflection_mm": 0.023733,
+    "static_yield_safety_factor": 34.053678
+  },
+  "motor_mount_candidate": {
+    "m4_torque_force_each_n": 17.142857,
+    "m4_direct_traction_force_each_n": 6.25,
+    "m4_resultant_force_each_n": 18.246645,
+    "m4_plate_bearing_demand_mpa": 1.140415,
+    "m5_nominal_direct_shear_demand_mpa": 0.424413,
+    "fastener_strength_pass": false
+  },
+  "equator_latch_candidate": {
+    "nominal_total_clamp_n": 640.0,
+    "vertical_shock_ratio": 3.084572,
+    "measured_clamp_force_pass": false
+  },
+  "tolerance_gate": {
+    "required_radial_adjustment_range_mm": 5.5,
+    "provided_radial_adjustment_range_mm": 0.0,
+    "adjustment_shortfall_mm": 5.5,
+    "passed": false
+  },
+  "unresolved_freeze_gates": [
+    "brace_tube_outer_inner_diameter_and_temper_frozen",
+    "fatigue_or_endurance_test_passed",
+    "instrumented_drop_or_impact_test_passed",
+    "latch_supplier_and_measured_clamp_force_frozen",
+    "mast_brace_and_chassis_joint_design_frozen",
+    "mast_tube_outer_inner_diameter_and_temper_frozen",
+    "material_certificates_received",
+    "modal_hammer_test_passed",
+    "motor_mount_fastener_grade_preload_and_edge_distance_frozen",
+    "nineteen_item_physical_commissioning_passed",
+    "shell_laminate_coupon_and_local_contact_strength_tested",
+    "strain_gauge_service_shock_test_passed",
+    "weld_or_bolted_joint_allowables_verified",
+    "wheel_hub_m5_pcd_and_fastener_grade_frozen",
+    "wheel_radial_preload_adjustment_range_at_least_tolerance_budget"
+  ],
+  "checks": [
+    {
+      "id": "stage",
+      "passed": true,
+      "actual": 20,
+      "requirement": 20
+    },
+    {
+      "id": "manifest_row_count",
+      "passed": true,
+      "actual": 150,
+      "requirement": 150
+    },
+    {
+      "id": "reopen_audit_passed",
+      "passed": true,
+      "actual": "PASS_REOPEN_AUDIT_ONLY",
+      "requirement": "PASS_REOPEN_AUDIT_ONLY"
+    },
+    {
+      "id": "master_hash_matches",
+      "passed": true,
+      "actual": "ecd9a8b02db7c0b253c06005aaf16e7a8bf10147f8adec9c8900415e18b38af4",
+      "requirement": "ecd9a8b02db7c0b253c06005aaf16e7a8bf10147f8adec9c8900415e18b38af4"
+    },
+    {
+      "id": "object_exists_Internal magnetic mast",
+      "passed": true,
+      "actual": "Internal magnetic mast",
+      "requirement": "present in fabrication manifest"
+    },
+    {
+      "id": "dimensions_Internal magnetic mast",
+      "passed": true,
+      "actual": [
+        24.0,
+        24.0,
+        340.0
+      ],
+      "requirement": [
+        24.0,
+        24.0,
+        340.0
+      ]
+    },
+    {
+      "id": "object_exists_Internal mast brace L",
+      "passed": true,
+      "actual": "Internal mast brace L",
+      "requirement": "present in fabrication manifest"
+    },
+    {
+      "id": "dimensions_Internal mast brace L",
+      "passed": true,
+      "actual": [
+        12.0,
+        12.0,
+        302.05
+      ],
+      "requirement": [
+        12.0,
+        12.0,
+        302.05
+      ]
+    },
+    {
+      "id": "object_exists_Internal mast brace R",
+      "passed": true,
+      "actual": "Internal mast brace R",
+      "requirement": "present in fabrication manifest"
+    },
+    {
+      "id": "dimensions_Internal mast brace R",
+      "passed": true,
+      "actual": [
+        12.0,
+        12.0,
+        302.05
+      ],
+      "requirement": [
+        12.0,
+        12.0,
+        302.05
+      ]
+    },
+    {
+      "id": "object_exists_Internal aluminium chassis",
+      "passed": true,
+      "actual": "Internal aluminium chassis",
+      "requirement": "present in fabrication manifest"
+    },
+    {
+      "id": "dimensions_Internal aluminium chassis",
+      "passed": true,
+      "actual": [
+        380.0,
+        18.0,
+        12.0
+      ],
+      "requirement": [
+        380.0,
+        18.0,
+        12.0
+      ]
+    },
+    {
+      "id": "object_exists_Internal aluminium chassis rail R",
+      "passed": true,
+      "actual": "Internal aluminium chassis rail R",
+      "requirement": "present in fabrication manifest"
+    },
+    {
+      "id": "dimensions_Internal aluminium chassis rail R",
+      "passed": true,
+      "actual": [
+        380.0,
+        18.0,
+        12.0
+      ],
+      "requirement": [
+        380.0,
+        18.0,
+        12.0
+      ]
+    },
+    {
+      "id": "object_exists_Internal chassis centre crossmember",
+      "passed": true,
+      "actual": "Internal chassis centre crossmember",
+      "requirement": "present in fabrication manifest"
+    },
+    {
+      "id": "dimensions_Internal chassis centre crossmember",
+      "passed": true,
+      "actual": [
+        8.0,
+        120.0,
+        12.0
+      ],
+      "requirement": [
+        8.0,
+        120.0,
+        12.0
+      ]
+    },
+    {
+      "id": "object_exists_Internal motor face mount L",
+      "passed": true,
+      "actual": "Internal motor face mount L",
+      "requirement": "present in fabrication manifest"
+    },
+    {
+      "id": "dimensions_Internal motor face mount L",
+      "passed": true,
+      "actual": [
+        4.0,
+        52.0,
+        52.0
+      ],
+      "requirement": [
+        4.0,
+        52.0,
+        52.0
+      ]
+    },
+    {
+      "id": "object_exists_Internal motor face mount R",
+      "passed": true,
+      "actual": "Internal motor face mount R",
+      "requirement": "present in fabrication manifest"
+    },
+    {
+      "id": "dimensions_Internal motor face mount R",
+      "passed": true,
+      "actual": [
+        4.0,
+        52.0,
+        52.0
+      ],
+      "requirement": [
+        4.0,
+        52.0,
+        52.0
+      ]
+    },
+    {
+      "id": "object_exists_Internal drive wheel L",
+      "passed": true,
+      "actual": "Internal drive wheel L",
+      "requirement": "present in fabrication manifest"
+    },
+    {
+      "id": "dimensions_Internal drive wheel L",
+      "passed": true,
+      "actual": [
+        96.0,
+        96.0,
+        26.0
+      ],
+      "requirement": [
+        96.0,
+        96.0,
+        26.0
+      ]
+    },
+    {
+      "id": "object_exists_Internal drive wheel R",
+      "passed": true,
+      "actual": "Internal drive wheel R",
+      "requirement": "present in fabrication manifest"
+    },
+    {
+      "id": "dimensions_Internal drive wheel R",
+      "passed": true,
+      "actual": [
+        96.0,
+        96.0,
+        26.0
+      ],
+      "requirement": [
+        96.0,
+        96.0,
+        26.0
+      ]
+    },
+    {
+      "id": "legacy_stage2_mast_mismatch_detected",
+      "passed": true,
+      "actual": {
+        "current_envelope_mm": [
+          24.0,
+          24.0,
+          340.0
+        ],
+        "legacy_od_id_length_mm": [
+          12.0,
+          8.0,
+          300.0
+        ]
+      },
+      "requirement": "current Stage-19 mast envelope must not be represented as the legacy Stage-2 12/8 x 300 mm tube"
+    },
+    {
+      "id": "mast_static_yield_screen",
+      "passed": true,
+      "actual": 84.325,
+      "requirement": ">=2.0"
+    },
+    {
+      "id": "mast_tip_deflection_screen",
+      "passed": true,
+      "actual": 0.1539,
+      "requirement": "<=1.0 mm"
+    },
+    {
+      "id": "mast_ideal_material_fatigue_screen",
+      "passed": true,
+      "actual": 29.636,
+      "requirement": ">=2.0"
+    },
+    {
+      "id": "mast_modal_separation_screen",
+      "passed": true,
+      "actual": 9.79,
+      "requirement": ">=3.0 x motor rotation"
+    },
+    {
+      "id": "brace_euler_buckling_screen",
+      "passed": true,
+      "actual": 974.758,
+      "requirement": ">=3.0"
+    },
+    {
+      "id": "rail_static_yield_screen",
+      "passed": true,
+      "actual": 12.098,
+      "requirement": ">=2.0"
+    },
+    {
+      "id": "rail_deflection_screen",
+      "passed": true,
+      "actual": 0.6699,
+      "requirement": "<=1.0 mm"
+    },
+    {
+      "id": "rail_ideal_material_fatigue_screen",
+      "passed": true,
+      "actual": 4.252,
+      "requirement": ">=2.0"
+    },
+    {
+      "id": "crossmember_static_yield_screen",
+      "passed": true,
+      "actual": 34.054,
+      "requirement": ">=2.0"
+    },
+    {
+      "id": "crossmember_deflection_screen",
+      "passed": true,
+      "actual": 0.0237,
+      "requirement": "<=0.5 mm"
+    },
+    {
+      "id": "nominal_latch_clamp_screen",
+      "passed": true,
+      "actual": 3.085,
+      "requirement": ">=2.0"
+    },
+    {
+      "id": "fastener_demand_calculations_finite",
+      "passed": true,
+      "actual": {
+        "m4_plate_bearing_mpa": 1.1404,
+        "m5_nominal_direct_shear_mpa": 0.4244
+      },
+      "requirement": "positive finite demand only; not a fastener strength pass"
+    },
+    {
+      "id": "tolerance_budget_explicit",
+      "passed": true,
+      "actual": 5.5,
+      "requirement": ">0 mm"
+    }
+  ]
+}

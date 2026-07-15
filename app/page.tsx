@@ -90,6 +90,11 @@ const sources = [
     href: "https://www.jst-mfg.com/product/pdf/eng/eXH.pdf",
   },
   {
+    name: "Kaiser 6061-T6/T651 材料数据",
+    tag: "阶段20结构筛查一手资料",
+    href: "https://online.kaiseraluminum.com/depot/PublicProductInformation/Document/1015/Kaiser_Aluminum_6061_Sheet_Coil_and_Plate.pdf",
+  },
+  {
     name: "Printed Droid D-O 总页",
     tag: "公开资料",
     href: "https://www.printed-droid.com/kb/d-o/",
@@ -323,6 +328,7 @@ export default function Home() {
               阶段17用厂商官方资料筛选MDD20A、30 A MIDI保险丝、SW60接触器和P28A 4S2P电池候选：15/15额定检查通过，但独立去能、再生、堵转、BMS和电池包仍未冻结，不能采购放行。
               阶段18已把REC Active BMS 4S、MDD20A、SW60、MIDI保险丝、外置分流器和双通道门板的模块化电源舱写入唯一Blender主工程；重开审计确认39个阶段18对象、150个制造对象和9个工程标记。8个候选包络通过数字间隙门，12项实物冻结门仍未通过，不能把解析几何描述成实物装配完成。
               阶段19进一步发布双许可PWM门合同，并把23个板件/器件参考包络写入同一主工程；关闭重开后的Blender 5.1.2审计确认386个总对象和182个内部对象，制造清单仍严格保持150项。SAFE_A、SAFE_B、双INA226 ALERT_N和3.3 V逻辑电源任一失效都会解析拉低左右PWM；64组真值表全部通过。正式KiCad 10原理图为0项ERC违规；50 × 35 mm两层PCB已布线，0项DRC违规、0个未连接项，34个器件引用、91条规范引脚连接和21个网络完成双重交叉审计。独立原理图/布局同行复核、Gerber/钻孔发布复核和台架波形仍缺失，不能制造或上电。
+              阶段20把结构解析重新绑定到当前制造清单：当前桅杆是Ø24 × 340 mm，旧阶段2的Ø12/Ø8 × 300 mm结论已明确标为不再代表当前模型。2.5 g垂向、1.0 g侧向、斜撑屈曲、桅杆模态和理想基材疲劳筛查通过，但轮—壳接触仍缺5.5 mm径向调节预算，15项材料、连接、公差和实物门未关闭；当前状态为HOLD_JOINT_TOLERANCE_MATERIAL_AND_PHYSICAL_VALIDATION_REQUIRED。
             </p>
             <div className="doc-actions">
               <a className="button" href={asset("/downloads/BB8_BOM.md")} download>
@@ -390,6 +396,12 @@ export default function Home() {
               </a>
               <a className="button" href={asset("/downloads/stage19_blender_reopen_audit.json")} download>
                 下载 Stage 19 Blender 重开证据
+              </a>
+              <a className="button" href={asset("/downloads/BB8_阶段20_结构载荷与公差门.md")} download>
+                下载阶段 20 结构载荷与公差报告
+              </a>
+              <a className="button" href={asset("/downloads/BB8_stage20_structural_load_and_tolerance_gate.md")} download>
+                Download Stage 20 English report
               </a>
               <a className="button" href={asset("/model/BB8_three_view_dimension_sheet.png")} download>
                 下载最新三视图尺寸图
@@ -522,7 +534,7 @@ export default function Home() {
         <div className="section-head">
           <span>04 / PHYSICS GATE</span>
           <h2>先算清楚，<br />再让它落地跑。</h2>
-          <p>阶段14以17组质量账本替代110 mm旧假设；阶段15加入动态稳定性；阶段16将解析门转换为19项真机测量合同。阶段17把目录额定与实测冻结分开，阶段18验证模块布局并写入主模型，阶段19再补齐双许可PWM门的正式原理图、两层布线PCB、ERC/DRC与网表交叉审计；这些都不等于PCB制造、器件采购、实物试装、封壳热或整机运行通过。</p>
+          <p>阶段14以17组质量账本替代110 mm旧假设；阶段15加入动态稳定性；阶段16将解析门转换为19项真机测量合同。阶段17把目录额定与实测冻结分开，阶段18验证模块布局并写入主模型，阶段19补齐PWM门PCB证据，阶段20再把结构载荷绑定到当前制造清单并封锁旧桅杆几何漂移；这些都不等于PCB制造、器件采购、材料/连接冻结、实物试装、封壳热或整机运行通过。</p>
         </div>
         <div className="control-grid">
           <article><span>01</span><h3>8.463 kg 名义质量</h3><p>17组输入范围为6.375–10.628 kg；所有分组在实物称重前均保持NOT_RUN。</p></article>
@@ -533,6 +545,8 @@ export default function Home() {
           <article><span>06</span><h3>断电坡道不驻车</h3><p>当前没有机械驻车制动，断电后不能在坡道保持位置，必须用平地、支架或止轮措施。</p></article>
           <article><span>07</span><h3>19项强制真机门</h3><p>覆盖称重/质心、40 N磁头、电气去能、标定、堵转、热、地面、坡道、再生和维护。</p></article>
           <article><span>08</span><h3>当前0 / 19</h3><p>审计结果为HOLD_PHYSICAL_TESTS_NOT_RUN；没有真实硬件文件时，--require-pass必然失败。</p></article>
+          <article><span>09</span><h3>旧桅杆结论已封锁</h3><p>当前是Ø24 × 340 mm包络；阶段2的Ø12/Ø8 × 300 mm弯曲结论不再代表主模型。</p></article>
+          <article><span>10</span><h3>解析通过，公差仍HOLD</h3><p>2.5 g下纵梁22.814 MPa/0.670 mm，桅杆一阶估算40.47 Hz；但轮—壳径向调节短缺5.5 mm，15项冻结门未关闭。</p></article>
         </div>
         <div className="firmware-downloads">
           <a href={asset("/downloads/BB8_physics_validation.md")} download>下载物理验证报告</a>
@@ -559,6 +573,12 @@ export default function Home() {
           <a href={asset("/downloads/BB8_阶段19_独立双许可PWM硬件门.md")} download>下载阶段19中文报告</a>
           <a href={asset("/downloads/BB8_stage19_independent_dual_permissive_pwm_gate.md")} download>下载阶段19英文报告</a>
           <a href={asset("/downloads/stage19_dual_permissive_gate_results.json")} download>下载阶段19门板结果</a>
+          <a href={asset("/downloads/BB8_阶段20_结构载荷与公差门.md")} download>下载阶段20中文报告</a>
+          <a href={asset("/downloads/BB8_stage20_structural_load_and_tolerance_gate.md")} download>下载阶段20英文报告</a>
+          <a href={asset("/downloads/stage20_structural_load_contract.json")} download>下载阶段20机器合同</a>
+          <a href={asset("/downloads/stage20_structural_load_results.json")} download>下载阶段20 HOLD结果</a>
+          <a href={asset("/downloads/stage20_structural_load_sweep.csv")} download>下载结构载荷扫描</a>
+          <a href={asset("/downloads/verify_stage20_structural_load_path.py")} download>下载阶段20验证器</a>
         </div>
       </section>
 

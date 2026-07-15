@@ -1,0 +1,140 @@
+{
+  "stage": 20,
+  "title_en": "BB-8 current-geometry structural load path, tolerance, modal and fatigue screening",
+  "title_zh": "BB-8 当前几何结构载荷路径、公差、模态与疲劳筛查",
+  "status": "HOLD_JOINT_TOLERANCE_MATERIAL_AND_PHYSICAL_VALIDATION_REQUIRED",
+  "release_class": "ANALYTICAL_SCREENING_ONLY_NOT_FOR_FABRICATION",
+  "evidence_boundary": "The tracked Stage-19 reopen audit and 150-row fabrication manifest define the current digital geometry. Closed-form beam, tube, buckling, modal and nominal fastener-demand calculations screen candidate load paths only. Material certificates, tube bores, welds or joints, fastener grade and preload, shell laminate, dimensional tolerances, physical fit, strain, impact, modal hammer and fatigue tests do not exist.",
+  "geometry_baseline": {
+    "manifest": "engineering/internal_assembly_manifest.csv",
+    "blender_reopen_audit": "engineering/stage19_blender_reopen_audit.json",
+    "master_blend_sha256": "ecd9a8b02db7c0b253c06005aaf16e7a8bf10147f8adec9c8900415e18b38af4",
+    "expected_manifest_rows": 150,
+    "expected_objects": {
+      "Internal magnetic mast": [24.0, 24.0, 340.0],
+      "Internal mast brace L": [12.0, 12.0, 302.05],
+      "Internal mast brace R": [12.0, 12.0, 302.05],
+      "Internal aluminium chassis": [380.0, 18.0, 12.0],
+      "Internal aluminium chassis rail R": [380.0, 18.0, 12.0],
+      "Internal chassis centre crossmember": [8.0, 120.0, 12.0],
+      "Internal motor face mount L": [4.0, 52.0, 52.0],
+      "Internal motor face mount R": [4.0, 52.0, 52.0],
+      "Internal drive wheel L": [96.0, 96.0, 26.0],
+      "Internal drive wheel R": [96.0, 96.0, 26.0]
+    },
+    "dimension_tolerance_mm": 0.05,
+    "legacy_stage2_input": "engineering/physics_inputs.json",
+    "legacy_mast_outer_diameter_mm": 12.0,
+    "legacy_mast_inner_diameter_mm": 8.0,
+    "legacy_mast_length_mm": 300.0,
+    "legacy_disposition": "SUPERSEDED_FOR_CURRENT_MAST_GEOMETRY"
+  },
+  "load_cases": {
+    "gravity_mps2": 9.80665,
+    "nominal_total_mass_kg": 8.463,
+    "nominal_head_mass_kg": 0.65,
+    "vertical_service_shock_g": 2.5,
+    "lateral_service_shock_g": 1.0,
+    "design_speed_mps": 1.0,
+    "design_yaw_rate_radps": 0.6,
+    "motor_peak_torque_nm_each": 1.2,
+    "drive_wheel_radius_m": 0.048,
+    "motor_rated_speed_rpm": 248.0
+  },
+  "candidate_material": {
+    "name": "6061-T6/T651 aluminium candidate",
+    "elastic_modulus_gpa": 68.3,
+    "density_kg_m3": 2700.0,
+    "yield_strength_mpa_typical": 276.0,
+    "reversed_fatigue_endurance_mpa_typical_at_5e8_cycles": 97.0,
+    "source": "https://online.kaiseraluminum.com/depot/PublicProductInformation/Document/1015/Kaiser_Aluminum_6061_Sheet_Coil_and_Plate.pdf",
+    "source_boundary": "Typical sheet/plate values are used for screening. They are not a certificate for purchased tube, bar, plate, weld heat-affected zones or machined parts."
+  },
+  "candidate_sections": {
+    "mast": {
+      "outer_diameter_mm": 24.0,
+      "inner_diameter_mm": 20.0,
+      "length_mm": 340.0,
+      "support_model": "conservative unbraced cantilever with head point mass; braces ignored for mast bending credit",
+      "status": "DESIGN_CANDIDATE_BORE_NOT_PRESENT_IN_BLENDER"
+    },
+    "mast_brace": {
+      "outer_diameter_mm": 12.0,
+      "inner_diameter_mm": 8.0,
+      "length_mm": 302.05,
+      "horizontal_projection_mm": 165.0,
+      "end_condition_factor": 1.0,
+      "status": "DESIGN_CANDIDATE_BORE_AND_JOINTS_NOT_PRESENT_IN_BLENDER"
+    },
+    "chassis_rail": {
+      "length_mm": 380.0,
+      "width_mm": 18.0,
+      "vertical_depth_mm": 12.0,
+      "parallel_rails": 2,
+      "support_model": "simply supported rail with half of total 2.5 g load at midspan",
+      "status": "SOLID_BAR_ENVELOPE_JOINTS_NOT_DEFINED"
+    },
+    "crossmember": {
+      "length_mm": 120.0,
+      "width_mm": 8.0,
+      "vertical_depth_mm": 12.0,
+      "load_share_of_total": 0.25,
+      "support_model": "simply supported bar with one quarter of total 2.5 g load at midspan",
+      "status": "SOLID_BAR_ENVELOPE_JOINTS_NOT_DEFINED"
+    },
+    "motor_face_plate": {
+      "thickness_mm": 4.0,
+      "effective_width_mm": 52.0,
+      "m4_bolt_count": 4,
+      "m4_nominal_diameter_mm": 4.0,
+      "m4_bolt_circle_diameter_mm": 35.0,
+      "status": "PLATE_ENVELOPE_ONLY_FASTENER_GRADE_PRELOAD_AND_EDGE_DISTANCE_UNFROZEN"
+    },
+    "wheel_hub": {
+      "m5_bolt_count": 3,
+      "m5_nominal_diameter_mm": 5.0,
+      "pcd_status": "PROVISIONAL_PENDING_HUB_DRAWING_OR_SAMPLE"
+    },
+    "equator_latches": {
+      "count": 8,
+      "target_clamp_force_n_each": 80.0,
+      "status": "ENVELOPE_ONLY_SUPPLIER_AND_MEASURED_CLAMP_FORCE_UNFROZEN"
+    }
+  },
+  "acceptance_thresholds": {
+    "minimum_static_yield_safety_factor": 2.0,
+    "minimum_ideal_material_fatigue_screen_factor": 2.0,
+    "minimum_brace_euler_buckling_factor": 3.0,
+    "maximum_rail_deflection_mm": 1.0,
+    "maximum_crossmember_deflection_mm": 0.5,
+    "maximum_mast_tip_deflection_mm": 1.0,
+    "minimum_mast_frequency_to_motor_rotation_ratio": 3.0,
+    "minimum_nominal_latch_clamp_to_vertical_shock_ratio": 2.0
+  },
+  "tolerance_budget": {
+    "shell_inner_radius_allowance_mm": 2.0,
+    "wheel_radius_allowance_mm": 1.0,
+    "wheel_centre_location_allowance_mm": 1.5,
+    "wear_and_preload_allowance_mm": 1.0,
+    "provided_radial_adjustment_range_mm": 0.0,
+    "allowance_boundary": "Design allowances only. Replace with measured shell laminate, machined centre distance, purchased wheel tolerance and required preload after the first physical article.",
+    "status": "OPEN_NO_RADIAL_PRELOAD_ADJUSTER_IN_CURRENT_DIGITAL_GEOMETRY"
+  },
+  "freeze_gates": {
+    "mast_tube_outer_inner_diameter_and_temper_frozen": false,
+    "brace_tube_outer_inner_diameter_and_temper_frozen": false,
+    "material_certificates_received": false,
+    "mast_brace_and_chassis_joint_design_frozen": false,
+    "weld_or_bolted_joint_allowables_verified": false,
+    "motor_mount_fastener_grade_preload_and_edge_distance_frozen": false,
+    "wheel_hub_m5_pcd_and_fastener_grade_frozen": false,
+    "shell_laminate_coupon_and_local_contact_strength_tested": false,
+    "wheel_radial_preload_adjustment_range_at_least_tolerance_budget": false,
+    "latch_supplier_and_measured_clamp_force_frozen": false,
+    "strain_gauge_service_shock_test_passed": false,
+    "instrumented_drop_or_impact_test_passed": false,
+    "modal_hammer_test_passed": false,
+    "fatigue_or_endurance_test_passed": false,
+    "nineteen_item_physical_commissioning_passed": false
+  }
+}
