@@ -39,7 +39,7 @@
     "bom_csv": "ad0314f75303d45735febe5ccbfd271ce29846c00c266fdf58deed59133ec68e",
     "schematic_pdf": "1fe2eb0d68085ea4040aa20f2dd1b43d26e66a642b938c5c6678085df1c21847"
   },
-  "evidence_boundary": "Deterministic KiCad 10 schematic, zero-violation ERC, canonical-netlist cross-audit, BOM-reference audit and PDF export only. No independent peer review, PCB, DRC, Gerber, fabrication, power-up, bench waveform or physical commissioning release.",
-  "manufacturing_release": "NOT_RELEASED_NO_PCB_OR_GERBER",
+  "evidence_boundary": "Deterministic KiCad 10 schematic, zero-violation ERC, canonical-netlist cross-audit, BOM-reference audit and PDF export only. The separate routed-PCB and zero-violation/zero-unconnected DRC evidence is recorded in engineering/stage19_kicad_pcb_verification.json. No independent schematic or layout peer review, Gerber/drill release review, fabricated board, power-up, bench waveform or physical commissioning release.",
+  "manufacturing_release": "NOT_RELEASED_PEER_REVIEW_GERBER_AND_PHYSICAL_VALIDATION_REQUIRED",
   "physical_test_status": "NOT_RUN"
 }

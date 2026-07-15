@@ -193,7 +193,11 @@ def evaluate(data: dict[str, Any]) -> dict[str, Any]:
         "unresolved_freeze_gates": unresolved,
         "physical_test_status": "NOT_RUN",
         "safety_certification": "NONE",
-        "manufacturing_release": "NOT_RELEASED_NO_PCB_OR_GERBER",
+        "manufacturing_release": (
+            "NOT_RELEASED_PEER_REVIEW_GERBER_AND_PHYSICAL_VALIDATION_REQUIRED"
+            if gates["pcb_routed_and_drc_passed"]
+            else "NOT_RELEASED_NO_PCB_OR_GERBER"
+        ),
         "purchase_authorisation": "NOT_GRANTED_BY_THIS_ANALYSIS",
     }
 

@@ -1,10 +1,10 @@
-# BB-8 阶段19：独立双许可 PWM 硬件门原理图/ERC门
+# BB-8 阶段19：独立双许可 PWM 硬件门原理图与布线PCB/DRC门
 
-> 结论：**64组布尔组合、输入电流、逻辑电平、功耗降额和50 × 35 × 15 mm机械包络的解析检查全部通过；确定性生成的KiCad 10正式原理图现为0项ERC违规，34个器件引用、91条规范引脚连接和21个网络也完成交叉审计。但独立同行复核、PCB/DRC、Gerber、实装板和示波器证据仍缺失，整体状态必须保持 `HOLD_PCB_CAD_BENCH_AND_SAFETY_VALIDATION_REQUIRED`。**
+> 结论：**64组布尔组合、输入电流、逻辑电平、功耗降额和50 × 35 × 15 mm机械包络的解析检查全部通过；确定性生成的KiCad 10正式原理图为0项ERC违规，两层50 × 35 mm PCB已完成布线，并取得0项DRC违规、0个未连接项。34个器件引用、91条规范引脚连接和21个网络完成原理图/PCB双重交叉审计。但独立原理图与布局同行复核、Gerber/钻孔发布复核、实装板和示波器证据仍缺失，整体状态必须保持 `HOLD_PCB_CAD_BENCH_AND_SAFETY_VALIDATION_REQUIRED`。**
 
 ## 为什么必须新增这一阶段
 
-阶段17确认MDD20A只有PWM+DIR，没有独立EN，而且PWM低的官方行为是制动，不是电气隔离。阶段18只在电源舱里保留了50 × 35 × 15 mm门板空间，没有发布电路。阶段19把这个空白收敛为可机器审计的正式原理图/ERC参考设计，同时保留安全继电器和常开SW60接触器作为真正的母线去能路径。
+阶段17确认MDD20A只有PWM+DIR，没有独立EN，而且PWM低的官方行为是制动，不是电气隔离。阶段18只在电源舱里保留了50 × 35 × 15 mm门板空间。阶段19把这个空白收敛为可机器审计的正式原理图和两层布线PCB/DRC参考设计，同时保留安全继电器和常开SW60接触器作为真正的母线去能路径。
 
 ## 三条独立许可链
 
@@ -35,11 +35,11 @@
 
 ## 机械与制造边界
 
-- PCB预设为50 × 35 × 1.6 mm、四个Ø3.2 mm孔；JST XH最高9.8 mm，PCB加器件高11.4 mm。再计入3.0 mm绝缘安装柱后总安装高14.4 mm，阶段18的15 mm空间实际只余0.6 mm，必须用实物复核。
+- PCB为50 × 35 × 1.6 mm两层板，四个Ø3.2 mm非金属化孔严格位于距板原点(3,3)、(47,3)、(3,32)、(47,32) mm；JST XH最高9.8 mm，PCB加器件高11.4 mm。再计入3.0 mm绝缘安装柱后总安装高14.4 mm，阶段18的15 mm空间实际只余0.6 mm，必须用实物复核。
 - OpenSCAD源文件只表达板框、孔和器件包络，不含焊盘、铜箔、阻焊、丝印、爬电距离或线束弯曲半径。本机OpenSCAD 2021.01无头导出未在限定时间内完成，因此本阶段不声称已有STL。
 - Blender 中的23个板件/器件包络标为 `non_fabrication_reference`：它们可以进入带属性的GLB和内部三视图用于设计复核，但必须从150件制造清单及内部机构STL排除，不能伪装成可打印零件。
 - 这23个参考包络已写入唯一主工程并完成关闭后重开审计。Blender 5.1.2确认386个总对象、182个内部对象、150个制造对象、9个工程标记和23个阶段19参考对象；主文件SHA-256为 `ecd9a8b02db7c0b253c06005aaf16e7a8bf10147f8adec9c8900415e18b38af4`。150行制造清单、内部机构STL、动画GLB和内部正/侧/俯三视图均已重导出。
-- 正式`.kicad_sch`已可确定性生成，KiCad 10.0.4报告0项ERC违规；KiCad XML导出与34个器件引用、91条规范引脚连接和21个网络全部一致。但当前仍没有`.kicad_pcb`、DRC、Gerber、钻孔文件或独立原理图同行复核；任何PCB厂家下单都不被本阶段授权。
+- 正式`.kicad_sch`与`.kicad_pcb`均可确定性生成。KiCad 10.0.4报告0项ERC违规、0项PCB DRC违规和0个未连接项；跟踪板与临时重生成板的UUID无关结构哈希一致，34个器件引用、91条规范引脚连接、21个网络、1614段走线、54个过孔和两块3V3/GND铜区全部进入机器核验。当前仍没有独立原理图/布局同行复核、Gerber或钻孔发布包；任何PCB厂家下单都不被本阶段授权。
 
 ## 已发布证据
 
@@ -56,16 +56,23 @@
 - [KiCad原理图验证结果](../engineering/stage19_kicad_verification.json)
 - [KiCad原理图PDF](../output/pdf/BB8_stage19_dual_permissive_gate_schematic.pdf)
 - [KiCad验证器](../tools/verify_stage19_kicad.py)
+- [KiCad布线PCB](../hardware/stage19_dual_permissive_gate/stage19_dual_permissive_gate.kicad_pcb)
+- [PCB DRC 0违规报告](../engineering/stage19_kicad_pcb_drc.json)
+- [PCB结构与重生成验证结果](../engineering/stage19_kicad_pcb_verification.json)
+- [PCB生成器](../tools/generate_stage19_kicad_pcb.py)
+- [PCB验证器](../tools/verify_stage19_kicad_pcb.py)
+- [PCB预览导出器](../tools/export_stage19_kicad_pcb.py)
+- [PCB等轴测复核图](../output/pcb/BB8_stage19_gate_pcb_isometric.png)
 - [硬件包说明](../hardware/stage19_dual_permissive_gate/README.md)
 
 ## 下一道不可跳过的门
 
 1. 对已捕获的KiCad原理图及安全假设做独立同行复核；
-2. 布板后检查隔离区、安装孔、丝印极性、测试点、线束出口并通过DRC；
-3. 人工检查Gerber/钻孔后才允许制造；
+2. 独立人工复核已布线PCB的隔离区、安装孔、丝印极性、测试点和线束出口；自动DRC通过不能替代这一门；
+3. 明确生成并人工检查Gerber/钻孔后才允许制造；当前仓库未发布这两类制造文件；
 4. 分别在12.0 V与16.8 V测A/B输入电流、输出高低电平和温升；
 5. 对A断开、B断开、ALERT拉低、3.3 V掉电、MCU PWM卡高逐项抓示波器波形；
 6. 证明两路PWM均在20 ms内拉低，再与安全继电器和接触器组合完成E02；
 7. 完成20 kHz、温度、振动、连接器保持力与EMC试验。
 
-实物状态：`NOT_RUN`；安全认证：`NONE`；制造发布：`NOT_RELEASED_NO_PCB_OR_GERBER`。
+实物状态：`NOT_RUN`；安全认证：`NONE`；制造发布：`NOT_RELEASED_PEER_REVIEW_GERBER_AND_PHYSICAL_VALIDATION_REQUIRED`。

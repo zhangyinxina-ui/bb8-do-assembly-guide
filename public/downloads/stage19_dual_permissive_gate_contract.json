@@ -1,10 +1,10 @@
 {
   "stage": 19,
-  "title_en": "BB-8 independent dual-permissive PWM gate schematic/ERC reference design",
-  "title_zh": "BB-8 独立双许可 PWM 硬件门原理图/ERC参考设计",
+  "title_en": "BB-8 independent dual-permissive PWM gate schematic and routed-PCB/DRC reference design",
+  "title_zh": "BB-8 独立双许可 PWM 硬件门原理图与布线PCB/DRC参考设计",
   "status": "HOLD_PCB_CAD_BENCH_AND_SAFETY_VALIDATION_REQUIRED",
-  "release_class": "SCHEMATIC_ERC_REFERENCE_DESIGN_NOT_FOR_FABRICATION",
-  "evidence_boundary": "official component data, exhaustive Boolean and room-temperature electrical calculations, deterministic KiCad 10 schematic capture, zero-violation ERC and canonical-netlist cross-audit; no independent schematic peer review, routed PCB, DRC, Gerber, assembled board, oscilloscope timing, EMC, thermal or physical commissioning evidence",
+  "release_class": "ROUTED_PCB_DRC_REFERENCE_DESIGN_NOT_FOR_FABRICATION",
+  "evidence_boundary": "official component data, exhaustive Boolean and room-temperature electrical calculations, deterministic KiCad 10 schematic and two-layer 50 x 35 mm routed PCB, zero-violation ERC, canonical-netlist cross-audit, UUID-independent PCB regeneration and zero-violation/zero-unconnected DRC; no independent schematic or layout peer review, Gerber/drill release review, fabricated or assembled board, continuity, power-up, oscilloscope timing, EMC, thermal or physical commissioning evidence",
   "system_context": {
     "motor_driver": "Cytron MDD20A",
     "required_control_mode": "SIGN_MAGNITUDE_PWM",
@@ -71,7 +71,7 @@
     "connector_mounting_height_mm": 9.8,
     "connector_current_rating_a_with_awg22": 3.0,
     "connector_voltage_rating_v": 250.0,
-    "mechanical_model_fidelity": "component envelopes only; footprints, courtyard, creepage and harness bend radii remain for KiCad and purchased-sample validation"
+    "mechanical_model_fidelity": "real KiCad footprints, courtyards, two-layer routed copper, exact board outline and mounting holes; harness bend radii, purchased-part body tolerances and physical fit remain for sample validation"
   },
   "connectors": [
     {"reference": "J1", "part": "B2B-XH-A", "pins": ["3V3", "GND"], "purpose": "logic power"},
@@ -100,7 +100,7 @@
     "kicad_schematic_peer_reviewed": false,
     "erc_passed": true,
     "kicad_netlist_cross_audited": true,
-    "pcb_routed_and_drc_passed": false,
+    "pcb_routed_and_drc_passed": true,
     "gerber_and_drill_release_reviewed": false,
     "assembled_board_visual_and_continuity_passed": false,
     "safe_a_independent_cutoff_bench_passed": false,

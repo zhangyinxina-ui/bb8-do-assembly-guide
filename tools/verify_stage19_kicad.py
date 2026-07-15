@@ -289,11 +289,15 @@ def verify(kicad_cli: Path) -> dict[str, Any]:
             },
             "evidence_boundary": (
                 "Deterministic KiCad 10 schematic, zero-violation ERC, canonical-netlist "
-                "cross-audit, BOM-reference audit and PDF export only. No independent peer "
-                "review, PCB, DRC, Gerber, fabrication, power-up, bench waveform or physical "
-                "commissioning release."
+                "cross-audit, BOM-reference audit and PDF export only. The separate routed-PCB "
+                "and zero-violation/zero-unconnected DRC evidence is recorded in "
+                "engineering/stage19_kicad_pcb_verification.json. No independent schematic or "
+                "layout peer review, Gerber/drill release review, fabricated board, power-up, "
+                "bench waveform or physical commissioning release."
             ),
-            "manufacturing_release": "NOT_RELEASED_NO_PCB_OR_GERBER",
+            "manufacturing_release": (
+                "NOT_RELEASED_PEER_REVIEW_GERBER_AND_PHYSICAL_VALIDATION_REQUIRED"
+            ),
             "physical_test_status": "NOT_RUN",
         }
 

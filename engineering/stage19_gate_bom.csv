@@ -1,5 +1,5 @@
 reference,quantity,category,manufacturer,part_number,value_or_package,release_status,official_source,note
-PCB1,1,pcb,TBD,CUSTOM_STAGE19_GATE,50x35x1.6 mm 2-layer FR-4,SCHEMATIC_ERC_ONLY_NOT_RELEASED_NO_PCB_OR_GERBER,,Four 3.2 mm mounting holes; fabrication prohibited until peer review/PCB DRC/Gerber review
+PCB1,1,pcb,TBD,CUSTOM_STAGE19_GATE,50x35x1.6 mm 2-layer FR-4,ROUTED_DRC_REFERENCE_ONLY_NOT_RELEASED_FOR_FABRICATION,,Four 3.2 mm NPTH mounting holes at the contracted 3/47 x 3/32 mm centres; fabrication prohibited until independent peer review and intentional Gerber/drill release review
 U1 U2,2,optocoupler,Vishay,VO617A-4,DIP-4,REFERENCE_SELECTED,https://www.vishay.com/docs/83430/vo617a.pdf,CTR bin 160-320% only specified at IF=5 mA VCE=5 V and 25 C
 U3 U4 U5,3,logic,Texas Instruments,SN74LVC2G08DCU,VSSOP-8,REFERENCE_SELECTED,https://www.ti.com/lit/ds/symlink/sn74lvc2g08.pdf,One dual gate package per permissive stage
 R1 R2,2,resistor,TBD,TBD,2.00 kOhm 1% 0.5 W,VALUE_FROZEN_PART_TBD,,Safety-loop LED current limit

@@ -1,0 +1,166 @@
+{
+  "stage": 19,
+  "overall": "HOLD_PCB_CAD_BENCH_AND_SAFETY_VALIDATION_REQUIRED",
+  "pcb_verification": "PASS_ROUTED_PCB_DRC_REFERENCE_DESIGN_ONLY",
+  "kicad_cli": "kicad-cli",
+  "kicad_version": "10.0.4",
+  "checks": {
+    "kicad_major_version_10": true,
+    "tracked_board_present": true,
+    "tracked_project_present": true,
+    "generator_reproduces_uuid_independent_structure": true,
+    "tracked_drc_exit_code_zero": true,
+    "tracked_drc_zero_violations": true,
+    "tracked_drc_zero_unconnected_items": true,
+    "generated_drc_exit_code_zero": true,
+    "generated_drc_zero_violations": true,
+    "generated_drc_zero_unconnected_items": true,
+    "two_copper_layers": true,
+    "board_outline_is_four_segments": true,
+    "board_dimensions_are_50_by_35_mm": true,
+    "footprint_reference_set_matches_34_components_plus_4_holes": true,
+    "canonical_91_pin_connections_match_board": true,
+    "named_net_set_matches_canonical_21_nets": true,
+    "power_planes_are_fcu_3v3_and_bcu_gnd": true,
+    "four_m3_npth_holes_match_contract": true
+  },
+  "counts": {
+    "footprints": 38,
+    "component_references": 34,
+    "mounting_holes": 4,
+    "canonical_pin_connections": 91,
+    "named_nets": 21,
+    "track_segments": 1614,
+    "vias": 54,
+    "zones": 2,
+    "tracked_drc_violations": 0,
+    "tracked_unconnected_items": 0,
+    "generated_drc_violations": 0,
+    "generated_unconnected_items": 0
+  },
+  "board": {
+    "width_mm": 50.0,
+    "height_mm": 35.0,
+    "copper_layers": 2,
+    "mounting_holes": {
+      "H1": {
+        "present": true,
+        "centre_from_board_origin_mm": [
+          3.0,
+          3.0
+        ],
+        "drill_mm": 3.2,
+        "non_plated": true
+      },
+      "H2": {
+        "present": true,
+        "centre_from_board_origin_mm": [
+          47.0,
+          3.0
+        ],
+        "drill_mm": 3.2,
+        "non_plated": true
+      },
+      "H3": {
+        "present": true,
+        "centre_from_board_origin_mm": [
+          3.0,
+          32.0
+        ],
+        "drill_mm": 3.2,
+        "non_plated": true
+      },
+      "H4": {
+        "present": true,
+        "centre_from_board_origin_mm": [
+          47.0,
+          32.0
+        ],
+        "drill_mm": 3.2,
+        "non_plated": true
+      }
+    },
+    "zones": [
+      {
+        "net": "GND",
+        "layer": "B.Cu",
+        "corners_mm": [
+          [
+            100.6,
+            100.6
+          ],
+          [
+            149.4,
+            100.6
+          ],
+          [
+            149.4,
+            134.4
+          ],
+          [
+            100.6,
+            134.4
+          ]
+        ]
+      },
+      {
+        "net": "3V3",
+        "layer": "F.Cu",
+        "corners_mm": [
+          [
+            100.6,
+            100.6
+          ],
+          [
+            149.4,
+            100.6
+          ],
+          [
+            149.4,
+            134.4
+          ],
+          [
+            100.6,
+            134.4
+          ]
+        ]
+      }
+    ],
+    "per_net_track_length_mm": {
+      "3V3": 140.229,
+      "ALERT_N": 77.361,
+      "DIR_L": 48.005,
+      "DIR_R": 45.689,
+      "GND": 166.034,
+      "PWM_L_A": 12.061,
+      "PWM_L_AB": 14.044,
+      "PWM_L_IN": 19.572,
+      "PWM_L_OUT": 34.765,
+      "PWM_R_A": 44.513,
+      "PWM_R_AB": 37.039,
+      "PWM_R_IN": 30.508,
+      "PWM_R_OUT": 39.896,
+      "SAFE_A_LED_A": 17.18,
+      "SAFE_A_OK": 37.607,
+      "SAFE_A_PLUS": 9.48,
+      "SAFE_A_RETURN": 12.161,
+      "SAFE_B_LED_A": 13.409,
+      "SAFE_B_OK": 42.284,
+      "SAFE_B_PLUS": 5.859,
+      "SAFE_B_RETURN": 14.904
+    }
+  },
+  "artifact_sha256": {
+    "tracked_board": "fdbf8a3f24200de735f72a27750cf3b0b5ea7f4d8475021136ffedca3c041566",
+    "tracked_structure": "9728b7f0e38301e24cfced7b541518849ef70db26d6cc7f68c337015552954ec",
+    "generated_structure": "9728b7f0e38301e24cfced7b541518849ef70db26d6cc7f68c337015552954ec"
+  },
+  "tool_results": {
+    "generator_exit_code": 0,
+    "tracked_drc_exit_code": 0,
+    "generated_drc_exit_code": 0
+  },
+  "evidence_boundary": "Deterministic KiCad 10 two-layer routed PCB, UUID-independent structural regeneration, canonical-netlist cross-audit, exact 50 x 35 mm mechanical interface and zero-violation/zero-unconnected DRC only. No independent schematic or layout peer review, Gerber/drill release review, fabricated board, continuity, power-up, oscilloscope timing, EMC, thermal or physical commissioning evidence.",
+  "manufacturing_release": "NOT_RELEASED_PEER_REVIEW_GERBER_AND_PHYSICAL_VALIDATION_REQUIRED",
+  "physical_test_status": "NOT_RUN"
+}

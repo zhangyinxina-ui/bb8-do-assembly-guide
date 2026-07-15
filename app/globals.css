@@ -569,6 +569,11 @@ footer b {
   height: 520px;
   object-fit: cover;
 }
+.mechanism.pcb-evidence img {
+  object-fit: contain;
+  padding: 18px;
+  background: #c9cad7;
+}
 .mechanism > div {
   padding: 55px;
   align-self: center;

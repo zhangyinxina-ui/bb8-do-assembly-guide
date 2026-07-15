@@ -322,7 +322,7 @@ export default function Home() {
               阶段16不伪造新的几何完成度，而是把19项真机调试门、真实文件哈希和测量限值接到同一工程证据链；当前为0/19通过。
               阶段17用厂商官方资料筛选MDD20A、30 A MIDI保险丝、SW60接触器和P28A 4S2P电池候选：15/15额定检查通过，但独立去能、再生、堵转、BMS和电池包仍未冻结，不能采购放行。
               阶段18已把REC Active BMS 4S、MDD20A、SW60、MIDI保险丝、外置分流器和双通道门板的模块化电源舱写入唯一Blender主工程；重开审计确认39个阶段18对象、150个制造对象和9个工程标记。8个候选包络通过数字间隙门，12项实物冻结门仍未通过，不能把解析几何描述成实物装配完成。
-              阶段19进一步发布双许可PWM门合同，并把23个板件/器件参考包络写入同一主工程；关闭重开后的Blender 5.1.2审计确认386个总对象和182个内部对象，制造清单仍严格保持150项。SAFE_A、SAFE_B、双INA226 ALERT_N和3.3 V逻辑电源任一失效都会解析拉低左右PWM；64组真值表全部通过。正式KiCad 10原理图现为0项ERC违规，34个器件引用、91条规范引脚连接和21个网络交叉审计通过；但尚无独立同行复核、PCB/DRC、Gerber或台架波形，仍不能制造或上电。
+              阶段19进一步发布双许可PWM门合同，并把23个板件/器件参考包络写入同一主工程；关闭重开后的Blender 5.1.2审计确认386个总对象和182个内部对象，制造清单仍严格保持150项。SAFE_A、SAFE_B、双INA226 ALERT_N和3.3 V逻辑电源任一失效都会解析拉低左右PWM；64组真值表全部通过。正式KiCad 10原理图为0项ERC违规；50 × 35 mm两层PCB已布线，0项DRC违规、0个未连接项，34个器件引用、91条规范引脚连接和21个网络完成双重交叉审计。独立原理图/布局同行复核、Gerber/钻孔发布复核和台架波形仍缺失，不能制造或上电。
             </p>
             <div className="doc-actions">
               <a className="button" href={asset("/downloads/BB8_BOM.md")} download>
@@ -405,6 +405,28 @@ export default function Home() {
             </div>
           </div>
         </div>
+        <div className="mechanism pcb-evidence">
+          <img
+            src={asset("/images/BB8_stage19_gate_pcb_isometric.png")}
+            alt="BB-8 阶段19双许可PWM门50乘35毫米两层PCB等轴测复核图"
+          />
+          <div>
+            <span className="kicker">STAGE 19 / ROUTED PCB DRC EVIDENCE</span>
+            <h3>布线已经完成，<br />制造仍未放行。</h3>
+            <p>
+              KiCad 10.0.4对跟踪板和临时重生成板均报告0项DRC违规、0个未连接项。
+              结构核验覆盖38个封装、91条规范引脚连接、21个命名网络、1614段走线、54个过孔、
+              F.Cu 3V3与B.Cu GND铜区，以及四个合同坐标上的Ø3.2 mm非金属化安装孔。
+              这些只证明数字CAD的一致性；没有独立同行复核、Gerber/钻孔发布、实板导通、上电或20 ms示波器证据。
+            </p>
+            <div className="doc-actions">
+              <a className="button" href={asset("/downloads/stage19_dual_permissive_gate.kicad_pcb")} download>下载KiCad PCB</a>
+              <a className="button" href={asset("/downloads/stage19_kicad_pcb_drc.json")} download>下载DRC 0违规报告</a>
+              <a className="button" href={asset("/downloads/stage19_kicad_pcb_verification.json")} download>下载PCB结构核验</a>
+              <a className="button" href={asset("/images/BB8_stage19_gate_pcb_top.png")} download>下载顶层复核图</a>
+            </div>
+          </div>
+        </div>
         <div className="motion-lab">
           <div>
             <span className="kicker">KINEMATIC PROOF / 120 FRAMES</span>
@@ -427,7 +449,7 @@ export default function Home() {
         <div className="section-head">
           <span>03 / MOTION CONTROLLER</span>
           <h2>不只会动，<br />还必须会停。</h2>
-          <p>控制核心、双正交编码器、MPU6050 和双 INA226 适配均已通过 ESP32-S3 编译。阶段17确认MDD20A额定裕量足够，但其PWM低是制动而非隔离；阶段18把安全链写入可拆卸电源舱几何。阶段19现已冻结 `PWM_OUT = POWER ∧ PWM_IN ∧ SAFE_A ∧ SAFE_B ∧ ALERT_N` 的合同、64行真值表和正式KiCad 10原理图；ERC为0项违规，规范CSV与KiCad XML网表交叉审计通过。真正撤销驱动母线仍由安全继电器和常开接触器完成，独立同行复核、PCB/DRC、Gerber、实物装配、上电与真机验证仍待完成。</p>
+          <p>控制核心、双正交编码器、MPU6050 和双 INA226 适配均已通过 ESP32-S3 编译。阶段17确认MDD20A额定裕量足够，但其PWM低是制动而非隔离；阶段18把安全链写入可拆卸电源舱几何。阶段19现已冻结 `PWM_OUT = POWER ∧ PWM_IN ∧ SAFE_A ∧ SAFE_B ∧ ALERT_N` 的合同、64行真值表、正式KiCad 10原理图和两层布线PCB；ERC与DRC均为0项违规，PCB为0个未连接项，规范CSV与KiCad原理图/PCB双重交叉审计通过。真正撤销驱动母线仍由安全继电器和常开接触器完成，独立同行复核、Gerber/钻孔发布、实物装配、上电与真机验证仍待完成。</p>
         </div>
         <div className="control-grid">
           <article><span>01</span><h3>200 Hz 闭环速度</h3><p>左右编码器轮速进入 PI，IMU 偏航率修正差动目标；直线巡航 RMS 误差 0.00772 m/s。</p></article>
@@ -439,7 +461,7 @@ export default function Home() {
           <article><span>07</span><h3>真机证据不允许空PASS</h3><p>19项记录必须同时有实测数值、真实相对路径和匹配SHA-256；合成数据默认被审计器拒绝。</p></article>
           <article><span>08</span><h3>15 / 15额定筛选通过，仍HOLD</h3><p>MDD20A、MIDI、SW60和P28A的目录裕量通过；独立去能、再生、堵转、I²t和4S BMS未冻结。</p></article>
           <article><span>09</span><h3>8件布局通过，12门未冻结</h3><p>解析余量为球壳27.643 mm、候选件7.500 mm、既有机构6.000 mm；几何已写入并通过重开审计，实物接口结果仍为HOLD_PHYSICAL_FIT_AND_INTERFACE_VALIDATION_REQUIRED。</p></article>
-          <article><span>10</span><h3>ERC 0项违规，仍HOLD</h3><p>64/64逻辑组合通过；34个器件引用、91条规范引脚连接、21个网络交叉审计通过。没有同行复核、PCB/DRC、Gerber和台架波形，状态仍为HOLD_PCB_CAD_BENCH_AND_SAFETY_VALIDATION_REQUIRED。</p></article>
+          <article><span>10</span><h3>ERC/DRC均为0，仍HOLD</h3><p>64/64逻辑组合通过；两层PCB为0项违规、0个未连接项。没有独立同行复核、Gerber/钻孔发布、实板和台架波形，状态仍为HOLD_PCB_CAD_BENCH_AND_SAFETY_VALIDATION_REQUIRED。</p></article>
         </div>
         <div className="firmware-downloads">
           <a href={asset("/downloads/BB8_controller_core.zip")} download>下载 C++ 控制核心</a>
@@ -480,13 +502,19 @@ export default function Home() {
           <a href={asset("/downloads/stage19_gate_netlist.csv")} download>下载引脚网表</a>
           <a href={asset("/downloads/verify_dual_permissive_gate.py")} download>下载阶段19验证器</a>
           <a href={asset("/downloads/stage19_gate_board_envelope.scad")} download>下载门板OpenSCAD包络</a>
-          <a href={asset("/downloads/stage19_kicad_project.zip")} download>下载完整KiCad原理图工程</a>
+          <a href={asset("/downloads/stage19_kicad_project.zip")} download>下载完整KiCad参考工程</a>
           <a href={asset("/downloads/BB8_stage19_dual_permissive_gate_schematic.pdf")} download>下载原理图PDF</a>
           <a href={asset("/downloads/stage19_kicad_erc.json")} download>下载ERC 0违规报告</a>
           <a href={asset("/downloads/stage19_kicad_verification.json")} download>下载KiCad交叉审计结果</a>
           <a href={asset("/downloads/stage19_kicad_netlist.xml")} download>下载KiCad XML网表</a>
           <a href={asset("/downloads/stage19_kicad_bom.csv")} download>下载KiCad BOM</a>
           <a href={asset("/downloads/verify_stage19_kicad.py")} download>下载KiCad验证器</a>
+          <a href={asset("/downloads/stage19_dual_permissive_gate.kicad_pcb")} download>下载两层布线PCB</a>
+          <a href={asset("/downloads/stage19_kicad_pcb_drc.json")} download>下载PCB DRC报告</a>
+          <a href={asset("/downloads/stage19_kicad_pcb_verification.json")} download>下载PCB结构核验</a>
+          <a href={asset("/downloads/generate_stage19_kicad_pcb.py")} download>下载PCB生成器</a>
+          <a href={asset("/downloads/verify_stage19_kicad_pcb.py")} download>下载PCB验证器</a>
+          <a href={asset("/downloads/export_stage19_kicad_pcb.py")} download>下载PCB复核图导出器</a>
         </div>
       </section>
 
@@ -494,7 +522,7 @@ export default function Home() {
         <div className="section-head">
           <span>04 / PHYSICS GATE</span>
           <h2>先算清楚，<br />再让它落地跑。</h2>
-          <p>阶段14以17组质量账本替代110 mm旧假设；阶段15加入动态稳定性；阶段16将解析门转换为19项真机测量合同。阶段17把目录额定与实测冻结分开，阶段18验证模块布局并写入主模型，阶段19再补齐双许可PWM门的正式原理图、ERC与网表交叉审计；这些都不等于PCB制造、器件采购、实物试装、封壳热或整机运行通过。</p>
+          <p>阶段14以17组质量账本替代110 mm旧假设；阶段15加入动态稳定性；阶段16将解析门转换为19项真机测量合同。阶段17把目录额定与实测冻结分开，阶段18验证模块布局并写入主模型，阶段19再补齐双许可PWM门的正式原理图、两层布线PCB、ERC/DRC与网表交叉审计；这些都不等于PCB制造、器件采购、实物试装、封壳热或整机运行通过。</p>
         </div>
         <div className="control-grid">
           <article><span>01</span><h3>8.463 kg 名义质量</h3><p>17组输入范围为6.375–10.628 kg；所有分组在实物称重前均保持NOT_RUN。</p></article>

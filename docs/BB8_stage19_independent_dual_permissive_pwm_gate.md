@@ -1,10 +1,10 @@
-# BB-8 Stage 19: Independent dual-permissive PWM gate schematic/ERC gate
+# BB-8 Stage 19: Independent dual-permissive PWM gate schematic and routed-PCB/DRC gate
 
-> Conclusion: **all 64 Boolean combinations, input-current, logic-level, resistor-derating and 50 x 35 x 15 mm envelope checks pass. A deterministic KiCad 10 schematic now has 0 ERC violations, and its 34 references, 91 canonical pin connections and 21 nets cross-audit cleanly. Independent peer review, PCB/DRC, Gerber, assembled-board and oscilloscope evidence are still absent, so the result remains `HOLD_PCB_CAD_BENCH_AND_SAFETY_VALIDATION_REQUIRED`.**
+> Conclusion: **all 64 Boolean combinations, input-current, logic-level, resistor-derating and 50 x 35 x 15 mm envelope checks pass. The deterministic KiCad 10 schematic has 0 ERC violations; a routed 50 x 35 mm two-layer PCB now has 0 DRC violations and 0 unconnected items. Its 34 electrical references, 91 canonical pin connections and 21 nets cross-audit through both schematic and PCB evidence. Independent schematic/layout peer review, Gerber/drill release review, assembled-board and oscilloscope evidence remain absent, so the result stays `HOLD_PCB_CAD_BENCH_AND_SAFETY_VALIDATION_REQUIRED`.**
 
 ## Purpose
 
-Stage 17 established that MDD20A exposes PWM+DIR but no independent enable, and that PWM low is brake rather than electrical isolation. Stage 18 reserved a 50 x 35 x 15 mm gate-board volume without releasing a circuit. Stage 19 turns that placeholder into a machine-auditable schematic/ERC reference design while retaining the safety relay and normally-open SW60-class contactor as the actual motor-bus isolation path.
+Stage 17 established that MDD20A exposes PWM+DIR but no independent enable, and that PWM low is brake rather than electrical isolation. Stage 18 reserved a 50 x 35 x 15 mm gate-board volume. Stage 19 turns that placeholder into a machine-auditable schematic plus routed two-layer PCB/DRC reference design while retaining the safety relay and normally-open SW60-class contactor as the actual motor-bus isolation path.
 
 ## Three-permissive chain
 
@@ -35,11 +35,11 @@ The three-package LVC chain has a 15.9 ns digital maximum. The optocoupler switc
 
 ## Mechanical and manufacturing boundary
 
-- Proposed PCB: 50 x 35 x 1.6 mm, four Ø3.2 mm holes. The PCB plus 9.8 mm JST XH envelope is 11.4 mm high. Including a 3.0 mm insulated mounting stack makes the installed height 14.4 mm, leaving only 0.6 mm inside the Stage-18 keepout; a purchased-sample fit check is mandatory.
+- PCB: 50 x 35 x 1.6 mm, two copper layers, with four Ø3.2 mm NPTH holes at (3,3), (47,3), (3,32) and (47,32) mm from the board origin. The PCB plus 9.8 mm JST XH envelope is 11.4 mm high. Including a 3.0 mm insulated mounting stack makes the installed height 14.4 mm, leaving only 0.6 mm inside the Stage-18 keepout; a purchased-sample fit check is mandatory.
 - The OpenSCAD source contains only board, holes and component envelopes. It has no pads, copper, solder mask, silkscreen, creepage or cable-bend proof. The local OpenSCAD 2021.01 headless export did not complete within the bounded run, so Stage 19 does not claim an STL.
 - The 23 Blender board/component envelopes are tagged `non_fabrication_reference`. They may appear in the GLB (with custom properties) and internal orthographic renders for design review, but they are excluded from the 150-part fabrication manifest and internal-mechanism STL.
 - Those 23 references are now written into the sole master and have passed a close-and-reopen audit. Blender 5.1.2 reports 386 total objects, 182 internal objects, 150 fabrication objects, nine engineering markers and 23 Stage-19 reference objects. The master SHA-256 is `ecd9a8b02db7c0b253c06005aaf16e7a8bf10147f8adec9c8900415e18b38af4`; the 150-row manifest, internal STL, animated GLB and front/side/top internal views were re-exported.
-- The formal `.kicad_sch` is generated deterministically and KiCad 10.0.4 reports 0 ERC violations. The KiCad XML export matches all 91 canonical reference/pin/net rows across 34 references and 21 nets. There is still no `.kicad_pcb`, DRC, Gerber or drill release, and no independent schematic peer review. This stage does not authorise a PCB order.
+- The formal `.kicad_sch` and `.kicad_pcb` are both generated deterministically. KiCad 10.0.4 reports 0 ERC violations, 0 PCB DRC violations and 0 unconnected items. A UUID-independent structural audit matches the tracked and regenerated boards, covering 34 electrical references, 91 canonical pin connections, 21 nets, 1,614 track segments, 54 vias and the F.Cu 3V3/B.Cu GND zones. There is still no independent schematic/layout peer review or Gerber/drill release. This stage does not authorise a PCB order.
 
 ## Released evidence
 
@@ -56,16 +56,23 @@ The three-package LVC chain has a 15.9 ns digital maximum. The optocoupler switc
 - [KiCad schematic verification](../engineering/stage19_kicad_verification.json)
 - [KiCad schematic PDF](../output/pdf/BB8_stage19_dual_permissive_gate_schematic.pdf)
 - [KiCad verifier](../tools/verify_stage19_kicad.py)
+- [Routed KiCad PCB](../hardware/stage19_dual_permissive_gate/stage19_dual_permissive_gate.kicad_pcb)
+- [Zero-violation PCB DRC report](../engineering/stage19_kicad_pcb_drc.json)
+- [PCB structural/regeneration verification](../engineering/stage19_kicad_pcb_verification.json)
+- [PCB generator](../tools/generate_stage19_kicad_pcb.py)
+- [PCB verifier](../tools/verify_stage19_kicad_pcb.py)
+- [PCB review-image exporter](../tools/export_stage19_kicad_pcb.py)
+- [PCB isometric review render](../output/pcb/BB8_stage19_gate_pcb_isometric.png)
 - [Hardware package notes](../hardware/stage19_dual_permissive_gate/README.md)
 
 ## Next non-skippable gates
 
 1. Independently peer-review the captured KiCad schematic and safety assumptions.
-2. Route the PCB, review isolation, mounting, polarity, test points and harness exits; pass DRC.
-3. Review Gerber and drill plots before any fabrication order.
+2. Independently review the routed PCB isolation, mounting, polarity, test points and harness exits; the automated zero-violation DRC does not replace this gate.
+3. Intentionally generate and manually review Gerber/drill plots before any fabrication order; none is published now.
 4. Measure A/B input current, output levels and temperature at 12.0 V and 16.8 V.
 5. Capture A-open, B-open, ALERT-low, 3.3 V-loss and MCU-stuck-high waveforms.
 6. Prove both PWM outputs fall within 20 ms, then combine the board, relay and contactor in commissioning test E02.
 7. Complete 20 kHz integrity, temperature, vibration, connector-retention and EMC testing.
 
-Physical status: `NOT_RUN`; safety certification: `NONE`; manufacturing release: `NOT_RELEASED_NO_PCB_OR_GERBER`.
+Physical status: `NOT_RUN`; safety certification: `NONE`; manufacturing release: `NOT_RELEASED_PEER_REVIEW_GERBER_AND_PHYSICAL_VALIDATION_REQUIRED`.
