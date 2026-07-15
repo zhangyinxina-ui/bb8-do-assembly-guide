@@ -154,6 +154,34 @@ class DOResourceAuditTests(unittest.TestCase):
         self.assertFalse(findings["direct_matt_control_source_download_found"])
         self.assertFalse(findings["github_gitlab_drive_dropbox_release_link_found"])
 
+    def test_external_model_candidates_keep_functional_and_static_models_separate(self) -> None:
+        catalog = self.manifest["external_model_candidates"]
+        self.assertEqual(catalog["count"], 6)
+        self.assertEqual(catalog["integrated_open_package_status"], "NOT_FOUND")
+        candidates = {item["id"]: item for item in catalog["items"]}
+
+        denton = candidates["DO-MODEL-001"]
+        self.assertEqual(denton["listing_license"], "CC BY 4.0")
+        self.assertIn("functional mechanical WIP", denton["model_class"])
+        self.assertIn("INCOMPLETE_HEAD", denton["status"])
+        self.assertEqual(denton["archive_audit"], "NOT_DOWNLOADED_OR_ENUMERATED")
+
+        printables = candidates["DO-MODEL-002"]
+        self.assertEqual(printables["listing_license"], "CC BY-NC-SA 4.0")
+        self.assertEqual(printables["model_class"], "static display model")
+        self.assertFalse(printables["electronics_source_included"])
+        self.assertEqual(printables["status"], "REFERENCE_STATIC_NOT_DRIVEABLE")
+
+        cults = candidates["DO-MODEL-004"]
+        self.assertEqual(cults["listing_license"], "CULTS - Private Use")
+        self.assertTrue(cults["electronics_source_included"])
+        self.assertIn("PURCHASE_REQUIRES_EXPLICIT_USER_CONFIRMATION", cults["archive_audit"])
+        self.assertIn("NOT_ACQUIRED", cults["status"])
+
+        makerworld = candidates["DO-MODEL-006"]
+        self.assertEqual(makerworld["listing_license"], "UNVERIFIED")
+        self.assertTrue(makerworld["status"].startswith("DISCOVERED_"))
+
     def test_public_manifest_matches_engineering_manifest(self) -> None:
         self.assertEqual(
             (ROOT / "public" / "downloads" / "do_resource_manifest.json").read_bytes(),

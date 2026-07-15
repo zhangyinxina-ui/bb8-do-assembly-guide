@@ -59,6 +59,15 @@ test("server-renders the BB-8 and D-O build guide", async () => {
   assert.match(html, /Mega 2560 真编译通过：Flash 17%，RAM 18%/);
   assert.match(html, /机械 CAD\/STL 为0/);
   assert.match(html, /60 mm无轮调试支架/);
+  assert.match(html, /Denton V1 页面标 CC BY 4\.0/);
+  assert.match(html, /头部缺失、STEP 待后续/);
+  assert.match(html, /JRIZZ \/ Cults 页面列出 Fusion 360 F3Z、STL、机器人端与遥控端 Arduino 草图/);
+  assert.match(html, /购买和接受 CULTS Private Use 必须等待用户明确确认/);
+  assert.match(html, /WF3D 约300 mm、32文件模型为 CC BY-NC-SA 4\.0 静态展示件/);
+  assert.match(html, /Gambody有116个STL和518 mm关节版/);
+  assert.match(html, /https:\/\/www\.thingiverse\.com\/thing:4189546/);
+  assert.match(html, /https:\/\/cults3d\.com\/en\/3d-model\/gadget\/d-o-droid-star-wars-droid/);
+  assert.match(html, /https:\/\/www\.printables\.com\/model\/147063-star-wars-d-o-droid/);
   assert.match(html, /DO_resource_audit\.md/);
   assert.match(html, /do_resource_manifest\.json/);
   assert.match(html, /do_mantis_video_audit\.json/);
@@ -206,6 +215,12 @@ test("server-renders the complete English build guide", async () => {
   assert.match(html, /generic website v3.4 ZIP is still v3.4.0/);
   assert.match(html, /five numbered build episodes plus one tyre-printing video/);
   assert.match(html, /zero complete mechanical CAD\/STL files/);
+  assert.match(html, /Denton V1 is listed under CC BY 4\.0/);
+  assert.match(html, /head is missing and STEP files are pending/);
+  assert.match(html, /JRIZZ\/Cults lists Fusion 360 F3Z, STL and Arduino sketches/);
+  assert.match(html, /Purchase and acceptance of CULTS Private Use require explicit user confirmation/);
+  assert.match(html, /about-300 mm, 32-file CC BY-NC-SA 4\.0 static model/);
+  assert.match(html, /Gambody lists 116 STLs and a 518 mm articulated version/);
   assert.match(html, /BB8_stage14_mass_cg_inertia_validation\.md/);
   assert.match(html, /BB8_stage15_drive_power_dynamic_stability\.md/);
   assert.match(html, /wired tether/);

@@ -1,12 +1,12 @@
 {
-  "audit_date": "2026-07-13",
+  "audit_date": "2026-07-15",
   "repository": {
     "url": "https://github.com/PrintedDroid/D-O-Printed-Droid.git",
     "commit": "e90aacdbe26a62fd4f0229d5504a3f2f3c409055",
     "commit_date": "2026-06-08T18:36:38+02:00",
     "branch": "main",
     "working_tree_clean": true,
-    "upstream_main_head_checked_2026_07_13": "e90aacdbe26a62fd4f0229d5504a3f2f3c409055",
+    "upstream_main_head_checked_2026_07_15": "e90aacdbe26a62fd4f0229d5504a3f2f3c409055",
     "upstream_main_matched_local_on_check": true
   },
   "license": {
@@ -426,6 +426,141 @@
     "files": [],
     "status": "absent from this repository"
   },
+  "external_model_candidates": {
+    "checked_date": "2026-07-15",
+    "count": 6,
+    "scope": "publicly indexed D-O model listings discovered during this audit; listing evidence does not substitute for archive, licence-provenance or physical validation",
+    "items": [
+      {
+        "id": "DO-MODEL-001",
+        "name": "Denton V1 D-O Droid (Based on Baddeley V1 Design)",
+        "publisher": "mantisrobot / Thingiverse",
+        "url": "https://www.thingiverse.com/thing:4189546",
+        "checked_date": "2026-07-15",
+        "availability": "free listing",
+        "listing_license": "CC BY 4.0",
+        "license_url": "https://creativecommons.org/licenses/by/4.0/",
+        "model_class": "functional mechanical WIP",
+        "listing_evidence": [
+          "description says the head is unfinished and currently missing",
+          "description says STL files are provided for each subassembly",
+          "description says 3D PDF assembly files are provided",
+          "STEP files are promised after completion, not confirmed as present",
+          "2021-11-30 note says XL330 neck and head brackets were added"
+        ],
+        "electronics_source_included": "not confirmed by the public listing",
+        "archive_audit": "NOT_DOWNLOADED_OR_ENUMERATED",
+        "provenance_boundary": "the listing says it is based on Michael Baddeley CAD sent directly to the publisher; authority to relicense the derived geometry was not independently verified",
+        "status": "HOLD_INCOMPLETE_HEAD_ARCHIVE_AND_PROVENANCE_REVIEW",
+        "self_build_use": "promising free functional reference, but not a verified complete build package"
+      },
+      {
+        "id": "DO-MODEL-002",
+        "name": "Star Wars D-O Droid",
+        "publisher": "WF3D / Printables",
+        "url": "https://www.printables.com/model/147063-star-wars-d-o-droid",
+        "checked_date": "2026-07-15",
+        "availability": "free listing",
+        "listing_license": "CC BY-NC-SA 4.0",
+        "license_evidence": "Printables GraphQL licence id 4 maps to CC-BY-NC-SA",
+        "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+        "model_class": "static display model",
+        "listing_evidence": [
+          "about 300 mm total height",
+          "32 model files",
+          "split by colour for a 250 x 210 x 210 mm build volume",
+          "requires only printed parts, filament strips and 6 mm black electrical wire",
+          "publisher marks the model as an original creation"
+        ],
+        "electronics_source_included": false,
+        "archive_audit": "LISTING_METADATA_ONLY",
+        "status": "REFERENCE_STATIC_NOT_DRIVEABLE",
+        "self_build_use": "appearance, colour separation and display-model reference only"
+      },
+      {
+        "id": "DO-MODEL-003",
+        "name": "D-O Droid - Star Wars Home Decor",
+        "publisher": "CalebTimoteo / Printables",
+        "url": "https://www.printables.com/model/1269542-d-o-droid-star-wars-home-decor",
+        "checked_date": "2026-07-15",
+        "availability": "free listing",
+        "listing_license": "CC BY-NC 4.0",
+        "license_evidence": "Printables GraphQL licence id 3 maps to CC-BY-NC",
+        "license_url": "https://creativecommons.org/licenses/by-nc/4.0/",
+        "model_class": "static home-decor WIP remix",
+        "listing_evidence": [
+          "11 model files",
+          "description labels the model work in progress",
+          "remix source is Thingiverse thing 4824097"
+        ],
+        "electronics_source_included": false,
+        "archive_audit": "LISTING_METADATA_ONLY",
+        "status": "REFERENCE_STATIC_WIP_NOT_DRIVEABLE",
+        "self_build_use": "small static print reference only"
+      },
+      {
+        "id": "DO-MODEL-004",
+        "name": "D-O Droid - Star Wars Droid",
+        "publisher": "JRIZZ / Cults",
+        "url": "https://cults3d.com/en/3d-model/gadget/d-o-droid-star-wars-droid",
+        "checked_date": "2026-07-15",
+        "availability": "paid listing; USD 33.68 observed on the checked page",
+        "listing_license": "CULTS - Private Use",
+        "license_url": "https://cults3d.com/en/licenses",
+        "model_class": "functional robot WIP",
+        "listing_evidence": [
+          "listing says the robot works but the design remains under development",
+          "listing exposes a Fusion 360 main assembly F3Z",
+          "listing exposes Arduino sketches for the droid and transmitter",
+          "listing exposes printable STL parts and a separate main assembly STL",
+          "hardware description names two Nano boards, an NRF24L01 pair, TB6612FNG, MPU6050, two geared DC motors and three servos"
+        ],
+        "electronics_source_included": true,
+        "archive_audit": "NOT_ACQUIRED; PURCHASE_REQUIRES_EXPLICIT_USER_CONFIRMATION",
+        "redistribution_boundary": "CULTS Private Use forbids public sharing, distribution and public derivative release of the digital model",
+        "status": "PAID_PRIVATE_USE_NOT_ACQUIRED_OR_VERIFIED",
+        "self_build_use": "closest discovered integrated moving candidate, but paid, private-use and not independently bench-verified"
+      },
+      {
+        "id": "DO-MODEL-005",
+        "name": "D-O Droid 3D Printing Model | Assembly + Action",
+        "publisher": "Gambody",
+        "url": "https://www.gambody.com/premium/d-o-droid",
+        "checked_date": "2026-07-15",
+        "availability": "paid listing",
+        "listing_license": "Personal use",
+        "model_class": "articulated display model with conversion space",
+        "listing_evidence": [
+          "116 STL files across all listed versions and updates",
+          "life-size FFF/FDM version is listed as 518 x 190 x 393 mm",
+          "head and antennas articulate",
+          "engine and battery mockups may be replaced with real parts",
+          "no controller source, balancing design or electrical package is listed"
+        ],
+        "electronics_source_included": false,
+        "archive_audit": "NOT_ACQUIRED; PURCHASE_REQUIRES_EXPLICIT_USER_CONFIRMATION",
+        "status": "PAID_ARTICULATED_MODEL_NOT_A_DRIVE_PACKAGE",
+        "self_build_use": "articulation and full-scale appearance reference, not a proven self-balancing robot package"
+      },
+      {
+        "id": "DO-MODEL-006",
+        "name": "Star Wars D-O Droid",
+        "publisher": "MakerWorld model 23859",
+        "url": "https://makerworld.com/en/models/23859-star-wars-d-o-droid",
+        "checked_date": "2026-07-15",
+        "availability": "discovered listing; access blocked by Cloudflare during audit",
+        "listing_license": "UNVERIFIED",
+        "model_class": "UNVERIFIED",
+        "listing_evidence": [],
+        "electronics_source_included": "UNVERIFIED",
+        "archive_audit": "NOT_RETRIEVED",
+        "status": "DISCOVERED_LICENSE_AND_CONTENT_NOT_VERIFIED",
+        "self_build_use": "do not rely on this candidate until its files, attribution and licence are verified"
+      }
+    ],
+    "integrated_open_package_status": "NOT_FOUND",
+    "integrated_open_package_definition": "one package with complete mechanics, controller source, electrical design, explicit redistribution terms and repeatable physical validation"
+  },
   "separate_public_model": {
     "path": "third_party/DO-Stand-60mm.stl",
     "purpose": "60 mm wheel-off electronics test stand; not a D-O body component",
@@ -454,5 +589,5 @@
       "redistribution": "not bundled into public site; retain for personal build reference because upstream redistribution terms are not explicit"
     }
   ],
-  "conclusion": "Pinned Mega firmware and public reference documents can support a personal non-commercial bench build, but versioned wiring, package licences, complete mechanical CAD and PCB manufacturing files remain unresolved."
+  "conclusion": "Pinned Mega firmware and public reference documents support a personal non-commercial bench route. Free and paid external model candidates now have an explicit classification, but no single complete, openly redistributable and physically validated mechanics-plus-control-plus-electrical package was found."
 }

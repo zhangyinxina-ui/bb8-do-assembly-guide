@@ -10,5 +10,8 @@
 - Printed Droid D-O 仓库的 v1.1、v2.1、v3.4 目录含个人非商业许可声明；不能把整个仓库笼统称为 OSI 开源软件。
 - D-O 60 mm 调试支架未发现明确再分发许可，因此不由本站提供下载。
 - Mr Baddeley D-O V2 机械文件属于付费会员资源，不包含在本项目中。
+- Thingiverse Denton V1 页面标注 CC BY 4.0，但页面同时声明模型源自 Michael Baddeley 私下提供的 CAD；本项目只链接原页，不镜像文件，也不对派生几何的再许可权作保证。
+- Printables WF3D 与 CalebTimoteo 模型分别标注 CC BY-NC-SA 4.0 与 CC BY-NC 4.0；它们被分类为静态参考，不是可运行整机设计。
+- JRIZZ / Cults 与 Gambody 模型属于付费私用资源；本项目未购买、未包含，也不公开再分发其数字文件。
 
 来源链接和已知哈希见 `docs/DO_资源审计与自组入口.md`、`engineering/do_resource_manifest.json` 与 `docs/BB8_阶段8_外观拓扑与尺寸依据.md`。

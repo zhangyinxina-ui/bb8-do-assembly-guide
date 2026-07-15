@@ -110,6 +110,36 @@ const sources = [
     href: "https://youtube.com/playlist?list=PLTSAQ5KEjPVCldgA1t-KT1lRTKJdAY7er",
   },
   {
+    name: "Denton V1 D-O",
+    tag: "Thingiverse / CC BY 4.0 / WIP",
+    href: "https://www.thingiverse.com/thing:4189546",
+  },
+  {
+    name: "WF3D D-O 静态模型",
+    tag: "Printables / CC BY-NC-SA 4.0",
+    href: "https://www.printables.com/model/147063-star-wars-d-o-droid",
+  },
+  {
+    name: "D-O Home Decor WIP",
+    tag: "Printables / CC BY-NC 4.0",
+    href: "https://www.printables.com/model/1269542-d-o-droid-star-wars-home-decor",
+  },
+  {
+    name: "JRIZZ D-O 可动开发版",
+    tag: "Cults / 付费私用",
+    href: "https://cults3d.com/en/3d-model/gadget/d-o-droid-star-wars-droid",
+  },
+  {
+    name: "Gambody D-O Assembly + Action",
+    tag: "付费关节模型 / 非控制包",
+    href: "https://www.gambody.com/premium/d-o-droid",
+  },
+  {
+    name: "MakerWorld D-O 23859",
+    tag: "待核验 / 不作为开源依据",
+    href: "https://makerworld.com/en/models/23859-star-wars-d-o-droid",
+  },
+  {
     name: "Mr Baddeley D-O V2",
     tag: "Patreon 付费",
     href: "https://www.patreon.com/mrbaddeley",
@@ -506,8 +536,11 @@ export default function Home() {
             不等于“网上能看到”。
           </h2>
           <p>
-            目前未找到可免费再分发的 D-O 整机机械包。但装配、接线、BOM
-            和受个人非商业许可约束的控制源码，已经可以组成一条可审计的个人制作路线。
+            目前仍未找到一个完整、可公开再分发、同时含机械、控制、电气和真机验证的 D-O 整机开源包。
+            Denton V1 是免费 CC BY 4.0 可动候选，但页面仍写头部缺失、STEP 待发布，且 Baddeley 派生授权需复核；
+            JRIZZ / Cults 更接近机械与 Arduino 整合包，但属于付费私用开发版且尚未购买验包。
+            两个 Printables 条目是静态模型，Gambody 是付费关节/改装参考，不能冒充自平衡整机。
+            装配、接线、BOM 和受个人非商业许可约束的 Printed Droid 控制源码，已经可以组成一条可审计的个人制作路线。
             现有26项采购状态表和D01–D16调试门；MDD10A与两块MD10C的来源冲突、
             D0/D1舵机与Serial0引脚争用，以及官网v2.1的D2–D5接线表与v3.4.3源码不一致；
             电机/舵机负载和电源保护未冻结前，相关零件明确暂缓购买。
@@ -515,9 +548,24 @@ export default function Home() {
         </div>
         <div className="do-grid">
           <div>
-            <span>MECHANICAL CAD</span>
-            <strong>付费</strong>
-            <p>Mr Baddeley D-O V2 STL / Fusion，Patreon 会员资源。</p>
+            <span>FREE FUNCTIONAL WIP</span>
+            <strong>免费但不完整</strong>
+            <p>Denton V1 页面标 CC BY 4.0，称含分组件 STL 和 3D PDF；同时仍标注 WIP、头部缺失、STEP 待后续，文件包和派生授权尚未审计。</p>
+            <a className="inline-download" href="https://www.thingiverse.com/thing:4189546" target="_blank" rel="noreferrer">查看原始发布页 ↗</a>
+          </div>
+          <div>
+            <span>INTEGRATED ROBOT CANDIDATE</span>
+            <strong>付费私用 / 未验包</strong>
+            <p>JRIZZ / Cults 页面列出 Fusion 360 F3Z、STL、机器人端与遥控端 Arduino 草图；页面称可动但仍在开发。购买和接受 CULTS Private Use 必须等待用户明确确认。</p>
+            <a className="inline-download" href="https://cults3d.com/en/3d-model/gadget/d-o-droid-star-wars-droid" target="_blank" rel="noreferrer">查看付费原页 ↗</a>
+          </div>
+          <div>
+            <span>STATIC / ARTICULATED REFERENCES</span>
+            <strong>不能替代驱动包</strong>
+            <p>WF3D 约300 mm、32文件模型为 CC BY-NC-SA 4.0 静态展示件；Home Decor 是 CC BY-NC 4.0 的11文件WIP remix；Gambody有116个STL和518 mm关节版，但没有控制源码或完整电气设计。</p>
+            <a className="inline-download" href="https://www.printables.com/model/147063-star-wars-d-o-droid" target="_blank" rel="noreferrer">WF3D 静态模型 ↗</a>
+            <a className="inline-download" href="https://www.printables.com/model/1269542-d-o-droid-star-wars-home-decor" target="_blank" rel="noreferrer">Home Decor WIP ↗</a>
+            <a className="inline-download" href="https://www.gambody.com/premium/d-o-droid" target="_blank" rel="noreferrer">Gambody 关节版 ↗</a>
           </div>
           <div>
             <span>CONTROL CODE</span>
