@@ -8,6 +8,7 @@
 
 - BB-8 Builders Club V3.1 Panel Orientation Guide 标注 CC BY-NC-SA 4.0；项目内研究副本位于 `engineering/vendor_refs/`，不进入网站下载包。
 - Printed Droid D-O 仓库的 v1.1、v2.1、v3.4 目录含个人非商业许可声明；不能把整个仓库笼统称为 OSI 开源软件。
+- 本仓库的 D22–D25 安全引脚工具只发布哈希锁定转换逻辑、编译证据和线束合同；修改后的 Printed Droid 源码与二进制仍保留在本机忽略目录，不由 GitHub Pages 再分发。
 - D-O 60 mm 调试支架未发现明确再分发许可，因此不由本站提供下载。
 - Mr Baddeley D-O V2 机械文件属于付费会员资源，不包含在本项目中。
 - Thingiverse Denton V1 页面标注 CC BY 4.0，但页面同时声明模型源自 Michael Baddeley 私下提供的 CAD；本项目只链接原页，不镜像文件，也不对派生几何的再许可权作保证。

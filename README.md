@@ -22,6 +22,7 @@
 - 阶段17用厂商官方资料筛选MDD20A、30 A MIDI保险丝、SW60接触器和P28A 4S2P候选；15/15额定检查通过，但因堵转、再生、独立去能适配、BMS与电池包未冻结，结果保持 `HOLD_COMPONENT_FREEZE_MEASUREMENTS_REQUIRED`。
 - 阶段18完成REC Active BMS 4S、MDD20A、SW60、MIDI保险丝、外置分流器与双通道门板的模块化电源舱解析布局，并已写入唯一Blender主工程；重开审计确认363个总对象、159个内部对象、150个制造对象、9个工程标记和39个阶段18对象。8个候选包络满足球壳/候选/既有机构间隙门，但12项实物尺寸与接口仍未冻结，结果保持 `HOLD_PHYSICAL_FIT_AND_INTERFACE_VALIDATION_REQUIRED`。
 - 阶段19发布双许可PWM门预CAD设计，并把23个非制造板件/器件参考包络写入唯一Blender主工程；重开审计与新导出已通过。SAFE_A、SAFE_B、双INA226 `ALERT_N`与3.3 V掉电均可独立阻断左右PWM；64/64真值组合和电气/机械解析检查通过，但没有KiCad、Gerber或台架波形，结果保持 `HOLD_PCB_CAD_BENCH_AND_SAFETY_VALIDATION_REQUIRED`。
+- D-O v3.4.3 的 D0/D1 舵机—Serial0 冲突已形成固定哈希安全变体：四路舵机移到 D22–D25，Mega 2560 编译仍为 Flash 17% / RAM 18%，并生成版本锁定线束合同；实体导通、USB/Serial0、四路脉宽与失效保护仍为 `NOT_RUN`，不放行舵机电源。
 - 24 步装配指南与19项真机门；浏览器进度不能替代真机证据。
 
 这些拆分尺寸和外观细节来自公开画面、社区摄影测量和制作者资料，不是 Lucasfilm 官方 CAD，也不应宣称逐毫米复制电影道具。
@@ -114,7 +115,7 @@ sh tools/run_closed_loop_sim.sh
 - Mantis 播放列表的5集编号构建视频与1个轮胎视频描述已逐条审计；描述没有发布 Matt 改版 CAD 或控制源码，详见 [机器审计](engineering/do_mantis_video_audit.json)。
 - 许可不明确的调试支架、第三方 PDF、本地工具链和编译缓存不会推送到 GitHub。
 
-详见 [D-O 资源审计与自组入口](docs/DO_资源审计与自组入口.md)、[D01-D16 自组路线](docs/DO_自组采购与调试路线.md) 和 [26 项采购门控 BOM](engineering/do_self_build_bom.csv)。`DO-SRC-001` 阻断 v3.4.3 的 D0/D1 舵机与 Serial0 争用；`DO-SRC-002` 阻断把官网 v2.1 的 D2–D5 接线表与 v3.4.3 混接；`DO-SRC-003` 将官网仍为 v3.4.0 的泛名 ZIP 降为历史参考，当前烧录只使用固定 GitHub v3.4.3。
+详见 [D-O 资源审计与自组入口](docs/DO_资源审计与自组入口.md)、[D01-D16 自组路线](docs/DO_自组采购与调试路线.md) 和 [26 项采购门控 BOM](engineering/do_self_build_bom.csv)。`DO-SRC-001` 已有 D22–D25 可编译变体但仍等待实体连续性；`DO-SRC-002` 已有版本/哈希绑定线束合同但仍等待逐网导通；`DO-SRC-003` 将官网仍为 v3.4.0 的泛名 ZIP 降为历史参考，当前转换输入只使用固定 GitHub v3.4.3。
 
 ## 自动部署
 

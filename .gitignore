@@ -55,6 +55,8 @@ next-env.d.ts
 /engineering/arduino-user/
 /engineering/do-firmware-build/
 /engineering/do-firmware-stage/
+/engineering/do-safe-pin-build/
+/engineering/do-safe-pin-stage/
 /build/*
 !/build/sites-vite-plugin.ts
 

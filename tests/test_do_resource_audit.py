@@ -2,9 +2,12 @@ from __future__ import annotations
 
 import csv
 import json
+import re
 import subprocess
 import unittest
 from pathlib import Path
+
+from tools.build_do_safe_pin_variant import SAFE_SERVO_PINS, transform_source
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -35,15 +38,26 @@ class DOResourceAuditTests(unittest.TestCase):
             item for item in self.manifest["source_conflicts"] if item["id"] == "DO-SRC-001"
         )
         self.assertEqual(conflict["id"], "DO-SRC-001")
-        self.assertEqual(conflict["status"], "HOLD_BENCH_VERIFICATION")
+        self.assertEqual(
+            conflict["status"],
+            "UPSTREAM_CONFLICT_VARIANT_COMPILED_HOLD_PHYSICAL_CONTINUITY",
+        )
         self.assertIn("RX0", conflict["board_mapping"])
         self.assertIn("TX0", conflict["board_mapping"])
+        self.assertEqual(conflict["mitigation"]["safe_servo_pins"], SAFE_SERVO_PINS)
+        self.assertEqual(
+            conflict["mitigation"]["compile_status"],
+            "PASS_COMPILE_ONLY_HOLD_PHYSICAL_CONTINUITY",
+        )
 
     def test_versioned_wiring_conflict_is_a_separate_hold_gate(self) -> None:
         conflicts = {item["id"]: item for item in self.manifest["source_conflicts"]}
         self.assertEqual(set(conflicts), {"DO-SRC-001", "DO-SRC-002", "DO-SRC-003"})
         mismatch = conflicts["DO-SRC-002"]
-        self.assertEqual(mismatch["status"], "HOLD_VERSIONED_WIRING_REQUIRED")
+        self.assertEqual(
+            mismatch["status"],
+            "VARIANT_WIRING_GENERATED_HOLD_PHYSICAL_CONTINUITY",
+        )
         self.assertEqual(
             mismatch["source_evidence"]["official_page_pins"],
             {"mainbar": 2, "head1": 3, "head2": 4, "head3": 5},
@@ -67,7 +81,8 @@ class DOResourceAuditTests(unittest.TestCase):
 
         contract = self.manifest["firmware"]["versioned_wiring_contract"]
         self.assertEqual(
-            contract["status"], "HOLD_D0_D1_REMAP_AND_PHYSICAL_CONTINUITY"
+            contract["status"],
+            "SAFE_PIN_VARIANT_COMPILED_HOLD_PHYSICAL_CONTINUITY",
         )
         self.assertEqual(
             contract["source_sha256"], self.manifest["firmware"]["recommended_sha256"]
@@ -75,8 +90,40 @@ class DOResourceAuditTests(unittest.TestCase):
         self.assertEqual(len(contract["source_sha256"]), 64)
         self.assertEqual(len(contract["compile_evidence_sha256"]), 64)
         self.assertTrue(contract["generated_from_source_constants"])
+        self.assertEqual(contract["safe_servo_pins"], SAFE_SERVO_PINS)
+        self.assertEqual(len(contract["safe_pin_variant_evidence_sha256"]), 64)
+        self.assertEqual(len(contract["safe_pin_variant_wiring_sha256"]), 64)
         self.assertEqual(contract["physical_continuity_test"], "NOT_RUN")
         self.assertFalse(contract["actuator_power_release"])
+
+    def test_safe_pin_transform_is_exact_and_rejects_collisions(self) -> None:
+        source = """// Servos - matched to v1.1/v2.1 pinout
+const uint8_t MAINBAR_SERVO_PIN = 0;
+const uint8_t HEAD1_SERVO_PIN = 1;
+const uint8_t HEAD2_SERVO_PIN = 5;
+const uint8_t HEAD3_SERVO_PIN = 6;
+const uint8_t PWM1_PIN = 12;
+Serial.begin(9600);
+"""
+        transformed, checks = transform_source(source)
+        self.assertEqual(
+            {
+                name: int(value)
+                for name, value in re.findall(
+                    r"const\s+uint8_t\s+([A-Z0-9_]+_SERVO_PIN)\s*=\s*(\d+)\s*;",
+                    transformed,
+                )
+            },
+            SAFE_SERVO_PINS,
+        )
+        self.assertEqual(checks["released_serial0_pins"], [0, 1])
+        self.assertFalse(checks["target_pin_collisions"])
+
+        colliding = source.replace(
+            "const uint8_t PWM1_PIN = 12;", "const uint8_t PWM1_PIN = 22;"
+        )
+        with self.assertRaisesRegex(ValueError, "safe-pin target collision"):
+            transform_source(colliding)
 
     def test_all_twelve_public_page_attachments_are_hashed_but_not_republished(self) -> None:
         catalog = self.manifest["official_attachment_catalog"]
@@ -124,10 +171,14 @@ class DOResourceAuditTests(unittest.TestCase):
             rows = list(csv.DictReader(handle))
         self.assertEqual(len(rows), 26)
         serial_gate = next(row for row in rows if row["item_id"] == "D031")
-        self.assertEqual(serial_gate["procurement_state"], "HOLD_BENCH_VERIFICATION")
+        self.assertEqual(
+            serial_gate["procurement_state"],
+            "SOFTWARE_REMAP_READY_HOLD_PHYSICAL_CONTINUITY",
+        )
         wiring_gate = next(row for row in rows if row["item_id"] == "D032")
         self.assertEqual(
-            wiring_gate["procurement_state"], "HOLD_VERSIONED_WIRING_REQUIRED"
+            wiring_gate["procurement_state"],
+            "VARIANT_WIRING_GENERATED_HOLD_CONTINUITY",
         )
 
     def test_mantis_playlist_descriptions_do_not_claim_a_source_release(self) -> None:
@@ -191,6 +242,14 @@ class DOResourceAuditTests(unittest.TestCase):
             (ROOT / "public" / "downloads" / "do_aio32_firmware_compile.json").read_bytes(),
             (ROOT / "engineering" / "do_aio32_firmware_compile.json").read_bytes(),
         )
+        self.assertEqual(
+            (ROOT / "public" / "downloads" / "do_safe_pin_variant_compile.json").read_bytes(),
+            (ROOT / "engineering" / "do_safe_pin_variant_compile.json").read_bytes(),
+        )
+        self.assertEqual(
+            (ROOT / "public" / "downloads" / "do_safe_pin_variant_wiring.csv").read_bytes(),
+            (ROOT / "engineering" / "do_safe_pin_variant_wiring.csv").read_bytes(),
+        )
 
     def test_public_downloads_match_the_canonical_do_documents(self) -> None:
         pairs = {
@@ -204,6 +263,8 @@ class DOResourceAuditTests(unittest.TestCase):
                 ROOT / "public" / "downloads" / "do_self_build_bom.csv",
             ROOT / "engineering" / "do_mantis_video_audit.json":
                 ROOT / "public" / "downloads" / "do_mantis_video_audit.json",
+            ROOT / "tools" / "build_do_safe_pin_variant.py":
+                ROOT / "public" / "downloads" / "build_do_safe_pin_variant.py",
         }
         for canonical, public_copy in pairs.items():
             with self.subTest(public_copy=public_copy.name):

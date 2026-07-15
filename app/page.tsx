@@ -541,9 +541,9 @@ export default function Home() {
             JRIZZ / Cults 更接近机械与 Arduino 整合包，但属于付费私用开发版且尚未购买验包。
             两个 Printables 条目是静态模型，Gambody 是付费关节/改装参考，不能冒充自平衡整机。
             装配、接线、BOM 和受个人非商业许可约束的 Printed Droid 控制源码，已经可以组成一条可审计的个人制作路线。
-            现有26项采购状态表和D01–D16调试门；MDD10A与两块MD10C的来源冲突、
-            D0/D1舵机与Serial0引脚争用，以及官网v2.1的D2–D5接线表与v3.4.3源码不一致；
-            电机/舵机负载和电源保护未冻结前，相关零件明确暂缓购买。
+            现有26项采购状态表和D01–D16调试门；MDD10A与两块MD10C的来源冲突仍待硬件冻结。
+            D0/D1舵机与Serial0的软件争用已经形成固定哈希的D22–D25安全变体和线束合同，并通过Mega编译；
+            但实体导通、USB/串口、四路脉宽、电机/舵机负载和电源保护仍未验证，相关上电与采购继续门控。
           </p>
         </div>
         <div className="do-grid">
@@ -569,8 +569,11 @@ export default function Home() {
           </div>
           <div>
             <span>CONTROL CODE</span>
-            <strong>已固定版本</strong>
-            <p>v3.4.3 固定到 e90aacd；README 允许个人非商业使用、修改和分发，须保留声明与署名。Mega 2560 真编译通过：Flash 17%，RAM 18%。官网泛名v3.4 ZIP实际仍是v3.4.0，只作历史参考。</p>
+            <strong>D22–D25 安全变体已编译</strong>
+            <p>v3.4.3 固定到 e90aacd；转换器只接受原始 SHA-256 6cb3ce0d，把四路舵机从 D0/D1/D5/D6 改到 D22–D25，释放 Serial0。Mega 2560 真编译通过：Flash 17%，RAM 18%；修改后源码哈希 f858c485。实体连续性仍为 NOT_RUN，变体源码和二进制未在网站再分发。官网泛名v3.4 ZIP实际仍是v3.4.0，只作历史参考。</p>
+            <a className="inline-download" href={asset("/downloads/do_safe_pin_variant_compile.json")} download>下载安全变体编译证据 ↓</a>
+            <a className="inline-download" href={asset("/downloads/do_safe_pin_variant_wiring.csv")} download>下载D22–D25线束合同 ↓</a>
+            <a className="inline-download" href={asset("/downloads/build_do_safe_pin_variant.py")} download>下载固定哈希转换器 ↓</a>
           </div>
           <div>
             <span>ASSEMBLY</span>

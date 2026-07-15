@@ -101,8 +101,8 @@
 
 ## 新增源码与版本阻断门
 
-固定的 v3.4.3 草图一边把舵机连接到 Mega D0/D1，一边启用 `Serial.begin(9600)`。官方 Mega 映射表显示 D0/D1 就是 RX0/TX0。项目因此新增 `DO-SRC-001 / HOLD_BENCH_VERIFICATION`：在完成非 UART 引脚改配或经验证的隔离/复用设计前，不把 D0/D1 舵机接入首轮 USB/Serial0 台架，也不把当前线束表当作可直接制造的最终设计。
+固定的 v3.4.3 草图一边把舵机连接到 Mega D0/D1，一边启用 `Serial.begin(9600)`。官方 Mega 映射表显示 D0/D1 就是 RX0/TX0。项目现在提供固定哈希转换器，将四路舵机移到 D22–D25，并已在 Mega 2560 编译通过；`DO-SRC-001` 因此前进为 `UPSTREAM_CONFLICT_VARIANT_COMPILED_HOLD_PHYSICAL_CONTINUITY`。这不是实物通过：D22–D25 导通、USB/Serial0 和四路舵机脉宽仍必须上台架。
 
-Printed Droid 控制板页面内嵌的是 v2.1 接线表（D2/D3/D4/D5），而当前 v3.4.3 源码和 GitHub README 是 D0/D1/D5/D6。项目新增 `DO-SRC-002 / HOLD_VERSIONED_WIRING_REQUIRED`：不得把旧网页表与新固件混接，最终线束图必须绑定源码文件、提交与 SHA-256，并在上电前逐网导通检查。
+Printed Droid 控制板页面内嵌的是 v2.1 接线表（D2/D3/D4/D5），而当前 v3.4.3 源码和 GitHub README 是 D0/D1/D5/D6。项目已发布只含本项目生成信息的 [安全变体线束合同](../engineering/do_safe_pin_variant_wiring.csv) 和 [编译证据](../engineering/do_safe_pin_variant_compile.json)，状态为 `DO-SRC-002 / VARIANT_WIRING_GENERATED_HOLD_PHYSICAL_CONTINUITY`。不得把旧网页表、未改原版和 D22–D25 变体混接；上电前仍要逐网导通。
 
 同一页面的 `D-O_ibus_v3.4.zip` 内部仍是 v3.4.0。项目新增 `DO-SRC-003 / USE_PINNED_GITHUB_V3_4_3`：附件保留为历史证据，不作为当前烧录输入。AIO32 已证明可编译，但仍保持实验分支和包级许可/HW-CAD 双 HOLD，不与 Mega v3.4.3 基线混为一条路线。

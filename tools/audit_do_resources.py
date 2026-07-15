@@ -18,6 +18,10 @@ OUT = ROOT / "engineering" / "do_resource_manifest.json"
 PUBLIC_OUT = ROOT / "public" / "downloads" / "do_resource_manifest.json"
 AIO32_COMPILE_EVIDENCE = ROOT / "engineering" / "do_aio32_firmware_compile.json"
 AIO32_PUBLIC_COMPILE_EVIDENCE = ROOT / "public" / "downloads" / "do_aio32_firmware_compile.json"
+SAFE_PIN_COMPILE_EVIDENCE = ROOT / "engineering" / "do_safe_pin_variant_compile.json"
+SAFE_PIN_PUBLIC_COMPILE_EVIDENCE = ROOT / "public" / "downloads" / "do_safe_pin_variant_compile.json"
+SAFE_PIN_WIRING = ROOT / "engineering" / "do_safe_pin_variant_wiring.csv"
+SAFE_PIN_PUBLIC_WIRING = ROOT / "public" / "downloads" / "do_safe_pin_variant_wiring.csv"
 
 MECHANICAL_SUFFIXES = {".stl", ".step", ".stp", ".f3d", ".obj", ".3mf", ".scad"}
 LICENSE_MARKER = "NON-COMMERCIAL LICENSE"
@@ -361,6 +365,11 @@ def main() -> None:
         if AIO32_COMPILE_EVIDENCE.is_file()
         else None
     )
+    safe_pin_compile = (
+        json.loads(SAFE_PIN_COMPILE_EVIDENCE.read_text(encoding="utf-8"))
+        if SAFE_PIN_COMPILE_EVIDENCE.is_file()
+        else None
+    )
     ibus_attachment_path = PUBLIC_RESOURCE_DIR / "D-O_ibus_v3.4.zip"
     ibus_attachment = inspect_zip(ibus_attachment_path) if ibus_attachment_path.is_file() else None
     ibus_attachment_version = None
@@ -426,21 +435,31 @@ def main() -> None:
                 "servo_attach_calls_present": servo_attach_calls,
             },
             "versioned_wiring_contract": {
-                "status": "HOLD_D0_D1_REMAP_AND_PHYSICAL_CONTINUITY",
+                "status": "SAFE_PIN_VARIANT_COMPILED_HOLD_PHYSICAL_CONTINUITY",
                 "source_path": RECOMMENDED_SKETCH,
                 "source_commit": git("rev-parse", "HEAD"),
                 "source_sha256": sha256(recommended_path),
                 "compile_evidence_path": "engineering/do_firmware_compile.json",
                 "compile_evidence_sha256": sha256(ROOT / "engineering" / "do_firmware_compile.json"),
+                "safe_pin_variant_evidence_path": "engineering/do_safe_pin_variant_compile.json",
+                "safe_pin_variant_evidence_sha256": sha256(SAFE_PIN_COMPILE_EVIDENCE) if safe_pin_compile else None,
+                "safe_pin_variant_wiring_path": "engineering/do_safe_pin_variant_wiring.csv",
+                "safe_pin_variant_wiring_sha256": sha256(SAFE_PIN_WIRING) if SAFE_PIN_WIRING.is_file() else None,
+                "safe_servo_pins": (
+                    safe_pin_compile["variant"]["safe_servo_pins"]
+                    if safe_pin_compile
+                    else None
+                ),
                 "generated_from_source_constants": True,
                 "physical_continuity_test": "NOT_RUN",
                 "actuator_power_release": False,
             },
+            "safe_pin_variant": safe_pin_compile,
         },
         "source_conflicts": [
             {
                 "id": "DO-SRC-001",
-                "status": "HOLD_BENCH_VERIFICATION",
+                "status": "UPSTREAM_CONFLICT_VARIANT_COMPILED_HOLD_PHYSICAL_CONTINUITY",
                 "issue": "v3.4.3 assigns two servo outputs to Mega D0/D1 while also enabling the Serial0 console",
                 "source_evidence": {
                     "mainbar_servo_pin": servo_pins["MAINBAR_SERVO_PIN"],
@@ -450,6 +469,16 @@ def main() -> None:
                 },
                 "board_mapping": "Arduino Mega 2560 maps D0 to RX0 and D1 to TX0",
                 "risk": "Servo signalling and the USB/Serial0 upload or configuration path contend for the same physical pins; neither function is accepted without bench evidence",
+                "mitigation": {
+                    "tool": "tools/build_do_safe_pin_variant.py",
+                    "safe_servo_pins": (
+                        safe_pin_compile["variant"]["safe_servo_pins"]
+                        if safe_pin_compile
+                        else None
+                    ),
+                    "compile_status": safe_pin_compile["result"] if safe_pin_compile else "NOT_RUN",
+                    "transformed_source_published": False,
+                },
                 "verification_gate": [
                     "do not connect servos to D0/D1 during first USB upload or Serial0 configuration",
                     "choose and document a non-UART servo pin remap or a verified hardware isolation/multiplexing design",
@@ -460,7 +489,7 @@ def main() -> None:
             },
             {
                 "id": "DO-SRC-002",
-                "status": "HOLD_VERSIONED_WIRING_REQUIRED",
+                "status": "VARIANT_WIRING_GENERATED_HOLD_PHYSICAL_CONTINUITY",
                 "issue": "the official control-page v2.1 wiring table publishes D2/D3/D4/D5 servo pins while pinned v3.4.3 source and the current GitHub README use D0/D1/D5/D6",
                 "source_evidence": {
                     "official_page_section": "D-O Droid Control System v2.1 -> Mega to Servos",
@@ -468,6 +497,15 @@ def main() -> None:
                     "pinned_v3_4_3_pins": servo_pins,
                 },
                 "risk": "combining the embedded v2.1 webpage wiring table with v3.4.3 firmware can put each servo signal on the wrong connector and hides the D0/D1 Serial0 contention",
+                "mitigation": {
+                    "wiring_contract": "engineering/do_safe_pin_variant_wiring.csv",
+                    "wiring_sha256": sha256(SAFE_PIN_WIRING) if SAFE_PIN_WIRING.is_file() else None,
+                    "compiled_source_sha256": (
+                        safe_pin_compile["variant"]["transformed_source_sha256"]
+                        if safe_pin_compile
+                        else None
+                    ),
+                },
                 "verification_gate": [
                     "record the exact firmware filename and SHA-256 beside every generated wiring diagram",
                     "derive the harness from the compiled source constants rather than the generic webpage table",
@@ -548,7 +586,7 @@ def main() -> None:
             "license": "publicly downloadable but no explicit redistribution license found",
         },
         "reference_downloads": downloads,
-        "conclusion": "Pinned Mega firmware and public reference documents support a personal non-commercial bench route. Free and paid external model candidates now have an explicit classification, but no single complete, openly redistributable and physically validated mechanics-plus-control-plus-electrical package was found.",
+        "conclusion": "Pinned Mega firmware and public reference documents support a personal non-commercial bench route. The hash-locked D22-D25 safe-pin variant removes the upstream D0/D1-versus-Serial0 software collision and compiles, but continuity and powered behavior remain untested. Free and paid external model candidates now have an explicit classification, but no single complete, openly redistributable and physically validated mechanics-plus-control-plus-electrical package was found.",
     }
 
     OUT.parent.mkdir(parents=True, exist_ok=True)
@@ -626,6 +664,44 @@ def main() -> None:
             != AIO32_PUBLIC_COMPILE_EVIDENCE.read_bytes()
         ):
             failures.append("public AIO32 compile evidence is missing or stale")
+    if safe_pin_compile is None:
+        failures.append("D-O safe-pin compile evidence missing")
+    else:
+        expected_safe_pin_evidence = {
+            "result": "PASS_COMPILE_ONLY_HOLD_PHYSICAL_CONTINUITY",
+            "source_commit": git("rev-parse", "HEAD"),
+            "source_sha256": sha256(recommended_path),
+            "safe_servo_pins": {
+                "MAINBAR_SERVO_PIN": 22,
+                "HEAD1_SERVO_PIN": 23,
+                "HEAD2_SERVO_PIN": 24,
+                "HEAD3_SERVO_PIN": 25,
+            },
+            "program_bytes": 43198,
+            "global_ram_bytes": 1516,
+        }
+        observed_safe_pin_evidence = {
+            "result": safe_pin_compile.get("result"),
+            "source_commit": safe_pin_compile.get("source", {}).get("commit"),
+            "source_sha256": safe_pin_compile.get("source", {}).get("sha256"),
+            "safe_servo_pins": safe_pin_compile.get("variant", {}).get("safe_servo_pins"),
+            "program_bytes": safe_pin_compile.get("compile", {}).get("program_bytes"),
+            "global_ram_bytes": safe_pin_compile.get("compile", {}).get("global_ram_bytes"),
+        }
+        if observed_safe_pin_evidence != expected_safe_pin_evidence:
+            failures.append(
+                f"unexpected D-O safe-pin compile evidence: {observed_safe_pin_evidence}"
+            )
+        if safe_pin_compile.get("variant", {}).get("target_pin_collisions"):
+            failures.append("D-O safe-pin variant still has numeric pin collisions")
+        if safe_pin_compile.get("release_boundary", {}).get("actuator_power_release"):
+            failures.append("D-O safe-pin compile evidence incorrectly releases actuator power")
+        for canonical, public_copy in (
+            (SAFE_PIN_COMPILE_EVIDENCE, SAFE_PIN_PUBLIC_COMPILE_EVIDENCE),
+            (SAFE_PIN_WIRING, SAFE_PIN_PUBLIC_WIRING),
+        ):
+            if not public_copy.is_file() or canonical.read_bytes() != public_copy.read_bytes():
+                failures.append(f"public D-O safe-pin artifact is missing or stale: {public_copy.name}")
     if ibus_attachment_version is None or not ibus_attachment_version.startswith("3.4.0"):
         failures.append(f"unexpected website v3.4 attachment version: {ibus_attachment_version}")
 
@@ -638,7 +714,8 @@ def main() -> None:
         f"source_conflicts={len(manifest['source_conflicts'])} "
         f"external_model_candidates={len(EXTERNAL_MODEL_CANDIDATES)} "
         f"official_attachments={len(public_attachments)} aio32_compile={aio32_compile['result']} "
-        f"aio32_pcb_cad={aio32_archive['pcb_cad_file_count']}"
+        f"aio32_pcb_cad={aio32_archive['pcb_cad_file_count']} "
+        f"safe_pin_variant={safe_pin_compile['result']}"
     )
 
 

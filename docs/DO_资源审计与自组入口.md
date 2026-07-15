@@ -42,9 +42,9 @@
 
 公开说明存在必须先解决的硬件冲突：仓库根 README 写一块 Cytron MDD10A 双路驱动，v3.4 README 写两块 MD10C。驱动电机、减速比、四个舵机负载和真实峰值电流也未冻结。因此采购表把这些项标为 HOLD，而不是把来源中的示例值冒充最终选型。
 
-源码还存在第二个硬件冲突门。v3.4.3 把 `MAINBAR_SERVO_PIN` 和 `HEAD1_SERVO_PIN` 分别固定为 D0、D1，并实际调用四路 `Servo.attach()`；同一草图又执行 `Serial.begin(9600)`，把 USB 配置菜单放在 Serial0。Arduino Mega 2560 官方映射中 D0 是 RX0、D1 是 TX0，因此这两路舵机与上传/配置串口复用了同一对物理引脚。当前状态是 `HOLD_BENCH_VERIFICATION`：首轮 USB 烧录与配置时不得连接 D0/D1 舵机信号；最终必须改到非 UART 引脚，或给出经台架验证的隔离/复用电路，并用示波器或逻辑分析仪同时证明舵机脉宽和串口收发完整。
+源码还存在第二个硬件冲突门。v3.4.3 把 `MAINBAR_SERVO_PIN` 和 `HEAD1_SERVO_PIN` 分别固定为 D0、D1，并实际调用四路 `Servo.attach()`；同一草图又执行 `Serial.begin(9600)`，把 USB 配置菜单放在 Serial0。Arduino Mega 2560 官方映射中 D0 是 RX0、D1 是 TX0，因此上游原版确实发生物理引脚争用。项目现已加入 `tools/build_do_safe_pin_variant.py`：工具只接受固定提交和 SHA-256，把四路舵机改到 D22–D25，保留 Serial0，并以 Mega 2560 成功编译。状态为 `UPSTREAM_CONFLICT_VARIANT_COMPILED_HOLD_PHYSICAL_CONTINUITY`；软件冲突已在变体中消除，但实体导通、USB/串口和四路脉宽仍需台架证明，舵机电源不放行。
 
-官网还存在两个版本化入口冲突。控制板页面内嵌的 **v2.1** 接线表把四个舵机写成 D2/D3/D4/D5，而固定的 **v3.4.3** 源码与当前 GitHub README 使用 D0/D1/D5/D6；页面名为 `D-O_ibus_v3.4.zip` 的附件内部版本头仍是 **3.4.0**，不是固定仓库中的 3.4.3。项目因此新增 `DO-SRC-002 / HOLD_VERSIONED_WIRING_REQUIRED` 和 `DO-SRC-003 / USE_PINNED_GITHUB_V3_4_3`：线束必须由实际编译源码常量生成，并把文件名、提交、SHA-256 与接线图绑定；网页 ZIP 只作历史参考。
+官网还存在两个版本化入口冲突。控制板页面内嵌的 **v2.1** 接线表把四个舵机写成 D2/D3/D4/D5，而固定的 **v3.4.3** 源码与当前 GitHub README 使用 D0/D1/D5/D6；页面名为 `D-O_ibus_v3.4.zip` 的附件内部版本头仍是 **3.4.0**，不是固定仓库中的 3.4.3。项目已生成绑定原始提交、原始/修改后 SHA-256 的 [D22–D25 线束合同](../engineering/do_safe_pin_variant_wiring.csv) 与 [编译证据](../engineering/do_safe_pin_variant_compile.json)，故 `DO-SRC-002` 前进为 `VARIANT_WIRING_GENERATED_HOLD_PHYSICAL_CONTINUITY`；网页 ZIP 仍只作历史参考。
 
 AIO32 v2.1 是另一条实验性 ESP32-S3 控制路线，不是当前 Mega 基线的无条件替代。其公开 ZIP 有 22 个源码文件，部分文件出现 Apache 2.0 标记，但压缩包没有统一 LICENSE；随附手册声称源码和硬件 KiCad 在共享 GitHub 仓库，而 2026-07-13 固定的唯一 `main` 分支及该 ZIP 中都没有 AIO32 KiCad/Gerber。故整体许可与硬件可制造性保持 `HOLD_PACKAGE_LICENSE_AND_HARDWARE_CAD_NOT_FOUND`，不能因为个别文件头或手册一句话就把整包称为开放硬件。
 

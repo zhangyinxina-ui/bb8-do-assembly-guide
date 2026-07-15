@@ -87,21 +87,110 @@
       }
     },
     "versioned_wiring_contract": {
-      "status": "HOLD_D0_D1_REMAP_AND_PHYSICAL_CONTINUITY",
+      "status": "SAFE_PIN_VARIANT_COMPILED_HOLD_PHYSICAL_CONTINUITY",
       "source_path": "D-O_ibus_v3.4/D_O_printed_droid_rc_ibus_v3.4.3.ino",
       "source_commit": "e90aacdbe26a62fd4f0229d5504a3f2f3c409055",
       "source_sha256": "6cb3ce0d96c83724aaf9170eaef592c3d7cc866b9da66819db9e9f3fe134a707",
       "compile_evidence_path": "engineering/do_firmware_compile.json",
       "compile_evidence_sha256": "2e9b8e2f46b5ea6ceae3e52ac5101010744c07aaed9b8eeb8de77ab5e6063e40",
+      "safe_pin_variant_evidence_path": "engineering/do_safe_pin_variant_compile.json",
+      "safe_pin_variant_evidence_sha256": "b31ecf6960dd047de83955e05d00d4af7e57fa19646fc79af18dca9361b60378",
+      "safe_pin_variant_wiring_path": "engineering/do_safe_pin_variant_wiring.csv",
+      "safe_pin_variant_wiring_sha256": "f28e36d19ddd668d1f6411a2e8490977cf86a0420dd3cff02289bc40e53d84dc",
+      "safe_servo_pins": {
+        "MAINBAR_SERVO_PIN": 22,
+        "HEAD1_SERVO_PIN": 23,
+        "HEAD2_SERVO_PIN": 24,
+        "HEAD3_SERVO_PIN": 25
+      },
       "generated_from_source_constants": true,
       "physical_continuity_test": "NOT_RUN",
       "actuator_power_release": false
+    },
+    "safe_pin_variant": {
+      "verified_at": "2026-07-15",
+      "result": "PASS_COMPILE_ONLY_HOLD_PHYSICAL_CONTINUITY",
+      "source": {
+        "repository": "https://github.com/PrintedDroid/D-O-Printed-Droid.git",
+        "commit": "e90aacdbe26a62fd4f0229d5504a3f2f3c409055",
+        "path": "D-O_ibus_v3.4/D_O_printed_droid_rc_ibus_v3.4.3.ino",
+        "sha256": "6cb3ce0d96c83724aaf9170eaef592c3d7cc866b9da66819db9e9f3fe134a707",
+        "licence_boundary": "custom personal non-commercial upstream terms; retain notice and attribution"
+      },
+      "variant": {
+        "name": "v3.4.3 Mega safe servo pins D22-D25",
+        "transformation_tool": "tools/build_do_safe_pin_variant.py",
+        "transformed_source_sha256": "f858c4856adf599617875bc6be31224c174ecaf1a7aac98b1f153adca4a91441",
+        "transformed_source_published": false,
+        "binary_published": false,
+        "wiring_contract": "engineering/do_safe_pin_variant_wiring.csv",
+        "original_servo_pins": {
+          "MAINBAR_SERVO_PIN": 0,
+          "HEAD1_SERVO_PIN": 1,
+          "HEAD2_SERVO_PIN": 5,
+          "HEAD3_SERVO_PIN": 6
+        },
+        "safe_servo_pins": {
+          "MAINBAR_SERVO_PIN": 22,
+          "HEAD1_SERVO_PIN": 23,
+          "HEAD2_SERVO_PIN": 24,
+          "HEAD3_SERVO_PIN": 25
+        },
+        "released_serial0_pins": [
+          0,
+          1
+        ],
+        "other_numeric_pin_constants": {
+          "DIR1_PIN": 13,
+          "PWM1_PIN": 12,
+          "DIR2_PIN": 11,
+          "PWM2_PIN": 10,
+          "PWM_DRIVE1_PIN": 3,
+          "PWM_DRIVE2_PIN": 4,
+          "PWM_SOUND_CH1_PIN": 14,
+          "PWM_SOUND_CH2_PIN": 15,
+          "PWM_SOUND_CH3_PIN": 16,
+          "PWM_SOUND_CH4_PIN": 17,
+          "DFPLAYER_RX_PIN": 7,
+          "DFPLAYER_TX_PIN": 8
+        },
+        "target_pin_collisions": {},
+        "serial0_console_preserved": true,
+        "all_safe_pins_unique": true
+      },
+      "compile": {
+        "fqbn": "arduino:avr:mega",
+        "arduino_cli": "arduino-cli  Version: 1.5.1 Commit: Homebrew Date: 2026-06-05T09:39:33Z",
+        "platform": "arduino:avr@1.8.8",
+        "libraries": {
+          "IBusBM": "1.1.4",
+          "DFRobotDFPlayerMini": "1.0.6",
+          "Servo": "1.3.0"
+        },
+        "program_bytes": 43198,
+        "program_percent": 17,
+        "program_max_bytes": 253952,
+        "global_ram_bytes": 1516,
+        "global_ram_percent": 18,
+        "global_ram_remaining_bytes": 6676,
+        "ram_max_bytes": 8192
+      },
+      "release_boundary": {
+        "physical_continuity_test": "NOT_RUN",
+        "usb_upload_and_reset_test": "NOT_RUN",
+        "serial0_9600_baud_menu_test": "NOT_RUN",
+        "four_servo_pulse_test": "NOT_RUN",
+        "failsafe_motion_test": "NOT_RUN",
+        "actuator_power_release": false,
+        "flash_release": false,
+        "claim": "software transformation and compilation only; no powered hardware evidence"
+      }
     }
   },
   "source_conflicts": [
     {
       "id": "DO-SRC-001",
-      "status": "HOLD_BENCH_VERIFICATION",
+      "status": "UPSTREAM_CONFLICT_VARIANT_COMPILED_HOLD_PHYSICAL_CONTINUITY",
       "issue": "v3.4.3 assigns two servo outputs to Mega D0/D1 while also enabling the Serial0 console",
       "source_evidence": {
         "mainbar_servo_pin": 0,
@@ -111,6 +200,17 @@
       },
       "board_mapping": "Arduino Mega 2560 maps D0 to RX0 and D1 to TX0",
       "risk": "Servo signalling and the USB/Serial0 upload or configuration path contend for the same physical pins; neither function is accepted without bench evidence",
+      "mitigation": {
+        "tool": "tools/build_do_safe_pin_variant.py",
+        "safe_servo_pins": {
+          "MAINBAR_SERVO_PIN": 22,
+          "HEAD1_SERVO_PIN": 23,
+          "HEAD2_SERVO_PIN": 24,
+          "HEAD3_SERVO_PIN": 25
+        },
+        "compile_status": "PASS_COMPILE_ONLY_HOLD_PHYSICAL_CONTINUITY",
+        "transformed_source_published": false
+      },
       "verification_gate": [
         "do not connect servos to D0/D1 during first USB upload or Serial0 configuration",
         "choose and document a non-UART servo pin remap or a verified hardware isolation/multiplexing design",
@@ -121,7 +221,7 @@
     },
     {
       "id": "DO-SRC-002",
-      "status": "HOLD_VERSIONED_WIRING_REQUIRED",
+      "status": "VARIANT_WIRING_GENERATED_HOLD_PHYSICAL_CONTINUITY",
       "issue": "the official control-page v2.1 wiring table publishes D2/D3/D4/D5 servo pins while pinned v3.4.3 source and the current GitHub README use D0/D1/D5/D6",
       "source_evidence": {
         "official_page_section": "D-O Droid Control System v2.1 -> Mega to Servos",
@@ -139,6 +239,11 @@
         }
       },
       "risk": "combining the embedded v2.1 webpage wiring table with v3.4.3 firmware can put each servo signal on the wrong connector and hides the D0/D1 Serial0 contention",
+      "mitigation": {
+        "wiring_contract": "engineering/do_safe_pin_variant_wiring.csv",
+        "wiring_sha256": "f28e36d19ddd668d1f6411a2e8490977cf86a0420dd3cff02289bc40e53d84dc",
+        "compiled_source_sha256": "f858c4856adf599617875bc6be31224c174ecaf1a7aac98b1f153adca4a91441"
+      },
       "verification_gate": [
         "record the exact firmware filename and SHA-256 beside every generated wiring diagram",
         "derive the harness from the compiled source constants rather than the generic webpage table",
@@ -589,5 +694,5 @@
       "redistribution": "not bundled into public site; retain for personal build reference because upstream redistribution terms are not explicit"
     }
   ],
-  "conclusion": "Pinned Mega firmware and public reference documents support a personal non-commercial bench route. Free and paid external model candidates now have an explicit classification, but no single complete, openly redistributable and physically validated mechanics-plus-control-plus-electrical package was found."
+  "conclusion": "Pinned Mega firmware and public reference documents support a personal non-commercial bench route. The hash-locked D22-D25 safe-pin variant removes the upstream D0/D1-versus-Serial0 software collision and compiles, but continuity and powered behavior remain untested. Free and paid external model candidates now have an explicit classification, but no single complete, openly redistributable and physically validated mechanics-plus-control-plus-electrical package was found."
 }
