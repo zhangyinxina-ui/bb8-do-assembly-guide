@@ -35,6 +35,7 @@ test("server-renders the BB-8 and D-O build guide", async () => {
   assert.doesNotMatch(html, developmentPreviewMeta);
   assert.match(html, /BB-8 &amp; D-O 1:1/);
   assert.match(html, /GitHub 项目/);
+  assert.match(html, /公开项目仓库/);
   assert.match(html, /https:\/\/github\.com\/zhangyinxina-ui\/bb8-do-assembly-guide/);
   assert.match(html, /508/);
   assert.match(html, /Printed Droid/);
@@ -201,6 +202,7 @@ test("server-renders the complete English build guide", async () => {
   const html = await response.text();
   assert.match(html, /Turn the screen droid/);
   assert.match(html, /GitHub repository/);
+  assert.match(html, /Public project repository/);
   assert.match(html, /https:\/\/github\.com\/zhangyinxina-ui\/bb8-do-assembly-guide/);
   assert.match(html, /386 total objects and 182 internal objects/);
   assert.match(html, /150 fabrication objects, nine non-fabrication engineering markers and 23 non-fabrication pre-CAD gate references/);

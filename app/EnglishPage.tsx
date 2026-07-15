@@ -101,6 +101,7 @@ export default function EnglishPage() {
         <a className="brand" href="#top"><span>R</span>EP·LAB</a>
         <div>
           <a href="#model">BB-8</a><a href="#do">D-O</a><a href="#build">Build</a><a href="#sources">Sources</a>
+          <a className="repository-link" href={repositoryUrl} target="_blank" rel="noreferrer">GitHub ↗</a>
           <a className="language-link" href={asset("")} aria-label="Switch to Chinese">中文</a>
         </div>
       </nav>
@@ -110,6 +111,7 @@ export default function EnglishPage() {
         <h1>Turn the screen droid<br /><em>into a real machine.</em></h1>
         <p>A maker-focused BB-8 parametric model, auditable D-O resource map and safety-gated assembly guide. Facts, assumptions, paid files and licence boundaries remain explicit.</p>
         <div className="hero-actions"><a className="button primary" href="#model">View model evidence</a><a className="button" href="#build">Start the build ↓</a><a className="button" href={repositoryUrl} target="_blank" rel="noreferrer">GitHub repository ↗</a></div>
+        <p className="repository-address">Public project repository: <a href={repositoryUrl} target="_blank" rel="noreferrer">{repositoryUrl} ↗</a></p>
         <div className="metrics">
           <div><b>508</b><span>mm body diameter</span></div><div><b>295</b><span>mm head diameter</span></div><div><b>670</b><span>mm antenna-free height</span></div>
         </div>

@@ -204,6 +204,7 @@ export default function Home() {
           <a href="#do">D-O</a>
           <a href="#build">装配</a>
           <a href="#sources">来源</a>
+          <a className="repository-link" href={repositoryUrl} target="_blank" rel="noreferrer">GitHub ↗</a>
           <a className="language-link" href={asset("/en/")} aria-label="Switch to English">EN</a>
         </div>
       </nav>
@@ -229,6 +230,9 @@ export default function Home() {
             GitHub 项目 ↗
           </a>
         </div>
+        <p className="repository-address">
+          公开项目仓库：<a href={repositoryUrl} target="_blank" rel="noreferrer">{repositoryUrl} ↗</a>
+        </p>
         <div className="metrics">
           <div>
             <b>508</b>

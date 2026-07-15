@@ -59,6 +59,9 @@ a {
   padding: 6px 9px;
   line-height: 1;
 }
+.repository-link {
+  color: var(--orange);
+}
 .hero {
   min-height: calc(100vh - 76px);
   padding: 10vh 6vw 6vh;
@@ -98,8 +101,20 @@ h1 em {
 }
 .hero-actions {
   display: flex;
+  flex-wrap: wrap;
   gap: 12px;
   margin-top: 34px;
+}
+.hero > .repository-address {
+  max-width: none;
+  margin: 18px 0 0;
+  font: 700 12px/1.5 monospace;
+  overflow-wrap: anywhere;
+}
+.repository-address a {
+  color: var(--orange);
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
 .button {
   padding: 15px 22px;
@@ -686,8 +701,16 @@ footer b {
   color: #11120f;
 }
 @media (max-width: 800px) {
-  .nav div {
+  .nav {
+    padding-inline: 3vw;
+    height: auto;
+    min-height: 76px;
     gap: 12px;
+  }
+  .nav div {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 8px 12px;
   }
   .hero {
     padding-top: 8vh;
