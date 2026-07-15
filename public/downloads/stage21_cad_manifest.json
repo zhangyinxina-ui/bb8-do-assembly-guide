@@ -1,0 +1,51 @@
+{
+  "stage": 21,
+  "generator": "tools/build_stage21_wheel_preload_cad.py",
+  "mode": "DEPENDENCY_LIGHT_FALLBACK_OPENSCAD_UNAVAILABLE",
+  "manufacturing_release": false,
+  "release_boundary": "DXF and STL outputs are fit references. Plate STL files omit holes and slots by design; use the DXF for 2D profiles. No output is released for a running robot.",
+  "outputs": [
+    {
+      "path": "hardware/stage21_wheel_preload_adjuster/outputs/stage21_fixed_slider_plate.dxf",
+      "bytes": 1322,
+      "sha256": "3aa54a8257978fb5ea8a8427b0796875d771467d18ae3d47bf5c73f9c8e0c134",
+      "classification": "EXACT_2D_REFERENCE_PROFILE_HOLES_AND_SLOTS_INCLUDED"
+    },
+    {
+      "path": "hardware/stage21_wheel_preload_adjuster/outputs/stage21_moving_side_plate.dxf",
+      "bytes": 1058,
+      "sha256": "3d19e74635222ee551dd5f03d17eadc29e066b4cc95d12a2b8e655154d9b4602",
+      "classification": "EXACT_2D_REFERENCE_PROFILE_HOLES_INCLUDED"
+    },
+    {
+      "path": "hardware/stage21_wheel_preload_adjuster/outputs/stage21_crowned_wheel_envelope.stl",
+      "bytes": 1071473,
+      "sha256": "af8a86ac396806a5d4c13760184e6d4c72c916189795c3ba9954fff133357990",
+      "classification": "EXACT_STAGE21_PARAMETRIC_CROWN_ENVELOPE"
+    },
+    {
+      "path": "hardware/stage21_wheel_preload_adjuster/outputs/stage21_fixed_slider_plate_envelope.stl",
+      "bytes": 1594,
+      "sha256": "2c87e3ac9525c5c8beb87c4c5d96029a92c17e9bfcabd04fd466e94d36b9bd19",
+      "classification": "ENVELOPE_ONLY_USE_DXF_FOR_HOLES_AND_SLOTS"
+    },
+    {
+      "path": "hardware/stage21_wheel_preload_adjuster/outputs/stage21_moving_side_plate_envelope.stl",
+      "bytes": 1592,
+      "sha256": "e276bf20686eb1cb300b2639d669e16c5f33f5edf7cb05ad05525b11bd29a299",
+      "classification": "ENVELOPE_ONLY_USE_DXF_FOR_HOLES"
+    },
+    {
+      "path": "hardware/stage21_wheel_preload_adjuster/outputs/stage21_wheel_preload_assembly_envelope.stl",
+      "bytes": 1298156,
+      "sha256": "bd19832551346c85f691722574772f0d78410e00c6a5a2dc822bbcb428221756",
+      "classification": "REFERENCE_ASSEMBLY_ENVELOPE_NOT_FABRICATION_GEOMETRY"
+    },
+    {
+      "path": "hardware/stage21_wheel_preload_adjuster/outputs/stage21_wheel_preload_global_pair.png",
+      "bytes": 129032,
+      "sha256": "bd34ae11204c12fdb6ae65c8cc98681fbf6c744bb8eebf63e7f3f628ed9a570d",
+      "classification": "ENGINEERING_REVIEW_IMAGE"
+    }
+  ]
+}

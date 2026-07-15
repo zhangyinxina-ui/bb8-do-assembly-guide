@@ -536,15 +536,20 @@ for obj in internals:
     if max_radius_mm > 255.5:
         errors.append(f"{obj.name} exceeds shell envelope at {max_radius_mm:.2f} mm")
 
-# Contact geometry gate: tagged powered wheels and ball-transfer stabilisers must
-# reach the nominal inner shell radius to within 1 mm after reopening the file.
+# Contact geometry gate: use the actual transformed mesh support, not
+# centre-radius + max-dimension/2. The old shortcut treats a 96 x 26 mm powered
+# cylinder as a 96 mm sphere and overstates its reach by about 5.07 mm. Stage 21
+# deliberately makes the legacy powered wheels fail until a crowned,
+# tangent-axis preload cassette is applied and saved with explicit approval.
 for obj in internals:
     contact_radius_mm = obj.get("inner_shell_contact_radius_mm")
     if contact_radius_mm is None:
         continue
-    center_radius_mm = obj.matrix_world.translation.length * 1000
-    element_radius_mm = max(obj.dimensions) * 500
-    shell_reach_mm = center_radius_mm + element_radius_mm
+    if obj.type != 'MESH' or not obj.data.vertices:
+        errors.append(f"{obj.name} contact geometry has no auditable mesh vertices")
+        continue
+    shell_reach_mm = max((obj.matrix_world @ vertex.co).length
+                         for vertex in obj.data.vertices) * 1000
     if abs(shell_reach_mm - 254.0) > 1.0:
         errors.append(f"{obj.name} shell contact {shell_reach_mm:.2f} mm, expected 254 mm")
 

@@ -24,6 +24,7 @@ const phaseMedia: Record<string, AssemblyMedia[]> = {
     { label: "正视", src: asset("/model/internal_front.png"), alt: "BB-8 内车正视图", note: "检查 310 mm 轮距、驱动轮接触和低重心布置。" },
     { label: "侧视", src: asset("/model/internal_side.png"), alt: "BB-8 内车侧视图", note: "检查驱动轴线、配重高度和球壳内侧避让。" },
     { label: "俯视", src: asset("/model/internal_top.png"), alt: "BB-8 内车俯视图", note: "检查左右电机、纵梁、线束与赤道维护区。" },
+    { label: "阶段21", src: asset("/images/BB8_stage21_wheel_preload_adjuster.png"), alt: "BB-8 阶段21切向轮轴与径向预压滑台工程图", note: "当前Blender轮组仍是旧圆柱；此图是待装机验证的切向轮轴、平行同步带和12 mm预压滑台参考结构。" },
   ],
   "电气与配重": [
     { label: "侧视", src: asset("/model/internal_side.png"), alt: "BB-8 内部机构侧视图", note: "核对电池、控制托盘、线束弯曲半径和桅杆避让。" },
@@ -321,7 +322,7 @@ export default function Home() {
             </h3>
             <p>
               Blender
-              文件内重开审计确认386个总对象、182个内部对象：150个制造对象、9个非制造工程标记和23个阶段19非制造预CAD参考对象。驱动轮和四只稳定球实际到达254 mm内壳；
+              文件内重开审计确认386个总对象、182个内部对象：150个制造对象、9个非制造工程标记和23个阶段19非制造预CAD参考对象。阶段21复核已经推翻其中的驱动轮接触结论：四只球形稳定轮仍按网格顶点检查，但96 × 26 mm驱动轮实际是有限宽圆柱，旧审计把它按96 mm球体估算；
               IG42E-24K按125.2 mm总长、PCD 35 mm安装孔和310 mm轮距布置，两台电机不再互相穿透。
               赤道维护接口包含494 mm密封圈、8个锁扣，并明确建模12段动力/编码器线束和4个可断开连接器。
               磁性头部采用6+6磁体包络、8 mm总气隙和3只24 mm头底滚轮，装机拉力验收线为40 N。
@@ -333,6 +334,7 @@ export default function Home() {
               阶段18已把REC Active BMS 4S、MDD20A、SW60、MIDI保险丝、外置分流器和双通道门板的模块化电源舱写入唯一Blender主工程；重开审计确认39个阶段18对象、150个制造对象和9个工程标记。8个候选包络通过数字间隙门，12项实物冻结门仍未通过，不能把解析几何描述成实物装配完成。
               阶段19进一步发布双许可PWM门合同，并把23个板件/器件参考包络写入同一主工程；关闭重开后的Blender 5.1.2审计确认386个总对象和182个内部对象，制造清单仍严格保持150项。SAFE_A、SAFE_B、双INA226 ALERT_N和3.3 V逻辑电源任一失效都会解析拉低左右PWM；64组真值表全部通过。正式KiCad 10原理图为0项ERC违规；50 × 35 mm两层PCB已布线，0项DRC违规、0个未连接项，34个器件引用、91条规范引脚连接和21个网络完成双重交叉审计。独立原理图/布局同行复核、Gerber/钻孔发布复核和台架波形仍缺失，不能制造或上电。
               阶段20把结构解析重新绑定到当前制造清单：当前桅杆是Ø24 × 340 mm，旧阶段2的Ø12/Ø8 × 300 mm结论已明确标为不再代表当前模型。2.5 g垂向、1.0 g侧向、斜撑屈曲、桅杆模态和理想基材疲劳筛查通过，但轮—壳接触仍缺5.5 mm径向调节预算，15项材料、连接、公差和实物门未关闭；当前状态为HOLD_JOINT_TOLERANCE_MATERIAL_AND_PHYSICAL_VALIDATION_REQUIRED。
+              阶段21用有限圆柱支撑函数重新计算：旧公式高估5.072 mm，实际轮—壳间隙5.070 mm，轮轴相对球壳切平面偏48.800°。选定参考结构改为切向轮轴、80 mm径向内移的平行电机轴、24T/24T 5M-280-15候选同步带、0.750 mm冠形轮和12 mm M6×1预压滑台；覆盖5.5 mm公差后余3.5 mm，但当前打开的Blender主模型未被改写，13项轮胎、壳体、皮带、轴承、轴/毂、紧固、干涉和实车门仍保持HOLD。
             </p>
             <div className="doc-actions">
               <a className="button" href={asset("/downloads/BB8_BOM.md")} download>
@@ -407,6 +409,24 @@ export default function Home() {
               <a className="button" href={asset("/downloads/BB8_stage20_structural_load_and_tolerance_gate.md")} download>
                 Download Stage 20 English report
               </a>
+              <a className="button" href={asset("/downloads/BB8_阶段21_切向轮轴与预压滑台门.md")} download>
+                下载阶段 21 切向轮轴与预压滑台报告
+              </a>
+              <a className="button" href={asset("/downloads/BB8_stage21_tangent_wheel_preload_cassette_gate.md")} download>
+                Download Stage 21 English report
+              </a>
+              <a className="button" href={asset("/downloads/stage21_wheel_preload_adjuster.scad")} download>
+                下载阶段 21 OpenSCAD 参考装配
+              </a>
+              <a className="button" href={asset("/downloads/stage21_fixed_slider_plate.dxf")} download>
+                下载固定滑板 DXF
+              </a>
+              <a className="button" href={asset("/downloads/stage21_moving_side_plate.dxf")} download>
+                下载移动侧板 DXF
+              </a>
+              <a className="button" href={asset("/downloads/stage21_crowned_wheel_envelope.stl")} download>
+                下载冠形轮参考 STL
+              </a>
               <a className="button" href={asset("/model/BB8_three_view_dimension_sheet.png")} download>
                 下载最新三视图尺寸图
               </a>
@@ -419,6 +439,17 @@ export default function Home() {
                 James Bruton CAD/代码 ↗
               </a>
             </div>
+          </div>
+        </div>
+        <div className="mechanism pcb-evidence">
+          <img
+            src={asset("/images/BB8_stage21_wheel_preload_adjuster.png")}
+            alt="BB-8 阶段21切向轮轴与径向预压滑台全局及局部工程图"
+          />
+          <div>
+            <span className="kicker">阶段21 / 驱动轮接触修正</span>
+            <h3>解析结构已确定，<br />实物放行仍保持HOLD。</h3>
+            <p>这张双视图把球壳内的全局装配包络与单侧滑台局部结构放在同一尺寸基准上。DXF保留孔槽，冠形轮STL保留0.750 mm轮廓；板件STL仅是包络，不是可直接加工件。当前Blender主模型尚未写入这套结构。</p>
           </div>
         </div>
         <div className="mechanism pcb-evidence">
@@ -538,7 +569,7 @@ export default function Home() {
         <div className="section-head">
           <span>04 / PHYSICS GATE</span>
           <h2>先算清楚，<br />再让它落地跑。</h2>
-          <p>阶段14以17组质量账本替代110 mm旧假设；阶段15加入动态稳定性；阶段16将解析门转换为19项真机测量合同。阶段17把目录额定与实测冻结分开，阶段18验证模块布局并写入主模型，阶段19补齐PWM门PCB证据，阶段20再把结构载荷绑定到当前制造清单并封锁旧桅杆几何漂移；这些都不等于PCB制造、器件采购、材料/连接冻结、实物试装、封壳热或整机运行通过。</p>
+          <p>阶段14以17组质量账本替代110 mm旧假设；阶段15加入动态稳定性；阶段16将解析门转换为19项真机测量合同。阶段17把目录额定与实测冻结分开，阶段18验证模块布局并写入主模型，阶段19补齐PWM门PCB证据，阶段20把结构载荷绑定到当前制造清单，阶段21再纠正驱动轮接触几何并给出切向轮轴预压滑台；这些都不等于PCB制造、器件采购、材料/连接冻结、实物试装、封壳热或整机运行通过。</p>
         </div>
         <div className="control-grid">
           <article><span>01</span><h3>8.463 kg 名义质量</h3><p>17组输入范围为6.375–10.628 kg；所有分组在实物称重前均保持NOT_RUN。</p></article>
@@ -550,7 +581,7 @@ export default function Home() {
           <article><span>07</span><h3>19项强制真机门</h3><p>覆盖称重/质心、40 N磁头、电气去能、标定、堵转、热、地面、坡道、再生和维护。</p></article>
           <article><span>08</span><h3>当前0 / 19</h3><p>审计结果为HOLD_PHYSICAL_TESTS_NOT_RUN；没有真实硬件文件时，--require-pass必然失败。</p></article>
           <article><span>09</span><h3>旧桅杆结论已封锁</h3><p>当前是Ø24 × 340 mm包络；阶段2的Ø12/Ø8 × 300 mm弯曲结论不再代表主模型。</p></article>
-          <article><span>10</span><h3>解析通过，公差仍HOLD</h3><p>2.5 g下纵梁22.814 MPa/0.670 mm，桅杆一阶估算40.47 Hz；但轮—壳径向调节短缺5.5 mm，15项冻结门未关闭。</p></article>
+          <article><span>10</span><h3>旧接触结论已纠正</h3><p>旧圆柱轮实际离壳5.070 mm、轮轴偏切面48.800°；阶段21的12 mm滑台和0.750 mm冠形轮解析通过，但13项实物与装机门仍HOLD。</p></article>
         </div>
         <div className="firmware-downloads">
           <a href={asset("/downloads/BB8_physics_validation.md")} download>下载物理验证报告</a>
@@ -583,6 +614,14 @@ export default function Home() {
           <a href={asset("/downloads/stage20_structural_load_results.json")} download>下载阶段20 HOLD结果</a>
           <a href={asset("/downloads/stage20_structural_load_sweep.csv")} download>下载结构载荷扫描</a>
           <a href={asset("/downloads/verify_stage20_structural_load_path.py")} download>下载阶段20验证器</a>
+          <a href={asset("/downloads/BB8_阶段21_切向轮轴与预压滑台门.md")} download>下载阶段21中文报告</a>
+          <a href={asset("/downloads/BB8_stage21_tangent_wheel_preload_cassette_gate.md")} download>下载阶段21英文报告</a>
+          <a href={asset("/downloads/stage21_wheel_preload_contract.json")} download>下载阶段21机器合同</a>
+          <a href={asset("/downloads/stage21_wheel_preload_results.json")} download>下载阶段21 HOLD结果</a>
+          <a href={asset("/downloads/stage21_wheel_preload_sweep.csv")} download>下载0.5 mm调节扫描</a>
+          <a href={asset("/downloads/stage21_wheel_preload_bom.csv")} download>下载阶段21 BOM</a>
+          <a href={asset("/downloads/stage21_cad_manifest.json")} download>下载阶段21 CAD清单</a>
+          <a href={asset("/downloads/verify_stage21_wheel_preload.py")} download>下载阶段21验证器</a>
         </div>
       </section>
 

@@ -563,8 +563,13 @@ battery["recommended_mass_kg"] = 1.2
 for y in (-.022, .032):
     strap = move_internal(cube(f"Internal battery strap {'front' if y < 0 else 'rear'}",
                                (.066,.004,.032), (0,y,-.077), ORANGE, .002))
-# Wheel centres are placed on R_body - R_wheel, so the 96 mm crowned tread
-# actually intersects the inner 508 mm shell instead of floating in free space.
+# Legacy Stage-5 centre placement uses R_body - R_wheel. The generated mesh is
+# nevertheless a 26 mm-wide finite cylinder with an X-aligned axle, not the
+# crowned tangent-axis wheel implied by the old comment. Stage 21 supersedes the
+# powered-wheel contact claim: exact support leaves about 5.07 mm shell gap and
+# the axle misses the local tangent plane by about 48.8 degrees. Keep this legacy
+# geometry reproducible until the user authorises saving the Stage-21 cassette
+# into the single open Blender master.
 wheel_center_x = .155
 wheel_center_y = 0.0
 wheel_center_z = -math.sqrt((BODY_R - .048) ** 2 - wheel_center_x ** 2 - wheel_center_y ** 2)
@@ -578,6 +583,7 @@ for side in (-1,1):
                      (side*wheel_center_x,motor_y,wheel_center_z), DARK, rot=(0,math.pi/2,0), vertices=64)
     move_internal(wheel)
     wheel["inner_shell_contact_radius_mm"] = round((BODY_R - .048) * 1000, 3)
+    wheel["stage21_contact_status"] = "SUPERSEDED_FINITE_CYLINDER_GAP_AND_AXIS_TANGENCY_FAIL"
     motor = cylinder(f"Internal geared motor {label}", .0225, motor_total_length,
                      (side*motor_center_x,motor_y,wheel_center_z), SILVER,
                      rot=(0,math.pi/2,0), vertices=64)

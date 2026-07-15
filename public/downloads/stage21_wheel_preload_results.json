@@ -1,0 +1,316 @@
+{
+  "stage": 21,
+  "overall": "HOLD_PHYSICAL_CONTACT_BELT_BEARING_AND_CHASSIS_INTEGRATION_REQUIRED",
+  "analytical_screen_passed": true,
+  "manufacturing_release": false,
+  "physical_test_status": "NOT_RUN",
+  "blender_application_status": "NOT_APPLIED_USER_MASTER_PRESERVED",
+  "baseline_correction": {
+    "historical_contact_audit_superseded": true,
+    "reason": "SUPERSEDED_FOR_POWERED_WHEELS_BECAUSE_IT_TREATS_A_26_MM_WIDE_CYLINDER_AS_A_96_MM_SPHERE",
+    "wheels": [
+      {
+        "object": "Internal drive wheel L",
+        "manifest_world_center_mm": [
+          -155.0,
+          -9.47,
+          -135.36
+        ],
+        "neutral_center_mm": [
+          -155.0,
+          -0.004695,
+          -135.690864
+        ],
+        "neutral_center_radius_mm": 206.002453,
+        "legacy_spherical_support_mm": 254.002453,
+        "exact_finite_cylinder_support_mm": 248.930379,
+        "exact_shell_gap_mm": 5.069621,
+        "axis_to_shell_tangent_error_deg": 48.800289,
+        "radial_unit": [
+          -0.752418226,
+          -2.2792e-05,
+          -0.65868567
+        ]
+      },
+      {
+        "object": "Internal drive wheel R",
+        "manifest_world_center_mm": [
+          155.0,
+          -9.47,
+          -135.36
+        ],
+        "neutral_center_mm": [
+          155.0,
+          -0.004695,
+          -135.690864
+        ],
+        "neutral_center_radius_mm": 206.002453,
+        "legacy_spherical_support_mm": 254.002453,
+        "exact_finite_cylinder_support_mm": 248.930379,
+        "exact_shell_gap_mm": 5.069621,
+        "axis_to_shell_tangent_error_deg": 48.800289,
+        "radial_unit": [
+          0.752418226,
+          -2.2792e-05,
+          -0.65868567
+        ]
+      }
+    ],
+    "minimum_exact_shell_gap_mm": 5.069621,
+    "minimum_axis_to_tangent_error_deg": 48.800289,
+    "minimum_legacy_support_overstatement_mm": 5.072074
+  },
+  "selected_contact_geometry": {
+    "architecture": "TANGENT_AXIS_PARALLEL_BELT_RADIAL_SLIDE_V1",
+    "right_radial_unit": [
+      0.752427184,
+      0.0,
+      -0.658675438
+    ],
+    "right_tangent_axis_unit": [
+      0.658675438,
+      -0.0,
+      0.752427184
+    ],
+    "generated_drive_direction_unit": [
+      0.0,
+      1.0,
+      0.0
+    ],
+    "nominal_wheel_center_radius_mm": 206.0,
+    "minimum_crown_drop_mm": 0.332895,
+    "selected_crown_drop_mm": 0.75,
+    "crown_drop_margin_mm": 0.417105,
+    "nominal_max_support_mm": 254.0,
+    "max_support_axial_coordinate_mm": 0.0,
+    "edge_shell_clearance_mm": 0.416557
+  },
+  "radial_slide": {
+    "usable_travel_mm": 12.0,
+    "nominal_position_from_inner_stop_mm": 3.0,
+    "stage20_tolerance_budget_mm": 5.5,
+    "outward_reserve_mm": 9.0,
+    "margin_beyond_tolerance_budget_mm": 3.5,
+    "slot_centerline_travel_mm": 12.0,
+    "jackscrew_mm_per_turn": 1.0,
+    "quarter_turn_increment_mm": 0.25,
+    "target_measured_preload_n_each": 80.0,
+    "preload_is_analytically_proven": false
+  },
+  "parallel_belt_drive": {
+    "pulley_pitch_diameter_mm": 38.197186,
+    "calculated_belt_pitch_length_mm": 280.0,
+    "belt_teeth": 56,
+    "ratio": 1.0,
+    "motor_center_radius_mm": 126.0,
+    "motor_envelope_support_mm": 161.155236,
+    "motor_shell_clearance_mm": 92.844764,
+    "peak_belt_tension_difference_n": 62.831853,
+    "shock_factored_belt_tension_difference_n": 188.495559,
+    "supplier_rating_and_pretension_proven": false
+  },
+  "reference_cad_packaging": {
+    "conservative_plate_box_support_mm": 240.90247,
+    "plate_shell_clearance_mm": 13.09753,
+    "exact_current_chassis_clash_check": "NOT_RUN"
+  },
+  "load_demands": {
+    "peak_wheel_tangential_force_n_each": 25.0,
+    "shock_factored_wheel_force_n_each": 75.0,
+    "minimum_total_clamp_demand_n_per_cassette": 1000.0,
+    "minimum_clamp_demand_n_per_m6": 250.0,
+    "wheel_shaft_shock_torsional_shear_demand_mpa": 10.61033,
+    "strength_pass_claimed": false
+  },
+  "kinematic_calibration_gate": {
+    "nominal_wheel_center_track_mm": 310.0,
+    "analytic_shell_contact_patch_track_mm": 382.23301,
+    "current_firmware_track_mm": 310.0,
+    "analytic_contact_minus_firmware_track_mm": 72.23301,
+    "disposition": "HOLD_RECALIBRATE_FROM_PHYSICAL_YAW_RESPONSE_AFTER_CASSETTE_INSTALLATION",
+    "automatic_firmware_change_allowed": false
+  },
+  "checks": [
+    {
+      "id": "stage",
+      "passed": true,
+      "actual": 21,
+      "requirement": 21
+    },
+    {
+      "id": "manifest_nonempty",
+      "passed": true,
+      "actual": 150,
+      "requirement": ">=100 current fabrication rows"
+    },
+    {
+      "id": "object_exists_Internal drive wheel L",
+      "passed": true,
+      "actual": "Internal drive wheel L",
+      "requirement": "present"
+    },
+    {
+      "id": "wheel_envelope_Internal drive wheel L",
+      "passed": true,
+      "actual": [
+        96.0,
+        96.0,
+        26.0
+      ],
+      "requirement": [
+        96.0,
+        96.0,
+        26.0
+      ]
+    },
+    {
+      "id": "object_exists_Internal drive wheel R",
+      "passed": true,
+      "actual": "Internal drive wheel R",
+      "requirement": "present"
+    },
+    {
+      "id": "wheel_envelope_Internal drive wheel R",
+      "passed": true,
+      "actual": [
+        96.0,
+        96.0,
+        26.0
+      ],
+      "requirement": [
+        96.0,
+        96.0,
+        26.0
+      ]
+    },
+    {
+      "id": "wheel_pair_neutral_symmetry",
+      "passed": true,
+      "actual": 0.0,
+      "requirement": "<=0.15 mm"
+    },
+    {
+      "id": "wheel_center_radius",
+      "passed": true,
+      "actual": 0.002453,
+      "requirement": "<=0.15 mm from 206 mm"
+    },
+    {
+      "id": "current_exact_shell_gap_detected",
+      "passed": true,
+      "actual": 5.069621,
+      "requirement": ">=4.5 mm"
+    },
+    {
+      "id": "current_axis_tangent_error_detected",
+      "passed": true,
+      "actual": 48.800289,
+      "requirement": ">=40.0 deg"
+    },
+    {
+      "id": "legacy_spherical_formula_overstatement_detected",
+      "passed": true,
+      "actual": 5.072074,
+      "requirement": ">=4.5 mm"
+    },
+    {
+      "id": "selected_axis_is_shell_tangent",
+      "passed": true,
+      "actual": 0.0,
+      "requirement": "<=1e-09"
+    },
+    {
+      "id": "selected_axis_generates_forward_tread_velocity",
+      "passed": true,
+      "actual": 1.0,
+      "requirement": ">=0.999999"
+    },
+    {
+      "id": "selected_crown_exceeds_geometric_minimum",
+      "passed": true,
+      "actual": 0.417105,
+      "requirement": ">=0 mm margin"
+    },
+    {
+      "id": "nominal_crowned_support_matches_shell",
+      "passed": true,
+      "actual": 254.0,
+      "requirement": "254.0 +/- 0.02 mm"
+    },
+    {
+      "id": "crown_edge_clearance",
+      "passed": true,
+      "actual": 0.416557,
+      "requirement": ">=0.25 mm"
+    },
+    {
+      "id": "slide_travel_matches_stops",
+      "passed": true,
+      "actual": 12.0,
+      "requirement": "inward + outward reserve"
+    },
+    {
+      "id": "slot_supports_full_travel",
+      "passed": true,
+      "actual": 12.0,
+      "requirement": 12.0
+    },
+    {
+      "id": "outward_travel_covers_tolerance_with_margin",
+      "passed": true,
+      "actual": 3.5,
+      "requirement": ">=2.0 mm"
+    },
+    {
+      "id": "equal_pulley_belt_pitch_length",
+      "passed": true,
+      "actual": 280.0,
+      "requirement": 280.0
+    },
+    {
+      "id": "belt_ratio_is_one_to_one",
+      "passed": true,
+      "actual": 1.0,
+      "requirement": 1.0
+    },
+    {
+      "id": "belt_tooth_count_integer",
+      "passed": true,
+      "actual": 56.0,
+      "requirement": 56
+    },
+    {
+      "id": "tangent_motor_envelope_shell_clearance",
+      "passed": true,
+      "actual": 92.844764,
+      "requirement": ">=25.0 mm"
+    },
+    {
+      "id": "reference_plate_box_shell_clearance",
+      "passed": true,
+      "actual": 13.09753,
+      "requirement": ">=10.0 mm"
+    },
+    {
+      "id": "minimum_clamp_force_demand_calculated",
+      "passed": true,
+      "actual": 1000.0,
+      "requirement": ">=1000.0 N"
+    }
+  ],
+  "unresolved_freeze_gates": [
+    "bearing_fit_retention_and_service_life_frozen",
+    "belt_supplier_rating_tension_alignment_and_guard_frozen",
+    "crowned_tire_supplier_material_durometer_and_bond_frozen",
+    "current_blender_master_stage21_clash_and_service_audit_passed",
+    "effective_drive_track_and_yaw_model_physically_calibrated",
+    "m6_clamp_grade_preload_locking_and_interface_friction_frozen",
+    "measured_preload_vs_jackscrew_turns_curve_passed",
+    "nineteen_item_physical_commissioning_passed",
+    "plate_material_certificate_hole_fit_and_gdt_frozen",
+    "raised_wheel_spin_and_estop_test_passed",
+    "sealed_shell_thermal_and_endurance_test_passed",
+    "shell_laminate_coupon_contact_strength_and_wear_passed",
+    "wheel_shaft_material_keyway_hub_and_fatigue_frozen"
+  ]
+}

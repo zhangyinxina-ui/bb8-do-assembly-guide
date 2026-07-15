@@ -1,0 +1,86 @@
+solid stage21_moving_side_plate_envelope
+  facet normal 0 0 -1
+    outer loop
+      vertex 0 -32 -3
+      vertex 132 32 -3
+      vertex 132 -32 -3
+    endloop
+  endfacet
+  facet normal 0 0 -1
+    outer loop
+      vertex 0 -32 -3
+      vertex 0 32 -3
+      vertex 132 32 -3
+    endloop
+  endfacet
+  facet normal 0 0 1
+    outer loop
+      vertex 0 -32 3
+      vertex 132 -32 3
+      vertex 132 32 3
+    endloop
+  endfacet
+  facet normal 0 0 1
+    outer loop
+      vertex 0 -32 3
+      vertex 132 32 3
+      vertex 0 32 3
+    endloop
+  endfacet
+  facet normal 0 -1 0
+    outer loop
+      vertex 0 -32 -3
+      vertex 132 -32 -3
+      vertex 132 -32 3
+    endloop
+  endfacet
+  facet normal 0 -1 0
+    outer loop
+      vertex 0 -32 -3
+      vertex 132 -32 3
+      vertex 0 -32 3
+    endloop
+  endfacet
+  facet normal 1 0 0
+    outer loop
+      vertex 132 -32 -3
+      vertex 132 32 -3
+      vertex 132 32 3
+    endloop
+  endfacet
+  facet normal 1 0 0
+    outer loop
+      vertex 132 -32 -3
+      vertex 132 32 3
+      vertex 132 -32 3
+    endloop
+  endfacet
+  facet normal 0 1 0
+    outer loop
+      vertex 132 32 -3
+      vertex 0 32 -3
+      vertex 0 32 3
+    endloop
+  endfacet
+  facet normal 0 1 -0
+    outer loop
+      vertex 132 32 -3
+      vertex 0 32 3
+      vertex 132 32 3
+    endloop
+  endfacet
+  facet normal -1 0 0
+    outer loop
+      vertex 0 32 -3
+      vertex 0 -32 -3
+      vertex 0 -32 3
+    endloop
+  endfacet
+  facet normal -1 0 0
+    outer loop
+      vertex 0 32 -3
+      vertex 0 -32 3
+      vertex 0 32 3
+    endloop
+  endfacet
+endsolid stage21_moving_side_plate_envelope

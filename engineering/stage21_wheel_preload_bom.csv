@@ -1,0 +1,13 @@
+item,qty_robot,category,description,candidate_spec,status
+S21-001,4,machined plate,6 mm moving cassette side plate,6061-T6/T651; reference DXF/STL,HOLD_MATERIAL_FIT_GDT
+S21-002,4,machined plate,6 mm fixed radial-slider plate with 4 M6 slots per cassette,6061-T6/T651; 18.6 x 6.6 mm reference slots,HOLD_MATERIAL_FIT_GDT
+S21-003,2,wheel,96 x 26 mm crowned drive wheel,0.75 mm axial crown drop; TPU or cast polyurethane,HOLD_DUROMETER_BOND_WEAR
+S21-004,2,shaft,12 mm wheel shaft with retained hub,material keyway and retention TBD,HOLD_SHAFT_HUB_FATIGUE
+S21-005,4,bearing,sealed wheel-shaft bearing,6001-2RS 12 x 28 x 8 mm candidate,HOLD_FIT_LIFE_SUPPLIER
+S21-006,2,belt,HTD-style synchronous belt,5M-280-15; 56 teeth,HOLD_RATING_TENSION_GUARD
+S21-007,2,pulley,24T motor pulley,5 mm pitch; 15 mm width; 8 mm motor bore,HOLD_VENDOR_BORE_RETENTION
+S21-008,2,pulley,24T wheel pulley,5 mm pitch; 15 mm width; 12 mm wheel bore,HOLD_VENDOR_BORE_RETENTION
+S21-009,8,clamp,M6 cassette clamp bolt with washer and locking feature,grade preload and locking TBD,HOLD_GRADE_PRELOAD_FRICTION
+S21-010,2,adjuster,M6x1 preload jackscrew with jam nut,hard stops required; 12 mm usable travel,HOLD_THREAD_SUPPORT_FORCE_CALIBRATION
+S21-011,2,guard,belt and pinch-point guard,remove only with power isolated,HOLD_FINAL_ENVELOPE
+S21-012,2,measurement,temporary radial force-gauge fixture,60-100 N setup band; 10 N left-right match,REQUIRED_BEFORE_CONTACT_FREEZE
