@@ -1,0 +1,4 @@
+case,torque_nm,belt_tension_difference_n,radial_load_envelope_n,worst_bearing_load_n,shaft_keyway_vm_mpa,disposition
+nominal_peak_torque,1.200,62.832,,,,DEMAND_ONLY_SUPPLIER_RATING_OPEN
+3x_shock_plus_80n_per_span_pretension,3.600,188.496,348.496,532.795,100.237,ANALYTICAL_SCREEN_PASS_PHYSICAL_PROOF_OPEN
+rail_interface_positive_load_path,,,1000.000,,,TWO_DOWELS_PLUS_HARD_STOP_NO_FRICTION_CREDIT

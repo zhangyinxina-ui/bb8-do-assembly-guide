@@ -25,6 +25,7 @@ const phaseMedia: Record<string, AssemblyMedia[]> = {
     { label: "侧视", src: asset("/model/internal_side.png"), alt: "BB-8 内车侧视图", note: "检查驱动轴线、配重高度和球壳内侧避让。" },
     { label: "俯视", src: asset("/model/internal_top.png"), alt: "BB-8 内车俯视图", note: "检查左右电机、纵梁、线束与赤道维护区。" },
     { label: "阶段21", src: asset("/images/BB8_stage21_wheel_preload_adjuster.png"), alt: "BB-8 阶段21切向轮轴与径向预压滑台工程图", note: "当前Blender轮组仍是旧圆柱；此图是待装机验证的切向轮轴、平行同步带和12 mm预压滑台参考结构。" },
+    { label: "阶段22", src: asset("/images/BB8_stage22_drivetrain_interface.png"), alt: "BB-8 阶段22标准同步带、双轴承键轴与底盘接口工程图", note: "官方目录修正为5MGT-300-15、60齿、90 mm轴距；解析筛查通过，供应商配合、张力、扭矩证明和真机装配仍HOLD。" },
   ],
   "电气与配重": [
     { label: "侧视", src: asset("/model/internal_side.png"), alt: "BB-8 内部机构侧视图", note: "核对电池、控制托盘、线束弯曲半径和桅杆避让。" },
@@ -94,6 +95,21 @@ const sources = [
     name: "Kaiser 6061-T6/T651 材料数据",
     tag: "阶段20结构筛查一手资料",
     href: "https://online.kaiseraluminum.com/depot/PublicProductInformation/Document/1015/Kaiser_Aluminum_6061_Sheet_Coil_and_Plate.pdf",
+  },
+  {
+    name: "Gates 5MGT-300-15 产品页",
+    tag: "阶段22标准皮带一手资料",
+    href: "https://www.gates.com/us/en/power-transmission/synchronous-belts/poly-chain-synchronous-belts.p.9270-000000-000001.v.9270-06002.html",
+  },
+  {
+    name: "Gates 2025 工业传动目录",
+    tag: "阶段22标准长度表",
+    href: "https://www.gates.com/content/dam/documents-library/catalogs/industrial-power-transmission-catalogue-en.pdf",
+  },
+  {
+    name: "SKF 不锈钢深沟球轴承目录",
+    tag: "阶段22轴承额定下限",
+    href: "https://www.skf.com/binaries/pub12/Images/0901d19680406705-SKF-Stainless-steel-DGBB---11279_1-EN-Low-Res_tcm_12-259995.pdf",
   },
   {
     name: "Printed Droid D-O 总页",
@@ -335,6 +351,7 @@ export default function Home() {
               阶段19进一步发布双许可PWM门合同，并把23个板件/器件参考包络写入同一主工程；关闭重开后的Blender 5.1.2审计确认386个总对象和182个内部对象，制造清单仍严格保持150项。SAFE_A、SAFE_B、双INA226 ALERT_N和3.3 V逻辑电源任一失效都会解析拉低左右PWM；64组真值表全部通过。正式KiCad 10原理图为0项ERC违规；50 × 35 mm两层PCB已布线，0项DRC违规、0个未连接项，34个器件引用、91条规范引脚连接和21个网络完成双重交叉审计。独立原理图/布局同行复核、Gerber/钻孔发布复核和台架波形仍缺失，不能制造或上电。
               阶段20把结构解析重新绑定到当前制造清单：当前桅杆是Ø24 × 340 mm，旧阶段2的Ø12/Ø8 × 300 mm结论已明确标为不再代表当前模型。2.5 g垂向、1.0 g侧向、斜撑屈曲、桅杆模态和理想基材疲劳筛查通过，但轮—壳接触仍缺5.5 mm径向调节预算，15项材料、连接、公差和实物门未关闭；当前状态为HOLD_JOINT_TOLERANCE_MATERIAL_AND_PHYSICAL_VALIDATION_REQUIRED。
               阶段21用有限圆柱支撑函数重新计算：旧公式高估5.072 mm，实际轮—壳间隙5.070 mm，轮轴相对球壳切平面偏48.800°。选定参考结构改为切向轮轴、80 mm径向内移的平行电机轴、24T/24T 5M-280-15候选同步带、0.750 mm冠形轮和12 mm M6×1预压滑台；覆盖5.5 mm公差后余3.5 mm，但当前打开的Blender主模型未被改写，13项轮胎、壳体、皮带、轴承、轴/毂、紧固、干涉和实车门仍保持HOLD。
+              阶段22随后用Gates官方目录纠正非标准皮带候选：改用产品号92706002的5MGT-300-15（300 mm、60齿、15 mm宽），24T/24T带轮轴距增至90 mm。双6001轴承最重等效载荷532.8 N、1000 r/min解析L10为9516 h；12 mm键轴按400 MPa屈服下限得到3.99安全系数；每侧两根6 mm定位销在1000 N接口载荷下单剪17.7 MPa。解析筛查通过，但供应商额定/张力、轴承配合、7.2 N·m实物扭矩证明、GD&T、防护罩、Blender干涉和真机门仍保持HOLD。
             </p>
             <div className="doc-actions">
               <a className="button" href={asset("/downloads/BB8_BOM.md")} download>
@@ -427,6 +444,24 @@ export default function Home() {
               <a className="button" href={asset("/downloads/stage21_crowned_wheel_envelope.stl")} download>
                 下载冠形轮参考 STL
               </a>
+              <a className="button" href={asset("/downloads/BB8_阶段22_标准同步带与轮轴底盘接口门.md")} download>
+                下载阶段 22 标准同步带与接口报告
+              </a>
+              <a className="button" href={asset("/downloads/BB8_stage22_catalog_belt_bearing_shaft_interface_gate.md")} download>
+                Download Stage 22 English report
+              </a>
+              <a className="button" href={asset("/downloads/stage22_drivetrain_interface.scad")} download>
+                下载阶段 22 OpenSCAD 参考装配
+              </a>
+              <a className="button" href={asset("/downloads/stage22_rail_interface_bracket.dxf")} download>
+                下载阶段 22 底盘接口 DXF
+              </a>
+              <a className="button" href={asset("/downloads/stage22_bearing_retainer.dxf")} download>
+                下载轴承压盖 DXF
+              </a>
+              <a className="button" href={asset("/downloads/stage22_keyed_shaft_envelope.stl")} download>
+                下载键轴参考 STL
+              </a>
               <a className="button" href={asset("/model/BB8_three_view_dimension_sheet.png")} download>
                 下载最新三视图尺寸图
               </a>
@@ -439,6 +474,17 @@ export default function Home() {
                 James Bruton CAD/代码 ↗
               </a>
             </div>
+          </div>
+        </div>
+        <div className="mechanism pcb-evidence">
+          <img
+            src={asset("/images/BB8_stage22_drivetrain_interface.png")}
+            alt="BB-8 阶段22标准同步带、双轴承键轴与底盘接口全局及局部工程图"
+          />
+          <div>
+            <span className="kicker">阶段22 / 目录皮带与正向载荷路径</span>
+            <h3>标准件与解析载荷路径已对齐，<br />制造和真机仍保持HOLD。</h3>
+            <p>Gates目录将皮带冻结候选修正为5MGT-300-15、产品号92706002、60齿和90 mm轴距。参考结构用双6001轴承、12 mm键轴、两根6 mm定位销、四颗M6夹紧和硬限位形成正向载荷路径；图片、DXF、STL、BOM、合同和验证器均可下载。它们是参考包络，不是可直接加工或装车的发布件。</p>
           </div>
         </div>
         <div className="mechanism pcb-evidence">
@@ -569,7 +615,7 @@ export default function Home() {
         <div className="section-head">
           <span>04 / PHYSICS GATE</span>
           <h2>先算清楚，<br />再让它落地跑。</h2>
-          <p>阶段14以17组质量账本替代110 mm旧假设；阶段15加入动态稳定性；阶段16将解析门转换为19项真机测量合同。阶段17把目录额定与实测冻结分开，阶段18验证模块布局并写入主模型，阶段19补齐PWM门PCB证据，阶段20把结构载荷绑定到当前制造清单，阶段21再纠正驱动轮接触几何并给出切向轮轴预压滑台；这些都不等于PCB制造、器件采购、材料/连接冻结、实物试装、封壳热或整机运行通过。</p>
+          <p>阶段14以17组质量账本替代110 mm旧假设；阶段15加入动态稳定性；阶段16将解析门转换为19项真机测量合同。阶段17把目录额定与实测冻结分开，阶段18验证模块布局并写入主模型，阶段19补齐PWM门PCB证据，阶段20把结构载荷绑定到当前制造清单，阶段21纠正驱动轮接触几何，阶段22再用标准皮带、双轴承键轴和定位销接口闭合解析载荷路径；这些都不等于PCB制造、器件采购、材料/连接冻结、实物试装、封壳热或整机运行通过。</p>
         </div>
         <div className="control-grid">
           <article><span>01</span><h3>8.463 kg 名义质量</h3><p>17组输入范围为6.375–10.628 kg；所有分组在实物称重前均保持NOT_RUN。</p></article>
@@ -582,6 +628,7 @@ export default function Home() {
           <article><span>08</span><h3>当前0 / 19</h3><p>审计结果为HOLD_PHYSICAL_TESTS_NOT_RUN；没有真实硬件文件时，--require-pass必然失败。</p></article>
           <article><span>09</span><h3>旧桅杆结论已封锁</h3><p>当前是Ø24 × 340 mm包络；阶段2的Ø12/Ø8 × 300 mm弯曲结论不再代表主模型。</p></article>
           <article><span>10</span><h3>旧接触结论已纠正</h3><p>旧圆柱轮实际离壳5.070 mm、轮轴偏切面48.800°；阶段21的12 mm滑台和0.750 mm冠形轮解析通过，但13项实物与装机门仍HOLD。</p></article>
+          <article><span>11</span><h3>目录传动接口已筛查</h3><p>5MGT-300-15、90 mm轴距、532.8 N轴承载荷、9516 h解析L10和3.99键轴安全系数通过；13项供应商与实物冻结门仍HOLD。</p></article>
         </div>
         <div className="firmware-downloads">
           <a href={asset("/downloads/BB8_physics_validation.md")} download>下载物理验证报告</a>
@@ -622,6 +669,16 @@ export default function Home() {
           <a href={asset("/downloads/stage21_wheel_preload_bom.csv")} download>下载阶段21 BOM</a>
           <a href={asset("/downloads/stage21_cad_manifest.json")} download>下载阶段21 CAD清单</a>
           <a href={asset("/downloads/verify_stage21_wheel_preload.py")} download>下载阶段21验证器</a>
+          <a href={asset("/downloads/BB8_阶段22_标准同步带与轮轴底盘接口门.md")} download>下载阶段22中文报告</a>
+          <a href={asset("/downloads/BB8_stage22_catalog_belt_bearing_shaft_interface_gate.md")} download>下载阶段22英文报告</a>
+          <a href={asset("/downloads/stage22_drivetrain_interface_contract.json")} download>下载阶段22机器合同</a>
+          <a href={asset("/downloads/stage22_drivetrain_interface_results.json")} download>下载阶段22 HOLD结果</a>
+          <a href={asset("/downloads/stage22_drivetrain_load_cases.csv")} download>下载阶段22载荷工况</a>
+          <a href={asset("/downloads/stage22_drivetrain_interface_bom.csv")} download>下载阶段22 BOM</a>
+          <a href={asset("/downloads/stage22_cad_manifest.json")} download>下载阶段22 CAD清单</a>
+          <a href={asset("/downloads/verify_stage22_drivetrain_interface.py")} download>下载阶段22验证器</a>
+          <a href={asset("/downloads/stage22_rail_interface_bracket.dxf")} download>下载阶段22底盘接口DXF</a>
+          <a href={asset("/downloads/stage22_drivetrain_interface_assembly_envelope.stl")} download>下载阶段22装配包络STL</a>
         </div>
       </section>
 

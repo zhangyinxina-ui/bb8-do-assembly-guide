@@ -1,0 +1,232 @@
+{
+  "stage": 22,
+  "title_en": "BB-8 catalog belt, dual-bearing keyed shaft and rail-interface gate",
+  "title_zh": "BB-8 标准同步带、双轴承键轴与底盘接口门",
+  "status": "HOLD_SUPPLIER_FITS_TENSION_TORQUE_PROOF_AND_PHYSICAL_INTEGRATION_REQUIRED",
+  "release_class": "REFERENCE_CAD_ONLY_NOT_FOR_FABRICATION",
+  "evidence_boundary": "Stage 22 supersedes only the Stage-21 5M-280-15 belt candidate and resolves the analytical bearing, shaft, key and rail-interface load path. It does not modify or save the user's Blender master. Supplier power rating, DesignFlex tension, bearing fits and internal clearance, material certificates, machined-part torque proof, physical endplay, guard access, tire and shell tests, yaw calibration and all nineteen physical commissioning gates remain absent.",
+  "stage21_inputs": {
+    "contract": "engineering/stage21_wheel_preload_contract.json",
+    "results": "engineering/stage21_wheel_preload_results.json",
+    "required_stage21_overall": "HOLD_PHYSICAL_CONTACT_BELT_BEARING_AND_CHASSIS_INTEGRATION_REQUIRED",
+    "required_architecture": "TANGENT_AXIS_PARALLEL_BELT_RADIAL_SLIDE_V1",
+    "historical_candidate_belt": "5M-280-15",
+    "historical_candidate_pitch_length_mm": 280.0,
+    "historical_candidate_teeth": 56,
+    "historical_axis_center_distance_mm": 80.0,
+    "active_master_policy": "USER_MODIFIED_MASTER_PRESERVED_NOT_SAVED_BY_STAGE22",
+    "blender_application_status": "NOT_APPLIED_USER_MASTER_PRESERVED"
+  },
+  "official_source_evidence": [
+    {
+      "id": "GATES_5MGT_300_15",
+      "publisher": "Gates Corporation",
+      "url": "https://www.gates.com/us/en/power-transmission/synchronous-belts/poly-chain-synchronous-belts.p.9270-000000-000001.v.9270-06002.html",
+      "accessed": "2026-07-17",
+      "facts_used": {
+        "part_number": "5MGT-300-15",
+        "product_number": "92706002",
+        "pitch_mm": 5.0,
+        "pitch_length_mm": 300.0,
+        "teeth": 60,
+        "width_mm": 15.0
+      }
+    },
+    {
+      "id": "GATES_2025_INDUSTRIAL_CATALOG",
+      "publisher": "Gates Corporation",
+      "url": "https://www.gates.com/content/dam/documents-library/catalogs/industrial-power-transmission-catalogue-en.pdf",
+      "accessed": "2026-07-17",
+      "facts_used": {
+        "5mgt_15mm_stock_pitch_lengths_mm": [
+          300,
+          375,
+          425,
+          500,
+          535,
+          600,
+          635,
+          700,
+          815
+        ],
+        "minimum_catalog_pitch_length_mm": 300.0
+      }
+    },
+    {
+      "id": "GATES_POWERGRIP_GT3_MANUAL",
+      "publisher": "Gates Corporation",
+      "url": "https://www.gates.com/content/dam/documents-library/catalogs/powergrip-gt3-drive-design-manual-en.pdf",
+      "accessed": "2026-07-17",
+      "facts_used": {
+        "candidate_pulley": "P24-5MGT-15-MPB",
+        "candidate_pulley_teeth": 24,
+        "minimum_recommended_5mgt_pulley_teeth": 18
+      }
+    },
+    {
+      "id": "GATES_PREVENTIVE_MAINTENANCE",
+      "publisher": "Gates Corporation",
+      "url": "https://www.gates.com/content/dam/gates/home/knowledge-center/resource-library/operating-manuals/preventive-maintenance-manual-en.pdf",
+      "accessed": "2026-07-17",
+      "facts_used": {
+        "5mgt_up_to_500mm_minimum_tensioning_allowance_mm": 1.0,
+        "one_flanged_pulley_installation_allowance_mm": 15.0,
+        "two_flanged_pulley_installation_allowance_mm": 20.0
+      }
+    },
+    {
+      "id": "SKF_STAINLESS_DGBB_CATALOG",
+      "publisher": "SKF",
+      "url": "https://www.skf.com/binaries/pub12/Images/0901d19680406705-SKF-Stainless-steel-DGBB---11279_1-EN-Low-Res_tcm_12-259995.pdf",
+      "accessed": "2026-07-17",
+      "facts_used": {
+        "designation": "W 6001-2RS1",
+        "bore_mm": 12.0,
+        "outside_diameter_mm": 28.0,
+        "width_mm": 8.0,
+        "dynamic_rating_n": 4420.0,
+        "static_rating_n": 2360.0,
+        "limiting_speed_rpm": 16000.0
+      }
+    }
+  ],
+  "selected_architecture": {
+    "id": "5MGT300_DUAL6001_KEYED_SHAFT_DOWELED_RAIL_V1",
+    "belt_drive": {
+      "profile": "Gates Poly Chain GT Carbon 5MGT",
+      "selected_belt_part": "5MGT-300-15",
+      "selected_product_number": "92706002",
+      "pitch_mm": 5.0,
+      "pitch_length_mm": 300.0,
+      "teeth": 60,
+      "width_mm": 15.0,
+      "pulley_motor": "P24-5MGT-15-MPB candidate machined to 8 mm motor bore",
+      "pulley_wheel": "P24-5MGT-15-MPB candidate machined to 12 mm keyed wheel bore",
+      "pulley_teeth_motor": 24,
+      "pulley_teeth_wheel": 24,
+      "minimum_recommended_pulley_teeth": 18,
+      "nominal_axis_center_distance_mm": 90.0,
+      "ratio": 1.0,
+      "motor_mount_tension_adjustment_total_mm": 4.0,
+      "motor_mount_tension_adjustment_each_side_mm": 2.0,
+      "minimum_catalog_tensioning_allowance_mm": 1.0,
+      "belt_installation_method": "REMOVE_OUTBOARD_PULLEY_AND_GUARD_THEN_INSTALL_BELT_WITH_PULLEY;_DO_NOT_FORCE_BELT_OVER_TWO_FLANGES",
+      "removable_outboard_pulley_required": true,
+      "belt_guard_required": true,
+      "supplier_power_rating_status": "HOLD_GATES_DESIGNFLEX_OR_SUPPLIER_CALCULATION_REQUIRED",
+      "pretension_status": "HOLD_MEASURE_WITH_SELECTED_BELT_AND_PULLEYS"
+    },
+    "bearing_stack": {
+      "candidate_designation": "6001-2RS sealed bearing meeting or exceeding SKF W 6001-2RS1 rating floor",
+      "bore_mm": 12.0,
+      "outside_diameter_mm": 28.0,
+      "width_mm": 8.0,
+      "bearings_per_cassette": 2,
+      "bearing_center_span_mm": 38.0,
+      "bearing_centers_from_wheel_midplane_mm": [
+        -19.0,
+        19.0
+      ],
+      "pulley_center_from_wheel_midplane_mm": 33.5,
+      "pulley_overhang_from_outboard_bearing_mm": 14.5,
+      "minimum_dynamic_rating_n": 4420.0,
+      "minimum_static_rating_n": 2360.0,
+      "reference_limiting_speed_rpm": 16000.0,
+      "analysis_speed_rpm": 1000.0,
+      "candidate_fit_note": "ISO 286 shaft k6 and housing H7 starting point only; selected supplier fit table controls",
+      "fixed_bearing": "outboard outer ring retained by shoulder and bolted retainer; inner stack clamped",
+      "floating_bearing": "inboard outer ring allowed at least 0.3 mm axial float; anti-creep and endplay must be measured",
+      "minimum_floating_travel_mm": 0.3
+    },
+    "shaft_and_hubs": {
+      "shaft_diameter_mm": 12.0,
+      "shaft_support_span_mm": 38.0,
+      "shaft_modulus_gpa": 200.0,
+      "keyway_stiffness_retention": 0.75,
+      "keyway_combined_stress_factor": 2.5,
+      "minimum_certified_shaft_yield_mpa": 400.0,
+      "candidate_materials": "4140/42CrMo4 or 17-4PH with traceable certificate; not frozen",
+      "key_standard": "DIN 6885 parallel key candidate",
+      "key_width_mm": 4.0,
+      "key_height_mm": 4.0,
+      "minimum_key_engagement_mm": 20.0,
+      "wheel_hub": "keyed split hub with axial shoulder and positive retainer",
+      "pulley_hub": "keyed removable outboard pulley with positive axial retainer",
+      "physical_torque_proof_nm": 7.2
+    },
+    "rail_interface": {
+      "interface_design_load_n_per_cassette": 1000.0,
+      "fixed_plate_thickness_mm": 6.0,
+      "fixed_plate_candidate_yield_mpa": 240.0,
+      "m6_clamp_bolts_per_cassette": 4,
+      "m6_clearance_mm": 6.6,
+      "dowel_pins_per_cassette": 2,
+      "dowel_diameter_mm": 6.0,
+      "minimum_dowel_edge_distance_mm": 12.0,
+      "minimum_dowel_material_shear_yield_mpa": 240.0,
+      "hard_stop_reacts_jackscrew_load": true,
+      "friction_credit_in_strength_screen": false,
+      "interface": "twin rail bridge with two reamed dowels and four M6 clamps per cassette"
+    },
+    "packaging": {
+      "sphere_inner_radius_mm": 254.0,
+      "nominal_wheel_center_radius_mm": 206.0,
+      "wheel_axis_local_x_mm": 110.0,
+      "motor_axis_local_x_mm": 20.0,
+      "motor_envelope_diameter_mm": 45.0,
+      "motor_envelope_length_mm": 125.2,
+      "reference_plate_length_mm": 132.0,
+      "reference_plate_width_mm": 64.0,
+      "reference_plate_thickness_mm": 6.0,
+      "fixed_plate_center_separation_mm": 52.0,
+      "stage21_outward_reserve_mm": 9.0,
+      "pulley_pitch_radius_mm": 19.098593171,
+      "pulley_envelope_radius_mm": 20.0,
+      "pulley_center_from_wheel_midplane_mm": 33.5,
+      "pulley_width_mm": 15.0,
+      "guard_radial_allowance_mm": 3.0
+    }
+  },
+  "load_inputs": {
+    "motor_peak_torque_nm_each": 1.2,
+    "mechanical_shock_factor": 3.0,
+    "wheel_radius_m": 0.048,
+    "maximum_wheel_normal_preload_n": 100.0,
+    "maximum_assumed_belt_pretension_n_per_span": 80.0,
+    "bearing_life_exponent": 3.0,
+    "firmware_current_drive_track_m": 0.31,
+    "automatic_firmware_change_allowed": false
+  },
+  "acceptance_thresholds": {
+    "maximum_belt_pitch_length_error_mm": 0.05,
+    "minimum_motor_tension_adjustment_total_mm": 2.0,
+    "minimum_bearing_static_safety_factor": 3.0,
+    "minimum_bearing_l10_hours_at_analysis_speed": 5000.0,
+    "minimum_bearing_speed_margin_factor": 10.0,
+    "minimum_shaft_yield_safety_factor": 3.5,
+    "maximum_keyway_shaft_deflection_mm": 0.05,
+    "maximum_key_shear_stress_mpa": 40.0,
+    "maximum_key_bearing_stress_mpa": 80.0,
+    "maximum_dowel_shear_stress_mpa": 60.0,
+    "maximum_plate_bearing_stress_mpa": 80.0,
+    "maximum_plate_tearout_stress_mpa": 40.0,
+    "minimum_motor_shell_clearance_mm": 50.0,
+    "minimum_plate_shell_clearance_mm": 10.0,
+    "minimum_guarded_pulley_shell_clearance_mm": 10.0
+  },
+  "freeze_gates": {
+    "gates_designflex_power_rating_and_installation_tension_verified": false,
+    "selected_bearing_supplier_clearance_seal_and_fit_table_frozen": false,
+    "shaft_key_hub_pulley_material_certificates_and_drawings_released": false,
+    "keyed_joint_7p2_nm_physical_torque_proof_passed": false,
+    "fixed_floating_bearing_endplay_retention_and_anticreep_measured": false,
+    "rail_bracket_material_gdt_dowel_ream_and_hard_stop_released": false,
+    "belt_guard_material_fasteners_and_power_isolated_service_access_passed": false,
+    "current_blender_master_stage22_clash_and_service_audit_passed": false,
+    "tire_shell_wear_and_measured_preload_curve_passed": false,
+    "effective_drive_track_and_yaw_model_physically_calibrated": false,
+    "raised_wheel_spin_tracking_and_estop_test_passed": false,
+    "sealed_shell_thermal_and_endurance_test_passed": false,
+    "nineteen_item_physical_commissioning_passed": false
+  }
+}

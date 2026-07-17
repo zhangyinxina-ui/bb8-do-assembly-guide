@@ -37,6 +37,7 @@ test("server-renders the BB-8 and D-O build guide", async () => {
   assert.match(html, /GitHub 项目/);
   assert.match(html, /公开项目仓库/);
   assert.match(html, /https:\/\/github\.com\/zhangyinxina-ui\/bb8-do-assembly-guide/);
+  assert.match(html, /https:\/\/zhangyinxina-ui\.github\.io\/bb8-do-assembly-guide\/og\.png/);
   assert.match(html, /508/);
   assert.match(html, /Printed Droid/);
   assert.doesNotMatch(html, /href=["']\/model\/BB8_1to1_screen_referenced\.blend/);
@@ -192,6 +193,15 @@ test("server-renders the BB-8 and D-O build guide", async () => {
   assert.match(html, /stage21_wheel_preload_contract\.json/);
   assert.match(html, /stage21_fixed_slider_plate\.dxf/);
   assert.match(html, /stage21_crowned_wheel_envelope\.stl/);
+  assert.match(html, /5MGT-300-15/);
+  assert.match(html, /产品号92706002/);
+  assert.match(html, /90 mm轴距/);
+  assert.match(html, /532\.8 N/);
+  assert.match(html, /9516 h/);
+  assert.match(html, /BB8_stage22_drivetrain_interface\.png/);
+  assert.match(html, /stage22_drivetrain_interface_results\.json/);
+  assert.match(html, /stage22_rail_interface_bracket\.dxf/);
+  assert.match(html, /stage22_drivetrain_interface_assembly_envelope\.stl/);
   assert.match(html, /冻结 1:1 尺寸基准/);
   assert.match(html, /BB8_stage8_exterior_topology\.md/);
   assert.match(html, /BB8_stage9_head_calibration\.md/);
@@ -213,6 +223,7 @@ test("server-renders the complete English build guide", async () => {
   assert.match(html, /GitHub repository/);
   assert.match(html, /Public project repository/);
   assert.match(html, /https:\/\/github\.com\/zhangyinxina-ui\/bb8-do-assembly-guide/);
+  assert.match(html, /https:\/\/zhangyinxina-ui\.github\.io\/bb8-do-assembly-guide\/og\.png/);
   assert.match(html, /386 total objects and 182 internal objects/);
   assert.match(html, /150 fabrication objects, nine non-fabrication engineering markers and 23 non-fabrication pre-CAD gate references/);
   assert.match(html, /8\.463 kg nominal/);
@@ -269,6 +280,15 @@ test("server-renders the complete English build guide", async () => {
   assert.match(html, /BB8_stage21_wheel_preload_adjuster\.png/);
   assert.match(html, /stage21_wheel_preload_results\.json/);
   assert.match(html, /stage21_moving_side_plate\.dxf/);
+  assert.match(html, /5MGT-300-15/);
+  assert.match(html, /product 92706002/);
+  assert.match(html, /90 mm centres/);
+  assert.match(html, /532\.8 N/);
+  assert.match(html, /9516 h/);
+  assert.match(html, /BB8_stage22_drivetrain_interface\.png/);
+  assert.match(html, /stage22_drivetrain_interface_results\.json/);
+  assert.match(html, /stage22_rail_interface_bracket\.dxf/);
+  assert.match(html, /stage22_drivetrain_interface_assembly_envelope\.stl/);
   assert.match(html, /Freeze the 1:1 dimensional baseline/);
   assert.match(html, /personal non-commercial/);
   assert.match(html, /26-line procurement gate/);

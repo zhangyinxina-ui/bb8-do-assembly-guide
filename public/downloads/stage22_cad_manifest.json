@@ -1,0 +1,40 @@
+{
+  "stage": 22,
+  "architecture": "5MGT300_DUAL6001_KEYED_SHAFT_DOWELED_RAIL_V1",
+  "generator": "tools/build_stage22_drivetrain_interface_cad.py",
+  "manufacturing_release": false,
+  "blender_application_status": "NOT_APPLIED_USER_MASTER_PRESERVED",
+  "release_boundary": "All outputs are nominal fit and packaging references. Bearing fits, reamed dowels, shaft keyway, hub/pulley retention, material certificates, GD&T and physical validation remain HOLD.",
+  "outputs": [
+    {
+      "path": "hardware/stage22_drivetrain_interface/outputs/stage22_bearing_retainer.dxf",
+      "bytes": 399,
+      "sha256": "e5cc3877c2df9583e96aa39fa5896c5894e58fce10d511bcb7cda78af208a656",
+      "classification": "NOMINAL_2D_REFERENCE_PROFILE_FIT_AND_GDT_NOT_RELEASED"
+    },
+    {
+      "path": "hardware/stage22_drivetrain_interface/outputs/stage22_rail_interface_bracket.dxf",
+      "bytes": 830,
+      "sha256": "813b96ee084ffde6f8d86efac29aec0abcd758245d299cd43ea5158c9ba3f661",
+      "classification": "NOMINAL_2D_REFERENCE_PROFILE_REAM_AND_GDT_NOT_RELEASED"
+    },
+    {
+      "path": "hardware/stage22_drivetrain_interface/outputs/stage22_keyed_shaft_envelope.stl",
+      "bytes": 13484,
+      "sha256": "ad3dc129f3de63292d877a3385f9cf54fe01a487bbe398a168d47bb182f03965",
+      "classification": "REFERENCE_ENVELOPE_KEYWAY_AND_RETAINERS_NOT_MANUFACTURING_GEOMETRY"
+    },
+    {
+      "path": "hardware/stage22_drivetrain_interface/outputs/stage22_drivetrain_interface_assembly_envelope.stl",
+      "bytes": 118284,
+      "sha256": "84e78bedb052b0588b8803f20f172c136fc8815af54b5bc67441541f2da42d15",
+      "classification": "REFERENCE_ASSEMBLY_ENVELOPE_NOT_FABRICATION_GEOMETRY"
+    },
+    {
+      "path": "hardware/stage22_drivetrain_interface/outputs/stage22_drivetrain_interface_global.png",
+      "bytes": 146411,
+      "sha256": "9fabb007772a4cbf21ed16339ce135aea370095b95488d44a6fb0ca4b3af4630",
+      "classification": "ENGINEERING_REVIEW_IMAGE"
+    }
+  ]
+}

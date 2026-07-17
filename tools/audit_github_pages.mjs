@@ -20,9 +20,11 @@ async function files(directory) {
 const index = await readFile(path.join(output, "index.html"), "utf8");
 assert.match(index, new RegExp(`${base}assets/`));
 assert.match(index, /REP·LAB \| BB-8 &(?:amp;)? D-O 1:1/);
+assert.match(index, /https:\/\/zhangyinxina-ui\.github\.io\/bb8-do-assembly-guide\/og\.png/);
 const englishIndex = await readFile(path.join(output, "en", "index.html"), "utf8");
 assert.match(englishIndex, new RegExp(`${base}assets/`));
 assert.match(englishIndex, /BB-8 &(?:amp;)? D-O 1:1 Build Guide/);
+assert.match(englishIndex, /https:\/\/zhangyinxina-ui\.github\.io\/bb8-do-assembly-guide\/og\.png/);
 
 const allFiles = await files(output);
 assert.equal(allFiles.some((file) => file.endsWith(".blend")), false);
@@ -121,6 +123,23 @@ for (const required of [
   "downloads/stage21_moving_side_plate_envelope.stl",
   "downloads/stage21_wheel_preload_assembly_envelope.stl",
   "images/BB8_stage21_wheel_preload_adjuster.png",
+  "downloads/BB8_阶段22_标准同步带与轮轴底盘接口门.md",
+  "downloads/BB8_stage22_catalog_belt_bearing_shaft_interface_gate.md",
+  "downloads/stage22_drivetrain_interface_contract.json",
+  "downloads/stage22_drivetrain_interface_results.json",
+  "downloads/stage22_drivetrain_load_cases.csv",
+  "downloads/stage22_drivetrain_interface_bom.csv",
+  "downloads/stage22_cad_manifest.json",
+  "downloads/verify_stage22_drivetrain_interface.py",
+  "downloads/build_stage22_drivetrain_interface_cad.py",
+  "downloads/build_stage22_drivetrain_interface_cad.sh",
+  "downloads/stage22_drivetrain_interface.scad",
+  "downloads/stage22_bearing_retainer.dxf",
+  "downloads/stage22_rail_interface_bracket.dxf",
+  "downloads/stage22_keyed_shaft_envelope.stl",
+  "downloads/stage22_drivetrain_interface_assembly_envelope.stl",
+  "images/BB8_stage22_drivetrain_interface.png",
+  "og.png",
   "images/BB8_stage19_gate_pcb_top.svg",
   "images/BB8_stage19_gate_pcb_bottom.svg",
   "images/BB8_stage19_gate_pcb_top.png",

@@ -1,0 +1,341 @@
+{
+  "stage": 22,
+  "overall": "HOLD_SUPPLIER_FITS_TENSION_TORQUE_PROOF_AND_PHYSICAL_INTEGRATION_REQUIRED",
+  "analytical_screen_passed": true,
+  "manufacturing_release": false,
+  "physical_test_status": "NOT_RUN",
+  "blender_application_status": "NOT_APPLIED_USER_MASTER_PRESERVED",
+  "catalog_correction": {
+    "stage21_candidate": "5M-280-15",
+    "stage21_candidate_in_official_stock_list": false,
+    "official_15mm_stock_pitch_lengths_mm": [
+      300.0,
+      375.0,
+      425.0,
+      500.0,
+      535.0,
+      600.0,
+      635.0,
+      700.0,
+      815.0
+    ],
+    "selected_part": "5MGT-300-15",
+    "selected_product_number": "92706002",
+    "selected_pitch_length_mm": 300.0,
+    "selected_teeth": 60,
+    "selected_width_mm": 15.0,
+    "source_ids": [
+      "GATES_5MGT_300_15",
+      "GATES_2025_INDUSTRIAL_CATALOG",
+      "GATES_POWERGRIP_GT3_MANUAL",
+      "GATES_PREVENTIVE_MAINTENANCE"
+    ]
+  },
+  "belt_geometry": {
+    "pulley_pitch_diameter_mm": 38.197186,
+    "nominal_center_distance_mm": 90.0,
+    "calculated_pitch_length_mm": 300.0,
+    "pitch_length_error_mm": 0.0,
+    "calculated_teeth": 60.0,
+    "ratio": 1.0,
+    "minimum_recommended_pulley_teeth": 18,
+    "motor_tension_adjustment_total_mm": 4.0,
+    "installation_method": "REMOVE_OUTBOARD_PULLEY_AND_GUARD_THEN_INSTALL_BELT_WITH_PULLEY;_DO_NOT_FORCE_BELT_OVER_TWO_FLANGES",
+    "supplier_power_rating_passed": false,
+    "installation_tension_passed": false
+  },
+  "load_path": {
+    "peak_torque_nm": 1.2,
+    "shock_torque_nm": 3.6,
+    "peak_belt_tension_difference_n": 62.831853,
+    "shock_belt_tension_difference_n": 188.495559,
+    "assumed_pretension_n_per_span": 80.0,
+    "belt_radial_load_envelope_n": 348.495559,
+    "shock_wheel_tangential_force_n": 75.0,
+    "maximum_wheel_normal_preload_n": 100.0,
+    "outboard_belt_reaction_n": 481.474128,
+    "inboard_belt_reaction_n": -132.978569
+  },
+  "bearing_screen": {
+    "rating_floor_source": "SKF_STAINLESS_DGBB_CATALOG",
+    "worst_outboard_equivalent_radial_load_n": 532.795457,
+    "inboard_equivalent_radial_load_n": 91.058733,
+    "static_safety_factor": 4.429467,
+    "l10_revolutions": 570933162.721,
+    "l10_hours_at_analysis_speed": 9515.553,
+    "analysis_speed_rpm": 1000.0,
+    "speed_margin_factor": 16.0,
+    "fit_clearance_retention_life_physically_proven": false
+  },
+  "shaft_key_screen": {
+    "combined_bending_moment_nm": 6.04532,
+    "bending_stress_mpa": 35.63491,
+    "torsional_shear_mpa": 10.61033,
+    "ideal_von_mises_mpa": 40.094689,
+    "keyway_factored_von_mises_mpa": 100.236722,
+    "minimum_certified_yield_mpa": 400.0,
+    "yield_safety_factor": 3.990553,
+    "conservative_shaft_deflection_mm": 0.009147,
+    "key_shear_stress_mpa": 7.5,
+    "key_bearing_stress_mpa": 15.0,
+    "physical_torque_proof_nm": 7.2,
+    "physical_torque_proof_passed": false
+  },
+  "rail_interface_screen": {
+    "design_load_n_per_cassette": 1000.0,
+    "load_per_dowel_n": 500.0,
+    "dowel_single_shear_mpa": 17.683883,
+    "plate_bearing_mpa": 13.888889,
+    "plate_tearout_mpa": 4.62963,
+    "friction_credit_used": false,
+    "hard_stop_required": true,
+    "physical_fit_and_gdt_passed": false
+  },
+  "packaging_screen": {
+    "motor_center_radius_mm": 116.0,
+    "motor_support_mm": 151.990164,
+    "motor_shell_clearance_mm": 102.009836,
+    "plate_support_mm": 240.90247,
+    "plate_shell_clearance_mm": 13.09753,
+    "guarded_pulley_support_mm": 233.188765,
+    "guarded_pulley_shell_clearance_mm": 20.811235,
+    "current_blender_master_clash_check": "NOT_RUN"
+  },
+  "control_gate": {
+    "current_firmware_track_m": 0.31,
+    "automatic_firmware_change_allowed": false,
+    "disposition": "HOLD_PHYSICAL_YAW_IDENTIFICATION_AFTER_CASSETTE_INSTALLATION"
+  },
+  "checks": [
+    {
+      "id": "stage",
+      "passed": true,
+      "actual": 22,
+      "requirement": 22
+    },
+    {
+      "id": "stage21_overall_bound",
+      "passed": true,
+      "actual": "HOLD_PHYSICAL_CONTACT_BELT_BEARING_AND_CHASSIS_INTEGRATION_REQUIRED",
+      "requirement": "HOLD_PHYSICAL_CONTACT_BELT_BEARING_AND_CHASSIS_INTEGRATION_REQUIRED"
+    },
+    {
+      "id": "stage21_architecture_bound",
+      "passed": true,
+      "actual": "TANGENT_AXIS_PARALLEL_BELT_RADIAL_SLIDE_V1",
+      "requirement": "TANGENT_AXIS_PARALLEL_BELT_RADIAL_SLIDE_V1"
+    },
+    {
+      "id": "blender_master_preservation_policy",
+      "passed": true,
+      "actual": "USER_MODIFIED_MASTER_PRESERVED_NOT_SAVED_BY_STAGE22",
+      "requirement": "USER_MODIFIED_MASTER_PRESERVED_NOT_SAVED_BY_STAGE22"
+    },
+    {
+      "id": "stage21_280mm_candidate_not_in_official_stock_list",
+      "passed": true,
+      "actual": {
+        "historical_mm": 280.0,
+        "stock_lengths_mm": [
+          300.0,
+          375.0,
+          425.0,
+          500.0,
+          535.0,
+          600.0,
+          635.0,
+          700.0,
+          815.0
+        ]
+      },
+      "requirement": "historical length absent and below 300 mm catalog minimum"
+    },
+    {
+      "id": "selected_belt_is_official_catalog_part",
+      "passed": true,
+      "actual": {
+        "part": "5MGT-300-15",
+        "product": "92706002",
+        "length_mm": 300.0,
+        "teeth": 60,
+        "width_mm": 15.0
+      },
+      "requirement": {
+        "part_number": "5MGT-300-15",
+        "product_number": "92706002",
+        "pitch_mm": 5.0,
+        "pitch_length_mm": 300.0,
+        "teeth": 60,
+        "width_mm": 15.0
+      }
+    },
+    {
+      "id": "equal_pulley_catalog_belt_geometry",
+      "passed": true,
+      "actual": 300.0,
+      "requirement": 300.0
+    },
+    {
+      "id": "catalog_belt_tooth_count_integer",
+      "passed": true,
+      "actual": 60.0,
+      "requirement": 60
+    },
+    {
+      "id": "belt_ratio_one_to_one",
+      "passed": true,
+      "actual": 1.0,
+      "requirement": 1.0
+    },
+    {
+      "id": "pulley_teeth_meet_gates_minimum",
+      "passed": true,
+      "actual": {
+        "motor": 24,
+        "wheel": 24
+      },
+      "requirement": ">=18 teeth"
+    },
+    {
+      "id": "motor_mount_has_tensioning_allowance",
+      "passed": true,
+      "actual": 4.0,
+      "requirement": ">=2.0 mm"
+    },
+    {
+      "id": "flanged_belt_installation_is_serviceable",
+      "passed": true,
+      "actual": "REMOVE_OUTBOARD_PULLEY_AND_GUARD_THEN_INSTALL_BELT_WITH_PULLEY;_DO_NOT_FORCE_BELT_OVER_TWO_FLANGES",
+      "requirement": "remove pulley instead of forcing belt over two flanges"
+    },
+    {
+      "id": "bearing_reference_dimensions_match",
+      "passed": true,
+      "actual": [
+        12.0,
+        28.0,
+        8.0
+      ],
+      "requirement": [
+        12.0,
+        28.0,
+        8.0
+      ]
+    },
+    {
+      "id": "bearing_rating_floor_matches_official_reference",
+      "passed": true,
+      "actual": [
+        4420.0,
+        2360.0
+      ],
+      "requirement": [
+        4420.0,
+        2360.0
+      ]
+    },
+    {
+      "id": "bearing_static_safety",
+      "passed": true,
+      "actual": 4.429467,
+      "requirement": ">=3.0"
+    },
+    {
+      "id": "bearing_l10_reference_life",
+      "passed": true,
+      "actual": 9515.553,
+      "requirement": ">=5000.0 h"
+    },
+    {
+      "id": "bearing_speed_margin",
+      "passed": true,
+      "actual": 16.0,
+      "requirement": ">=10.0"
+    },
+    {
+      "id": "keyway_factored_shaft_yield_safety",
+      "passed": true,
+      "actual": 3.990553,
+      "requirement": ">=3.5"
+    },
+    {
+      "id": "shaft_deflection",
+      "passed": true,
+      "actual": 0.009147,
+      "requirement": "<=0.05 mm"
+    },
+    {
+      "id": "parallel_key_shear",
+      "passed": true,
+      "actual": 7.5,
+      "requirement": "<=40.0 MPa"
+    },
+    {
+      "id": "parallel_key_bearing",
+      "passed": true,
+      "actual": 15.0,
+      "requirement": "<=80.0 MPa"
+    },
+    {
+      "id": "dowel_single_shear",
+      "passed": true,
+      "actual": 17.683883,
+      "requirement": "<=60.0 MPa"
+    },
+    {
+      "id": "plate_dowel_bearing",
+      "passed": true,
+      "actual": 13.888889,
+      "requirement": "<=80.0 MPa"
+    },
+    {
+      "id": "plate_dowel_tearout",
+      "passed": true,
+      "actual": 4.62963,
+      "requirement": "<=40.0 MPa"
+    },
+    {
+      "id": "interface_has_positive_load_path",
+      "passed": true,
+      "actual": {
+        "hard_stop": true,
+        "friction_credit": false,
+        "dowels": 2
+      },
+      "requirement": "hard stop + >=2 dowels, no friction credit"
+    },
+    {
+      "id": "motor_shell_clearance",
+      "passed": true,
+      "actual": 102.009836,
+      "requirement": ">=50.0 mm"
+    },
+    {
+      "id": "plate_shell_clearance",
+      "passed": true,
+      "actual": 13.09753,
+      "requirement": ">=10.0 mm"
+    },
+    {
+      "id": "guarded_pulley_shell_clearance",
+      "passed": true,
+      "actual": 20.811235,
+      "requirement": ">=10.0 mm"
+    }
+  ],
+  "unresolved_freeze_gates": [
+    "belt_guard_material_fasteners_and_power_isolated_service_access_passed",
+    "current_blender_master_stage22_clash_and_service_audit_passed",
+    "effective_drive_track_and_yaw_model_physically_calibrated",
+    "fixed_floating_bearing_endplay_retention_and_anticreep_measured",
+    "gates_designflex_power_rating_and_installation_tension_verified",
+    "keyed_joint_7p2_nm_physical_torque_proof_passed",
+    "nineteen_item_physical_commissioning_passed",
+    "rail_bracket_material_gdt_dowel_ream_and_hard_stop_released",
+    "raised_wheel_spin_tracking_and_estop_test_passed",
+    "sealed_shell_thermal_and_endurance_test_passed",
+    "selected_bearing_supplier_clearance_seal_and_fit_table_frozen",
+    "shaft_key_hub_pulley_material_certificates_and_drawings_released",
+    "tire_shell_wear_and_measured_preload_curve_passed"
+  ]
+}

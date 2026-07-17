@@ -1,0 +1,15 @@
+item,qty_robot,category,description,candidate_spec,status
+S22-001,2,belt,Gates Poly Chain GT Carbon belt,"5MGT-300-15, product 92706002, 300 mm, 60T, 15 mm",CATALOG_IDENTIFIED_HOLD_POWER_RATING_TENSION
+S22-002,2,motor pulley,24T 5MGT 15 mm pulley,"P24-5MGT-15-MPB family, finish-bore to verified 8 mm motor shaft",HOLD_BORE_KEY_OR_CLAMP_RETENTION
+S22-003,2,wheel pulley,24T 5MGT 15 mm removable pulley,"P24-5MGT-15-MPB family, 12 mm keyed bore",HOLD_BORE_KEY_AXIAL_RETENTION
+S22-004,4,bearing,sealed 6001 wheel-shaft bearing,"12x28x8 mm; C>=4.42 kN, C0>=2.36 kN",HOLD_SUPPLIER_CLEARANCE_SEAL_FITS
+S22-005,2,shaft,12 mm keyed wheel shaft,certified yield >=400 MPa; keyway factored screen,HOLD_MATERIAL_CERT_DRAWING_FATIGUE
+S22-006,4,key,wheel and pulley parallel keys,DIN 6885 candidate 4x4x20 mm minimum engagement,HOLD_FIT_AND_7P2NM_TORQUE_PROOF
+S22-007,2,wheel hub,keyed wheel hub with positive axial retention,20 mm minimum keyed engagement,HOLD_HUB_DRAWING_AND_TORQUE_PROOF
+S22-008,2,bearing retainer,outboard bolted bearing retainer,reference DXF; shoulder and fasteners TBD,HOLD_FIT_GDT_ENDPLAY
+S22-009,2,floating housing,inboard floating-bearing housing,">=0.3 mm axial float, anti-creep validation",HOLD_PHYSICAL_ENDPLAY_ANTICREEP
+S22-010,4,dowel,rail-interface locating dowel,"6 mm, two per cassette, reamed fit",HOLD_MATERIAL_REAM_GDT
+S22-011,8,clamp,rail-interface M6 clamp bolt,four per cassette; not credited for shear strength,HOLD_GRADE_PRELOAD_LOCKING
+S22-012,2,hard stop,positive cassette radial hard stop,reacts jackscrew and shock load into rail bridge,HOLD_RAIL_INTEGRATION
+S22-013,2,guard,removable belt and pulley guard,3 mm reference envelope; power-isolated service only,HOLD_MATERIAL_FASTENERS_ACCESS
+S22-014,2,test,keyed-joint torque-proof fixture,7.2 N m proof without slip or permanent set,REQUIRED_BEFORE_RELEASE
